@@ -46,3 +46,7 @@ A network tool to control the bandwidth over your local network, it can block in
 # Additional Information
 
 If you notice any errors or have a suggestion, you're free to email me or submit a pull request.
+
+# Author
+### Hamzi Alsheikh
+### Website: [HMZ-Software](https://www.hmz-software.me)
