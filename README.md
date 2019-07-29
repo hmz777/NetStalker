@@ -1,5 +1,5 @@
 # NetStalker
-A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device.
+A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built in packet sniffer.
 
 # Features:
 - Background Scanning for newly connected devices.
