@@ -3,7 +3,7 @@ A network tool to control the bandwidth over your local network, it can block in
 
 # Features:
 - Background Scanning for newly connected devices.
-- Bandwidth limitation for better distribution of internet speed accross devices, both upload and download speeds can be controlled for each device separately.
+- Bandwidth limitation for better distribution of internet speed across devices, both upload and download speeds can be controlled for each device separately.
 - A Packet Sniffer that is intended to log addresses that each device on the network visits with the ability to decode Http headers for HTTP packets and resolve domains for HTTPS packets, also the packet direction can be chosen in order to capture requests only or requests and responses.
 - A packet viewer to view the properties of a selected packet in the Packet Sniffer with the ability to expand the viewer for better visibility.
 - Export the captured packets as a log file with the resolved domains included along with the timestamp for each packet.
