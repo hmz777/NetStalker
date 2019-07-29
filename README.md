@@ -42,3 +42,7 @@ A network tool to control the bandwidth over your local network, it can block in
 
 ### Expanded Packet Viewer:
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
+
+# Additional Information
+
+If you notice any errors or have a suggestion, you're free to email me or submit a pull request.
