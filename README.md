@@ -15,7 +15,8 @@ A tool to control the bandwidth over your local network, it can block internet a
 
 # Binaries
 
-![NetStalkerLink](The binary link goes here)
+- NetStalker [Binaries](https://github.com/hmz777/NetStalker/releases/download/1.0/NetStalker.rar)
+- NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/1.0/NS.exe)
 
 # Pictures:
 
