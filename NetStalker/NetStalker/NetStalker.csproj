@@ -104,6 +104,12 @@
     <Compile Include="Controller.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="DisconnectReconnect.cs" />
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetClientList.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LicenseAgreement.cs">
@@ -167,6 +173,9 @@
     <Compile Include="VendorClass.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LicenseAgreement.resx">
       <DependentUpon>LicenseAgreement.cs</DependentUpon>

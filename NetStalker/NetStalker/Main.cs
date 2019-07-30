@@ -390,7 +390,8 @@ namespace NetStalker
                 }).Start();
 
                 SnifferStarted = true;
-                GetClientList.CloseAllCapturesForLimiter(this);
+                //GetClientList.CloseAllCapturesForLimiter(this);
+                GetReady();
                 Sniffer sniff = new Sniffer(selectedDevice.IP.ToString(), GetClientList.GetMACString(selectedDevice.MAC), GetClientList.GetMACString(GetGatewayMAC()), GetGatewayIP().ToString(), loading);//for the berkeley packet filter macs should have ':' separating each hex number
                 sniff.ShowDialog(this);
                 fastObjectListView1.SelectedObjects.Clear();
@@ -407,7 +408,11 @@ namespace NetStalker
                 GetClientList.CalledFromSniffer = true;
                 new Thread(() =>
                 {
-                    GetClientList.BackgroundScanStart(this, Properties.Settings.Default.friendlyname);
+                    if (GetClientList.StopFlag)
+                    {
+                        GetClientList.BackgroundScanStart(this, Properties.Settings.Default.friendlyname);
+                    }
+
 
                 }).Start();
             }

@@ -45,7 +45,6 @@ namespace NetStalker
         }
 
         private ICaptureDevice capturedevice;
-        private ICaptureDevice capturedevice2;
         private int i = 0;
         private string Target;
         private string targetmac;
@@ -315,8 +314,8 @@ namespace NetStalker
             CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
 
             capturedevicelist.Refresh();
-            capturedevice = (from devicex in capturedevicelist where ((SharpPcap.WinPcap.WinPcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];
-
+            //capturedevice = (from devicex in capturedevicelist where ((SharpPcap.WinPcap.WinPcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];
+            capturedevice = CaptureDeviceList.New()[NetStalker.Properties.Settings.Default.AdapterName];
             metroTextBox2.Text += "Ready" + Environment.NewLine;
 
         }

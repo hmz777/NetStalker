@@ -84,7 +84,7 @@ namespace CSArp
                     {
 
                         targetlist.Add(listitem.IP,
-                            listitem.MAC);                   
+                            listitem.MAC);
                         listitem.DeviceStatus = "Offline";
                         _view.ListView1.UpdateObject(listitem);
                         _view.MainForm.BeginInvoke(new Action(() =>
@@ -161,7 +161,19 @@ namespace CSArp
             {
                 try
                 {
+
+                    var devices = _view.ListView1.Objects.Cast<Device>().ToList();
+
+                    foreach (var device in devices)
+                    {
+                        device.Redirected = false;
+                        device.Blocked = false;
+                        device.LimiterStarted = false;
+                    }
+
                     GetClientList.CloseAllCaptures(_view);
+
+
                 }
                 catch (Exception exception)
                 {

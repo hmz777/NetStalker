@@ -119,10 +119,53 @@ namespace NetStalker
                     else
                     {
                         reg1.SetValue("Des", "False");
+                        reg1.Close();
+                        root.Close();
                         Application.Exit();
                     }
 
                 }
+
+                RegistryKey winpcapkey = null;
+                if (Environment.Is64BitOperatingSystem)
+                {
+                    winpcapkey =
+                       Registry.LocalMachine.OpenSubKey(
+                           @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\WinPcapInst");
+                }
+                else
+                {
+                    winpcapkey =
+                        Registry.LocalMachine.OpenSubKey(
+                            @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinPcapInst");
+                }
+
+
+                if (winpcapkey != null)
+                {
+                    string ver = (string)winpcapkey.GetValue("DisplayName");
+                    if (!string.IsNullOrEmpty(ver))
+                    {
+                        materialLabel3.Text = ver;
+                        winpcapkey.Close();
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                       
+                        ErrorForm EF = new ErrorForm();
+                        EF.ShowDialog();
+                    }
+                    catch (Exception exception)
+                    {
+
+                    }
+
+                }
+
+
 
                 if (!string.IsNullOrEmpty((string)reg1.GetValue("IsSNG")) && (string)reg1.GetValue("IsSNG") == "True")
                 {

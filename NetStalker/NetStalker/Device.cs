@@ -130,11 +130,5 @@ namespace NetStalker
         }
 
 
-        public void ResetPacketCount()
-        {
-            PacketsReceivedSinceLastReset = 0;
-            PacketsSentSinceLastReset = 0;
-        }
-
     }
 }
