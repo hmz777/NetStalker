@@ -340,11 +340,13 @@ namespace NetStalker
 
                         if (!IsLocalDeviceSniffing)
                         {
-                            capturedevice.Filter = $"(ip and ether src {targetmac.ToLower()}) or (ip and ether src {gatewayMAC.ToLower()} and dst net {Target})";
+                            capturedevice.Filter = $"(tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (ether src {gatewayMAC.ToLower()} and dst net {Target}))) or (tcp port 443 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (ether src {gatewayMAC.ToLower()} and dst net {Target})))";
+
                         }
                         else
                         {
-                            capturedevice.Filter = $"(tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (ether src {gatewayMAC.ToLower()} and dst net {Target}))) or (tcp port 443 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (ether src {gatewayMAC.ToLower()} and dst net {Target})))";
+                            capturedevice.Filter = $"(tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (dst net {Target}))) or (tcp port 443 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (dst net {Target})))";
+
                         }
 
                         if (!IsLocalDeviceSniffing)
@@ -452,13 +454,11 @@ namespace NetStalker
 
                     if (Packet.SourceHwAddress.Equals(TargetMAC))
                     {
-                        Packet.SourceHwAddress = capturedevice.MacAddress;
-                        Packet.DestinationHwAddress = GatewayMAC;
-                        capturedevice.SendPacket(Packet);
+                        //Packet.SourceHwAddress = capturedevice.MacAddress;
+                        //Packet.DestinationHwAddress = GatewayMAC;
+                        //capturedevice.SendPacket(Packet);
 
-                        if (acPacket.TCPPacket != null &&
-                            ((acPacket.Type.Equals("HTTPS") && acPacket.TCPPacket.PayloadData != null) ||
-                             (acPacket.Type.Equals("HTTP") && acPacket.TCPPacket.PayloadData != null)))
+                        if (acPacket.TCPPacket != null)
                         {
 
                             materialListView1.BeginInvoke(new Action(() =>
@@ -482,20 +482,18 @@ namespace NetStalker
 
                     else if (Packet.SourceHwAddress.Equals(GatewayMAC))
                     {
-                        IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
+                        //IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
 
-                        if (IPV4.DestinationAddress.Equals(Target))
-                        {
-                            Packet.SourceHwAddress = capturedevice.MacAddress;
-                            Packet.DestinationHwAddress = TargetMAC;
-                            capturedevice.SendPacket(Packet);
-                        }
+                        //if (IPV4.DestinationAddress.Equals(Target))
+                        //{
+                        //    Packet.SourceHwAddress = capturedevice.MacAddress;
+                        //    Packet.DestinationHwAddress = TargetMAC;
+                        //    capturedevice.SendPacket(Packet);
+                        //}
 
                         if (Properties.Settings.Default.PacketDirection == "Inbound")
                         {
-                            if (acPacket.TCPPacket != null &&
-                                ((acPacket.Type.Equals("HTTPS") && acPacket.TCPPacket.PayloadData != null) ||
-                                 (acPacket.Type.Equals("HTTP") && acPacket.TCPPacket.PayloadData != null)))
+                            if (acPacket.TCPPacket != null)
                             {
                                 materialListView1.BeginInvoke(new Action(() =>
                                 {
@@ -650,14 +648,13 @@ namespace NetStalker
 
         private void materialListView1_ButtonClick(object sender, CellClickEventArgs e)
         {
+
             new Thread(() =>
             {
                 var pack = e.Model as AcceptedPacket;
                 try
                 {
-
-
-                    IPHostEntry ip = Dns.GetHostEntry(e.Item.SubItems[1].Text);
+                    IPHostEntry ip = Dns.GetHostEntry(pack.Destination);
 
                     materialListView1.BeginInvoke(new Action(() =>
                     {

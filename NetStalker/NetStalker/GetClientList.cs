@@ -59,7 +59,7 @@ namespace CSArp
             {
 
                 view.ListView1.ClearObjects();
-               
+
             }));
             #endregion
 
@@ -162,7 +162,7 @@ namespace CSArp
                 }
                 catch (Exception ex)
                 {
-                    
+
                 }
             }).Start();
             #endregion
@@ -301,6 +301,11 @@ namespace CSArp
                     })));
                     view.StatusLabel2.BeginInvoke(new Action(() => { view.StatusLabel2.Text = "Ready"; }));
 
+                    view.MainForm.BeginInvoke(new Action(() =>
+                    {
+                        view.Tile.Enabled = true;
+                        view.Tile2.Enabled = true;
+                    }));
                     try
                     {
                         while (capturedevice != null && !StopFlag)

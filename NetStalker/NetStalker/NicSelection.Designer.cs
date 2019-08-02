@@ -275,9 +275,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(12, 273);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(113, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(114, 19);
             this.materialLabel1.TabIndex = 47;
-            this.materialLabel1.Text = "Winpcap Driver:";
+            this.materialLabel1.Text = "WinPcap Driver:";
             // 
             // materialLabel3
             // 

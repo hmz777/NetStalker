@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
 using MaterialSkin.Controls;
+using MetroFramework.Controls;
 
 namespace CSArp
 {
@@ -18,6 +19,7 @@ namespace CSArp
         PictureBox LoadingBar { get; }
         MaterialLabel StatusLabel2 { get; }
         ToolTip TTip { get; }
-
+        MetroTile Tile { get; }
+        MetroTile Tile2 { get; }
     }
 }

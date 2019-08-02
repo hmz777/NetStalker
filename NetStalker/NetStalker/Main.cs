@@ -11,6 +11,7 @@ using CSArp;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using MetroFramework;
+using MetroFramework.Controls;
 using SharpPcap;
 using Timer = System.Windows.Forms.Timer;
 
@@ -103,13 +104,15 @@ namespace NetStalker
                     string D = ((float)Device.PacketsReceivedSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000) / (float)this.timerCount).ToString();
                     string U = ((float)Device.PacketsSentSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000) / (float)this.timerCount).ToString();
 
-                    if (D.Length - D.IndexOf(".") > 1)
+                    //0.0009765625f = 1/1024 Conversion from Bytes to KBytes
+
+                    if (D.Length - D.IndexOf(".") > 1) //remove the number after the period
                     {
-                        int num = -2 - D.IndexOf(".");
+                        int num = -2 - D.IndexOf("."); //exclude the first number and the period
                         string str3 = D;
-                        D = str3.Remove(str3.IndexOf(".") + 1, D.Length + num);
+                        D = str3.Remove(str3.IndexOf(".") + 1, D.Length + num); //remove all the numbers to the right of the period but the first number
                     }
-                    if (U.Length - U.IndexOf(".") > 1)
+                    if (U.Length - U.IndexOf(".") > 1) //same here for the upload
                     {
                         int num = -2 - U.IndexOf(".");
                         string str3 = U;
@@ -118,7 +121,6 @@ namespace NetStalker
                     Device.DownloadSpeed = D + " KB/s";
                     Device.UploadSpeed = U + " KB/s";
                     fastObjectListView1.UpdateObject(Device);
-
 
                 }
             }
@@ -183,6 +185,16 @@ namespace NetStalker
             get { return toolTip1; }
         }
 
+        public MetroTile Tile
+        {
+            get { return metroTile1; }
+        }
+
+        public MetroTile Tile2
+        {
+            get { return metroTile2; }
+        }
+
 
         #endregion
 
@@ -201,6 +213,8 @@ namespace NetStalker
                 {
                     if (MetroMessageBox.Show(this, "The list will be cleared and a new scan will be initiated are you sure?\nNote: The Scan button is recommended when the list is empty, NetStalker always performs background scans for new devices after the initial scan.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
+                        metroTile1.Enabled = false;
+                        metroTile2.Enabled = false;
                         arpState = false;
                         scanStarted = true;
                         operationinprogress = true;
@@ -241,6 +255,8 @@ namespace NetStalker
                 }
                 else
                 {
+                    metroTile1.Enabled = false;
+                    metroTile2.Enabled = false;
                     arpState = false;
                     scanStarted = true;
                     operationinprogress = true;
@@ -334,7 +350,7 @@ namespace NetStalker
                     throw new ArgumentException();
                 }
 
-                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                //var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
 
                 var selectedDevice = fastObjectListView1.SelectedObject as Device;
 
@@ -343,42 +359,42 @@ namespace NetStalker
                     throw new RedirectionNotActiveException();
                 }
 
-                foreach (var Device in Devices)
-                {
-                    if (Device.LimiterStarted)
-                    {
-                        if (MetroMessageBox.Show(this, "The Packet Sniffer can't function properly if the limiter is active, Stop the Limiter and start the Sniffer?\nNote: All limiting operations will be stopped", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    }
-                }
+                //foreach (var Device in Devices)
+                //{
+                //    if (Device.LimiterStarted)
+                //    {
+                //        if (MetroMessageBox.Show(this, "The Packet Sniffer can't function properly if the limiter is active, Stop the Limiter and start the Sniffer?\nNote: All limiting operations will be stopped", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                //        {
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            return;
+                //        }
+                //    }
+                //}
 
-                new Thread(() =>
-                {
-                    foreach (var Device in Devices)
-                    {
-                        if (Device != selectedDevice)
-                        {
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            Device.RedirectorActive = false;
-                            Device.LimiterStarted = false;
-                            Device.DownloadCap = 0;
-                            Device.UploadCap = 0;
-                            Device.DownloadSpeed = "";
-                            Device.UploadSpeed = "";
-                            fastObjectListView1.UpdateObject(Device);
-                        }
-                    }
-                }).Start();
+                //new Thread(() =>
+                //{
+                //    foreach (var Device in Devices)
+                //    {
+                //        if (Device != selectedDevice)
+                //        {
+                //            Device.Blocked = false;
+                //            Device.Redirected = false;
+                //            Device.RedirectorActive = false;
+                //            Device.LimiterStarted = false;
+                //            Device.DownloadCap = 0;
+                //            Device.UploadCap = 0;
+                //            Device.DownloadSpeed = "";
+                //            Device.UploadSpeed = "";
+                //            fastObjectListView1.UpdateObject(Device);
+                //        }
+                //    }
+                //}).Start();
 
-                ValuesTimer.Stop();
-                selectedDevice.LimiterStarted = false;
+                //ValuesTimer.Stop();
+                //selectedDevice.LimiterStarted = false;
 
 
 
@@ -397,13 +413,13 @@ namespace NetStalker
                 fastObjectListView1.SelectedObjects.Clear();
                 sniff.Dispose();
                 SnifferStarted = false;
-                selectedDevice.Blocked = false;
-                selectedDevice.Redirected = false;
-                selectedDevice.RedirectorActive = false;
-                selectedDevice.DownloadCap = 0;
-                selectedDevice.UploadCap = 0;
-                selectedDevice.DownloadSpeed = "";
-                selectedDevice.UploadSpeed = "";
+                //selectedDevice.Blocked = false;
+                //selectedDevice.Redirected = false;
+                //selectedDevice.RedirectorActive = false;
+                //selectedDevice.DownloadCap = 0;
+                //selectedDevice.UploadCap = 0;
+                //selectedDevice.DownloadSpeed = "";
+                //selectedDevice.UploadSpeed = "";
                 fastObjectListView1.UpdateObject(selectedDevice);
                 GetClientList.CalledFromSniffer = true;
                 new Thread(() =>
@@ -611,6 +627,11 @@ namespace NetStalker
                         PopulateDeviceList();
                         PopulateCalled = true;
                         ValuesTimer.Start();
+                    }
+                    if (LoDevices.Count < fastObjectListView1.GetItemCount())
+                    {
+                        PopulateDeviceList();
+                        PopulateCalled = true;
                     }
                     LimitDevice.StartLimiter();
 
