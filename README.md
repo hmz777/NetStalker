@@ -17,11 +17,13 @@ A network tool to control the bandwidth over your local network, it can block in
 - Get network card vendor for every device using MacVendors API for better device identification.
 - Can be locked with a password.
 - Can be minimized to tray if the option is chosen.
+- Integration with windows 10 notification system.
+- When minimized it notifies the user of new discovered devices with the ability to choose from multiple options on what to do.
+- Track disconnected devices with a timeout for each device. 
 
 # Binaries
 
-- NetStalker [Binaries](https://github.com/hmz777/NetStalker/releases/download/1.0/NetStalker.rar)
-- NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/1.0/NS.exe)
+- NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/1.3/NS.exe)
 
 # Pictures:
 
