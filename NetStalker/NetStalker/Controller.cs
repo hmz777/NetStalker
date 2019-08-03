@@ -6,6 +6,7 @@ using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using MetroFramework;
 using NetStalker;
+using NetStalker.ToastNotifications;
 using SharpPcap;
 using SharpPcap.AirPcap;
 using SharpPcap.WinPcap;
@@ -172,6 +173,7 @@ namespace CSArp
                     }
 
                     GetClientList.CloseAllCaptures(_view);
+                    NotificationAPI.ClearNotifications();
 
 
                 }

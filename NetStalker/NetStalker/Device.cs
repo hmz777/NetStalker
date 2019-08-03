@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
@@ -9,7 +10,7 @@ namespace NetStalker
 {
     public class Device
     {
-
+        public DateTime TimeSinceLastArp = DateTime.Now;
         public IPAddress IP { get; set; }
         public PhysicalAddress MAC { get; set; }
         public string DeviceStatus { get; set; }
@@ -21,7 +22,7 @@ namespace NetStalker
         public int PacketsReceivedSinceLastReset { get; set; }
         public string DeviceName { get; set; }
         public string ManName { get; set; }
-
+        
         public bool IsLocalDevice
         {
             get

@@ -17,7 +17,7 @@ namespace CSArp
     public static class GetClientList
     {
         private static ICaptureDevice capturedevice;
-        private static Dictionary<IPAddress, PhysicalAddress> clientlist;
+        public static Dictionary<IPAddress, PhysicalAddress> clientlist;
         private static string ipp;
         public static bool StopFlag;
         private static int Size;
@@ -83,6 +83,7 @@ namespace CSArp
             {
                 try
                 {
+                    
                     if (Size == 1)
                     {
                         for (int ipindex = 1; ipindex <= 255; ipindex++)
@@ -92,7 +93,7 @@ namespace CSArp
                             ethernetpacket.PayloadPacket = arprequestpacket;
                             capturedevice.SendPacket(ethernetpacket);
                         }
-
+                       
                     }
 
                     else if (Size == 2)
@@ -120,7 +121,7 @@ namespace CSArp
                     else if (Size == 3)
                     {
                         if (MetroMessageBox.Show(view.MainForm,
-                                "The network you're scanning is very large, it will take sometime before the scanner can find all the devices, proceed?",
+                                "The network you're scanning is very large, it will take approximately 20 hours before the scanner can find all the devices, proceed?",
                                 "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
 
@@ -472,6 +473,17 @@ namespace CSArp
                         }));
                         view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = clientlist.Count + " device(s) found"));
 
+                    }
+                    else if (clientlist.ContainsKey(arppacket.SenderProtocolAddress))
+                    {
+                        foreach (Device Device in view.ListView1.Objects)
+                        {
+                            if (Device.IP.Equals(arppacket.SenderProtocolAddress))
+                            {
+                                Device.TimeSinceLastArp = DateTime.Now;
+                                break;
+                            }
+                        }
                     }
                 };
 

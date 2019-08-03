@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -8,11 +10,17 @@ using System.Threading;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
 using CSArp;
+using DesktopNotifications;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using MetroFramework;
 using MetroFramework.Controls;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+using MS.WindowsAPICodePack.Internal;
+using NetStalker.ToastNotifications;
+using SelfishNetReWrite.ToastNotifications;
 using SharpPcap;
+using ShellHelpers;
 using Timer = System.Windows.Forms.Timer;
 
 namespace NetStalker
@@ -28,11 +36,14 @@ namespace NetStalker
         public Loading loading;
         private bool SnifferStarted;
         private Timer ValuesTimer;
+        private Timer AliveTimer;
         private int timerCount;
         private List<Device> LoDevices;
         private List<Device> LODFB;
         private Controller _controller;
         private bool PopulateCalled;
+        private const String APP_ID = "HMZSoftware.NetStalker";
+        private const string Guid = "79A80A63-EFA4-4E1E-B749-E4D4DDCB5B49";
 
         public Main()
         {
@@ -82,6 +93,116 @@ namespace NetStalker
             ValuesTimer = new Timer();
             ValuesTimer.Interval = 1000;
             ValuesTimer.Tick += ValuesTimerOnTick;
+            AliveTimer = new Timer();
+            AliveTimer.Interval = 5000;
+            AliveTimer.Tick += AliveTimerOnTick;
+
+        }
+
+        private void AliveTimerOnTick(object sender, EventArgs e)
+        {
+
+            if (Properties.Settings.Default.NetSize == 1) //255.255.255.0
+            {
+                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                foreach (var Device in Devices)
+                {
+                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 1200000000L) //2 minutes
+                    {
+                        GetClientList.clientlist.Remove(Device.IP);
+                        if (fastObjectListView1.InvokeRequired)
+                        {
+                            fastObjectListView1.BeginInvoke(new Action(() =>
+                            {
+                                Device.Blocked = false;
+                                Device.Redirected = false;
+                                Device.RedirectorActive = false;
+                                Device.LimiterStarted = false;
+                                Device.BlockerActive = false;
+                                fastObjectListView1.RemoveObject(Device);
+                            }));
+                        }
+                        else
+                        {
+
+                            Device.Blocked = false;
+                            Device.Redirected = false;
+                            Device.RedirectorActive = false;
+                            Device.LimiterStarted = false;
+                            Device.BlockerActive = false;
+                            fastObjectListView1.RemoveObject(Device);
+
+                        }
+                    }
+                }
+            }
+            else if (Properties.Settings.Default.NetSize == 2) //255.255.0.0
+            {
+                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                foreach (var Device in Devices)
+                {
+                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 9000000000L) //15 minutes
+                    {
+                        GetClientList.clientlist.Remove(Device.IP);
+                        if (fastObjectListView1.InvokeRequired)
+                        {
+                            fastObjectListView1.BeginInvoke(new Action(() =>
+                            {
+                                Device.Blocked = false;
+                                Device.Redirected = false;
+                                Device.RedirectorActive = false;
+                                Device.LimiterStarted = false;
+                                Device.BlockerActive = false;
+                                fastObjectListView1.RemoveObject(Device);
+                            }));
+                        }
+                        else
+                        {
+
+                            Device.Blocked = false;
+                            Device.Redirected = false;
+                            Device.RedirectorActive = false;
+                            Device.LimiterStarted = false;
+                            Device.BlockerActive = false;
+                            fastObjectListView1.RemoveObject(Device);
+
+                        }
+                    }
+                }
+            }
+            else if (Properties.Settings.Default.NetSize == 3) //255.0.0.0
+            {
+                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                foreach (var Device in Devices)
+                {
+                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 720000000000L) //1200 minutes, extremely large networks this option could theoretically work, but not worth it.
+                    {
+                        GetClientList.clientlist.Remove(Device.IP);
+                        if (fastObjectListView1.InvokeRequired)
+                        {
+                            fastObjectListView1.BeginInvoke(new Action(() =>
+                            {
+                                Device.Blocked = false;
+                                Device.Redirected = false;
+                                Device.RedirectorActive = false;
+                                Device.LimiterStarted = false;
+                                Device.BlockerActive = false;
+                                fastObjectListView1.RemoveObject(Device);
+                            }));
+                        }
+                        else
+                        {
+                            Device.Blocked = false;
+                            Device.Redirected = false;
+                            Device.RedirectorActive = false;
+                            Device.LimiterStarted = false;
+                            Device.BlockerActive = false;
+                            fastObjectListView1.RemoveObject(Device);
+
+                        }
+                    }
+                }
+            }
 
         }
 
@@ -244,6 +365,7 @@ namespace NetStalker
                             }
                         }
 
+                        AliveTimer.Start();
                         new Thread(() =>
                         {
                             GetReady();
@@ -268,6 +390,7 @@ namespace NetStalker
                     fastObjectListView1.EmptyListMsg = "Scanning...";
                     pictureBox1.Image = Properties.Resources.icons8_attention_96px;
 
+                    AliveTimer.Start();
                     new Thread(() =>
                     {
                         GetReady();
@@ -289,6 +412,12 @@ namespace NetStalker
         private void Main_Load(object sender, EventArgs e)
         {
             _controller.AttachOnExitEventHandler();
+
+            DesktopNotificationManagerCompat.RegisterAumidAndComServer<MyNotification>(APP_ID);
+            DesktopNotificationManagerCompat.RegisterActivator<MyNotification>();
+
+            TryCreateShortcut();
+
 
         }
 
@@ -329,6 +458,14 @@ namespace NetStalker
                 Hide();
                 notifyIcon1.Visible = true;
                 notifyIcon1.ShowBalloonTip(2);
+
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SuppressN))
+                {
+                    NotificationAPI napi = new NotificationAPI();
+                    napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
+                }
+
+
             }
 
         }
@@ -571,6 +708,20 @@ namespace NetStalker
                 olvColumn7.Width = 83;
                 resizeDone = true;
             }
+
+            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressN == "False")
+            {
+                var Ad = e.ObjectsToAdd.Cast<Device>().ToList();
+                if (Ad.Count > 0)
+                {
+                    Device Device = Ad[0];
+                    NotificationAPI Napi = new NotificationAPI(Device);
+                    Napi.CreateNotification();
+                    Napi.AttachHandlers();
+                    Napi.ShowToast();
+                }
+
+            }
         }
 
         private void FastObjectListView1_SubItemChecking(object sender, SubItemCheckingEventArgs e)
@@ -612,7 +763,6 @@ namespace NetStalker
 
                     }).Start();
 
-
                     device.Blocked = true;
                     device.Redirected = true;
                     device.RedirectorActive = true;
@@ -624,15 +774,11 @@ namespace NetStalker
                     LimiterClass LimitDevice = new LimiterClass(device);
                     if (!ValuesTimer.Enabled)
                     {
-                        PopulateDeviceList();
-                        PopulateCalled = true;
+                        //PopulateDeviceList();
+                        //PopulateCalled = true;
                         ValuesTimer.Start();
                     }
-                    if (LoDevices.Count < fastObjectListView1.GetItemCount())
-                    {
-                        PopulateDeviceList();
-                        PopulateCalled = true;
-                    }
+                    LoDevices = fastObjectListView1.Objects.Cast<Device>().ToList();
                     LimitDevice.StartLimiter();
 
                     loading.BeginInvoke(new Action(() => { loading.Close(); }));
@@ -781,6 +927,61 @@ namespace NetStalker
         }
 
 
+        #region Toast Notifications Shortcut
+
+        private bool TryCreateShortcut()
+        {
+            String shortcutPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Microsoft\\Windows\\Start Menu\\Programs\\NetStalker.lnk";
+            if (!File.Exists(shortcutPath))
+            {
+                InstallShortcut(shortcutPath);
+                return true;
+            }
+            return false;
+        }
+
+        private void InstallShortcut(String shortcutPath)
+        {
+            // Find the path to the current executable
+            String exePath = Process.GetCurrentProcess().MainModule.FileName;
+            IShellLinkW newShortcut = (IShellLinkW)new CShellLink();
+
+            // Create a shortcut to the exe
+            ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetPath(exePath));
+            ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetArguments(""));
+
+            // Open the shortcut property store, set the AppUserModelId property
+            IPropertyStore newShortcutProperties = (IPropertyStore)newShortcut;
+
+            using (PropVariant appId = new PropVariant(APP_ID))
+            {
+                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.SetValue(SystemProperties.System.AppUserModel.ID, appId));
+                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.Commit());
+            }
+
+            using (PropVariant guid = new PropVariant(Guid))
+            {
+                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.SetValue(SystemProperties.System.AppUserModel.ToastActivatorCLSID, guid));
+                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.Commit());
+            }
+
+            // Commit the shortcut to disk
+            IPersistFile newShortcutSave = (IPersistFile)newShortcut;
+
+            ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutSave.Save(shortcutPath, true));
+        }
+
+
+        #endregion
+
+        private void Main_Resize_1(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized && string.IsNullOrEmpty(Properties.Settings.Default.SuppressN))
+            {
+                NotificationAPI napi = new NotificationAPI();
+                napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
+            }
+        }
     }
 
     public class OperationInProgressException : Exception

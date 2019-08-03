@@ -70,6 +70,11 @@ namespace NetStalker
                 materialCheckBox1.Checked = true;
             }
 
+            if (Properties.Settings.Default.SuppressN == "True")
+            {
+                materialCheckBox2.Checked = true;
+            }
+
 
         }
 
@@ -463,5 +468,16 @@ namespace NetStalker
             e.ToolTipSize = new Size(e.ToolTipSize.Width + 30, e.ToolTipSize.Height);
         }
 
+        private void MaterialCheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialCheckBox2.Checked)
+            {
+                Properties.Settings.Default.SuppressN = "True";
+            }
+            else
+            {
+                Properties.Settings.Default.SuppressN = "False";
+            }
+        }
     }
 }

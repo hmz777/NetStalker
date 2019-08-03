@@ -193,13 +193,13 @@ namespace NetStalker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool BackgroundN {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SuppressN {
             get {
-                return ((bool)(this["BackgroundN"]));
+                return ((string)(this["SuppressN"]));
             }
             set {
-                this["BackgroundN"] = value;
+                this["SuppressN"] = value;
             }
         }
     }
