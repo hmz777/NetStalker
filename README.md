@@ -17,8 +17,8 @@ A network tool to control the bandwidth over your local network, it can block in
 - Get network card vendor for every device using MacVendors API for better device identification.
 - Can be locked with a password.
 - Can be minimized to tray if the option is chosen.
-- Integration with windows 10 notification system.
-- When minimized it notifies the user of new discovered devices with the ability to choose from multiple options on what to do.
+- Integration with windows 10 notification system (works from build 17763).
+- When minimized it notifies the user of newly discovered devices with the ability to choose from multiple options on what to do.
 - Track disconnected devices with a timeout for each device. 
 
 # Binaries
