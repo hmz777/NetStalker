@@ -51,7 +51,6 @@ namespace NetStalker
         List<AcceptedPacket> ListofAcceptedPackets = new List<AcceptedPacket>();
 
         private bool snifferStarted;
-        private bool flag = false;
         private ContextMenu menu;
         private TextOverlay textOverlay;
         private bool viewerExtended;
@@ -85,7 +84,7 @@ namespace NetStalker
 
                     return null;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                 }
@@ -111,7 +110,7 @@ namespace NetStalker
                         return "response";
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return "";
                 }
@@ -530,14 +529,12 @@ namespace NetStalker
                     {
                         capturedevice.StopCapture();
                         snifferStarted = false;
-                        flag = false;
                         materialListView1.EmptyListMsg = "Stopped";
                         metroTextBox2.Text += "Stopped" + Environment.NewLine;
                     }
                     else
                     {
                         snifferStarted = false;
-                        flag = false;
                         materialListView1.EmptyListMsg = "Stopped";
                         metroTextBox2.Text += "Stopped" + Environment.NewLine;
 
@@ -545,7 +542,7 @@ namespace NetStalker
 
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
 
             }
@@ -559,8 +556,11 @@ namespace NetStalker
                 if (MetroMessageBox.Show(this, "The sniffer is still working, continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     snifferStarted = false;
-                    flag = false;
                     metroTextBox2.Text += "Stopped" + Environment.NewLine;
+                    if (menu != null)
+                    {
+                        menu.Dispose();
+                    }
 
                 }
                 else
@@ -664,7 +664,7 @@ namespace NetStalker
                             materialListView1.UpdateObject(pack);
                             materialListView1.RefreshObject(e.Model);
                         }
-                        catch (SocketException exception)
+                        catch (SocketException)
                         {
                             pack.Host = "Not found";
                             materialListView1.UpdateObject(pack);
@@ -674,7 +674,7 @@ namespace NetStalker
                     }));
 
                 }
-                catch (SocketException exception)
+                catch (SocketException)
                 {
                     pack.Host = "Not found";
                     materialListView1.UpdateObject(pack);

@@ -169,6 +169,9 @@ namespace NetStalker.ToastNotifications
                     Properties.Settings.Default.SuppressN = "True";
                     Properties.Settings.Default.Save();
                     break;
+                case "bodyTapped":
+                    main.PromptCalled = false;
+                    break;
             }
 
         }
@@ -211,7 +214,7 @@ namespace NetStalker.ToastNotifications
 
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             //Show a message that this is the gateway/local device
                             if (Device.IsGateway)

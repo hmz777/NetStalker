@@ -50,7 +50,7 @@ namespace CSArp
                     StopTheLoadingBar(view);
 
                 }
-                catch (PcapException ex)
+                catch (PcapException)
                 {
                 }
             }
@@ -161,7 +161,7 @@ namespace CSArp
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -189,7 +189,6 @@ namespace CSArp
                             view.ListView1.Invoke(new Action(() =>
                             {
                                 string mac = GetMACString(arppacket.SenderHardwareAddress);
-                                string machineName = "";
                                 int id = clientlist.Count - 1;
                                 string ip = arppacket.SenderProtocolAddress.ToString();
                                 var obj = new Device();
@@ -208,7 +207,7 @@ namespace CSArp
                                             view.ListView1.UpdateObject(obj);
                                         }));
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
 
                                         view.ListView1.BeginInvoke(new Action(() =>
@@ -257,14 +256,11 @@ namespace CSArp
                     capturedevice = null;
                     BackgroundScanStart(view, interfacefriendlyname); //start passive monitoring
                 }
-                catch (PcapException ex)
+                catch (Exception)
                 {
                     view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Refresh for scan"));
                 }
-                catch (Exception ex)
-                {
-
-                }
+            
 
             }).Start();
             #endregion
@@ -393,13 +389,11 @@ namespace CSArp
                             }
                         }
                     }
-                    catch (PcapException ex)
+                    catch (Exception)
                     {
 
                     }
-                    catch (Exception ex)
-                    {
-                    }
+                  
                 }).Start();
                 #endregion
 
@@ -417,7 +411,6 @@ namespace CSArp
                         view.ListView1.Invoke(new Action(() =>
                         {
                             string mac = GetMACString(arppacket.SenderHardwareAddress);
-                            string machineName = "";
                             int id = clientlist.Count - 1;
                             string ip = arppacket.SenderProtocolAddress.ToString();
                             var obj = new Device();
@@ -437,7 +430,7 @@ namespace CSArp
                                     }));
 
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
 
                                     view.ListView1.BeginInvoke(new Action(() =>
@@ -494,7 +487,7 @@ namespace CSArp
                 #endregion
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -550,11 +543,12 @@ namespace CSArp
                     retval += physicaladdress.GetAddressBytes()[i].ToString("X2") + ":";
                 return retval.Substring(0, retval.Length - 1);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+               
             }
 
+            return default;
         }
 
 

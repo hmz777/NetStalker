@@ -254,7 +254,7 @@ namespace NetStalker
                         return HTTPData[0];
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                 }

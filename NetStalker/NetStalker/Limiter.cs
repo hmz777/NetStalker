@@ -37,7 +37,7 @@ namespace NetStalker
 
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
 
             }
@@ -58,7 +58,7 @@ namespace NetStalker
                         Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
                         if (Packet == null) { return; }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         continue;
                     }

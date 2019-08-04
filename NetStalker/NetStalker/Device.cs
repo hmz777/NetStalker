@@ -123,7 +123,7 @@ namespace NetStalker
                     }
 
                 }
-                catch (PcapException ex)
+                catch (PcapException)
                 {
                 }
 

@@ -80,7 +80,6 @@ namespace CSArp
                 if (_view.ListView1.SelectedObjects.Count > 0)
                 {
                     Dictionary<IPAddress, PhysicalAddress> targetlist = new Dictionary<IPAddress, PhysicalAddress>();
-                    int parseindex = 0;
                     foreach (Device listitem in _view.ListView1.SelectedObjects)
                     {
 
@@ -106,12 +105,12 @@ namespace CSArp
                     }));
                 }
             }
-            catch (GatewayTargeted e)
+            catch (GatewayTargeted)
             {
                 MetroMessageBox.Show(_view.MainForm, "This operation can not target the gateway!", "Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch (LocalHostTargeted e)
+            catch (LocalHostTargeted)
             {
                 MetroMessageBox.Show(_view.MainForm, "This operation can not target your own ip address!", "Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -177,7 +176,7 @@ namespace CSArp
 
 
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
 
                 }

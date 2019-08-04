@@ -63,6 +63,7 @@ namespace NetStalker
             else if (main.resizestate == "Taskbar")
             {
                 materialRadioButton8.Checked = true;
+                Properties.Settings.Default.minimize = "Taskbar";
             }
 
             if (Properties.Settings.Default.SpoofProtection)
@@ -410,6 +411,7 @@ namespace NetStalker
         private void materialRadioButton9_Click(object sender, EventArgs e)
         {
             materialRadioButton8.Enabled = false;
+            main.Resize -= main.Main_Resize_1;
             main.Resize += main.Main_Resize;
             Properties.Settings.Default.minimize = "Tray";
             main.resizestate = "Tray";
@@ -422,6 +424,7 @@ namespace NetStalker
         {
             materialRadioButton9.Enabled = false;
             main.Resize -= main.Main_Resize;
+            main.Resize += main.Main_Resize_1;
             Properties.Settings.Default.minimize = "Taskbar";
             main.resizestate = "Taskbar";
             materialLabel4.Text = "";

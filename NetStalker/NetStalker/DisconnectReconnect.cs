@@ -47,7 +47,7 @@ namespace CSArp
                         }
 
                     }
-                    catch (PcapException ex)
+                    catch (PcapException)
                     {
                     }
                 }).Start();

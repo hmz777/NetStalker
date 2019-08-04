@@ -27,8 +27,6 @@ namespace NetStalker
 {
     public partial class Main : MaterialForm, IView
     {
-        private bool scanStarted;
-        private bool arpState;
         public static bool operationinprogress;
         public string resizestate;
         public TextOverlay textOverlay;
@@ -42,6 +40,7 @@ namespace NetStalker
         private List<Device> LODFB;
         private Controller _controller;
         private bool PopulateCalled;
+        public bool PromptCalled;
         private const String APP_ID = "HMZSoftware.NetStalker";
         private const string Guid = "79A80A63-EFA4-4E1E-B749-E4D4DDCB5B49";
 
@@ -336,8 +335,6 @@ namespace NetStalker
                     {
                         metroTile1.Enabled = false;
                         metroTile2.Enabled = false;
-                        arpState = false;
-                        scanStarted = true;
                         operationinprogress = true;
                         olvColumn7.MaximumWidth = 100;
                         olvColumn7.MinimumWidth = 100;
@@ -379,8 +376,6 @@ namespace NetStalker
                 {
                     metroTile1.Enabled = false;
                     metroTile2.Enabled = false;
-                    arpState = false;
-                    scanStarted = true;
                     operationinprogress = true;
                     olvColumn7.MaximumWidth = 100;
                     olvColumn7.MinimumWidth = 100;
@@ -453,7 +448,7 @@ namespace NetStalker
 
         public void Main_Resize(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized)
+            if (WindowState == FormWindowState.Minimized && !PromptCalled)
             {
                 Hide();
                 notifyIcon1.Visible = true;
@@ -463,6 +458,7 @@ namespace NetStalker
                 {
                     NotificationAPI napi = new NotificationAPI();
                     napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
+                    PromptCalled = true;
                 }
 
 
@@ -569,12 +565,12 @@ namespace NetStalker
 
                 }).Start();
             }
-            catch (ArgumentException exception)
+            catch (ArgumentException)
             {
                 MetroMessageBox.Show(this, "Select a device first!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            catch (OperationInProgressException ex)
+            catch (OperationInProgressException)
             {
                 MetroMessageBox.Show(this, "The Packet Sniffer can't be used while the limiter is active!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -640,7 +636,7 @@ namespace NetStalker
 
 
             }
-            catch (ArgumentException exception)
+            catch (ArgumentException)
             {
                 MetroMessageBox.Show(this, "Choose a device first and activate redirection for it!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -833,13 +829,13 @@ namespace NetStalker
                     e.NewValue = e.CurrentValue;
                 }
             }
-            catch (Controller.GatewayTargeted exception)
+            catch (Controller.GatewayTargeted)
             {
                 MetroMessageBox.Show(this, "This operation can not target the gateway or your own ip address!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 e.Canceled = true;
             }
-            catch (OperationInProgressException exception)
+            catch (OperationInProgressException)
             {
                 MetroMessageBox.Show(this, "The Speed Limiter can't be used while the sniffer is active!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -974,12 +970,18 @@ namespace NetStalker
 
         #endregion
 
-        private void Main_Resize_1(object sender, EventArgs e)
+        public void Main_Resize_1(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized && string.IsNullOrEmpty(Properties.Settings.Default.SuppressN))
+            if (WindowState == FormWindowState.Minimized && !PromptCalled)
             {
-                NotificationAPI napi = new NotificationAPI();
-                napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SuppressN))
+                {
+                    NotificationAPI napi = new NotificationAPI();
+                    napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
+                    PromptCalled = true;
+                }
+
+
             }
         }
     }

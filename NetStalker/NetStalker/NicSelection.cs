@@ -96,12 +96,14 @@ namespace NetStalker
 
             if (Properties.Settings.Default.minimize == "Tray")
             {
+                m.Resize -= m.Main_Resize_1;
                 m.Resize += m.Main_Resize;
                 m.resizestate = "Tray";
             }
             else
             {
                 m.Resize -= m.Main_Resize;
+                m.Resize += m.Main_Resize_1;
                 m.resizestate = "Taskbar";
             }
 
@@ -158,7 +160,7 @@ namespace NetStalker
                         ErrorForm EF = new ErrorForm();
                         EF.ShowDialog();
                     }
-                    catch (Exception exception)
+                    catch (Exception)
                     {
 
                     }
