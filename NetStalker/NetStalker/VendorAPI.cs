@@ -8,8 +8,7 @@ namespace NetStalker
 {
     public class VendorAPI
     {
-        private static string Token =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImp0aSI6IjE3MWUzMDdjLTJhM2EtNDFiYi04OWJjLWZkMjk4NTViMzBkNiJ9.eyJpc3MiOiJtYWN2ZW5kb3JzIiwiYXVkIjoibWFjdmVuZG9ycyIsImp0aSI6IjE3MWUzMDdjLTJhM2EtNDFiYi04OWJjLWZkMjk4NTViMzBkNiIsImlhdCI6MTU2Mzk3NTQxMiwiZXhwIjoxODc4NDcxNDEyLCJzdWIiOiIxNzIwIiwidHlwIjoiYWNjZXNzIn0.NSuEiqHllfH_TQh8IXjzijsXFdcyRIcbDap5WExsXzlSv8ys4BR10SQn1jvAGTku35Aq8RTBZqs6STmCFM7CSA";
+        private static string Token = Your token goes here;
         public static VendorClass GetVendorInfo(string MAC)
         {
             int tries = 0;
