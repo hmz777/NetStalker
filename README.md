@@ -18,7 +18,7 @@ A network tool to control the bandwidth over your local network, it can block in
 - Can be locked with a password.
 - Can be minimized to tray if the option is chosen.
 - Integration with windows 10 notification system (works from build 17763).
-- When minimized it notifies the user of newly discovered devices with the ability to choose from multiple options on what to do.
+- When minimized it notifies the user of newly discovered devices using Windows 10 notification system with the ability to choose from multiple options on what actions to take.
 - Track disconnected devices with a timeout for each device. 
 
 # Binaries
