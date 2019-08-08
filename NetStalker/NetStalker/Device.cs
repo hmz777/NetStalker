@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Runtime.ExceptionServices;
+using System.Security;
 using System.Threading;
 using PacketDotNet;
 using SharpPcap;
@@ -22,7 +24,7 @@ namespace NetStalker
         public int PacketsReceivedSinceLastReset { get; set; }
         public string DeviceName { get; set; }
         public string ManName { get; set; }
-        
+
         public bool IsLocalDevice
         {
             get
@@ -70,7 +72,8 @@ namespace NetStalker
             get { return Properties.Settings.Default.SpoofProtection; }
         }
 
-
+        [HandleProcessCorruptedStateExceptions]
+        [SecurityCritical]
         public void BlockOrRedirect()
         {
             ICaptureDevice capturedevice = (from devicex in CaptureDeviceList.Instance where ((SharpPcap.WinPcap.WinPcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];

@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Runtime.ExceptionServices;
+using System.Security;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -34,10 +36,11 @@ namespace CSArp
         /// </summary>
         /// <param name="view"></param>
         /// <param name="interfacefriendlyname"></param>
+        [HandleProcessCorruptedStateExceptions]
+        [SecurityCritical]
         public static void GetAllClients(IView view, string interfacefriendlyname)
         {
             #region initialization
-            view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Please wait..."));
             if (capturedevice != null)
             {
                 try
@@ -74,8 +77,16 @@ namespace CSArp
             var Root = GetRoot(myipaddress, Size);
             if (string.IsNullOrEmpty(Root))
             {
-                view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Network Error"));
-                return;
+                try
+                {
+                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Network Error"));
+                    return;
+                }
+                catch (Exception)
+                {
+
+                }
+
             }
 
             #region Sending ARP requests to probe for all possible IP addresses on LAN
@@ -83,7 +94,7 @@ namespace CSArp
             {
                 try
                 {
-                    
+
                     if (Size == 1)
                     {
                         for (int ipindex = 1; ipindex <= 255; ipindex++)
@@ -93,7 +104,7 @@ namespace CSArp
                             ethernetpacket.PayloadPacket = arprequestpacket;
                             capturedevice.SendPacket(ethernetpacket);
                         }
-                       
+
                     }
 
                     else if (Size == 2)
@@ -210,27 +221,42 @@ namespace CSArp
                                     catch (Exception)
                                     {
 
-                                        view.ListView1.BeginInvoke(new Action(() =>
+                                        try
                                         {
-                                            obj.DeviceName = ip;
-                                            view.ListView1.UpdateObject(obj);
-                                        }));
+                                            view.ListView1.BeginInvoke(new Action(() =>
+                                            {
+                                                obj.DeviceName = ip;
+                                                view.ListView1.UpdateObject(obj);
+                                            }));
+                                        }
+                                        catch (Exception)
+                                        {
+
+                                        }
 
                                     }
                                 }).Start();
 
                                 new Thread(() =>
                                 {
-                                    var Name = VendorAPI.GetVendorInfo(mac);
-                                    if (Name != null)
+                                    try
                                     {
-                                        obj.ManName = Name.data.organization_name;
+                                        var Name = VendorAPI.GetVendorInfo(mac);
+                                        if (Name != null)
+                                        {
+                                            obj.ManName = Name.data.organization_name;
+                                        }
+                                        else
+                                        {
+                                            obj.ManName = "";
+                                        }
+                                        view.ListView1.UpdateObject(obj);
                                     }
-                                    else
+                                    catch (Exception)
                                     {
-                                        obj.ManName = "";
+
                                     }
-                                    view.ListView1.UpdateObject(obj);
+
                                 }).Start();
 
                                 obj.IP = arppacket.SenderProtocolAddress;
@@ -244,6 +270,7 @@ namespace CSArp
 
                         }
                         int percentageprogress = (int)((float)stopwatch.ElapsedMilliseconds / scanduration * 100);
+
                         view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Scanning " + percentageprogress + "%"));
 
 
@@ -258,9 +285,18 @@ namespace CSArp
                 }
                 catch (Exception)
                 {
-                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Refresh for scan"));
+
+                    try
+                    {
+                        view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Error occurred"));
+
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
                 }
-            
+
 
             }).Start();
             #endregion
@@ -270,6 +306,8 @@ namespace CSArp
         /// <summary>
         /// Actively monitor ARP packets for signs of new clients after GetAllClients active scan is done
         /// </summary>
+        [HandleProcessCorruptedStateExceptions]
+        [SecurityCritical]
         public static void BackgroundScanStart(IView view, string interfacefriendlyname)
         {
             try
@@ -292,59 +330,39 @@ namespace CSArp
                 {
                     Thread.Sleep(5000);
 
-                    view.PictureBox.BeginInvoke(new Action((() =>
-                    {
-                        view.PictureBox.Image = NetStalker.Properties.Resources.icons8_ok_96px;
-                    })));
-                    view.StatusLabel2.BeginInvoke(new Action(() => { view.StatusLabel2.Text = "Ready"; }));
-
-                    view.MainForm.BeginInvoke(new Action(() =>
-                    {
-                        view.Tile.Enabled = true;
-                        view.Tile2.Enabled = true;
-                    }));
                     try
                     {
+
+                        view.PictureBox.BeginInvoke(new Action((() =>
+                        {
+                            view.PictureBox.Image = NetStalker.Properties.Resources.icons8_ok_96px;
+                        })));
+                        view.StatusLabel2.BeginInvoke(new Action(() => { view.StatusLabel2.Text = "Ready"; }));
+
+                        view.MainForm.BeginInvoke(new Action(() =>
+                        {
+                            view.Tile.Enabled = true;
+                            view.Tile2.Enabled = true;
+                        }));
+
                         while (capturedevice != null && !StopFlag)
                         {
 
                             if (Size == 1)
                             {
-                                if (!LoadingBarCalled)
+                                try
                                 {
-                                    CallTheLoadingBar(view);
-                                    view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
-                                }
-
-                                for (int ipindex = 1; ipindex <= 255; ipindex++)
-                                {
-                                    ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
-                                    EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
-                                    ethernetpacket.PayloadPacket = arprequestpacket;
-                                    capturedevice.SendPacket(ethernetpacket);
-                                    if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                    if (!LoadingBarCalled)
                                     {
-                                        ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
-                                        EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
-                                        EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
-                                        capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                        CallTheLoadingBar(view);
+                                        view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
                                     }
-                                }
-                            }
 
-                            else if (Size == 2)
-                            {
-                                if (!LoadingBarCalled)
-                                {
-                                    CallTheLoadingBar(view);
-                                    view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
-                                }
-                                for (int i = 1; i <= 255; i++)
-                                {
-                                    for (int j = 1; j <= 255; j++)
+                                    for (int ipindex = 1; ipindex <= 255; ipindex++)
                                     {
-                                        ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j), capturedevice.MacAddress, myipaddress);//???
+                                        ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
                                         EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
+                                        ethernetpacket.PayloadPacket = arprequestpacket;
                                         capturedevice.SendPacket(ethernetpacket);
                                         if (NetStalker.Properties.Settings.Default.SpoofProtection)
                                         {
@@ -355,25 +373,29 @@ namespace CSArp
                                         }
                                     }
                                 }
-                            }
-
-                            else if (Size == 3)
-                            {
-                                if (!LoadingBarCalled)
+                                catch (Exception)
                                 {
-                                    CallTheLoadingBar(view);
-                                    view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
 
                                 }
-                                for (int i = 1; i <= 255; i++)
+
+                            }
+
+                            else if (Size == 2)
+                            {
+
+                                try
                                 {
-                                    for (int j = 1; j <= 255; j++)
+                                    if (!LoadingBarCalled)
                                     {
-                                        for (int k = 1; k <= 255; k++)
+                                        CallTheLoadingBar(view);
+                                        view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
+                                    }
+                                    for (int i = 1; i <= 255; i++)
+                                    {
+                                        for (int j = 1; j <= 255; j++)
                                         {
-                                            ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j + '.' + k), capturedevice.MacAddress, myipaddress);//???
+                                            ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j), capturedevice.MacAddress, myipaddress);//???
                                             EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
-                                            ethernetpacket.PayloadPacket = arprequestpacket;
                                             capturedevice.SendPacket(ethernetpacket);
                                             if (NetStalker.Properties.Settings.Default.SpoofProtection)
                                             {
@@ -385,6 +407,49 @@ namespace CSArp
                                         }
                                     }
                                 }
+                                catch (Exception)
+                                {
+
+                                }
+
+
+                            }
+
+                            else if (Size == 3)
+                            {
+                                try
+                                {
+                                    if (!LoadingBarCalled)
+                                    {
+                                        CallTheLoadingBar(view);
+                                        view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
+
+                                    }
+                                    for (int i = 1; i <= 255; i++)
+                                    {
+                                        for (int j = 1; j <= 255; j++)
+                                        {
+                                            for (int k = 1; k <= 255; k++)
+                                            {
+                                                ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j + '.' + k), capturedevice.MacAddress, myipaddress);//???
+                                                EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
+                                                ethernetpacket.PayloadPacket = arprequestpacket;
+                                                capturedevice.SendPacket(ethernetpacket);
+                                                if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                                {
+                                                    ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
+                                                    EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
+                                                    EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
+                                                    capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                catch (Exception)
+                                {
+
+                                }
 
                             }
                         }
@@ -393,91 +458,116 @@ namespace CSArp
                     {
 
                     }
-                  
+
                 }).Start();
                 #endregion
 
                 #region Assign OnPacketArrival event handler and start capturing
                 capturedevice.OnPacketArrival += (object sender, CaptureEventArgs e) =>
                 {
-                    if (StopFlag) { return; }
-                    Packet packet = Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
-                    if (packet == null) { return; }
-                    ARPPacket arppacket = (ARPPacket)packet.Extract(typeof(ARPPacket));
-
-                    if (!clientlist.ContainsKey(arppacket.SenderProtocolAddress) && arppacket.SenderProtocolAddress.ToString() != "0.0.0.0" && areCompatibleIPs(arppacket.SenderProtocolAddress, myipaddress, Size))
+                    try
                     {
-                        clientlist.Add(arppacket.SenderProtocolAddress, arppacket.SenderHardwareAddress);
-                        view.ListView1.Invoke(new Action(() =>
+                        if (StopFlag) { return; }
+                        Packet packet = Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+                        if (packet == null) { return; }
+                        ARPPacket arppacket = (ARPPacket)packet.Extract(typeof(ARPPacket));
+
+                        if (!clientlist.ContainsKey(arppacket.SenderProtocolAddress) && arppacket.SenderProtocolAddress.ToString() != "0.0.0.0" && areCompatibleIPs(arppacket.SenderProtocolAddress, myipaddress, Size))
                         {
-                            string mac = GetMACString(arppacket.SenderHardwareAddress);
-                            int id = clientlist.Count - 1;
-                            string ip = arppacket.SenderProtocolAddress.ToString();
-                            var obj = new Device();
-                            new Thread(() =>
+                            clientlist.Add(arppacket.SenderProtocolAddress, arppacket.SenderHardwareAddress);
+                            view.ListView1.Invoke(new Action(() =>
                             {
-                                try
+                                string mac = GetMACString(arppacket.SenderHardwareAddress);
+                                int id = clientlist.Count - 1;
+                                string ip = arppacket.SenderProtocolAddress.ToString();
+                                var obj = new Device();
+                                new Thread(() =>
                                 {
-
-                                    ipp = ip;
-
-                                    IPHostEntry hostEntry = Dns.GetHostEntry(ip);
-
-                                    view.ListView1.BeginInvoke(new Action(() =>
+                                    try
                                     {
-                                        obj.DeviceName = hostEntry.HostName;
-                                        view.ListView1.UpdateObject(obj);
-                                    }));
 
-                                }
-                                catch (Exception)
-                                {
+                                        ipp = ip;
 
-                                    view.ListView1.BeginInvoke(new Action(() =>
+                                        IPHostEntry hostEntry = Dns.GetHostEntry(ip);
+
+                                        view.ListView1.BeginInvoke(new Action(() =>
+                                        {
+                                            obj.DeviceName = hostEntry.HostName;
+                                            view.ListView1.UpdateObject(obj);
+                                        }));
+
+                                    }
+                                    catch (Exception)
                                     {
-                                        obj.DeviceName = ip;
+                                        try
+                                        {
+                                            view.ListView1.BeginInvoke(new Action(() =>
+                                            {
+                                                obj.DeviceName = ip;
+                                                view.ListView1.UpdateObject(obj);
+                                            }));
+
+                                        }
+                                        catch (Exception)
+                                        {
+
+                                        }
+
+
+                                    }
+                                }).Start();
+
+                                new Thread(() =>
+                                {
+
+                                    try
+                                    {
+                                        var Name = VendorAPI.GetVendorInfo(mac);
+                                        if (Name != null)
+                                        {
+                                            obj.ManName = Name.data.organization_name;
+                                        }
+                                        else
+                                        {
+                                            obj.ManName = "";
+                                        }
                                         view.ListView1.UpdateObject(obj);
-                                    }));
+                                    }
+                                    catch (Exception)
+                                    {
 
-                                }
-                            }).Start();
+                                    }
 
-                            new Thread(() =>
-                            {
-                                var Name = VendorAPI.GetVendorInfo(mac);
-                                if (Name != null)
-                                {
-                                    obj.ManName = Name.data.organization_name;
-                                }
-                                else
-                                {
-                                    obj.ManName = "";
-                                }
-                                view.ListView1.UpdateObject(obj);
-                            }).Start();
+                                }).Start();
 
-                            obj.IP = arppacket.SenderProtocolAddress;
-                            obj.MAC = PhysicalAddress.Parse(mac.Replace(":", ""));
-                            obj.DeviceName = "Resolving";
-                            obj.ManName = "Getting information...";
-                            obj.DeviceStatus = "Online";
-                            view.ListView1.AddObject(obj);
+                                obj.IP = arppacket.SenderProtocolAddress;
+                                obj.MAC = PhysicalAddress.Parse(mac.Replace(":", ""));
+                                obj.DeviceName = "Resolving";
+                                obj.ManName = "Getting information...";
+                                obj.DeviceStatus = "Online";
+                                view.ListView1.AddObject(obj);
 
-                        }));
-                        view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = clientlist.Count + " device(s) found"));
+                            }));
+                            view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = clientlist.Count + " device(s) found"));
 
-                    }
-                    else if (clientlist.ContainsKey(arppacket.SenderProtocolAddress))
-                    {
-                        foreach (Device Device in view.ListView1.Objects)
+                        }
+                        else if (clientlist.ContainsKey(arppacket.SenderProtocolAddress))
                         {
-                            if (Device.IP.Equals(arppacket.SenderProtocolAddress))
+                            foreach (Device Device in view.ListView1.Objects)
                             {
-                                Device.TimeSinceLastArp = DateTime.Now;
-                                break;
+                                if (Device.IP.Equals(arppacket.SenderProtocolAddress))
+                                {
+                                    Device.TimeSinceLastArp = DateTime.Now;
+                                    break;
+                                }
                             }
                         }
                     }
+                    catch (Exception)
+                    {
+
+                    }
+
                 };
 
                 capturedevice.StartCapture();
@@ -545,7 +635,7 @@ namespace CSArp
             }
             catch (Exception)
             {
-               
+
             }
 
             return default;
@@ -585,47 +675,63 @@ namespace CSArp
 
         public static void CallTheLoadingBar(IView view)
         {
-            if (view.LoadingBar.InvokeRequired)
+            try
             {
-                view.LoadingBar.BeginInvoke(new Action(() =>
+                if (view.LoadingBar.InvokeRequired)
+                {
+                    view.LoadingBar.BeginInvoke(new Action(() =>
+                    {
+                        view.LoadingBar.Enabled = true;
+                        view.LoadingBar.Show();
+                        LoadingBarCalled = true;
+
+                    }));
+                }
+                else
                 {
                     view.LoadingBar.Enabled = true;
                     view.LoadingBar.Show();
                     LoadingBarCalled = true;
 
-                }));
+                }
             }
-            else
+            catch (Exception e)
             {
-                view.LoadingBar.Enabled = true;
-                view.LoadingBar.Show();
-                LoadingBarCalled = true;
 
             }
+
         }
 
         public static void StopTheLoadingBar(IView view)
         {
-            if (view.LoadingBar.InvokeRequired)
+            try
             {
-                view.LoadingBar.BeginInvoke(new Action(() =>
+                if (view.LoadingBar.InvokeRequired)
+                {
+                    view.LoadingBar.BeginInvoke(new Action(() =>
+                    {
+                        view.LoadingBar.Enabled = false;
+                        view.LoadingBar.Visible = false;
+                        view.LoadingBar.Hide();
+                        LoadingBarCalled = false;
+
+
+                    }));
+                }
+                else
                 {
                     view.LoadingBar.Enabled = false;
                     view.LoadingBar.Visible = false;
                     view.LoadingBar.Hide();
                     LoadingBarCalled = false;
 
-
-                }));
+                }
             }
-            else
+            catch (Exception)
             {
-                view.LoadingBar.Enabled = false;
-                view.LoadingBar.Visible = false;
-                view.LoadingBar.Hide();
-                LoadingBarCalled = false;
 
             }
+
 
         }
 

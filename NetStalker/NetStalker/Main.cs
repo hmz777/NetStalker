@@ -100,18 +100,98 @@ namespace NetStalker
 
         private void AliveTimerOnTick(object sender, EventArgs e)
         {
-
-            if (Properties.Settings.Default.NetSize == 1) //255.255.255.0
+            try
             {
-                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
-                foreach (var Device in Devices)
+
+                if (Properties.Settings.Default.NetSize == 1) //255.255.255.0
                 {
-                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 1200000000L) //2 minutes
+                    var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                    foreach (var Device in Devices)
                     {
-                        GetClientList.clientlist.Remove(Device.IP);
-                        if (fastObjectListView1.InvokeRequired)
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 1200000000L) //2 minutes
                         {
-                            fastObjectListView1.BeginInvoke(new Action(() =>
+                            GetClientList.clientlist.Remove(Device.IP);
+                            if (fastObjectListView1.InvokeRequired)
+                            {
+                                fastObjectListView1.BeginInvoke(new Action(() =>
+                                {
+                                    Device.Blocked = false;
+                                    Device.Redirected = false;
+                                    Device.RedirectorActive = false;
+                                    Device.LimiterStarted = false;
+                                    Device.BlockerActive = false;
+                                    fastObjectListView1.RemoveObject(Device);
+                                }));
+                            }
+                            else
+                            {
+
+                                Device.Blocked = false;
+                                Device.Redirected = false;
+                                Device.RedirectorActive = false;
+                                Device.LimiterStarted = false;
+                                Device.BlockerActive = false;
+                                fastObjectListView1.RemoveObject(Device);
+
+                            }
+                        }
+                    }
+                }
+                else if (Properties.Settings.Default.NetSize == 2) //255.255.0.0
+                {
+                    var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                    foreach (var Device in Devices)
+                    {
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 9000000000L) //15 minutes
+                        {
+                            GetClientList.clientlist.Remove(Device.IP);
+                            if (fastObjectListView1.InvokeRequired)
+                            {
+                                fastObjectListView1.BeginInvoke(new Action(() =>
+                                {
+                                    Device.Blocked = false;
+                                    Device.Redirected = false;
+                                    Device.RedirectorActive = false;
+                                    Device.LimiterStarted = false;
+                                    Device.BlockerActive = false;
+                                    fastObjectListView1.RemoveObject(Device);
+                                }));
+                            }
+                            else
+                            {
+
+                                Device.Blocked = false;
+                                Device.Redirected = false;
+                                Device.RedirectorActive = false;
+                                Device.LimiterStarted = false;
+                                Device.BlockerActive = false;
+                                fastObjectListView1.RemoveObject(Device);
+
+                            }
+                        }
+                    }
+                }
+                else if (Properties.Settings.Default.NetSize == 3) //255.0.0.0
+                {
+                    var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                    foreach (var Device in Devices)
+                    {
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 720000000000L) //1200 minutes, extremely large networks this option could theoretically work, but not worth it.
+                        {
+                            GetClientList.clientlist.Remove(Device.IP);
+                            if (fastObjectListView1.InvokeRequired)
+                            {
+                                fastObjectListView1.BeginInvoke(new Action(() =>
+                                {
+                                    Device.Blocked = false;
+                                    Device.Redirected = false;
+                                    Device.RedirectorActive = false;
+                                    Device.LimiterStarted = false;
+                                    Device.BlockerActive = false;
+                                    fastObjectListView1.RemoveObject(Device);
+                                }));
+                            }
+                            else
                             {
                                 Device.Blocked = false;
                                 Device.Redirected = false;
@@ -119,89 +199,17 @@ namespace NetStalker
                                 Device.LimiterStarted = false;
                                 Device.BlockerActive = false;
                                 fastObjectListView1.RemoveObject(Device);
-                            }));
-                        }
-                        else
-                        {
 
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            Device.RedirectorActive = false;
-                            Device.LimiterStarted = false;
-                            Device.BlockerActive = false;
-                            fastObjectListView1.RemoveObject(Device);
-
+                            }
                         }
                     }
                 }
             }
-            else if (Properties.Settings.Default.NetSize == 2) //255.255.0.0
+            catch (Exception exception)
             {
-                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
-                foreach (var Device in Devices)
-                {
-                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 9000000000L) //15 minutes
-                    {
-                        GetClientList.clientlist.Remove(Device.IP);
-                        if (fastObjectListView1.InvokeRequired)
-                        {
-                            fastObjectListView1.BeginInvoke(new Action(() =>
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                Device.RedirectorActive = false;
-                                Device.LimiterStarted = false;
-                                Device.BlockerActive = false;
-                                fastObjectListView1.RemoveObject(Device);
-                            }));
-                        }
-                        else
-                        {
 
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            Device.RedirectorActive = false;
-                            Device.LimiterStarted = false;
-                            Device.BlockerActive = false;
-                            fastObjectListView1.RemoveObject(Device);
-
-                        }
-                    }
-                }
             }
-            else if (Properties.Settings.Default.NetSize == 3) //255.0.0.0
-            {
-                var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
-                foreach (var Device in Devices)
-                {
-                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 720000000000L) //1200 minutes, extremely large networks this option could theoretically work, but not worth it.
-                    {
-                        GetClientList.clientlist.Remove(Device.IP);
-                        if (fastObjectListView1.InvokeRequired)
-                        {
-                            fastObjectListView1.BeginInvoke(new Action(() =>
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                Device.RedirectorActive = false;
-                                Device.LimiterStarted = false;
-                                Device.BlockerActive = false;
-                                fastObjectListView1.RemoveObject(Device);
-                            }));
-                        }
-                        else
-                        {
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            Device.RedirectorActive = false;
-                            Device.LimiterStarted = false;
-                            Device.BlockerActive = false;
-                            fastObjectListView1.RemoveObject(Device);
 
-                        }
-                    }
-                }
-            }
 
         }
 
@@ -326,12 +334,55 @@ namespace NetStalker
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-
-            if (!operationinprogress)
+            try
             {
-                if (fastObjectListView1.GetItemCount() > 0)
+                if (!operationinprogress)
                 {
-                    if (MetroMessageBox.Show(this, "The list will be cleared and a new scan will be initiated are you sure?\nNote: The Scan button is recommended when the list is empty, NetStalker always performs background scans for new devices after the initial scan.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (fastObjectListView1.GetItemCount() > 0)
+                    {
+                        if (MetroMessageBox.Show(this, "The list will be cleared and a new scan will be initiated are you sure?\nNote: The Scan button is recommended when the list is empty, NetStalker always performs background scans for new devices after the initial scan.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            metroTile1.Enabled = false;
+                            metroTile2.Enabled = false;
+                            operationinprogress = true;
+                            olvColumn7.MaximumWidth = 100;
+                            olvColumn7.MinimumWidth = 100;
+                            olvColumn7.Width = 100;
+                            resizeDone = false;
+                            materialLabel3.Text = "Working";
+                            fastObjectListView1.EmptyListMsg = "Scanning...";
+                            StatusLabel.Text = "Please wait...";
+                            pictureBox1.Image = Properties.Resources.icons8_attention_96px;
+
+                            var devices = fastObjectListView1.Objects.Cast<Device>().ToList();
+
+                            foreach (var Device in devices)
+                            {
+                                if (Device.Redirected || Device.Blocked)
+                                {
+                                    Device.Blocked = false;
+                                    Device.Redirected = false;
+                                    Device.RedirectorActive = false;
+                                    Device.BlockerActive = false;
+                                    Device.LimiterStarted = false;
+                                    Device.DownloadCap = 0;
+                                    Device.UploadCap = 0;
+                                    Device.DownloadSpeed = "";
+                                    Device.UploadSpeed = "";
+                                }
+                            }
+
+                            AliveTimer.Start();
+                            new Thread(() =>
+                            {
+                                GetReady();
+                                _controller.RefreshClients();
+
+
+                            }).Start();
+                        }
+                    }
+                    else
                     {
                         metroTile1.Enabled = false;
                         metroTile2.Enabled = false;
@@ -342,65 +393,29 @@ namespace NetStalker
                         resizeDone = false;
                         materialLabel3.Text = "Working";
                         fastObjectListView1.EmptyListMsg = "Scanning...";
+                        StatusLabel.Text = "Please wait...";
                         pictureBox1.Image = Properties.Resources.icons8_attention_96px;
-
-                        var devices = fastObjectListView1.Objects.Cast<Device>().ToList();
-
-                        foreach (var Device in devices)
-                        {
-                            if (Device.Redirected || Device.Blocked)
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                Device.RedirectorActive = false;
-                                Device.BlockerActive = false;
-                                Device.LimiterStarted = false;
-                                Device.DownloadCap = 0;
-                                Device.UploadCap = 0;
-                                Device.DownloadSpeed = "";
-                                Device.UploadSpeed = "";
-                            }
-                        }
 
                         AliveTimer.Start();
                         new Thread(() =>
                         {
                             GetReady();
                             _controller.RefreshClients();
-
+                            operationinprogress = false;
 
                         }).Start();
                     }
                 }
                 else
                 {
-                    metroTile1.Enabled = false;
-                    metroTile2.Enabled = false;
-                    operationinprogress = true;
-                    olvColumn7.MaximumWidth = 100;
-                    olvColumn7.MinimumWidth = 100;
-                    olvColumn7.Width = 100;
-                    resizeDone = false;
-                    materialLabel3.Text = "Working";
-                    fastObjectListView1.EmptyListMsg = "Scanning...";
-                    pictureBox1.Image = Properties.Resources.icons8_attention_96px;
-
-                    AliveTimer.Start();
-                    new Thread(() =>
-                    {
-                        GetReady();
-                        _controller.RefreshClients();
-                        operationinprogress = false;
-
-                    }).Start();
+                    MetroMessageBox.Show(this, "A scan is still in progress please wait until its finished", "Info",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch (Exception)
             {
-                MetroMessageBox.Show(this, "A scan is still in progress please wait until its finished", "Info",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
+            }
 
         }
 
@@ -554,16 +569,16 @@ namespace NetStalker
                 //selectedDevice.DownloadSpeed = "";
                 //selectedDevice.UploadSpeed = "";
                 fastObjectListView1.UpdateObject(selectedDevice);
-                GetClientList.CalledFromSniffer = true;
-                new Thread(() =>
-                {
-                    if (GetClientList.StopFlag)
-                    {
-                        GetClientList.BackgroundScanStart(this, Properties.Settings.Default.friendlyname);
-                    }
+                //GetClientList.CalledFromSniffer = true;
+                //new Thread(() =>
+                //{
+                //    if (GetClientList.StopFlag)
+                //    {
+                //        GetClientList.BackgroundScanStart(this, Properties.Settings.Default.friendlyname);
+                //    }
 
 
-                }).Start();
+                //}).Start();
             }
             catch (ArgumentException)
             {
@@ -574,7 +589,6 @@ namespace NetStalker
             {
                 MetroMessageBox.Show(this, "The Packet Sniffer can't be used while the limiter is active!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                loading.BeginInvoke(new Action(() => { loading.Close(); }));
             }
             catch (RedirectionNotActiveException)
             {
@@ -657,7 +671,7 @@ namespace NetStalker
 
         public static void GetReady()
         {
-            if (string.IsNullOrEmpty(Properties.Settings.Default.AdapterName))
+            try
             {
                 CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
                 ICaptureDevice capturedevice;
@@ -665,8 +679,12 @@ namespace NetStalker
                 capturedevice = (from devicex in capturedevicelist where ((SharpPcap.WinPcap.WinPcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];
                 Properties.Settings.Default.AdapterName = capturedevice.Name;
                 Properties.Settings.Default.Save();
+            }
+            catch (Exception)
+            {
 
             }
+
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -742,85 +760,115 @@ namespace NetStalker
 
                 if (e.NewValue == CheckState.Checked && e.Column.Index == 6 && !device.BlockerActive && !device.RedirectorActive)
                 {
-                    device.Blocked = true;
-                    device.BlockerActive = true;
-                    device.DeviceStatus = "Offline";
-                    device.BlockOrRedirect();
-                    fastObjectListView1.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
+                    try
+                    {
+                        device.Blocked = true;
+                        device.BlockerActive = true;
+                        device.DeviceStatus = "Offline";
+                        device.BlockOrRedirect();
+                        fastObjectListView1.UpdateObject(device);
+                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
                 }
                 else if (e.NewValue == CheckState.Checked && e.Column.Index == 5 && !device.RedirectorActive && !device.BlockerActive)
                 {
-
-                    new Thread(() =>
+                    try
                     {
-                        loading = new Loading();
-                        loading.ShowDialog();
+                        new Thread(() =>
+                        {
+                            loading = new Loading();
+                            loading.ShowDialog();
 
-                    }).Start();
+                        }).Start();
 
-                    device.Blocked = true;
-                    device.Redirected = true;
-                    device.RedirectorActive = true;
-                    device.BlockOrRedirect();
-                    GetReady();
-                    device.LimiterStarted = true;
-                    device.DownloadCap = 0;
-                    device.UploadCap = 0;
-                    LimiterClass LimitDevice = new LimiterClass(device);
-                    if (!ValuesTimer.Enabled)
-                    {
-                        //PopulateDeviceList();
-                        //PopulateCalled = true;
-                        ValuesTimer.Start();
+                        device.Blocked = true;
+                        device.Redirected = true;
+                        device.RedirectorActive = true;
+                        device.BlockOrRedirect();
+                        GetReady();
+                        device.LimiterStarted = true;
+                        device.DownloadCap = 0;
+                        device.UploadCap = 0;
+                        LimiterClass LimitDevice = new LimiterClass(device);
+                        if (!ValuesTimer.Enabled)
+                        {
+                            //PopulateDeviceList();
+                            //PopulateCalled = true;
+                            ValuesTimer.Start();
+                        }
+                        LoDevices = fastObjectListView1.Objects.Cast<Device>().ToList();
+                        LimitDevice.StartLimiter();
+
+                        loading.BeginInvoke(new Action(() => { loading.Close(); }));
+                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
                     }
-                    LoDevices = fastObjectListView1.Objects.Cast<Device>().ToList();
-                    LimitDevice.StartLimiter();
+                    catch (Exception)
+                    {
 
-                    loading.BeginInvoke(new Action(() => { loading.Close(); }));
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
+                    }
+
 
                 }
                 else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 6 && device.BlockerActive)
                 {
-                    device.Blocked = false;
-                    device.BlockerActive = false;
-                    device.DeviceStatus = "Online";
-                    fastObjectListView1.UpdateObject(device);
-                    PopulateForBlocker();
-                    foreach (var Dev in LODFB)
+                    try
                     {
-                        if (Dev.Blocked)
+                        device.Blocked = false;
+                        device.BlockerActive = false;
+                        device.DeviceStatus = "Online";
+                        fastObjectListView1.UpdateObject(device);
+                        PopulateForBlocker();
+                        foreach (var Dev in LODFB)
                         {
-                            return;
+                            if (Dev.Blocked)
+                            {
+                                return;
+                            }
                         }
+                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
                     }
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
+                    catch (Exception)
+                    {
+
+                    }
+
 
                 }
                 else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 5 && device.RedirectorActive)
                 {
-
-                    device.Blocked = false;
-                    device.Redirected = false;
-                    device.RedirectorActive = false;
-                    device.LimiterStarted = false;
-                    device.DownloadCap = 0;
-                    device.UploadCap = 0;
-                    device.DownloadSpeed = "";
-                    device.UploadSpeed = "";
-                    fastObjectListView1.UpdateObject(device);
-                    foreach (Device Device in LoDevices)
+                    try
                     {
-                        if (Device.LimiterStarted)
+                        device.Blocked = false;
+                        device.Redirected = false;
+                        device.RedirectorActive = false;
+                        device.LimiterStarted = false;
+                        device.DownloadCap = 0;
+                        device.UploadCap = 0;
+                        device.DownloadSpeed = "";
+                        device.UploadSpeed = "";
+                        fastObjectListView1.UpdateObject(device);
+                        foreach (Device Device in LoDevices)
                         {
-                            return;
+                            if (Device.LimiterStarted)
+                            {
+                                return;
+                            }
                         }
+                        ValuesTimer.Stop();
+                        PopulateCalled = false;
+                        fastObjectListView1.UpdateObject(device);
+                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
                     }
-                    ValuesTimer.Stop();
-                    PopulateCalled = false;
-                    fastObjectListView1.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
+                    catch (Exception)
+                    {
+
+                    }
+
 
                 }
                 else
@@ -916,12 +964,6 @@ namespace NetStalker
             MetroMessageBox.Show(this, "Some guidelines on how to use this software properly:\n\n1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.\n2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the speed limiter (on the bottom right) and set the desired speed for each device (0 means no limitation).\n3- Blocking and redirection can not be activated at the sametime, you either block a device or limit its speed.\n4- It's recommended for most stability to wait until the scanner is done before performing any action.\n5- NetStalker can be protected with a password, and can be set or removed via Options.\n6- NetStalker is available in dark and light modes.\n7- NetStalker has an option for spoof protection, if activated it can prevent your pc from being redirected or blocked by the same tool or any other spoofing software.\n8- Background scanning is always active so you don't have to consistently press scan to discover newly connected devices.", "Help", MessageBoxButtons.OK,
                 MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 375);
         }
-
-        private void MaterialFlatButton5_Click(object sender, EventArgs e)
-        {
-            GetClientList.StopTheLoadingBar(this);
-        }
-
 
         #region Toast Notifications Shortcut
 

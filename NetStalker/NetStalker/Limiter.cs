@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
+using System.Security;
 using System.Threading;
 using CSArp;
 using PacketDotNet;
@@ -43,58 +45,67 @@ namespace NetStalker
             }
         }
 
+        [HandleProcessCorruptedStateExceptions]
+        [SecurityCritical]
         public void Limiter()
         {
-
-
-            RawCapture rawCapture;
-            do
+            try
             {
-                if ((rawCapture = capturedevice.GetNextPacket()) != null)
+                RawCapture rawCapture;
+                do
                 {
-                    EthernetPacket Packet;
-                    try
+                    if ((rawCapture = capturedevice.GetNextPacket()) != null)
                     {
-                        Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
-                        if (Packet == null) { return; }
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-
-                    if (Packet.SourceHwAddress.Equals(device.MAC))
-                    {
-
-                        if (device.UploadCap == 0 || device.UploadCap > device.PacketsSentSinceLastReset)
+                        EthernetPacket Packet;
+                        try
                         {
-                            Packet.SourceHwAddress = capturedevice.MacAddress;
-                            Packet.DestinationHwAddress = device.GatewayMAC;
-                            capturedevice.SendPacket(Packet);
-                            device.PacketsSentSinceLastReset += Packet.Bytes.Length;
+                            Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
+                            if (Packet == null) { return; }
+                        }
+                        catch (Exception)
+                        {
+                            continue;
                         }
 
-                    }
-                    else if (Packet.SourceHwAddress.Equals(device.GatewayMAC))
-                    {
-                        IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
-
-                        if (IPV4.DestinationAddress.Equals(device.IP))
+                        if (Packet.SourceHwAddress.Equals(device.MAC))
                         {
-                            if (device.DownloadCap == 0 || device.DownloadCap > device.PacketsReceivedSinceLastReset)
+
+                            if (device.UploadCap == 0 || device.UploadCap > device.PacketsSentSinceLastReset)
                             {
                                 Packet.SourceHwAddress = capturedevice.MacAddress;
-                                Packet.DestinationHwAddress = device.MAC;
+                                Packet.DestinationHwAddress = device.GatewayMAC;
                                 capturedevice.SendPacket(Packet);
-                                device.PacketsReceivedSinceLastReset += Packet.Bytes.Length;
+                                device.PacketsSentSinceLastReset += Packet.Bytes.Length;
+                            }
+
+                        }
+                        else if (Packet.SourceHwAddress.Equals(device.GatewayMAC))
+                        {
+                            IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
+
+                            if (IPV4.DestinationAddress.Equals(device.IP))
+                            {
+                                if (device.DownloadCap == 0 || device.DownloadCap > device.PacketsReceivedSinceLastReset)
+                                {
+                                    Packet.SourceHwAddress = capturedevice.MacAddress;
+                                    Packet.DestinationHwAddress = device.MAC;
+                                    capturedevice.SendPacket(Packet);
+                                    device.PacketsReceivedSinceLastReset += Packet.Bytes.Length;
+                                }
                             }
                         }
                     }
-                }
 
-            } while (device.LimiterStarted && device.Redirected);
+                } while (device.LimiterStarted && device.Redirected);
 
-            device.LimiterStarted = false;
+                device.LimiterStarted = false;
+            }
+            catch (Exception)
+            {
+
+            }
+
+
 
 
         }

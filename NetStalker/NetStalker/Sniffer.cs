@@ -60,6 +60,7 @@ namespace NetStalker
         private PhysicalAddress GatewayMAC;
         private PhysicalAddress TargetMAC;
         private bool IsLocalDeviceSniffing;
+        private bool StopFlag;
 
         public Sniffer(string target, string mac, string gatewaymac, string gatewayip, Loading loading)
         {
@@ -379,73 +380,14 @@ namespace NetStalker
         {
             new Thread(() =>
             {
-                EthernetPacket Packet = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data) as EthernetPacket;
-                if (Packet == null) { return; }
-
-                AcceptedPacket acPacket = new AcceptedPacket();
-                acPacket.Packet = Packet;
-
-                if (Packet.SourceHwAddress.Equals(TargetMAC))
+                try
                 {
-                    if (acPacket.TCPPacket != null)
+                    if (StopFlag)
                     {
-                        materialListView1.BeginInvoke(new Action(() =>
-                        {
-                            materialListView1.AddObject(acPacket);
-
-                            if (materialListView1.Items.Count > 15 && !ResizeDone)
-                            {
-                                olvColumn8.MaximumWidth = 65;
-                                olvColumn8.MinimumWidth = 65;
-                                olvColumn8.Width = 65;
-                                ResizeDone = true;
-                            }
-
-                            ListofAcceptedPackets.Add(acPacket);
-
-                        }));
-
+                        return;
                     }
-                }
 
-                else if (Packet.SourceHwAddress.Equals(GatewayMAC))
-                {
-                    if (Properties.Settings.Default.PacketDirection == "Inbound")
-                    {
-                        if (acPacket.TCPPacket != null)
-                        {
-                            materialListView1.BeginInvoke(new Action(() =>
-                            {
-                                materialListView1.AddObject(acPacket);
-
-                                if (materialListView1.Items.Count > 15 && !ResizeDone)
-                                {
-                                    olvColumn8.MaximumWidth = 65;
-                                    olvColumn8.MinimumWidth = 65;
-                                    olvColumn8.Width = 65;
-                                    ResizeDone = true;
-                                }
-
-                                ListofAcceptedPackets.Add(acPacket);
-
-
-                            }));
-                        }
-                    }
-                }
-
-            }).Start();
-        }
-
-        private void StartSniffer()
-        {
-
-            RawCapture rawCapture;
-            do
-            {
-                if ((rawCapture = capturedevice.GetNextPacket()) != null)
-                {
-                    EthernetPacket Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
+                    EthernetPacket Packet = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data) as EthernetPacket;
                     if (Packet == null) { return; }
 
                     AcceptedPacket acPacket = new AcceptedPacket();
@@ -453,13 +395,8 @@ namespace NetStalker
 
                     if (Packet.SourceHwAddress.Equals(TargetMAC))
                     {
-                        //Packet.SourceHwAddress = capturedevice.MacAddress;
-                        //Packet.DestinationHwAddress = GatewayMAC;
-                        //capturedevice.SendPacket(Packet);
-
                         if (acPacket.TCPPacket != null)
                         {
-
                             materialListView1.BeginInvoke(new Action(() =>
                             {
                                 materialListView1.AddObject(acPacket);
@@ -481,15 +418,6 @@ namespace NetStalker
 
                     else if (Packet.SourceHwAddress.Equals(GatewayMAC))
                     {
-                        //IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
-
-                        //if (IPV4.DestinationAddress.Equals(Target))
-                        //{
-                        //    Packet.SourceHwAddress = capturedevice.MacAddress;
-                        //    Packet.DestinationHwAddress = TargetMAC;
-                        //    capturedevice.SendPacket(Packet);
-                        //}
-
                         if (Properties.Settings.Default.PacketDirection == "Inbound")
                         {
                             if (acPacket.TCPPacket != null)
@@ -514,8 +442,102 @@ namespace NetStalker
                         }
                     }
                 }
+                catch (Exception)
+                {
 
-            } while (snifferStarted);
+                }
+
+
+            }).Start();
+        }
+
+        private void StartSniffer()
+        {
+
+            try
+            {
+                RawCapture rawCapture;
+                do
+                {
+                    if ((rawCapture = capturedevice.GetNextPacket()) != null)
+                    {
+                        EthernetPacket Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
+                        if (Packet == null) { return; }
+
+                        AcceptedPacket acPacket = new AcceptedPacket();
+                        acPacket.Packet = Packet;
+
+                        if (Packet.SourceHwAddress.Equals(TargetMAC))
+                        {
+                            //Packet.SourceHwAddress = capturedevice.MacAddress;
+                            //Packet.DestinationHwAddress = GatewayMAC;
+                            //capturedevice.SendPacket(Packet);
+
+                            if (acPacket.TCPPacket != null)
+                            {
+
+                                materialListView1.BeginInvoke(new Action(() =>
+                                {
+                                    materialListView1.AddObject(acPacket);
+
+                                    if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                    {
+                                        olvColumn8.MaximumWidth = 65;
+                                        olvColumn8.MinimumWidth = 65;
+                                        olvColumn8.Width = 65;
+                                        ResizeDone = true;
+                                    }
+
+                                    ListofAcceptedPackets.Add(acPacket);
+
+                                }));
+
+                            }
+                        }
+
+                        else if (Packet.SourceHwAddress.Equals(GatewayMAC))
+                        {
+                            //IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
+
+                            //if (IPV4.DestinationAddress.Equals(Target))
+                            //{
+                            //    Packet.SourceHwAddress = capturedevice.MacAddress;
+                            //    Packet.DestinationHwAddress = TargetMAC;
+                            //    capturedevice.SendPacket(Packet);
+                            //}
+
+                            if (Properties.Settings.Default.PacketDirection == "Inbound")
+                            {
+                                if (acPacket.TCPPacket != null)
+                                {
+                                    materialListView1.BeginInvoke(new Action(() =>
+                                    {
+                                        materialListView1.AddObject(acPacket);
+
+                                        if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                        {
+                                            olvColumn8.MaximumWidth = 65;
+                                            olvColumn8.MinimumWidth = 65;
+                                            olvColumn8.Width = 65;
+                                            ResizeDone = true;
+                                        }
+
+                                        ListofAcceptedPackets.Add(acPacket);
+
+
+                                    }));
+                                }
+                            }
+                        }
+                    }
+
+                } while (snifferStarted);
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
 
@@ -529,6 +551,7 @@ namespace NetStalker
                     {
                         capturedevice.StopCapture();
                         snifferStarted = false;
+                        StopFlag = true;
                         materialListView1.EmptyListMsg = "Stopped";
                         metroTextBox2.Text += "Stopped" + Environment.NewLine;
                     }
@@ -551,15 +574,30 @@ namespace NetStalker
 
         private void Sniffer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (snifferStarted)
+            if (snifferStarted && capturedevice != null)
             {
                 if (MetroMessageBox.Show(this, "The sniffer is still working, continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    snifferStarted = false;
-                    metroTextBox2.Text += "Stopped" + Environment.NewLine;
-                    if (menu != null)
+                    if (IsLocalDeviceSniffing)
                     {
-                        menu.Dispose();
+                        capturedevice.StopCapture();
+                        snifferStarted = false;
+                        StopFlag = true;
+
+                        if (menu != null)
+                        {
+                            menu.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        snifferStarted = false;
+                        StopFlag = true;
+
+                        if (menu != null)
+                        {
+                            menu.Dispose();
+                        }
                     }
 
                 }
@@ -763,8 +801,16 @@ namespace NetStalker
 
         private void Sniffer_Shown(object sender, EventArgs e)
         {
-            var main = Application.OpenForms["Main"] as Main;
-            main.loading.BeginInvoke(new Action(() => { main.loading.Close(); }));
+            try
+            {
+                var main = Application.OpenForms["Main"] as Main;
+                main.loading.BeginInvoke(new Action(() => { main.loading.Close(); }));
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
     }
 }

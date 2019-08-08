@@ -58,16 +58,21 @@ namespace CSArp
             {
                 if (_view.StatusLabel.Text.IndexOf("Scanning") == -1) //if a scan isn't active already
                 {
-                    DisconnectReconnect.Reconnect(); //first disengage spoofing threads
-                    _view.StatusLabel.BeginInvoke(new Action(() => { _view.StatusLabel.Text = "Ready"; }));
-                    GetClientList.GetAllClients(_view, NetStalker.Properties.Settings.Default.friendlyname);
+                    try
+                    {
+                        //DisconnectReconnect.Reconnect(); //first disengage spoofing threads
+                        //_view.StatusLabel.BeginInvoke(new Action(() => { _view.StatusLabel.Text = "Ready"; }));
+                        GetClientList.GetAllClients(_view, NetStalker.Properties.Settings.Default.friendlyname);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
                 }
 
             }
-            else
-            {
-                MessageBox.Show("Please select a network interface!", "Interface", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
+          
         }
 
         /// <summary>
@@ -176,9 +181,9 @@ namespace CSArp
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    
                 }
 
             };
