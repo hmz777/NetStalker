@@ -61,6 +61,7 @@ namespace NetStalker
         private PhysicalAddress TargetMAC;
         private bool IsLocalDeviceSniffing;
         private bool StopFlag;
+        private bool CaptureDeviceConfigured;
 
         public Sniffer(string target, string mac, string gatewaymac, string gatewayip, Loading loading)
         {
@@ -311,23 +312,46 @@ namespace NetStalker
 
             textOverlay.Font = new Font("Roboto", 25);
 
-            CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
+            new Thread(() => { GetReady(); }).Start();
 
-            capturedevicelist.Refresh();
-            //capturedevice = (from devicex in capturedevicelist where ((SharpPcap.WinPcap.WinPcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];
-            capturedevice = CaptureDeviceList.New()[NetStalker.Properties.Settings.Default.AdapterName];
-            metroTextBox2.Text += "Ready" + Environment.NewLine;
+            var main = Application.OpenForms["Main"] as Main;
+            main.loading.BeginInvoke(new Action(() => { main.loading.Close(); }));
 
+            this.Activate();
+
+        }
+
+        public void GetReady()
+        {
+            if (!CaptureDeviceConfigured)
+            {
+                metroTextBox2.BeginInvoke(new Action(() =>
+                {
+                    metroTextBox2.Text += "Preparing network adapter..." + Environment.NewLine;
+                }));
+
+                CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
+                capturedevicelist.Refresh();
+                capturedevice = CaptureDeviceList.New()[NetStalker.Properties.Settings.Default.AdapterName];
+                CaptureDeviceConfigured = true;
+
+                metroTextBox2.BeginInvoke(new Action(() =>
+                {
+                    metroTextBox2.Text += "Ready" + Environment.NewLine;
+                }));
+
+            }
         }
 
         private void materialFlatButton3_Click(object sender, EventArgs e)
         {
+
             if (snifferStarted)
             {
                 MetroMessageBox.Show(this, "Operation already started!", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            else
+            else if (CaptureDeviceConfigured)
             {
                 materialListView1.EmptyListMsg = "Working...";
 
@@ -373,6 +397,10 @@ namespace NetStalker
 
                 metroTextBox2.Text += "Started..." + Environment.NewLine;
 
+            }
+            else
+            {
+                metroTextBox2.Text += "Device is not ready yet!" + Environment.NewLine;
             }
         }
 
@@ -799,18 +827,5 @@ namespace NetStalker
             snifferOptions.ShowDialog();
         }
 
-        private void Sniffer_Shown(object sender, EventArgs e)
-        {
-            try
-            {
-                var main = Application.OpenForms["Main"] as Main;
-                main.loading.BeginInvoke(new Action(() => { main.loading.Close(); }));
-            }
-            catch (Exception)
-            {
-
-            }
-
-        }
     }
 }
