@@ -62,6 +62,7 @@ namespace NetStalker
         private bool IsLocalDeviceSniffing;
         private bool StopFlag;
         private bool CaptureDeviceConfigured;
+        private IPAddress TargetIP;
 
         public Sniffer(string target, string mac, string gatewaymac, string gatewayip, Loading loading)
         {
@@ -73,6 +74,7 @@ namespace NetStalker
             gatewayMAC = gatewaymac;
             GatewayMAC = PhysicalAddress.Parse(gatewaymac.Replace(":", ""));
             TargetMAC = PhysicalAddress.Parse(mac.Replace(":", ""));
+            TargetIP = IPAddress.Parse(target);
 
             olvColumn7.AspectGetter = delegate (object rowObject)
             {
@@ -364,8 +366,7 @@ namespace NetStalker
 
                         if (!IsLocalDeviceSniffing)
                         {
-                            capturedevice.Filter = $"(tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (ether src {gatewayMAC.ToLower()} and dst net {Target}))) or (tcp port 443 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (ether src {gatewayMAC.ToLower()} and dst net {Target})))";
-
+                            capturedevice.Filter = $"(tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (dst net {Target}))) or (tcp port 443 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0) and (ether src {targetmac.ToLower()} or (dst net {Target})))";
                         }
                         else
                         {
@@ -448,24 +449,29 @@ namespace NetStalker
                     {
                         if (Properties.Settings.Default.PacketDirection == "Inbound")
                         {
-                            if (acPacket.TCPPacket != null)
+                            IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
+
+                            if (IPV4.DestinationAddress.Equals(TargetIP))
                             {
-                                materialListView1.BeginInvoke(new Action(() =>
+                                if (acPacket.TCPPacket != null)
                                 {
-                                    materialListView1.AddObject(acPacket);
-
-                                    if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                    materialListView1.BeginInvoke(new Action(() =>
                                     {
-                                        olvColumn8.MaximumWidth = 65;
-                                        olvColumn8.MinimumWidth = 65;
-                                        olvColumn8.Width = 65;
-                                        ResizeDone = true;
-                                    }
+                                        materialListView1.AddObject(acPacket);
 
-                                    ListofAcceptedPackets.Add(acPacket);
+                                        if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                        {
+                                            olvColumn8.MaximumWidth = 65;
+                                            olvColumn8.MinimumWidth = 65;
+                                            olvColumn8.Width = 65;
+                                            ResizeDone = true;
+                                        }
+
+                                        ListofAcceptedPackets.Add(acPacket);
 
 
-                                }));
+                                    }));
+                                }
                             }
                         }
                     }
@@ -497,9 +503,6 @@ namespace NetStalker
 
                         if (Packet.SourceHwAddress.Equals(TargetMAC))
                         {
-                            //Packet.SourceHwAddress = capturedevice.MacAddress;
-                            //Packet.DestinationHwAddress = GatewayMAC;
-                            //capturedevice.SendPacket(Packet);
 
                             if (acPacket.TCPPacket != null)
                             {
@@ -525,35 +528,35 @@ namespace NetStalker
 
                         else if (Packet.SourceHwAddress.Equals(GatewayMAC))
                         {
-                            //IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
 
-                            //if (IPV4.DestinationAddress.Equals(Target))
-                            //{
-                            //    Packet.SourceHwAddress = capturedevice.MacAddress;
-                            //    Packet.DestinationHwAddress = TargetMAC;
-                            //    capturedevice.SendPacket(Packet);
-                            //}
+
 
                             if (Properties.Settings.Default.PacketDirection == "Inbound")
                             {
-                                if (acPacket.TCPPacket != null)
+
+                                IPv4Packet IPV4 = Packet.Extract(typeof(IPv4Packet)) as IPv4Packet;
+
+                                if (IPV4.DestinationAddress.Equals(TargetIP))
                                 {
-                                    materialListView1.BeginInvoke(new Action(() =>
+                                    if (acPacket.TCPPacket != null)
                                     {
-                                        materialListView1.AddObject(acPacket);
-
-                                        if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                        materialListView1.BeginInvoke(new Action(() =>
                                         {
-                                            olvColumn8.MaximumWidth = 65;
-                                            olvColumn8.MinimumWidth = 65;
-                                            olvColumn8.Width = 65;
-                                            ResizeDone = true;
-                                        }
+                                            materialListView1.AddObject(acPacket);
 
-                                        ListofAcceptedPackets.Add(acPacket);
+                                            if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                            {
+                                                olvColumn8.MaximumWidth = 65;
+                                                olvColumn8.MinimumWidth = 65;
+                                                olvColumn8.Width = 65;
+                                                ResizeDone = true;
+                                            }
+
+                                            ListofAcceptedPackets.Add(acPacket);
 
 
-                                    }));
+                                        }));
+                                    }
                                 }
                             }
                         }

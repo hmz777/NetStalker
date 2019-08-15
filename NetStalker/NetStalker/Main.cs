@@ -498,52 +498,12 @@ namespace NetStalker
                     throw new ArgumentException();
                 }
 
-                //var Devices = fastObjectListView1.Objects.Cast<Device>().ToList();
-
                 var selectedDevice = fastObjectListView1.SelectedObject as Device;
 
                 if (!selectedDevice.Redirected && !(selectedDevice.IsGateway || selectedDevice.IsLocalDevice))
                 {
                     throw new RedirectionNotActiveException();
                 }
-
-                //foreach (var Device in Devices)
-                //{
-                //    if (Device.LimiterStarted)
-                //    {
-                //        if (MetroMessageBox.Show(this, "The Packet Sniffer can't function properly if the limiter is active, Stop the Limiter and start the Sniffer?\nNote: All limiting operations will be stopped", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                //        {
-                //            break;
-                //        }
-                //        else
-                //        {
-                //            return;
-                //        }
-                //    }
-                //}
-
-                //new Thread(() =>
-                //{
-                //    foreach (var Device in Devices)
-                //    {
-                //        if (Device != selectedDevice)
-                //        {
-                //            Device.Blocked = false;
-                //            Device.Redirected = false;
-                //            Device.RedirectorActive = false;
-                //            Device.LimiterStarted = false;
-                //            Device.DownloadCap = 0;
-                //            Device.UploadCap = 0;
-                //            Device.DownloadSpeed = "";
-                //            Device.UploadSpeed = "";
-                //            fastObjectListView1.UpdateObject(Device);
-                //        }
-                //    }
-                //}).Start();
-
-                //ValuesTimer.Stop();
-                //selectedDevice.LimiterStarted = false;
-
 
 
                 new Thread(() =>
@@ -554,31 +514,15 @@ namespace NetStalker
                 }).Start();
 
                 SnifferStarted = true;
-                //GetClientList.CloseAllCapturesForLimiter(this);
                 GetReady();
                 Sniffer sniff = new Sniffer(selectedDevice.IP.ToString(), GetClientList.GetMACString(selectedDevice.MAC), GetClientList.GetMACString(GetGatewayMAC()), GetGatewayIP().ToString(), loading);//for the berkeley packet filter macs should have ':' separating each hex number
                 sniff.ShowDialog(this);
                 fastObjectListView1.SelectedObjects.Clear();
                 sniff.Dispose();
                 SnifferStarted = false;
-                //selectedDevice.Blocked = false;
-                //selectedDevice.Redirected = false;
-                //selectedDevice.RedirectorActive = false;
-                //selectedDevice.DownloadCap = 0;
-                //selectedDevice.UploadCap = 0;
-                //selectedDevice.DownloadSpeed = "";
-                //selectedDevice.UploadSpeed = "";
+
                 fastObjectListView1.UpdateObject(selectedDevice);
-                //GetClientList.CalledFromSniffer = true;
-                //new Thread(() =>
-                //{
-                //    if (GetClientList.StopFlag)
-                //    {
-                //        GetClientList.BackgroundScanStart(this, Properties.Settings.Default.friendlyname);
-                //    }
 
-
-                //}).Start();
             }
             catch (ArgumentException)
             {
