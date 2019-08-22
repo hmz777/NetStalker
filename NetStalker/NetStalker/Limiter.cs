@@ -1,11 +1,10 @@
-﻿using System;
+﻿using CSArp;
+using PacketDotNet;
+using SharpPcap;
+using System;
 using System.Runtime.ExceptionServices;
 using System.Security;
 using System.Threading;
-using CSArp;
-using PacketDotNet;
-using SharpPcap;
-using Timer = System.Windows.Forms.Timer;
 
 namespace NetStalker
 {
@@ -28,21 +27,24 @@ namespace NetStalker
 
         public void StartLimiter()
         {
+
             try
             {
                 if (capturedevice != null)
                 {
                     capturedevice.Open(DeviceMode.Normal, 1); //test difference in performance between the two modes
-                    capturedevice.Filter = $"(ip and ether src {TargetMAC.ToLower()}) or (ip and ether src {GatewayMAC.ToLower()} and dst net {device.IP})"; //dotted macs
+                    capturedevice.Filter =
+                        $"(ip and ether src {TargetMAC.ToLower()}) or (ip and ether src {GatewayMAC.ToLower()} and dst net {device.IP})"; //dotted macs
 
-                    new Thread(Limiter).Start();
-
+                    Limiter();
                 }
             }
             catch (Exception)
             {
 
             }
+
+
         }
 
         [HandleProcessCorruptedStateExceptions]
@@ -104,9 +106,6 @@ namespace NetStalker
             {
 
             }
-
-
-
 
         }
 

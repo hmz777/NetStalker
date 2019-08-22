@@ -76,6 +76,7 @@ namespace NetStalker
         [SecurityCritical]
         public void BlockOrRedirect()
         {
+
             ICaptureDevice capturedevice = (from devicex in CaptureDeviceList.Instance where ((SharpPcap.WinPcap.WinPcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];
             capturedevice.Open();
 
@@ -105,6 +106,7 @@ namespace NetStalker
 
             new Thread(() =>
             {
+
                 try
                 {
 

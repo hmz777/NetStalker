@@ -45,7 +45,6 @@ namespace NetStalker
         }
 
         private ICaptureDevice capturedevice;
-        private int i = 0;
         private string Target;
         private string targetmac;
         List<AcceptedPacket> ListofAcceptedPackets = new List<AcceptedPacket>();

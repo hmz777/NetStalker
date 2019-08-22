@@ -181,7 +181,7 @@ namespace CSArp
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                 }

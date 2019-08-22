@@ -28,6 +28,7 @@ namespace NetStalker
     public partial class Main : MaterialForm, IView
     {
         public static bool operationinprogress;
+        public static bool checkboxcanbeclicked;
         public string resizestate;
         public TextOverlay textOverlay;
         private bool resizeDone;
@@ -345,6 +346,7 @@ namespace NetStalker
                             metroTile1.Enabled = false;
                             metroTile2.Enabled = false;
                             operationinprogress = true;
+                            fastObjectListView1.ClearObjects();
                             olvColumn7.MaximumWidth = 100;
                             olvColumn7.MinimumWidth = 100;
                             olvColumn7.Width = 100;
@@ -371,7 +373,7 @@ namespace NetStalker
                                     Device.UploadSpeed = "";
                                 }
                             }
-
+                          
                             AliveTimer.Start();
                             new Thread(() =>
                             {
@@ -691,6 +693,11 @@ namespace NetStalker
                     throw new OperationInProgressException();
                 }
 
+                if (!checkboxcanbeclicked)
+                {
+                    e.Canceled = true;
+                    return;
+                }
 
                 fastObjectListView1.SelectObject(e.RowObject);
                 Device device = e.RowObject as Device;
@@ -738,7 +745,6 @@ namespace NetStalker
                         device.LimiterStarted = true;
                         device.DownloadCap = 0;
                         device.UploadCap = 0;
-                        LimiterClass LimitDevice = new LimiterClass(device);
                         if (!ValuesTimer.Enabled)
                         {
                             //PopulateDeviceList();
@@ -746,8 +752,12 @@ namespace NetStalker
                             ValuesTimer.Start();
                         }
                         LoDevices = fastObjectListView1.Objects.Cast<Device>().ToList();
-                        LimitDevice.StartLimiter();
+                        new Thread(() =>
+                        {
+                            LimiterClass LimitDevice = new LimiterClass(device);
+                            LimitDevice.StartLimiter();
 
+                        }).Start();
                         loading.BeginInvoke(new Action(() => { loading.Close(); }));
                         pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
                     }

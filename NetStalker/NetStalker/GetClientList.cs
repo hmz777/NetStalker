@@ -47,9 +47,10 @@ namespace CSArp
                 {
                     capturedevice.StopCapture(); //stop previous capture
                     capturedevice.Close(); //close previous instances
-                    StopFlag = false;
+                    StopFlag = true;
                     GatewayCalled = false;
                     capturedevice.OnPacketArrival += null;
+                    Main.checkboxcanbeclicked = false;
                     StopTheLoadingBar(view);
 
                 }
@@ -58,12 +59,7 @@ namespace CSArp
                 }
             }
             clientlist = new Dictionary<IPAddress, PhysicalAddress>();
-            view.ListView1.BeginInvoke(new Action(() =>
-            {
 
-                view.ListView1.ClearObjects();
-
-            }));
             #endregion
 
             CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
@@ -291,7 +287,7 @@ namespace CSArp
                         view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Error occurred"));
 
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
 
                     }
@@ -314,8 +310,6 @@ namespace CSArp
             {
                 view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Starting background scan..."));
                 StopFlag = false;
-                CalledFromToast = false;
-                CalledFromSniffer = false;
                 capturedevice = CaptureDeviceList.New()[NetStalker.Properties.Settings.Default.AdapterName];
                 capturedevice.Open(DeviceMode.Promiscuous, 1000);
                 capturedevice.Filter = "arp";
@@ -332,7 +326,6 @@ namespace CSArp
 
                     try
                     {
-
                         view.PictureBox.BeginInvoke(new Action((() =>
                         {
                             view.PictureBox.Image = NetStalker.Properties.Resources.icons8_ok_96px;
@@ -355,22 +348,27 @@ namespace CSArp
                                     if (!LoadingBarCalled)
                                     {
                                         CallTheLoadingBar(view);
+                                        Main.checkboxcanbeclicked = true;
                                         view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
                                     }
 
                                     for (int ipindex = 1; ipindex <= 255; ipindex++)
                                     {
-                                        ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
-                                        EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
-                                        ethernetpacket.PayloadPacket = arprequestpacket;
-                                        capturedevice.SendPacket(ethernetpacket);
-                                        if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                        if (!StopFlag)
                                         {
-                                            ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
-                                            EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
-                                            EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
-                                            capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                            ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
+                                            EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
+                                            ethernetpacket.PayloadPacket = arprequestpacket;
+                                            capturedevice.SendPacket(ethernetpacket);
+                                            if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                            {
+                                                ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
+                                                EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
+                                                EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
+                                                capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                            }
                                         }
+
                                     }
                                 }
                                 catch (Exception)
@@ -388,23 +386,31 @@ namespace CSArp
                                     if (!LoadingBarCalled)
                                     {
                                         CallTheLoadingBar(view);
+                                        Main.checkboxcanbeclicked = true;
                                         view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
                                     }
                                     for (int i = 1; i <= 255; i++)
                                     {
-                                        for (int j = 1; j <= 255; j++)
+                                        if (!StopFlag)
                                         {
-                                            ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j), capturedevice.MacAddress, myipaddress);//???
-                                            EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
-                                            capturedevice.SendPacket(ethernetpacket);
-                                            if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                            for (int j = 1; j <= 255; j++)
                                             {
-                                                ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
-                                                EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
-                                                EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
-                                                capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                                if (!StopFlag)
+                                                {
+                                                    ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j), capturedevice.MacAddress, myipaddress);//???
+                                                    EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
+                                                    capturedevice.SendPacket(ethernetpacket);
+                                                    if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                                    {
+                                                        ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
+                                                        EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
+                                                        EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
+                                                        capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                                    }
+                                                }
                                             }
                                         }
+
                                     }
                                 }
                                 catch (Exception)
@@ -422,28 +428,41 @@ namespace CSArp
                                     if (!LoadingBarCalled)
                                     {
                                         CallTheLoadingBar(view);
+                                        Main.checkboxcanbeclicked = true;
                                         view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
 
                                     }
                                     for (int i = 1; i <= 255; i++)
                                     {
-                                        for (int j = 1; j <= 255; j++)
+                                        if (!StopFlag)
                                         {
-                                            for (int k = 1; k <= 255; k++)
+                                            for (int j = 1; j <= 255; j++)
                                             {
-                                                ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j + '.' + k), capturedevice.MacAddress, myipaddress);//???
-                                                EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
-                                                ethernetpacket.PayloadPacket = arprequestpacket;
-                                                capturedevice.SendPacket(ethernetpacket);
-                                                if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                                if (!StopFlag)
                                                 {
-                                                    ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
-                                                    EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
-                                                    EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
-                                                    capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                                    for (int k = 1; k <= 255; k++)
+                                                    {
+                                                        if (!StopFlag)
+                                                        {
+                                                            ARPPacket arprequestpacket = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j + '.' + k), capturedevice.MacAddress, myipaddress);//???
+                                                            EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetPacketType.Arp);
+                                                            ethernetpacket.PayloadPacket = arprequestpacket;
+                                                            capturedevice.SendPacket(ethernetpacket);
+                                                            if (NetStalker.Properties.Settings.Default.SpoofProtection)
+                                                            {
+                                                                ARPPacket ArpPacketForGatewayProtection = new ARPPacket(ARPOperation.Request, capturedevice.MacAddress, myipaddress, GatewayMAC, GatewayIP);
+                                                                EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(GatewayMAC, capturedevice.MacAddress, EthernetPacketType.Arp);
+                                                                EtherPacketForGatewayProtection.PayloadPacket = ArpPacketForGatewayProtection;
+                                                                capturedevice.SendPacket(EtherPacketForGatewayProtection);
+                                                            }
+                                                        }
+
+                                                    }
                                                 }
+
                                             }
                                         }
+
                                     }
                                 }
                                 catch (Exception)
