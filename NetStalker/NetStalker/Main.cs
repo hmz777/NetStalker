@@ -346,7 +346,6 @@ namespace NetStalker
                             metroTile1.Enabled = false;
                             metroTile2.Enabled = false;
                             operationinprogress = true;
-                            fastObjectListView1.ClearObjects();
                             olvColumn7.MaximumWidth = 100;
                             olvColumn7.MinimumWidth = 100;
                             olvColumn7.Width = 100;
@@ -373,7 +372,7 @@ namespace NetStalker
                                     Device.UploadSpeed = "";
                                 }
                             }
-                          
+                            fastObjectListView1.ClearObjects();
                             AliveTimer.Start();
                             new Thread(() =>
                             {
