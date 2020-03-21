@@ -116,7 +116,7 @@
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(212, 19);
             this.materialLabel5.TabIndex = 5;
-            this.materialLabel5.Text = "https://www.hmz-software.me";
+            this.materialLabel5.Text = "https://www.hmz-software.cf";
             this.materialLabel5.Click += new System.EventHandler(this.MaterialLabel5_Click);
             // 
             // materialLabel6
