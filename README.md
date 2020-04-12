@@ -51,4 +51,4 @@ If you notice any errors or have a suggestion, you're free to email me or submit
 
 # Author
 ### Hamzi Alsheikh
-### Website: [HMZ-Software](https://www.hmz-software.cf)
+### Website: [HMZ-Software](https://www.hmz-software.tk)
