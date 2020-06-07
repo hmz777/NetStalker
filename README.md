@@ -45,7 +45,7 @@ A network tool to control the bandwidth over your local network, it can block in
 ### Expanded Packet Viewer:
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
 
-#Todo
+# Todo
 In the next month, i will be doing a complete rewrite of this project with a cleaner codebase and updated dependencies (Possibly with .Net Core)
 
 # Additional Information
