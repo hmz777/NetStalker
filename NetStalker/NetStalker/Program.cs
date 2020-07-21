@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using NetStalker.MainLogic;
+using NetStalker.ToastNotifications;
+using System;
 using System.Windows.Forms;
 
 namespace NetStalker
@@ -11,12 +11,15 @@ namespace NetStalker
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            DesktopNotificationManagerCompat.RegisterAumidAndComServer<MyNotification>(AppConfiguration.APP_ID);
+            DesktopNotificationManagerCompat.RegisterActivator<MyNotification>();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new Main(args));
         }
     }
 }

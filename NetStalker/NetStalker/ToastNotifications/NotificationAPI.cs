@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-using DesktopNotifications;
-using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
-using CSArp;
-
 
 namespace NetStalker.ToastNotifications
 {
@@ -22,6 +18,7 @@ namespace NetStalker.ToastNotifications
         {
             this.Device = device;
         }
+
         public void CreateNotification()
         {
             // Construct the visuals of the toast (using Notifications library)
@@ -118,7 +115,6 @@ namespace NetStalker.ToastNotifications
             DesktopNotificationManagerCompat.CreateToastNotifier().Show(messageNotification);
         }
 
-
         public void CreateAndShowPrompt(string message)
         {
             ToastContent toastContent = new ToastContent()
@@ -190,22 +186,17 @@ namespace NetStalker.ToastNotifications
                         {
                             if (Device.IsGateway || Device.IsLocalDevice)
                             {
-                                throw new Controller.GatewayTargeted();
+                                throw new CustomExceptions.GatewayTargeted();
                             }
 
                             if (main.InvokeRequired)
                             {
                                 main.BeginInvoke(new Action(() =>
                                 {
-                                    if (!Device.BlockerActive && !Device.RedirectorActive)
+                                    if (!Device.Blocked && !Device.Redirected)
                                     {
-                                        Device.GatewayMAC = main.GetGatewayMAC();
-                                        Device.GatewayIP = main.GetGatewayIP();
-                                        Device.LocalIP = main.GetLocalIP();
                                         Device.Blocked = true;
-                                        Device.BlockerActive = true;
                                         Device.DeviceStatus = "Offline";
-                                        Device.BlockOrRedirect();
                                         main.fastObjectListView1.UpdateObject(Device);
                                         main.pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
                                     }
@@ -214,7 +205,7 @@ namespace NetStalker.ToastNotifications
 
                             }
                         }
-                        catch (Exception)
+                        catch
                         {
                             //Show a message that this is the gateway/local device
                             if (Device.IsGateway)
@@ -278,9 +269,6 @@ namespace NetStalker.ToastNotifications
             // Clear all toasts
             DesktopNotificationManagerCompat.History.Clear();
         }
-
     }
-
-
 }
 

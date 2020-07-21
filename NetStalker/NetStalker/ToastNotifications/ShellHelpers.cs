@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+using MS.WindowsAPICodePack.Internal;
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
-using MS.WindowsAPICodePack.Internal;
 
 namespace ShellHelpers
 {
