@@ -105,7 +105,6 @@ namespace NetStalker
 
         #region Timers Handlers
 
-        //Edited
         //Timeout handler: it removes devices once they exceed the timeoout period
         private void AliveTimerOnTick(object sender, EventArgs e)
         {
@@ -116,9 +115,10 @@ namespace NetStalker
                 {
                     foreach (var Device in Devices)
                     {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 600000000L) //2 minutes
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 600000000L) //1 minute
                         {
                             Devices.Remove(Device);
+                            Scanner.ClientList.Remove(Device.IP);
 
                             Device.Blocked = false;
                             Device.Redirected = false;
@@ -131,9 +131,10 @@ namespace NetStalker
                 {
                     foreach (var Device in Devices)
                     {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 9000000000L) //15 minutes
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 3000000000L) //5 minutes
                         {
                             Devices.Remove(Device);
+                            Scanner.ClientList.Remove(Device.IP);
 
                             Device.Blocked = false;
                             Device.Redirected = false;
@@ -146,9 +147,10 @@ namespace NetStalker
                 {
                     foreach (var Device in Devices)
                     {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 720000000000L) //1200 minutes, extremely large networks this option could theoretically work, but not worth it.
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 6000000000L) //10 minutes, extremely large networks this option could theoretically work, but not worth it.
                         {
                             Devices.Remove(Device);
+                            Scanner.ClientList.Remove(Device.IP);
 
                             Device.Blocked = false;
                             Device.Redirected = false;
@@ -163,7 +165,6 @@ namespace NetStalker
             }
         }
 
-        //Edited
         //Speed update handler: it updates the speed of targeted devices in the UI
         private void ValuesTimerOnTick(object sender, EventArgs e)
         {
