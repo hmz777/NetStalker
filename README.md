@@ -26,7 +26,7 @@ The latest stable version:
 - NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/v1.6/NS.exe)
 
 # Note
-The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the release section. 
+The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the releases section. 
 
 # Pictures:
 
