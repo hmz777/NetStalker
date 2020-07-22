@@ -24,12 +24,12 @@ namespace NetStalker
         public static bool operationinprogress;
         public string resizestate;
         public TextOverlay textOverlay;
-        private bool resizeDone;
+        public bool resizeDone;
         public Loading loading;
-        private bool SnifferStarted;
-        private readonly Timer ValuesTimer;
-        private readonly Timer AliveTimer;
-        private int timerCount;
+        public bool SnifferStarted;
+        public readonly Timer ValuesTimer;
+        public readonly Timer AliveTimer;
+        public int timerCount;
         public bool PromptCalled;
         public static List<Device> Devices = new List<Device>();
         public static IPAddress LocalIp;
@@ -116,15 +116,13 @@ namespace NetStalker
                 {
                     foreach (var Device in Devices)
                     {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 1200000000L) //2 minutes
+                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 600000000L) //2 minutes
                         {
                             Devices.Remove(Device);
-                            fastObjectListView1.BeginInvoke(new Action(() =>
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                fastObjectListView1.RemoveObject(Device);
-                            }));
+
+                            Device.Blocked = false;
+                            Device.Redirected = false;
+                            fastObjectListView1.RemoveObject(Device);
                         }
                     }
                 }
@@ -136,12 +134,10 @@ namespace NetStalker
                         if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 9000000000L) //15 minutes
                         {
                             Devices.Remove(Device);
-                            fastObjectListView1.BeginInvoke(new Action(() =>
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                fastObjectListView1.RemoveObject(Device);
-                            }));
+
+                            Device.Blocked = false;
+                            Device.Redirected = false;
+                            fastObjectListView1.RemoveObject(Device);
                         }
                     }
                 }
@@ -153,12 +149,10 @@ namespace NetStalker
                         if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 720000000000L) //1200 minutes, extremely large networks this option could theoretically work, but not worth it.
                         {
                             Devices.Remove(Device);
-                            fastObjectListView1.BeginInvoke(new Action(() =>
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                fastObjectListView1.RemoveObject(Device);
-                            }));
+
+                            Device.Blocked = false;
+                            Device.Redirected = false;
+                            fastObjectListView1.RemoveObject(Device);
                         }
                     }
                 }
@@ -331,6 +325,15 @@ namespace NetStalker
 
             if (nic == null)
             {
+                if (AliveTimer.Enabled && ValuesTimer.Enabled)
+                {
+                    AliveTimer.Enabled = false;
+                    AliveTimer.Dispose();
+
+                    ValuesTimer.Enabled = false;
+                    ValuesTimer.Dispose();
+                }
+
                 if (MetroMessageBox.Show(this, "Quit the application ?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 {
                     e.Cancel = true;
@@ -378,7 +381,6 @@ namespace NetStalker
                             }
 
                             fastObjectListView1.ClearObjects();
-                            AliveTimer.Start();
 
                             Task.Run(() => { Controller.RefreshClients(this); });
                         }
@@ -397,7 +399,7 @@ namespace NetStalker
                         StatusLabel.Text = "Please wait...";
                         pictureBox1.Image = Properties.Resources.icons8_attention_96px;
 
-                        AliveTimer.Start();
+                        AliveTimer.Enabled = true;
 
                         Task.Run(() =>
                         {
@@ -588,7 +590,6 @@ namespace NetStalker
             }
         }
 
-        //Edited
         private void FastObjectListView1_SubItemChecking(object sender, SubItemCheckingEventArgs e)
         {
             try
@@ -660,7 +661,7 @@ namespace NetStalker
                     //Start value counter if it's not already started
                     if (!ValuesTimer.Enabled)
                     {
-                        ValuesTimer.Start();
+                        ValuesTimer.Enabled = true;
                     }
                 }
                 else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 6 && device.Blocked)
@@ -701,10 +702,11 @@ namespace NetStalker
                     fastObjectListView1.UpdateObject(device);
                     pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
 
-                    //Checks if there are any devices left with the Blocker switch
-                    if (!Devices.Any(D => D.Blocked == true))
+                    //Checks if there are any devices left with the Redirected switch
+                    if (!Devices.Any(D => D.Redirected == true))
                     {
                         Blocker_Redirector.BRMainSwitch = false;
+                        ValuesTimer.Enabled = false;
                         ValuesTimer.Stop();
                     }
                 }

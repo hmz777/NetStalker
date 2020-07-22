@@ -49,11 +49,14 @@ namespace NetStalker
                         device.Limited = false;
                     }
 
-                    //Wait for the BR task to finish
-                    Blocker_Redirector.BRTask.Wait();
+                    if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == System.Threading.Tasks.TaskStatus.Running)
+                    {
+                        //Wait for the BR task to finish
+                        Blocker_Redirector.BRTask.Wait();
 
-                    //Dispose of the BR task
-                    Blocker_Redirector.BRTask.Dispose();
+                        //Dispose of the BR task
+                        Blocker_Redirector.BRTask.Dispose();
+                    }
 
                     //Close the capture device
                     Scanner.CloseAllCaptures(view);

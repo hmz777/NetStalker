@@ -19,7 +19,6 @@ namespace NetStalker
         private string FriendlyName;
         private static List<NetworkInterface> Nics = new List<NetworkInterface>();
         private MaterialSkinManager materialSkinManager;
-        private Main m;
 
         public NicSelection()
         {
@@ -87,7 +86,7 @@ namespace NetStalker
 
         private void NicSelection_Load(object sender, EventArgs e)
         {
-            m = Application.OpenForms["Main"] as Main;
+            Main m = Application.OpenForms["Main"] as Main;
 
             #region Some tedious visual garbage
 
@@ -250,25 +249,30 @@ namespace NetStalker
                 .ToString().Insert(2, "-").Insert(5, "-").Insert(8, "-").Insert(11, "-").Insert(14, "-") ?? "";
 
             //Show gateway IP
-            foreach (var gateway in SelectedInterface.GetIPProperties().GatewayAddresses)
+            GatewayIPAddressInformationCollection addresses = null;
+
+            if ((addresses = SelectedInterface.GetIPProperties().GatewayAddresses).Count == 0)
             {
-                if (gateway.Address.AddressFamily == AddressFamily.InterNetwork)
+                materialLabel7.Text = "";
+                materialFlatButton1.Enabled = false;
+            }
+            else
+            {
+                foreach (var gateway in addresses)
                 {
-                    materialLabel7.Text = gateway?.Address?.ToString() ?? "";
-                    materialFlatButton1.Enabled = true;
-                    break;
+                    if (gateway.Address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        materialLabel7.Text = gateway?.Address?.ToString() ?? "";
+                        materialFlatButton1.Enabled = true;
+                        break;
+                    }
                 }
             }
 
             //Show connected wireless network (if there is one)
             if (SelectedInterface.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
             {
-                string net = GetConnectedNetworks(SelectedInterface);
-
-                if (!string.IsNullOrEmpty(net))
-                {
-                    materialLabel12.Text = net;
-                }
+                materialLabel12.Text = GetConnectedNetworks(SelectedInterface) ?? "";
             }
             else
             {
