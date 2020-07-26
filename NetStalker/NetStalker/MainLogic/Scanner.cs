@@ -50,7 +50,6 @@ namespace NetStalker
                     capturedevice.Close(); //close previous instances
                     BackgroundScanDisabled = true;
                     GatewayCalled = false;
-                    capturedevice.OnPacketArrival += null;
                     Main.CheckboxActive = false;
                     StopTheLoadingBar(view);
 
@@ -61,6 +60,7 @@ namespace NetStalker
             }
 
             ClientList = new Dictionary<IPAddress, PhysicalAddress>();
+            Main.Devices.Clear();
 
             #endregion
 
@@ -77,7 +77,8 @@ namespace NetStalker
             IPAddress myipaddress = AppConfiguration.LocalIp;
 
             //Probe for active devices on the network
-            StartDescoveryTimer();
+            if (DiscoveryTimer == null)
+                StartDescoveryTimer();
 
             #region Retrieving ARP packets floating around and find out the sender's IP and MAC
 

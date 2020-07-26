@@ -678,11 +678,13 @@ namespace NetStalker
                     device.Blocked = false;
                     device.DeviceStatus = "Online";
                     fastObjectListView1.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
 
                     //Checks if there are any devices left with active targeting
                     if (!Devices.Any(D => D.Blocked == true))
+                    {
+                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
                         Blocker_Redirector.BRMainSwitch = false;
+                    }
                 }
                 else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 5 && device.Redirected)
                 {
@@ -701,11 +703,11 @@ namespace NetStalker
                     device.DownloadSpeed = "";
                     device.UploadSpeed = "";
                     fastObjectListView1.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
 
                     //Checks if there are any devices left with the Redirected switch
                     if (!Devices.Any(D => D.Redirected == true))
                     {
+                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
                         Blocker_Redirector.BRMainSwitch = false;
                         ValuesTimer.Enabled = false;
                         ValuesTimer.Stop();

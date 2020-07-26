@@ -21,13 +21,9 @@ namespace NetStalker
                     }
                     catch
                     {
-
                     }
-
                 }
-
             }
-
         }
 
         /// <summary>

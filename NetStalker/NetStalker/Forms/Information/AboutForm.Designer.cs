@@ -114,9 +114,9 @@
             this.materialLabel5.Location = new System.Drawing.Point(112, 141);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(212, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(204, 19);
             this.materialLabel5.TabIndex = 5;
-            this.materialLabel5.Text = "https://www.hmz-software.cf";
+            this.materialLabel5.Text = "https://www.hmz-software.tk";
             this.materialLabel5.Click += new System.EventHandler(this.MaterialLabel5_Click);
             // 
             // materialLabel6
@@ -171,7 +171,7 @@
             this.groupBox1.Controls.Add(this.linkLabel2);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(12, 209);
             this.groupBox1.Name = "groupBox1";
@@ -185,7 +185,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 104);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 14);
+            this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 20;
             this.label4.Text = "ObjectListView:";
             // 
@@ -194,7 +194,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 14);
+            this.label3.Size = new System.Drawing.Size(126, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "SharpPcap - Packet.Net:";
             // 
@@ -203,7 +203,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 14);
+            this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 18;
             this.label2.Text = "MetroFramework:";
             // 
@@ -212,7 +212,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 14);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 17;
             this.label1.Text = "MaterialSkin:";
             // 
@@ -222,7 +222,7 @@
             this.linkLabel4.LinkColor = System.Drawing.Color.MediumTurquoise;
             this.linkLabel4.Location = new System.Drawing.Point(98, 104);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(191, 14);
+            this.linkLabel4.Size = new System.Drawing.Size(178, 13);
             this.linkLabel4.TabIndex = 16;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "http://objectlistview.sourceforge.net";
@@ -235,7 +235,7 @@
             this.linkLabel3.LinkColor = System.Drawing.Color.MediumTurquoise;
             this.linkLabel3.Location = new System.Drawing.Point(141, 79);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(157, 14);
+            this.linkLabel3.Size = new System.Drawing.Size(147, 13);
             this.linkLabel3.TabIndex = 14;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "https://github.com/chmorgan";
@@ -248,7 +248,7 @@
             this.linkLabel2.LinkColor = System.Drawing.Color.MediumTurquoise;
             this.linkLabel2.Location = new System.Drawing.Point(108, 54);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(174, 14);
+            this.linkLabel2.Size = new System.Drawing.Size(163, 13);
             this.linkLabel2.TabIndex = 12;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "https://github.com/dennismagno";
@@ -261,7 +261,7 @@
             this.linkLabel1.LinkColor = System.Drawing.Color.MediumTurquoise;
             this.linkLabel1.Location = new System.Drawing.Point(86, 29);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(168, 14);
+            this.linkLabel1.Size = new System.Drawing.Size(159, 13);
             this.linkLabel1.TabIndex = 10;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/IgnaceMaes";

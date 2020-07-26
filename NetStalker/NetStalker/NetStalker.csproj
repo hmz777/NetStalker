@@ -165,6 +165,9 @@
     <Compile Include="Forms\Main\SnifferOptions.Designer.cs">
       <DependentUpon>SnifferOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notifications Testing\DesktopNotificationManagerCompat.cs" />
+    <Compile Include="Notifications Testing\MyNotification.cs" />
+    <Compile Include="Notifications Testing\NotificationAPI.cs" />
     <Compile Include="ToastNotifications\MyNotification.cs" />
     <Compile Include="ToastNotifications\NotificationAPI.cs" />
     <Compile Include="ToastNotifications\ShellHelpers.cs" />

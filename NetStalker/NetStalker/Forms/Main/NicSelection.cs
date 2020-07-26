@@ -288,7 +288,10 @@ namespace NetStalker
                 materialLabel7.Text;
             Properties.Settings.Default.localip =
                 materialLabel4.Text;
-            Properties.Settings.Default.gatewaymac = SelectedInterface.GetPhysicalAddress().ToString();
+            Properties.Settings.Default.localmac =
+              SelectedInterface.GetPhysicalAddress().ToString();
+
+            Properties.Settings.Default.Save();
 
             Close();
         }

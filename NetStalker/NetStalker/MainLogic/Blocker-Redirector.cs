@@ -26,11 +26,17 @@ namespace NetStalker.MainLogic
             if (!BRMainSwitch)
                 throw new InvalidOperationException("\"BRMainSwitch\" must be set to \"True\" in order to activate the BR");
 
-            if (MainDevice == null)
-                MainDevice = (from devicex in CaptureDeviceList.Instance where ((NpcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0];
+            if (string.IsNullOrEmpty(Properties.Settings.Default.gatewaymac))
+            {
+                Properties.Settings.Default.gatewaymac = Main.Devices.Where(d => d.IP.Equals(AppConfiguration.GatewayIp)).Select(d => d.MAC).FirstOrDefault().ToString();
+                Properties.Settings.Default.Save();
+            }
 
+            if (MainDevice == null)
+                MainDevice = CaptureDeviceList.New()[(from devicex in CaptureDeviceList.Instance where ((NpcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0].Name];
+
+            MainDevice.Open(DeviceMode.Promiscuous, 1000);
             MainDevice.Filter = "ip";
-            MainDevice.Open();
 
             BRTask = Task.Run(() =>
              {
@@ -86,9 +92,12 @@ namespace NetStalker.MainLogic
         {
             foreach (Device item in Main.Devices)
             {
-                ConstructAndSendArp(item, BROperation.Spoof);
-                if (AppConfiguration.SpoofProtection)
-                    ConstructAndSendArp(item, BROperation.Protection);
+                if (item.Blocked)
+                {
+                    ConstructAndSendArp(item, BROperation.Spoof);
+                    if (AppConfiguration.SpoofProtection)
+                        ConstructAndSendArp(item, BROperation.Protection);
+                }
             }
         }
 
