@@ -35,6 +35,8 @@ namespace NetStalker
             //Update device limits in UI
             device.DownloadCap = (int)numericUpDown2.Value * 1024;
             device.UploadCap = (int)numericUpDown1.Value * 1024;
+
+            device.Limited = true;
             this.Close();
         }
 

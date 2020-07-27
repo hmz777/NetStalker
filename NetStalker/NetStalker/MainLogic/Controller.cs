@@ -15,13 +15,7 @@ namespace NetStalker
             {
                 if (view.StatusLabel.Text.IndexOf("Scanning") == -1) //if a scan isn't active already
                 {
-                    try
-                    {
-                        Scanner.StartScan(view, NetStalker.Properties.Settings.Default.friendlyname);
-                    }
-                    catch
-                    {
-                    }
+                    Scanner.StartScan(view, NetStalker.Properties.Settings.Default.friendlyname);
                 }
             }
         }
@@ -33,37 +27,31 @@ namespace NetStalker
         {
             Application.ApplicationExit += (object sender, EventArgs e) =>
             {
-                try
+
+                //Turn off the BR
+                Blocker_Redirector.BRMainSwitch = false;
+
+                foreach (var device in Main.Devices)
                 {
-                    //Turn off the BR
-                    Blocker_Redirector.BRMainSwitch = false;
-
-                    foreach (var device in Main.Devices)
-                    {
-                        device.Redirected = false;
-                        device.Blocked = false;
-                        device.Limited = false;
-                    }
-
-                    if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == System.Threading.Tasks.TaskStatus.Running)
-                    {
-                        //Wait for the BR task to finish
-                        Blocker_Redirector.BRTask.Wait();
-
-                        //Dispose of the BR task
-                        Blocker_Redirector.BRTask.Dispose();
-                    }
-
-                    //Close the capture device
-                    Scanner.CloseAllCaptures(view);
-
-                    //Clean all notifications
-                    //NotificationAPI.ClearNotifications();
+                    device.Redirected = false;
+                    device.Blocked = false;
+                    device.Limited = false;
                 }
-                catch
+
+                if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == System.Threading.Tasks.TaskStatus.Running)
                 {
+                    //Wait for the BR task to finish
+                    Blocker_Redirector.BRTask.Wait();
 
+                    //Dispose of the BR task
+                    Blocker_Redirector.BRTask.Dispose();
                 }
+
+                //Terminate the scanner
+                Scanner.CloseAllCaptures(view);
+
+                //Clean all notifications
+                //NotificationAPI.ClearNotifications();
             };
         }
     }

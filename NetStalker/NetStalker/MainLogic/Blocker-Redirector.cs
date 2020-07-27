@@ -53,7 +53,7 @@ namespace NetStalker.MainLogic
 
                          Device device;
 
-                         if ((device = Main.Devices.FirstOrDefault(D => D.MAC == packet.SourceHardwareAddress)) != null && device.Redirected)
+                         if ((device = Main.Devices.FirstOrDefault(D => D.MAC.Equals(packet.SourceHardwareAddress))) != null && device.Redirected)
                          {
                              if (device.UploadCap == 0 || device.UploadCap > device.PacketsSentSinceLastReset)
                              {
@@ -67,7 +67,7 @@ namespace NetStalker.MainLogic
                          {
                              IPv4Packet IPV4 = packet.Extract<IPv4Packet>();
 
-                             if ((device = Main.Devices.FirstOrDefault(D => D.IP == IPV4.DestinationAddress)) != null && device.Redirected)
+                             if ((device = Main.Devices.FirstOrDefault(D => D.IP.Equals(IPV4.DestinationAddress))) != null && device.Redirected)
                              {
                                  if (device.DownloadCap == 0 || device.DownloadCap > device.PacketsReceivedSinceLastReset)
                                  {
@@ -128,8 +128,8 @@ namespace NetStalker.MainLogic
             }
             else
             {
-                ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, Main.LocalIp, device.MAC, device.IP);
-                ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, Main.LocalIp, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp)
+                ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, AppConfiguration.LocalIp, device.MAC, device.IP);
+                ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, AppConfiguration.LocalIp, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp)
                 {
                     PayloadPacket = ArpPacketForVicProtection
                 };

@@ -6,6 +6,7 @@ using MetroFramework.Controls;
 using NetStalker.MainLogic;
 using NetStalker.ToastNotifications;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace NetStalker
     {
         #region Main Vars
 
-        public static bool operationinprogress;
+        public static bool OperationIsInProgress;
         public string resizestate;
         public TextOverlay textOverlay;
         public bool resizeDone;
@@ -31,10 +32,7 @@ namespace NetStalker
         public readonly Timer AliveTimer;
         public int timerCount;
         public bool PromptCalled;
-        public static List<Device> Devices = new List<Device>();
-        public static IPAddress LocalIp;
-        public static PhysicalAddress LocalMac;
-        public static bool CheckboxActive;
+        public static ConcurrentBag<Device> Devices = new ConcurrentBag<Device>();
 
         #endregion
 
@@ -108,60 +106,53 @@ namespace NetStalker
         //Timeout handler: it removes devices once they exceed the timeoout period
         private void AliveTimerOnTick(object sender, EventArgs e)
         {
-            try
+            //255.255.255.0
+            if (Properties.Settings.Default.NetSize == 1)
             {
-                //255.255.255.0
-                if (Properties.Settings.Default.NetSize == 1)
+                foreach (var Device in Devices)
                 {
-                    foreach (var Device in Devices)
+                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 600000000L) //1 minute
                     {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 600000000L) //1 minute
-                        {
-                            Devices.Remove(Device);
-                            Scanner.ClientList.Remove(Device.IP);
+                        Devices.TryTake(out _);
+                        Scanner.ClientList.Remove(Device.IP);
 
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            fastObjectListView1.RemoveObject(Device);
-                        }
-                    }
-                }
-                //255.255.0.0
-                else if (Properties.Settings.Default.NetSize == 2)
-                {
-                    foreach (var Device in Devices)
-                    {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 3000000000L) //5 minutes
-                        {
-                            Devices.Remove(Device);
-                            Scanner.ClientList.Remove(Device.IP);
-
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            fastObjectListView1.RemoveObject(Device);
-                        }
-                    }
-                }
-                //255.0.0.0
-                else if (Properties.Settings.Default.NetSize == 3)
-                {
-                    foreach (var Device in Devices)
-                    {
-                        if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 6000000000L) //10 minutes, extremely large networks this option could theoretically work, but not worth it.
-                        {
-                            Devices.Remove(Device);
-                            Scanner.ClientList.Remove(Device.IP);
-
-                            Device.Blocked = false;
-                            Device.Redirected = false;
-                            fastObjectListView1.RemoveObject(Device);
-                        }
+                        Device.Blocked = false;
+                        Device.Redirected = false;
+                        fastObjectListView1.RemoveObject(Device);
                     }
                 }
             }
-            catch
+            //255.255.0.0
+            else if (Properties.Settings.Default.NetSize == 2)
             {
+                foreach (var Device in Devices)
+                {
+                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 3000000000L) //5 minutes
+                    {
+                        Devices.TryTake(out _);
+                        Scanner.ClientList.Remove(Device.IP);
 
+                        Device.Blocked = false;
+                        Device.Redirected = false;
+                        fastObjectListView1.RemoveObject(Device);
+                    }
+                }
+            }
+            //255.0.0.0
+            else if (Properties.Settings.Default.NetSize == 3)
+            {
+                foreach (var Device in Devices)
+                {
+                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 6000000000L) //10 minutes, extremely large networks this option could theoretically work, but not worth it.
+                    {
+                        Devices.TryTake(out _);
+                        Scanner.ClientList.Remove(Device.IP);
+
+                        Device.Blocked = false;
+                        Device.Redirected = false;
+                        fastObjectListView1.RemoveObject(Device);
+                    }
+                }
             }
         }
 
@@ -346,51 +337,22 @@ namespace NetStalker
 
         #region Button Event Handlers
 
+        /// <summary>
+        /// The click event handler for the "New Scan" button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            try
+            if (!OperationIsInProgress)
             {
-                if (!operationinprogress)
+                if (fastObjectListView1.GetItemCount() > 0)
                 {
-                    if (fastObjectListView1.GetItemCount() > 0)
-                    {
-                        if (MetroMessageBox.Show(this, "The list will be cleared and a new scan will be initiated are you sure?\nNote: The Scan button is recommended when the list is empty, NetStalker always performs background scans for new devices after the initial scan.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                        {
-                            metroTile1.Enabled = false;
-                            metroTile2.Enabled = false;
-                            operationinprogress = true;
-                            olvColumn7.MaximumWidth = 100;
-                            olvColumn7.MinimumWidth = 100;
-                            olvColumn7.Width = 100;
-                            resizeDone = false;
-                            materialLabel3.Text = "Working";
-                            fastObjectListView1.EmptyListMsg = "Scanning...";
-                            StatusLabel.Text = "Please wait...";
-                            pictureBox1.Image = Properties.Resources.icons8_attention_96px;
-
-                            foreach (var Device in Devices)
-                            {
-                                if (Device.Redirected || Device.Blocked)
-                                {
-                                    Device.Blocked = false;
-                                    Device.Redirected = false;
-                                    Device.DownloadCap = 0;
-                                    Device.UploadCap = 0;
-                                    Device.DownloadSpeed = "";
-                                    Device.UploadSpeed = "";
-                                }
-                            }
-
-                            fastObjectListView1.ClearObjects();
-
-                            Task.Run(() => { Controller.RefreshClients(this); });
-                        }
-                    }
-                    else
+                    if (MetroMessageBox.Show(this, "The list will be cleared and a new scan will be initiated are you sure?\nNote: The Scan button is recommended when the list is empty, NetStalker always performs background scans for new devices after the initial scan.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         metroTile1.Enabled = false;
                         metroTile2.Enabled = false;
-                        operationinprogress = true;
+                        OperationIsInProgress = true;
                         olvColumn7.MaximumWidth = 100;
                         olvColumn7.MinimumWidth = 100;
                         olvColumn7.Width = 100;
@@ -400,46 +362,118 @@ namespace NetStalker
                         StatusLabel.Text = "Please wait...";
                         pictureBox1.Image = Properties.Resources.icons8_attention_96px;
 
-                        AliveTimer.Enabled = true;
-
-                        Task.Run(() =>
+                        foreach (var Device in Devices)
                         {
-                            Controller.RefreshClients(this);
-                            operationinprogress = false;
-                        });
+                            if (Device.Redirected || Device.Blocked)
+                            {
+                                Device.Blocked = false;
+                                Device.Redirected = false;
+                                Device.DownloadCap = 0;
+                                Device.UploadCap = 0;
+                                Device.DownloadSpeed = "";
+                                Device.UploadSpeed = "";
+                            }
+                        }
+
+                        fastObjectListView1.ClearObjects();
+
+                        Task.Run(() => { Controller.RefreshClients(this); });
                     }
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "A scan is still in progress please wait until its finished", "Info",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    metroTile1.Enabled = false;
+                    metroTile2.Enabled = false;
+                    OperationIsInProgress = true;
+                    olvColumn7.MaximumWidth = 100;
+                    olvColumn7.MinimumWidth = 100;
+                    olvColumn7.Width = 100;
+                    resizeDone = false;
+                    materialLabel3.Text = "Working";
+                    fastObjectListView1.EmptyListMsg = "Scanning...";
+                    StatusLabel.Text = "Please wait...";
+                    pictureBox1.Image = Properties.Resources.icons8_attention_96px;
+
+                    AliveTimer.Enabled = true;
+
+                    Task.Run(() =>
+                    {
+                        Controller.RefreshClients(this);
+                    });
                 }
             }
-            catch (Exception)
+            else
             {
-
+                MetroMessageBox.Show(this, "A scan is still in progress please wait until its finished", "Info",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
+        /// <summary>
+        /// The click event handler for the "Help" button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MaterialFlatButton2_Click(object sender, EventArgs e)
         {
             MetroMessageBox.Show(this, "Some guidelines on how to use this software properly:\n\n1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.\n2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the speed limiter (on the bottom right) and set the desired speed for each device (0 means no limitation).\n3- Blocking and redirection can not be activated at the sametime, you either block a device or limit its speed.\n4- It's recommended for most stability to wait until the scanner is done before performing any action.\n5- NetStalker can be protected with a password, and can be set or removed via Options.\n6- NetStalker is available in dark and light modes.\n7- NetStalker has an option for spoof protection, if activated it can prevent your pc from being redirected or blocked by the same tool or any other spoofing software.\n8- Background scanning is always active so you don't have to consistently press scan to discover newly connected devices.", "Help", MessageBoxButtons.OK,
                 MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 375);
         }
 
+
+        /// <summary>
+        /// The click event handler for the "About button"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MaterialFlatButton3_Click_1(object sender, EventArgs e)
         {
             AboutForm af = new AboutForm();
             af.ShowDialog();
         }
 
+        /// <summary>
+        /// The click event handler for the "Options" button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialFlatButton4_Click(object sender, EventArgs e)
         {
             Options options = new Options();
             options.ShowDialog();
         }
 
+
+        /// <summary>
+        /// The click event handler for the "Refresh" button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void materialFlatButton5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Scanner.ScannerTask == null || OperationIsInProgress)
+                    throw new Exception("In order to do a refresh, the scanner must be active and no other operations are in progress.");
+
+                materialFlatButton5.Enabled = false;
+
+                await Scanner.ProbeDevices();
+
+                materialFlatButton5.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+
+        /// <summary>
+        /// The click event handler for the "Sniffer" button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroTile1_Click(object sender, EventArgs e)
         {
             try
@@ -495,6 +529,11 @@ namespace NetStalker
 
         }
 
+        /// <summary>
+        /// The click event handler for the "Limiter" button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroTile2_Click(object sender, EventArgs e)
         {
             try
@@ -509,9 +548,8 @@ namespace NetStalker
 
                 //Check if the selected device is a gateway or own device
                 if (device.IsGateway || device.IsLocalDevice)
-                {
                     throw new CustomExceptions.LocalHostTargeted();
-                }
+
 
                 //Check if device is redirected before applying a speed limit
                 if (!device.Redirected)
@@ -595,15 +633,9 @@ namespace NetStalker
         {
             try
             {
-                //Don't allow blocking / redirection while the sniffer is active.
-                if (SnifferStarted)
+                //Don't allow blocking / redirection while the sniffer is active or any other operation.
+                if (SnifferStarted || OperationIsInProgress)
                     throw new CustomExceptions.OperationInProgressException();
-
-                if (!CheckboxActive)
-                {
-                    e.Canceled = true;
-                    return;
-                }
 
                 //Get the device in the selected row
                 fastObjectListView1.SelectObject(e.RowObject);
@@ -665,7 +697,7 @@ namespace NetStalker
                         ValuesTimer.Enabled = true;
                     }
                 }
-                else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 6 && device.Blocked)
+                else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 6 && device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.MAC == device.MAC);
@@ -774,7 +806,7 @@ namespace NetStalker
             Application.Exit();
         }
 
-        #endregion  
+        #endregion
 
         #endregion
     }
