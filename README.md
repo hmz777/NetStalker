@@ -51,7 +51,7 @@ The latest stable version:
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
 
 # Todo
-In the next month, i will be doing a complete rewrite of this project with a cleaner codebase and updated dependencies (Possibly with .Net Core)
+Currently, I am doing a complete rewrite of this project with a cleaner codebase and updated dependencies.
 
 # Additional Information
 
