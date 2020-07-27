@@ -26,7 +26,8 @@ The latest stable version:
 - NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/v1.6/NS.exe)
 
 # Notes
-- The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
+- The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
+- The app is tested only on a small amount of network cards, so I can't guarantee it will work on yours.
 - The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the releases section. 
 
 # Pictures:
