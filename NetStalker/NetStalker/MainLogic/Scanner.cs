@@ -144,6 +144,17 @@ namespace NetStalker
                                               view.ListView1.UpdateObject(device);
                                           }));
                                       }
+                                      else
+                                      {
+                                          view.MainForm.BeginInvoke(
+                                              new Action(() =>
+                                              {
+                                                  MetroMessageBox.Show(view.MainForm, ex.Message, "Error",
+                                                    MessageBoxButtons.OK,
+                                                    MessageBoxIcon.Error,
+                                                    MessageBoxDefaultButton.Button1);
+                                              }));
+                                      }
                                   }
                               });
                          }
@@ -173,7 +184,7 @@ namespace NetStalker
         }
 
         /// <summary>
-        /// Actively monitor ARP packets for signs of new clients after the scanner is done. This method sould be called from the StartScan method.
+        /// Actively monitor ARP packets for signs of new clients after the scanner is done. This method should be called from the StartScan method.
         /// </summary>
         /// <param name="view">UI controls</param>
         public static void BackgroundScanStart(IView view)
@@ -272,7 +283,7 @@ namespace NetStalker
                 }
             };
 
-            //Start recieving packets
+            //Start receiving packets
             capturedevice.StartCapture();
 
             //Update UI state
