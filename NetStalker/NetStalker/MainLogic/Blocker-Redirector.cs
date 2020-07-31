@@ -1,39 +1,44 @@
 ﻿using PacketDotNet;
 using SharpPcap;
-using SharpPcap.Npcap;
 using System;
 using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 namespace NetStalker.MainLogic
 {
     public class Blocker_Redirector
     {
-        //Main capture device
+        /// <summary>
+        /// Main capture device.
+        /// </summary>
         public static ICaptureDevice MainDevice;
-        //BR Task
+
+        /// <summary>
+        /// Blocker-Redirector task.
+        /// </summary>
         public static Task BRTask;
-        //Main activation switch
+
+        /// <summary>
+        /// Main activation switch.
+        /// </summary>
         public static bool BRMainSwitch = false;
 
         /// <summary>
-        /// This is the main method for blocking and redirection of targeted devices
+        /// This is the main method for blocking and redirection of targeted devices.
         /// </summary>
         public static void BlockAndRedirect()
         {
             if (!BRMainSwitch)
                 throw new InvalidOperationException("\"BRMainSwitch\" must be set to \"True\" in order to activate the BR");
 
-            if (string.IsNullOrEmpty(Properties.Settings.Default.gatewaymac))
+            if (string.IsNullOrEmpty(Properties.Settings.Default.GatewayMac))
             {
-                Properties.Settings.Default.gatewaymac = Main.Devices.Where(d => d.IP.Equals(AppConfiguration.GatewayIp)).Select(d => d.MAC).FirstOrDefault().ToString();
+                Properties.Settings.Default.GatewayMac = Main.Devices.Where(d => d.IP.Equals(AppConfiguration.GatewayIp)).Select(d => d.MAC).FirstOrDefault().ToString();
                 Properties.Settings.Default.Save();
             }
 
             if (MainDevice == null)
-                MainDevice = CaptureDeviceList.New()[(from devicex in CaptureDeviceList.Instance where ((NpcapDevice)devicex).Interface.FriendlyName == NetStalker.Properties.Settings.Default.friendlyname select devicex).ToList()[0].Name];
+                MainDevice = CaptureDeviceList.New()[AppConfiguration.AdapterName];
 
             MainDevice.Open(DeviceMode.Promiscuous, 1000);
             MainDevice.Filter = "ip";

@@ -105,6 +105,7 @@
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainLogic\DeviceList.cs" />
+    <Compile Include="MainLogic\NativeMethods.cs" />
     <Compile Include="MainLogic\Scanner.cs" />
     <Compile Include="MainLogic\IView.cs" />
     <Compile Include="Forms\Information\LicenseAgreement.cs">

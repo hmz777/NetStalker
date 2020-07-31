@@ -3,6 +3,7 @@ using ShellHelpers;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 
@@ -190,6 +191,35 @@ namespace NetStalker.MainLogic
             ShellHelpers.IPersistFile newShortcutSave = (ShellHelpers.IPersistFile)newShortcut;
 
             ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutSave.Save(shortcutPath, true));
+        }
+
+        /// <summary>
+        /// Returns the broadcast address for the current network.
+        /// </summary>
+        /// <remarks>
+        /// This is used to determine the address that is used to broadcast the arp packets across the network.
+        /// </remarks>
+        /// <param name="LocalIp"></param>
+        /// <param name="SubnetMask"></param>
+        public static IPAddress GetBroadcastAddress(IPAddress LocalIp, string SubnetMask)
+        {
+            var BinaryIp = LocalIp.GetAddressBytes().Select(x => Convert.ToString(x, 2).PadLeft(8, '0')).ToArray();
+            var BinaryMask = SubnetMask.Split('.').Select(x => Convert.ToString(Int32.Parse(x), 2).PadLeft(8, '0')).ToArray();
+            var BinaryNetworkAddress = new Int32[4]; //Network address
+            var BinaryBroadcastAddress = new Int32[4]; //Broadcast address
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                BinaryNetworkAddress[i] = (Convert.ToInt32(BinaryIp[i], 2)) & (Convert.ToInt32(BinaryMask[i], 2));
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                BinaryBroadcastAddress[i] = (BinaryNetworkAddress[i]) ^ (~Convert.ToInt32(BinaryMask[i], 2) & 0x000000FF);
+            }
+
+            return IPAddress.Parse(string.Join(".", BinaryBroadcastAddress.Select(x => x.ToString())));
         }
     }
 }

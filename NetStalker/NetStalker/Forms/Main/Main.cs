@@ -21,19 +21,42 @@ namespace NetStalker
     public partial class Main : MaterialForm, IView
     {
         #region Main Vars
-
+        /// <summary>
+        /// Inication that an operation is in progress.
+        /// </summary>
         public static bool OperationIsInProgress;
-        public string resizestate;
-        public TextOverlay textOverlay;
-        public bool resizeDone;
-        public Loading loading;
-        public bool SnifferStarted;
-        public readonly Timer ValuesTimer;
-        public readonly Timer AliveTimer;
-        public int timerCount;
+        /// <summary>
+        /// The list overlay that represents the status of the list when its empty.
+        /// </summary>
+        public TextOverlay ListOverlay;
+        /// <summary>
+        /// The loading dialog that is shown when performing a long running operation.
+        /// </summary>
+        private Loading LoadingDialog;
+        /// <summary>
+        /// The timer that is responsible for updating the speed values in the UI.
+        /// </summary>
+        private readonly Timer ValuesTimer;
+        /// <summary>
+        /// The timer that is responsible for detecting device timeouts in order to disconnect from it and delete it from the list of targets.
+        /// </summary>
+        private readonly Timer AliveTimer;
+        /// <summary>
+        /// A flag to indicate if a toast notification should be shown to the user regarding showing notifications on device discovery (Can be disabled in <see cref="Options"/>).
+        /// </summary>
         public bool PromptCalled;
+        /// <summary>
+        /// A flag to indicate if a list resize should be done. (This is used when the list is cleared or a scroll bar is shown).
+        /// </summary>
+        private bool ResizeDone;
+        /// <summary>
+        /// A string to indicate which event handler to use on form minimization according to the user preference.
+        /// </summary>
+        public string ResizeState;
+        /// <summary>
+        /// The list of targets of type <see cref="Device"/>
+        /// </summary>
         public static ConcurrentBag<Device> Devices = new ConcurrentBag<Device>();
-
         #endregion
 
         public Main(string[] args = null)
@@ -77,8 +100,8 @@ namespace NetStalker
             this.olvColumn1.GroupKeyToTitleConverter = delegate (object key) { return key.ToString(); }; //Convert the key to a title for the groups
             fastObjectListView1.ShowGroups = true;
 
-            textOverlay = this.fastObjectListView1.EmptyListMsgOverlay as TextOverlay;
-            textOverlay.Font = new Font("Roboto", 25);
+            ListOverlay = this.fastObjectListView1.EmptyListMsgOverlay as TextOverlay;
+            ListOverlay.Font = new Font("Roboto", 25);
 
             #endregion
 
@@ -118,6 +141,7 @@ namespace NetStalker
 
                         Device.Blocked = false;
                         Device.Redirected = false;
+                        Device.Limited = false;
                         fastObjectListView1.RemoveObject(Device);
                     }
                 }
@@ -159,13 +183,12 @@ namespace NetStalker
         //Speed update handler: it updates the speed of targeted devices in the UI
         private void ValuesTimerOnTick(object sender, EventArgs e)
         {
-            timerCount++;
             foreach (Device Device in Devices)
             {
                 if (Device.Redirected)
                 {
-                    string D = ((float)Device.PacketsReceivedSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000) / (float)this.timerCount).ToString();
-                    string U = ((float)Device.PacketsSentSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000) / (float)this.timerCount).ToString();
+                    string D = ((float)Device.PacketsReceivedSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000)).ToString();
+                    string U = ((float)Device.PacketsSentSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000)).ToString();
 
                     //0.0009765625f = 1/1024 Conversion from Bytes to KBytes
 
@@ -187,7 +210,6 @@ namespace NetStalker
                 }
             }
             ResetPacketCount();
-            timerCount = 0;
         }
 
         #endregion
@@ -272,6 +294,7 @@ namespace NetStalker
         {
             NicSelection nicform = new NicSelection();
             nicform.ShowDialog();
+            nicform.Dispose();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -336,7 +359,6 @@ namespace NetStalker
         #endregion
 
         #region Button Event Handlers
-
         /// <summary>
         /// The click event handler for the "New Scan" button.
         /// </summary>
@@ -356,7 +378,7 @@ namespace NetStalker
                         olvColumn7.MaximumWidth = 100;
                         olvColumn7.MinimumWidth = 100;
                         olvColumn7.Width = 100;
-                        resizeDone = false;
+                        ResizeDone = false;
                         materialLabel3.Text = "Working";
                         fastObjectListView1.EmptyListMsg = "Scanning...";
                         StatusLabel.Text = "Please wait...";
@@ -388,7 +410,7 @@ namespace NetStalker
                     olvColumn7.MaximumWidth = 100;
                     olvColumn7.MinimumWidth = 100;
                     olvColumn7.Width = 100;
-                    resizeDone = false;
+                    ResizeDone = false;
                     materialLabel3.Text = "Working";
                     fastObjectListView1.EmptyListMsg = "Scanning...";
                     StatusLabel.Text = "Please wait...";
@@ -404,7 +426,7 @@ namespace NetStalker
             }
             else
             {
-                MetroMessageBox.Show(this, "A scan is still in progress please wait until its finished", "Info",
+                MetroMessageBox.Show(this, "A scan is still in progress, please wait until its finished.", "Info",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -493,20 +515,17 @@ namespace NetStalker
 
                 Task.Run(() =>
                 {
-                    loading = new Loading();
-                    loading.ShowDialog();
+                    LoadingDialog = new Loading();
+                    LoadingDialog.ShowDialog();
                 });
 
-                SnifferStarted = true;
-
                 //For the berkeley packet filter to work, mac addresses should have ':' separating each hex number
-                Sniffer sniff = new Sniffer(selectedDevice.IP.ToString(), Tools.GetMACString(selectedDevice.MAC), Tools.GetMACString(AppConfiguration.GatewayMac), AppConfiguration.GatewayIp.ToString(), loading);
+                Sniffer sniff = new Sniffer(selectedDevice, LoadingDialog);
                 sniff.ShowDialog(this);
 
                 fastObjectListView1.SelectedObjects.Clear();
 
                 sniff.Dispose();
-                SnifferStarted = false;
 
                 fastObjectListView1.UpdateObject(selectedDevice);
 
@@ -606,12 +625,12 @@ namespace NetStalker
 
         private void FastObjectListView1_ItemsAdding(object sender, ItemsAddingEventArgs e)
         {
-            if (fastObjectListView1.Items.Count >= 8 && !resizeDone)
+            if (fastObjectListView1.Items.Count >= 8 && !ResizeDone)
             {
                 olvColumn7.MaximumWidth = 83;
                 olvColumn7.MinimumWidth = 83;
                 olvColumn7.Width = 83;
-                resizeDone = true;
+                ResizeDone = true;
             }
 
             if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressN == "False")
@@ -634,7 +653,7 @@ namespace NetStalker
             try
             {
                 //Don't allow blocking / redirection while the sniffer is active or any other operation.
-                if (SnifferStarted || OperationIsInProgress)
+                if (OperationIsInProgress)
                     throw new CustomExceptions.OperationInProgressException();
 
                 //Get the device in the selected row

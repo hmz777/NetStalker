@@ -2,28 +2,28 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NetStalker.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="friendlyname" Type="System.String" Scope="User">
+    <Setting Name="FriendlyName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Gateway" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="localip" Type="System.String" Scope="User">
+    <Setting Name="LocalIp" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="color" Type="System.String" Scope="User">
+    <Setting Name="Color" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="accent" Type="System.String" Scope="User">
+    <Setting Name="Accent" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="tile" Type="System.String" Scope="User">
+    <Setting Name="Tile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="minimize" Type="System.String" Scope="User">
+    <Setting Name="Minimize" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="gatewaymac" Type="System.String" Scope="User">
+    <Setting Name="GatewayMac" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Protocol" Type="System.String" Scope="User">
@@ -47,7 +47,10 @@
     <Setting Name="SuppressN" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="localmac" Type="System.String" Scope="User">
+    <Setting Name="LocalMac" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BroadcastAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

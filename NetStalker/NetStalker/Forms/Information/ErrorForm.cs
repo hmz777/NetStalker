@@ -28,7 +28,7 @@ namespace NetStalker
 
         private void ErrorForm_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.color == "Dark")
+            if (Properties.Settings.Default.Color == "Dark")
             {
                 label1.ForeColor = Color.FromArgb(204, 204, 204);
             }

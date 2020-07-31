@@ -30,7 +30,7 @@ namespace NetStalker
         {
             get
             {
-                if (IP.ToString() == Properties.Settings.Default.localip)
+                if (IP.ToString() == Properties.Settings.Default.LocalIp)
                 {
                     return true;
                 }

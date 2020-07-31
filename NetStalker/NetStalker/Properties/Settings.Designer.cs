@@ -26,12 +26,12 @@ namespace NetStalker.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string friendlyname {
+        public string FriendlyName {
             get {
-                return ((string)(this["friendlyname"]));
+                return ((string)(this["FriendlyName"]));
             }
             set {
-                this["friendlyname"] = value;
+                this["FriendlyName"] = value;
             }
         }
         
@@ -50,72 +50,72 @@ namespace NetStalker.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string localip {
+        public string LocalIp {
             get {
-                return ((string)(this["localip"]));
+                return ((string)(this["LocalIp"]));
             }
             set {
-                this["localip"] = value;
+                this["LocalIp"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string color {
+        public string Color {
             get {
-                return ((string)(this["color"]));
+                return ((string)(this["Color"]));
             }
             set {
-                this["color"] = value;
+                this["Color"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string accent {
+        public string Accent {
             get {
-                return ((string)(this["accent"]));
+                return ((string)(this["Accent"]));
             }
             set {
-                this["accent"] = value;
+                this["Accent"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string tile {
+        public string Tile {
             get {
-                return ((string)(this["tile"]));
+                return ((string)(this["Tile"]));
             }
             set {
-                this["tile"] = value;
+                this["Tile"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string minimize {
+        public string Minimize {
             get {
-                return ((string)(this["minimize"]));
+                return ((string)(this["Minimize"]));
             }
             set {
-                this["minimize"] = value;
+                this["Minimize"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string gatewaymac {
+        public string GatewayMac {
             get {
-                return ((string)(this["gatewaymac"]));
+                return ((string)(this["GatewayMac"]));
             }
             set {
-                this["gatewaymac"] = value;
+                this["GatewayMac"] = value;
             }
         }
         
@@ -206,12 +206,24 @@ namespace NetStalker.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string localmac {
+        public string LocalMac {
             get {
-                return ((string)(this["localmac"]));
+                return ((string)(this["LocalMac"]));
             }
             set {
-                this["localmac"] = value;
+                this["LocalMac"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BroadcastAddress {
+            get {
+                return ((string)(this["BroadcastAddress"]));
+            }
+            set {
+                this["BroadcastAddress"] = value;
             }
         }
     }

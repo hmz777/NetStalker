@@ -11,11 +11,11 @@ namespace NetStalker
         /// </summary>
         public static void RefreshClients(IView view)
         {
-            if (!string.IsNullOrEmpty(NetStalker.Properties.Settings.Default.friendlyname)) //if a network interface has been selected
+            if (!string.IsNullOrEmpty(NetStalker.Properties.Settings.Default.FriendlyName)) //if a network interface has been selected
             {
                 if (view.StatusLabel.Text.IndexOf("Scanning") == -1) //if a scan isn't active already
                 {
-                    Scanner.StartScan(view, NetStalker.Properties.Settings.Default.friendlyname);
+                    Scanner.StartScan(view, AppConfiguration.FriendlyName);
                 }
             }
         }

@@ -80,105 +80,104 @@ namespace NetStalker
 
             //Main scanning task
             ScannerTask = Task.Run(() =>
-             {
-                 try
-                 {
-                     Stopwatch stopwatch = new Stopwatch();
-                     stopwatch.Start();
-                     while ((rawcapture = capturedevice.GetNextPacket()) != null && stopwatch.ElapsedMilliseconds <= scanduration)
-                     {
-                         Packet packet = Packet.ParsePacket(rawcapture.LinkLayerType, rawcapture.Data);
-                         ArpPacket ArpPacket = packet.Extract<ArpPacket>();
-                         if (!ClientList.ContainsKey(ArpPacket.SenderProtocolAddress) && ArpPacket.SenderProtocolAddress.ToString() != "0.0.0.0" && Tools.AreCompatibleIPs(ArpPacket.SenderProtocolAddress, myipaddress, AppConfiguration.NetworkSize))
-                         {
-                             ClientList.Add(ArpPacket.SenderProtocolAddress, ArpPacket.SenderHardwareAddress);
+            {
+                try
+                {
+                    Stopwatch stopwatch = new Stopwatch();
+                    stopwatch.Start();
+                    while ((rawcapture = capturedevice.GetNextPacket()) != null && stopwatch.ElapsedMilliseconds <= scanduration)
+                    {
+                        Packet packet = Packet.ParsePacket(rawcapture.LinkLayerType, rawcapture.Data);
+                        ArpPacket ArpPacket = packet.Extract<ArpPacket>();
+                        if (!ClientList.ContainsKey(ArpPacket.SenderProtocolAddress) && ArpPacket.SenderProtocolAddress.ToString() != "0.0.0.0" && Tools.AreCompatibleIPs(ArpPacket.SenderProtocolAddress, myipaddress, AppConfiguration.NetworkSize))
+                        {
+                            ClientList.Add(ArpPacket.SenderProtocolAddress, ArpPacket.SenderHardwareAddress);
 
-                             string mac = Tools.GetMACString(ArpPacket.SenderHardwareAddress);
-                             string ip = ArpPacket.SenderProtocolAddress.ToString();
-                             var device = new Device
+                            string mac = Tools.GetMACString(ArpPacket.SenderHardwareAddress);
+                            string ip = ArpPacket.SenderProtocolAddress.ToString();
+                            var device = new Device
+                            {
+                                IP = ArpPacket.SenderProtocolAddress,
+                                MAC = PhysicalAddress.Parse(mac.Replace(":", "")),
+                                DeviceName = "Resolving",
+                                ManName = "Getting information...",
+                                DeviceStatus = "Online"
+                            };
+
+                            //Add device to UI list
+                            view.ListView1.BeginInvoke(new Action(() => { view.ListView1.AddObject(device); }));
+
+                            //Add device to main device list
+                            Main.Devices.Add(device);
+
+                            //Get hostname and mac vendor for the current device
+                            _ = Task.Run(async () =>
                              {
-                                 IP = ArpPacket.SenderProtocolAddress,
-                                 MAC = PhysicalAddress.Parse(mac.Replace(":", "")),
-                                 DeviceName = "Resolving",
-                                 ManName = "Getting information...",
-                                 DeviceStatus = "Online"
-                             };
+                                 try
+                                 {
+                                     #region Get Hostname
 
-                             //Add device to UI list
-                             view.ListView1.BeginInvoke(new Action(() => { view.ListView1.AddObject(device); }));
+                                     IPHostEntry hostEntry = await Dns.GetHostEntryAsync(ip);
+                                     device.DeviceName = hostEntry?.HostName ?? ip;
 
-                             //Add device to main device list
-                             Main.Devices.Add(device);
+                                     #endregion
 
-                             //Get hostname and mac vendor for the current device
-                             _ = Task.Run(async () =>
-                              {
-                                  try
-                                  {
-                                      #region Get Hostname
+                                     #region Get MacVendor
 
-                                      IPHostEntry hostEntry = await Dns.GetHostEntryAsync(ip);
-                                      device.DeviceName = hostEntry?.HostName ?? ip;
+                                     var Name = VendorAPI.GetVendorInfo(mac);
+                                     device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
-                                      #endregion
+                                     #endregion
 
-                                      #region Get MacVendor
+                                     view.ListView1.BeginInvoke(new Action(() => { view.ListView1.UpdateObject(device); }));
+                                 }
+                                 catch (Exception ex)
+                                 {
+                                     if (ex is SocketException)
+                                     {
+                                         var Name = VendorAPI.GetVendorInfo(mac);
+                                         device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
-                                      var Name = VendorAPI.GetVendorInfo(mac);
-                                      device.ManName = (Name is null) ? "" : Name.data.organization_name;
+                                         view.ListView1.BeginInvoke(new Action(() =>
+                                         {
+                                             device.DeviceName = ip;
+                                             view.ListView1.UpdateObject(device);
+                                         }));
+                                     }
+                                     else
+                                     {
+                                         view.MainForm.BeginInvoke(
+                                             new Action(() =>
+                                             {
+                                                 device.DeviceName = ip;
+                                                 device.ManName = "Error";
+                                                 view.ListView1.UpdateObject(device);
+                                             }));
+                                     }
+                                 }
+                             });
+                        }
 
-                                      #endregion
+                        int percentageprogress = (int)((float)stopwatch.ElapsedMilliseconds / scanduration * 100);
 
-                                      view.ListView1.BeginInvoke(new Action(() => { view.ListView1.UpdateObject(device); }));
-                                  }
-                                  catch (Exception ex)
-                                  {
-                                      if (ex is SocketException)
-                                      {
-                                          var Name = VendorAPI.GetVendorInfo(mac);
-                                          device.ManName = (Name is null) ? "" : Name.data.organization_name;
+                        view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning " + percentageprogress + "%"));
+                    }
 
-                                          view.ListView1.BeginInvoke(new Action(() =>
-                                          {
-                                              device.DeviceName = ip;
-                                              view.ListView1.UpdateObject(device);
-                                          }));
-                                      }
-                                      else
-                                      {
-                                          view.MainForm.BeginInvoke(
-                                              new Action(() =>
-                                              {
-                                                  MetroMessageBox.Show(view.MainForm, ex.Message, "Error",
-                                                    MessageBoxButtons.OK,
-                                                    MessageBoxIcon.Error,
-                                                    MessageBoxDefaultButton.Button1);
-                                              }));
-                                      }
-                                  }
-                              });
-                         }
+                    stopwatch.Stop();
+                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = ClientList.Count.ToString() + " device(s) found"));
 
-                         int percentageprogress = (int)((float)stopwatch.ElapsedMilliseconds / scanduration * 100);
+                    //Initial scanning is over now we start the background scan.
+                    Main.OperationIsInProgress = false;
 
-                         view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning " + percentageprogress + "%"));
-                     }
-
-                     stopwatch.Stop();
-                     view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = ClientList.Count.ToString() + " device(s) found"));
-
-                     //Initial scanning is over now we start the background scan.
-                     Main.OperationIsInProgress = false;
-
-                     //Start passive monitoring
-                     BackgroundScanStart(view);
-                 }
-                 catch
-                 {
-                     //Show an error in the UI in case something went wrong
-                     view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Error occurred"));
-                 }
-             });
+                    //Start passive monitoring
+                    BackgroundScanStart(view);
+                }
+                catch
+                {
+                    //Show an error in the UI in case something went wrong
+                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Error occurred"));
+                }
+            });
 
             #endregion
         }
@@ -230,40 +229,50 @@ namespace NetStalker
 
                         //Get hostname and mac vendor for the current device
                         _ = Task.Run(async () =>
-                    {
-                        try
                         {
-                            #region Get Hostname
-
-                            IPHostEntry hostEntry = await Dns.GetHostEntryAsync(ip);
-                            device.DeviceName = hostEntry?.HostName ?? ip;
-
-                            #endregion
-
-                            #region Get MacVendor
-
-                            var Name = VendorAPI.GetVendorInfo(mac);
-                            device.ManName = (Name is null) ? "" : Name.data.organization_name;
-
-                            #endregion
-
-                            view.ListView1.BeginInvoke(new Action(() => { view.ListView1.UpdateObject(device); }));
-                        }
-                        catch (Exception ex)
-                        {
-                            if (ex is SocketException)
+                            try
                             {
+                                #region Get Hostname
+
+                                IPHostEntry hostEntry = await Dns.GetHostEntryAsync(ip);
+                                device.DeviceName = hostEntry?.HostName ?? ip;
+
+                                #endregion
+
+                                #region Get MacVendor
+
                                 var Name = VendorAPI.GetVendorInfo(mac);
                                 device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
-                                view.ListView1.BeginInvoke(new Action(() =>
-                                {
-                                    device.DeviceName = ip;
-                                    view.ListView1.UpdateObject(device);
-                                }));
+                                #endregion
+
+                                view.ListView1.BeginInvoke(new Action(() => { view.ListView1.UpdateObject(device); }));
                             }
-                        }
-                    });
+                            catch (Exception ex)
+                            {
+                                if (ex is SocketException)
+                                {
+                                    var Name = VendorAPI.GetVendorInfo(mac);
+                                    device.ManName = (Name is null) ? "" : Name.data.organization_name;
+
+                                    view.ListView1.BeginInvoke(new Action(() =>
+                                    {
+                                        device.DeviceName = ip;
+                                        view.ListView1.UpdateObject(device);
+                                    }));
+                                }
+                                else
+                                {
+                                    view.MainForm.BeginInvoke(
+                                        new Action(() =>
+                                        {
+                                            device.DeviceName = ip;
+                                            device.ManName = "Error";
+                                            view.ListView1.UpdateObject(device);
+                                        }));
+                                }
+                            }
+                        });
 
                     }));
 
@@ -367,7 +376,6 @@ namespace NetStalker
                         ethernetpacket.PayloadPacket = arprequestpacket;
                         capturedevice.SendPacket(ethernetpacket);
                     }
-
                 }
 
                 else if (AppConfiguration.NetworkSize == 2)

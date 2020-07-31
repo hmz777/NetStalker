@@ -2,11 +2,15 @@
 using MaterialSkin.Controls;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Net;
+using NetStalker.MainLogic;
+using SharpPcap;
+using SharpPcap.Npcap;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows.Forms;
@@ -90,23 +94,23 @@ namespace NetStalker
 
             #region Some tedious visual garbage
 
-            if (Properties.Settings.Default.color == "Dark")
+            if (Properties.Settings.Default.Color == "Dark")
             {
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-                m.textOverlay.BackColor = Color.FromArgb(71, 71, 71);
-                m.textOverlay.TextColor = Color.FromArgb(204, 204, 204);
-                m.textOverlay.BorderColor = Color.Teal;
+                m.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
+                m.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
+                m.ListOverlay.BorderColor = Color.Teal;
                 m.pictureBox2.Image = NetStalker.Properties.Resources._30G;
 
             }
             else
             {
-                m.textOverlay.BorderColor = Color.Teal;
+                m.ListOverlay.BorderColor = Color.Teal;
                 materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
                 m.fastObjectListView1.HeaderFormatStyle = m.LightHeaders;
                 m.fastObjectListView1.HotItemStyle = m.LightHot;
-                m.textOverlay.BackColor = Color.FromArgb(204, 204, 204);
-                m.textOverlay.TextColor = Color.FromArgb(71, 71, 71);
+                m.ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
+                m.ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
                 m.fastObjectListView1.BackColor = Color.White;
                 m.fastObjectListView1.ForeColor = Color.FromArgb(54, 54, 54);
                 m.fastObjectListView1.SelectedBackColor = Color.FromArgb(214, 214, 214);
@@ -120,17 +124,17 @@ namespace NetStalker
 
             #region Check for the chosen minimization option
 
-            if (Properties.Settings.Default.minimize == "Tray")
+            if (Properties.Settings.Default.Minimize == "Tray")
             {
                 m.Resize -= m.Main_Resize_1;
                 m.Resize += m.Main_Resize;
-                m.resizestate = "Tray";
+                m.ResizeState = "Tray";
             }
             else
             {
                 m.Resize -= m.Main_Resize;
                 m.Resize += m.Main_Resize_1;
-                m.resizestate = "Taskbar";
+                m.ResizeState = "Taskbar";
             }
 
             #endregion
@@ -283,13 +287,19 @@ namespace NetStalker
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
             //Save the main app configuration values
-            Properties.Settings.Default.friendlyname = FriendlyName;
+            Properties.Settings.Default.FriendlyName = FriendlyName;
             Properties.Settings.Default.Gateway =
                 materialLabel7.Text;
-            Properties.Settings.Default.localip =
+            Properties.Settings.Default.LocalIp =
                 materialLabel4.Text;
-            Properties.Settings.Default.localmac =
+            Properties.Settings.Default.LocalMac =
               SelectedInterface.GetPhysicalAddress().ToString();
+
+            Properties.Settings.Default.AdapterName = (from devicex in CaptureDeviceList.Instance
+                                                       where ((NpcapDevice)devicex).Interface.FriendlyName == AppConfiguration.FriendlyName
+                                                       select devicex).ToList()[0].Name;
+
+            Properties.Settings.Default.BroadcastAddress = Tools.GetBroadcastAddress(IPAddress.Parse(Properties.Settings.Default.LocalIp), Properties.Settings.Default.NetMask).ToString();
 
             Properties.Settings.Default.Save();
 

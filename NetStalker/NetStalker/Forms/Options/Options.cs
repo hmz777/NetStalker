@@ -56,14 +56,14 @@ namespace NetStalker
 
             main = Application.OpenForms["Main"] as Main;
 
-            if (main.resizestate == "Tray")
+            if (main.ResizeState == "Tray")
             {
                 materialRadioButton9.Checked = true;
             }
-            else if (main.resizestate == "Taskbar")
+            else if (main.ResizeState == "Taskbar")
             {
                 materialRadioButton8.Checked = true;
-                Properties.Settings.Default.minimize = "Taskbar";
+                Properties.Settings.Default.Minimize = "Taskbar";
             }
 
             if (Properties.Settings.Default.SpoofProtection)
@@ -337,7 +337,7 @@ namespace NetStalker
                 materialLabel5.ForeColor = Color.Red;
                 materialLabel4.ForeColor = Color.Green;
                 materialLabel4.Text = "";
-                Properties.Settings.Default.color = "Light";
+                Properties.Settings.Default.Color = "Light";
             }
             else if (materialLabel5.ForeColor == Color.Green)
             {
@@ -345,18 +345,18 @@ namespace NetStalker
                 materialLabel5.ForeColor = Color.Green;
                 materialLabel4.ForeColor = Color.Green;
                 materialLabel4.Text = "";
-                Properties.Settings.Default.color = "Light";
+                Properties.Settings.Default.Color = "Light";
             }
             else
             {
                 materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
                 materialLabel4.ForeColor = Color.Green;
                 materialLabel4.Text = "";
-                Properties.Settings.Default.color = "Light";
+                Properties.Settings.Default.Color = "Light";
             }
 
-            main.textOverlay.BackColor = Color.FromArgb(204, 204, 204);
-            main.textOverlay.TextColor = Color.FromArgb(71, 71, 71);
+            main.ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
+            main.ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
             main.fastObjectListView1.BackColor = Color.White;
             main.fastObjectListView1.HeaderFormatStyle = main.LightHeaders;
             main.fastObjectListView1.HotItemStyle = main.LightHot;
@@ -377,26 +377,26 @@ namespace NetStalker
                 materialLabel5.ForeColor = Color.Red;
                 materialLabel4.ForeColor = Color.Green;
                 materialLabel4.Text = "";
-                Properties.Settings.Default.color = "Dark";
+                Properties.Settings.Default.Color = "Dark";
             }
             else if (materialLabel5.ForeColor == Color.Green)
             {
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 materialLabel5.ForeColor = Color.Green;
-                Properties.Settings.Default.color = "Dark";
+                Properties.Settings.Default.Color = "Dark";
                 materialLabel4.ForeColor = Color.Green;
                 materialLabel4.Text = "";
             }
             else
             {
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-                Properties.Settings.Default.color = "Dark";
+                Properties.Settings.Default.Color = "Dark";
                 materialLabel4.ForeColor = Color.Green;
                 materialLabel4.Text = "";
             }
 
-            main.textOverlay.BackColor = Color.FromArgb(71, 71, 71);
-            main.textOverlay.TextColor = Color.FromArgb(204, 204, 204);
+            main.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
+            main.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
             main.fastObjectListView1.BackColor = Color.FromArgb(51, 51, 51);
             main.fastObjectListView1.HeaderFormatStyle = main.DarkHeaders;
             main.fastObjectListView1.HotItemStyle = main.DarkHot;
@@ -413,8 +413,8 @@ namespace NetStalker
             materialRadioButton8.Enabled = false;
             main.Resize -= main.Main_Resize_1;
             main.Resize += main.Main_Resize;
-            Properties.Settings.Default.minimize = "Tray";
-            main.resizestate = "Tray";
+            Properties.Settings.Default.Minimize = "Tray";
+            main.ResizeState = "Tray";
             materialLabel4.Text = "";
             materialRadioButton8.Enabled = true;
 
@@ -425,8 +425,8 @@ namespace NetStalker
             materialRadioButton9.Enabled = false;
             main.Resize -= main.Main_Resize;
             main.Resize += main.Main_Resize_1;
-            Properties.Settings.Default.minimize = "Taskbar";
-            main.resizestate = "Taskbar";
+            Properties.Settings.Default.Minimize = "Taskbar";
+            main.ResizeState = "Taskbar";
             materialLabel4.Text = "";
             materialRadioButton9.Enabled = true;
         }

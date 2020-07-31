@@ -26,7 +26,7 @@ namespace NetStalker
                 metroTextBox1.Text = line;
             }
 
-            if (Properties.Settings.Default.color == "Dark")
+            if (Properties.Settings.Default.Color == "Dark")
             {
                 label1.ForeColor = Color.FromArgb(204, 204, 204);
 

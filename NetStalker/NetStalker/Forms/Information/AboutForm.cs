@@ -23,7 +23,7 @@ namespace NetStalker
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.color == "Dark")
+            if (Properties.Settings.Default.Color == "Dark")
             {
                 groupBox1.ForeColor = Color.White;
             }
