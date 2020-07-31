@@ -25,8 +25,10 @@ A network tool to control the bandwidth over your local network, it can block in
 The latest stable version:
 - NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/v1.6/NS.exe)
 
-# Note
-The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the releases section. 
+# Notes
+- The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
+- The app is tested only on a small amount of network cards, so I can't guarantee it will work on yours.
+- The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the releases section. 
 
 # Pictures:
 
@@ -49,7 +51,7 @@ The source code may contain experimental features, if you're looking for a stabl
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
 
 # Todo
-In the next month, i will be doing a complete rewrite of this project with a cleaner codebase and updated dependencies (Possibly with .Net Core)
+Currently, I am doing a complete rewrite of this project with a cleaner codebase and updated dependencies.
 
 # Additional Information
 
