@@ -33,9 +33,9 @@ namespace NetStalker
 
                 foreach (var device in Main.Devices)
                 {
-                    device.Redirected = false;
-                    device.Blocked = false;
-                    device.Limited = false;
+                    device.Value.Redirected = false;
+                    device.Value.Blocked = false;
+                    device.Value.Limited = false;
                 }
 
                 if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == System.Threading.Tasks.TaskStatus.Running)

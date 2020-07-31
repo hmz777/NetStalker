@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using MaterialSkin;
 using MaterialSkin.Controls;
 
@@ -23,20 +25,21 @@ namespace NetStalker
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            var target = Main.Devices.FirstOrDefault(D => D.MAC == device.MAC);
+            var target = Main.Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
 
-            if (target == null)
+            if (target.Equals(default(KeyValuePair<IPAddress, Device>)))
                 throw new CustomExceptions.DeviceNotInListException();
 
             //Update device limits in list
-            target.DownloadCap = (int)numericUpDown2.Value * 1024;
-            target.UploadCap = (int)numericUpDown1.Value * 1024;
+            target.Value.DownloadCap = (int)numericUpDown2.Value * 1024;
+            target.Value.UploadCap = (int)numericUpDown1.Value * 1024;
+            target.Value.Limited = true;
 
             //Update device limits in UI
             device.DownloadCap = (int)numericUpDown2.Value * 1024;
             device.UploadCap = (int)numericUpDown1.Value * 1024;
-
             device.Limited = true;
+
             this.Close();
         }
 

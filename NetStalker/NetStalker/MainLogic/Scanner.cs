@@ -1,5 +1,4 @@
-﻿using MetroFramework;
-using NetStalker.MainLogic;
+﻿using NetStalker.MainLogic;
 using PacketDotNet;
 using SharpPcap;
 using SharpPcap.Npcap;
@@ -12,7 +11,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Collections.Concurrent;
 using Timer = System.Threading.Timer;
 
 namespace NetStalker
@@ -21,7 +20,7 @@ namespace NetStalker
     {
         #region Vars
 
-        private static ICaptureDevice capturedevice;
+        public static ICaptureDevice capturedevice;
         public static bool BackgroundScanDisabled;
         private static bool GatewayCalled;
         public static bool LoadingBarCalled;
@@ -44,15 +43,17 @@ namespace NetStalker
 
             if (capturedevice != null)
             {
-                capturedevice.StopCapture(); //stop previous capture
-                capturedevice.Close(); //close previous instances
-                BackgroundScanDisabled = true;
                 GatewayCalled = false;
-                StopTheLoadingBar(view);
+                BackgroundScanDisabled = true;
+                capturedevice.StopCapture();
+                capturedevice.Close();
+                capturedevice = null;
             }
-
-            ClientList = new Dictionary<IPAddress, PhysicalAddress>();
-            Main.Devices = new System.Collections.Concurrent.ConcurrentBag<Device>();
+            else
+            {
+                ClientList = new Dictionary<IPAddress, PhysicalAddress>();
+                Main.Devices = new ConcurrentDictionary<IPAddress, Device>();
+            }
 
             #endregion
 
@@ -108,7 +109,7 @@ namespace NetStalker
                             view.ListView1.BeginInvoke(new Action(() => { view.ListView1.AddObject(device); }));
 
                             //Add device to main device list
-                            Main.Devices.Add(device);
+                            _ = Main.Devices.TryAdd(ArpPacket.SenderProtocolAddress, device);
 
                             //Get hostname and mac vendor for the current device
                             _ = Task.Run(async () =>
@@ -225,7 +226,7 @@ namespace NetStalker
                         view.ListView1.BeginInvoke(new Action(() => { view.ListView1.AddObject(device); }));
 
                         //Add device to main device list
-                        Main.Devices.Add(device);
+                        _ = Main.Devices.TryAdd(ArpPacket.SenderProtocolAddress, device);
 
                         //Get hostname and mac vendor for the current device
                         _ = Task.Run(async () =>
@@ -281,11 +282,11 @@ namespace NetStalker
                 }
                 else if (ClientList.ContainsKey(ArpPacket.SenderProtocolAddress))
                 {
-                    foreach (Device Device in Main.Devices)
+                    foreach (var Device in Main.Devices)
                     {
-                        if (Device.IP.Equals(ArpPacket.SenderProtocolAddress))
+                        if (Device.Key.Equals(ArpPacket.SenderProtocolAddress))
                         {
-                            Device.TimeSinceLastArp = DateTime.Now;
+                            Device.Value.TimeSinceLastArp = DateTime.Now;
                             break;
                         }
                     }

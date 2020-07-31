@@ -1,7 +1,9 @@
 ﻿using PacketDotNet;
 using SharpPcap;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace NetStalker.MainLogic
@@ -33,7 +35,7 @@ namespace NetStalker.MainLogic
 
             if (string.IsNullOrEmpty(Properties.Settings.Default.GatewayMac))
             {
-                Properties.Settings.Default.GatewayMac = Main.Devices.Where(d => d.IP.Equals(AppConfiguration.GatewayIp)).Select(d => d.MAC).FirstOrDefault().ToString();
+                Properties.Settings.Default.GatewayMac = Main.Devices.Where(d => d.Key.Equals(AppConfiguration.GatewayIp)).Select(d => d.Value.MAC).FirstOrDefault().ToString();
                 Properties.Settings.Default.Save();
             }
 
@@ -56,30 +58,30 @@ namespace NetStalker.MainLogic
                          if (packet == null)
                              continue;
 
-                         Device device;
+                         KeyValuePair<IPAddress, Device> device;
 
-                         if ((device = Main.Devices.FirstOrDefault(D => D.MAC.Equals(packet.SourceHardwareAddress))) != null && device.Redirected)
+                         if (!(device = Main.Devices.FirstOrDefault(D => D.Value.MAC.Equals(packet.SourceHardwareAddress))).Equals(default(KeyValuePair<IPAddress, Device>)) && device.Value.Redirected)
                          {
-                             if (device.UploadCap == 0 || device.UploadCap > device.PacketsSentSinceLastReset)
+                             if (device.Value.UploadCap == 0 || device.Value.UploadCap > device.Value.PacketsSentSinceLastReset)
                              {
                                  packet.SourceHardwareAddress = MainDevice.MacAddress;
                                  packet.DestinationHardwareAddress = AppConfiguration.GatewayMac;
                                  MainDevice.SendPacket(packet);
-                                 device.PacketsSentSinceLastReset += packet.Bytes.Length;
+                                 device.Value.PacketsSentSinceLastReset += packet.Bytes.Length;
                              }
                          }
                          else if (packet.SourceHardwareAddress.Equals(AppConfiguration.GatewayMac))
                          {
                              IPv4Packet IPV4 = packet.Extract<IPv4Packet>();
 
-                             if ((device = Main.Devices.FirstOrDefault(D => D.IP.Equals(IPV4.DestinationAddress))) != null && device.Redirected)
+                             if (!(device = Main.Devices.FirstOrDefault(D => D.Key.Equals(IPV4.DestinationAddress))).Equals(default(KeyValuePair<IPAddress, Device>)) && device.Value.Redirected)
                              {
-                                 if (device.DownloadCap == 0 || device.DownloadCap > device.PacketsReceivedSinceLastReset)
+                                 if (device.Value.DownloadCap == 0 || device.Value.DownloadCap > device.Value.PacketsReceivedSinceLastReset)
                                  {
                                      packet.SourceHardwareAddress = MainDevice.MacAddress;
-                                     packet.DestinationHardwareAddress = device.MAC;
+                                     packet.DestinationHardwareAddress = device.Value.MAC;
                                      MainDevice.SendPacket(packet);
-                                     device.PacketsReceivedSinceLastReset += packet.Bytes.Length;
+                                     device.Value.PacketsReceivedSinceLastReset += packet.Bytes.Length;
                                  }
                              }
                          }
@@ -95,13 +97,13 @@ namespace NetStalker.MainLogic
         /// </summary>
         public static void SpoofClients()
         {
-            foreach (Device item in Main.Devices)
+            foreach (var item in Main.Devices)
             {
-                if (item.Blocked)
+                if (item.Value.Blocked)
                 {
-                    ConstructAndSendArp(item, BROperation.Spoof);
+                    ConstructAndSendArp(item.Value, BROperation.Spoof);
                     if (AppConfiguration.SpoofProtection)
-                        ConstructAndSendArp(item, BROperation.Protection);
+                        ConstructAndSendArp(item.Value, BROperation.Protection);
                 }
             }
         }

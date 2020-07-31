@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
@@ -56,7 +55,7 @@ namespace NetStalker
         /// <summary>
         /// The list of targets of type <see cref="Device"/>
         /// </summary>
-        public static ConcurrentBag<Device> Devices = new ConcurrentBag<Device>();
+        public static ConcurrentDictionary<IPAddress, Device> Devices;
         #endregion
 
         public Main(string[] args = null)
@@ -134,15 +133,15 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 600000000L) //1 minute
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 600000000L) //1 minute
                     {
-                        Devices.TryTake(out _);
-                        Scanner.ClientList.Remove(Device.IP);
+                        Devices.TryRemove(Device.Key, out _);
+                        Scanner.ClientList.Remove(Device.Key);
 
-                        Device.Blocked = false;
-                        Device.Redirected = false;
-                        Device.Limited = false;
-                        fastObjectListView1.RemoveObject(Device);
+                        Device.Value.Blocked = false;
+                        Device.Value.Redirected = false;
+                        Device.Value.Limited = false;
+                        fastObjectListView1.RemoveObject(Device.Value);
                     }
                 }
             }
@@ -151,14 +150,14 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 3000000000L) //5 minutes
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 3000000000L) //5 minutes
                     {
-                        Devices.TryTake(out _);
-                        Scanner.ClientList.Remove(Device.IP);
+                        Devices.TryRemove(Device.Key, out _);
+                        Scanner.ClientList.Remove(Device.Key);
 
-                        Device.Blocked = false;
-                        Device.Redirected = false;
-                        fastObjectListView1.RemoveObject(Device);
+                        Device.Value.Blocked = false;
+                        Device.Value.Redirected = false;
+                        fastObjectListView1.RemoveObject(Device.Value);
                     }
                 }
             }
@@ -167,14 +166,14 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.IsGateway && !Device.IsLocalDevice && (DateTime.Now.Ticks - Device.TimeSinceLastArp.Ticks) > 6000000000L) //10 minutes, extremely large networks this option could theoretically work, but not worth it.
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 6000000000L) //10 minutes, extremely large networks this option could theoretically work, but not worth it.
                     {
-                        Devices.TryTake(out _);
-                        Scanner.ClientList.Remove(Device.IP);
+                        Devices.TryRemove(Device.Key, out _);
+                        Scanner.ClientList.Remove(Device.Key);
 
-                        Device.Blocked = false;
-                        Device.Redirected = false;
-                        fastObjectListView1.RemoveObject(Device);
+                        Device.Value.Blocked = false;
+                        Device.Value.Redirected = false;
+                        fastObjectListView1.RemoveObject(Device.Value);
                     }
                 }
             }
@@ -183,12 +182,12 @@ namespace NetStalker
         //Speed update handler: it updates the speed of targeted devices in the UI
         private void ValuesTimerOnTick(object sender, EventArgs e)
         {
-            foreach (Device Device in Devices)
+            foreach (var Device in Devices)
             {
-                if (Device.Redirected)
+                if (Device.Value.Redirected)
                 {
-                    string D = ((float)Device.PacketsReceivedSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000)).ToString();
-                    string U = ((float)Device.PacketsSentSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000)).ToString();
+                    string D = ((float)Device.Value.PacketsReceivedSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000)).ToString();
+                    string U = ((float)Device.Value.PacketsSentSinceLastReset * 0.0009765625f / (float)(this.ValuesTimer.Interval / 1000)).ToString();
 
                     //0.0009765625f = 1/1024 Conversion from Bytes to KBytes
 
@@ -204,9 +203,9 @@ namespace NetStalker
                         string str3 = U;
                         U = str3.Remove(str3.IndexOf(".") + 1, U.Length + num);
                     }
-                    Device.DownloadSpeed = D + " KB/s";
-                    Device.UploadSpeed = U + " KB/s";
-                    fastObjectListView1.UpdateObject(Device);
+                    Device.Value.DownloadSpeed = D + " KB/s";
+                    Device.Value.UploadSpeed = U + " KB/s";
+                    fastObjectListView1.UpdateObject(Device.Value);
                 }
             }
             ResetPacketCount();
@@ -223,8 +222,8 @@ namespace NetStalker
         {
             foreach (var device in Devices)
             {
-                device.PacketsSentSinceLastReset = 0;
-                device.PacketsReceivedSinceLastReset = 0;
+                device.Value.PacketsSentSinceLastReset = 0;
+                device.Value.PacketsReceivedSinceLastReset = 0;
             }
         }
 
@@ -368,61 +367,25 @@ namespace NetStalker
         {
             if (!OperationIsInProgress)
             {
-                if (fastObjectListView1.GetItemCount() > 0)
+                materialFlatButton1.Enabled = false;
+                metroTile1.Enabled = false;
+                metroTile2.Enabled = false;
+                OperationIsInProgress = true;
+                olvColumn7.MaximumWidth = 100;
+                olvColumn7.MinimumWidth = 100;
+                olvColumn7.Width = 100;
+                ResizeDone = false;
+                materialLabel3.Text = "Working";
+                fastObjectListView1.EmptyListMsg = "Scanning...";
+                StatusLabel.Text = "Please wait...";
+                pictureBox1.Image = Properties.Resources.icons8_attention_96px;
+
+                AliveTimer.Enabled = true;
+
+                Task.Run(() =>
                 {
-                    if (MetroMessageBox.Show(this, "The list will be cleared and a new scan will be initiated are you sure?\nNote: The Scan button is recommended when the list is empty, NetStalker always performs background scans for new devices after the initial scan.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        metroTile1.Enabled = false;
-                        metroTile2.Enabled = false;
-                        OperationIsInProgress = true;
-                        olvColumn7.MaximumWidth = 100;
-                        olvColumn7.MinimumWidth = 100;
-                        olvColumn7.Width = 100;
-                        ResizeDone = false;
-                        materialLabel3.Text = "Working";
-                        fastObjectListView1.EmptyListMsg = "Scanning...";
-                        StatusLabel.Text = "Please wait...";
-                        pictureBox1.Image = Properties.Resources.icons8_attention_96px;
-
-                        foreach (var Device in Devices)
-                        {
-                            if (Device.Redirected || Device.Blocked)
-                            {
-                                Device.Blocked = false;
-                                Device.Redirected = false;
-                                Device.DownloadCap = 0;
-                                Device.UploadCap = 0;
-                                Device.DownloadSpeed = "";
-                                Device.UploadSpeed = "";
-                            }
-                        }
-
-                        fastObjectListView1.ClearObjects();
-
-                        Task.Run(() => { Controller.RefreshClients(this); });
-                    }
-                }
-                else
-                {
-                    metroTile1.Enabled = false;
-                    metroTile2.Enabled = false;
-                    OperationIsInProgress = true;
-                    olvColumn7.MaximumWidth = 100;
-                    olvColumn7.MinimumWidth = 100;
-                    olvColumn7.Width = 100;
-                    ResizeDone = false;
-                    materialLabel3.Text = "Working";
-                    fastObjectListView1.EmptyListMsg = "Scanning...";
-                    StatusLabel.Text = "Please wait...";
-                    pictureBox1.Image = Properties.Resources.icons8_attention_96px;
-
-                    AliveTimer.Enabled = true;
-
-                    Task.Run(() =>
-                    {
-                        Controller.RefreshClients(this);
-                    });
-                }
+                    Controller.RefreshClients(this);
+                });
             }
             else
             {
@@ -513,14 +476,8 @@ namespace NetStalker
                     throw new CustomExceptions.RedirectionNotActiveException();
                 }
 
-                Task.Run(() =>
-                {
-                    LoadingDialog = new Loading();
-                    LoadingDialog.ShowDialog();
-                });
-
                 //For the berkeley packet filter to work, mac addresses should have ':' separating each hex number
-                Sniffer sniff = new Sniffer(selectedDevice, LoadingDialog);
+                Sniffer sniff = new Sniffer(selectedDevice);
                 sniff.ShowDialog(this);
 
                 fastObjectListView1.SelectedObjects.Clear();
@@ -528,7 +485,6 @@ namespace NetStalker
                 sniff.Dispose();
 
                 fastObjectListView1.UpdateObject(selectedDevice);
-
             }
             catch (ArgumentNullException)
             {
@@ -666,11 +622,11 @@ namespace NetStalker
                 if (e.NewValue == CheckState.Checked && e.Column.Index == 6 && !device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
-                    var listDevice = Devices.FirstOrDefault(D => D.MAC == device.MAC);
-                    if (listDevice == null)
+                    var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
+                    if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
                         throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
 
-                    listDevice.Blocked = true;
+                    listDevice.Value.Blocked = true;
 
                     //Update device state in UI
                     device.Blocked = true;
@@ -688,12 +644,12 @@ namespace NetStalker
                 else if (e.NewValue == CheckState.Checked && e.Column.Index == 5 && !device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
-                    var listDevice = Devices.FirstOrDefault(D => D.MAC == device.MAC);
-                    if (listDevice == null)
+                    var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
+                    if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
                         throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
 
-                    listDevice.Blocked = true;
-                    listDevice.Redirected = true;
+                    listDevice.Value.Blocked = true;
+                    listDevice.Value.Redirected = true;
 
                     //Update device state in UI
                     device.Blocked = true;
@@ -719,11 +675,11 @@ namespace NetStalker
                 else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 6 && device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
-                    var listDevice = Devices.FirstOrDefault(D => D.MAC == device.MAC);
-                    if (listDevice == null)
+                    var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
+                    if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
                         throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
 
-                    listDevice.Blocked = false;
+                    listDevice.Value.Blocked = false;
 
                     //Update device state in UI
                     device.Blocked = false;
@@ -731,7 +687,7 @@ namespace NetStalker
                     fastObjectListView1.UpdateObject(device);
 
                     //Checks if there are any devices left with active targeting
-                    if (!Devices.Any(D => D.Blocked == true))
+                    if (!Devices.Any(D => D.Value.Blocked == true))
                     {
                         pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
                         Blocker_Redirector.BRMainSwitch = false;
@@ -740,12 +696,12 @@ namespace NetStalker
                 else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 5 && device.Redirected)
                 {
                     //Update device state in list
-                    var listDevice = Devices.FirstOrDefault(D => D.MAC == device.MAC);
-                    if (listDevice == null)
+                    var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
+                    if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
                         throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
 
-                    listDevice.Blocked = false;
-                    listDevice.Redirected = false;
+                    listDevice.Value.Blocked = false;
+                    listDevice.Value.Redirected = false;
 
                     device.Blocked = false;
                     device.Redirected = false;
@@ -756,7 +712,7 @@ namespace NetStalker
                     fastObjectListView1.UpdateObject(device);
 
                     //Checks if there are any devices left with the Redirected switch
-                    if (!Devices.Any(D => D.Redirected == true))
+                    if (!Devices.Any(D => D.Value.Redirected == true))
                     {
                         pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
                         Blocker_Redirector.BRMainSwitch = false;
