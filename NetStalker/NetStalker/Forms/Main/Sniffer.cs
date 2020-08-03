@@ -712,7 +712,7 @@ namespace NetStalker
                     }
                     else if (Packet.SourceHardwareAddress.Equals(AppConfiguration.GatewayMac))
                     {
-                        if (AppConfiguration.SnifferPacketDirection == "Inbound") //Catch inbound packets
+                        if (AppConfiguration.SnifferPacketDirection == "Inbound/Outbound") //Catch inbound packets
                         {
                             IPv4Packet IPV4 = Packet.Extract<IPv4Packet>();
 

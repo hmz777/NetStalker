@@ -26,7 +26,7 @@ namespace NetStalker
         {
             if (!string.IsNullOrEmpty(comboBox2.Text))
             {
-                Properties.Settings.Default.PacketDirection = comboBox2.SelectedText;
+                Properties.Settings.Default.PacketDirection = comboBox2.Text;
                 Properties.Settings.Default.Save();
             }
 
@@ -37,11 +37,11 @@ namespace NetStalker
         {
             if (!string.IsNullOrEmpty(AppConfiguration.SnifferPacketDirection))
             {
-                comboBox2.SelectedValue = (AppConfiguration.SnifferPacketDirection == "Outbound") ? "Outbound" : "Inbound/Outbound";
+                comboBox2.SelectedIndex = (AppConfiguration.SnifferPacketDirection == "Outbound") ? 0 : 1;
             }
             else
             {
-                comboBox2.Text = "Outbound";
+                comboBox2.SelectedIndex = 0;
             }
         }
     }
