@@ -348,8 +348,6 @@ namespace NetStalker
                     ValuesTimer.Dispose();
                 }
 
-                Devices = null;
-
                 if (e.CloseReason == CloseReason.UserClosing && !TrayExitFlag)
                 {
                     if (MetroMessageBox.Show(this, "Quit the application ?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
