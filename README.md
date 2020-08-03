@@ -21,9 +21,24 @@ A network tool to control the bandwidth over your local network, it can block in
 - When minimized it notifies the user of newly discovered devices using Windows 10 notification system with the ability to choose from multiple options on what actions to take.
 - Track disconnected devices with a timeout for each device. 
 
+# Changelog
+### V2.0
+- Major bug fixes and performance improvements.
+- Updated dependencies.
+- Cleaner codebase.
+- Most of the codebase is now documented.
+- Better threading work.
+- Lower CPU consumption.
+- Windows 10 toast notifications updated.
+- Faster device discovery.
+- No need for loading dialogs anymore.
+- Packet sniffer can keep running while other devices are being blocked/redirected.
+- Upgraded the project to .Net Framework 4.7.2.
+- Included a packaged installer.
+
 # Binaries
 The latest stable version:
-- NetStalker [Setup package](https://github.com/hmz777/NetStalker/releases/download/v2.0/NetStalker.exe)
+- NetStalker [Download Setup package](https://github.com/hmz777/NetStalker/releases/download/v2.0/NetStalker.exe)
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
