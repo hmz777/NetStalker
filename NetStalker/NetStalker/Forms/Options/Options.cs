@@ -459,11 +459,11 @@ namespace NetStalker
                 e.Bounds.Width - 1, e.Bounds.Height - 1));//the white bounds
 
             e.Graphics.DrawString(e.ToolTipText, new Font("Roboto", 9), new SolidBrush(Color.FromArgb(204, 204, 204)),
-                new Point(Properties.Resources.icons8_info_30px.Width + 16,
+                new Point(Properties.Resources.icons8_info_35.Width + 10,
                     e.Bounds.Y + 8)); //text with image location
 
-            e.Graphics.DrawImage(Properties.Resources.icons8_info_30px, //image
-                new Point(e.Bounds.X + Properties.Resources.icons8_info_30px.Width / 3, e.Bounds.Y + 10));
+            e.Graphics.DrawImage(Properties.Resources.icons8_info_35, //image
+                new Point(e.Bounds.X - 3 + Properties.Resources.icons8_info_35.Width / 3, e.Bounds.Y + 10));
         }
 
         private void ToolTip1_Popup(object sender, PopupEventArgs e)

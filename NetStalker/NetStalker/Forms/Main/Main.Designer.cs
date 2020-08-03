@@ -382,7 +382,7 @@
             this.materialFlatButton4.AutoSize = true;
             this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton4.Depth = 0;
-            this.materialFlatButton4.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton4.Icon")));
+            this.materialFlatButton4.Icon = global::NetStalker.Properties.Resources.color_gear;
             this.materialFlatButton4.Location = new System.Drawing.Point(171, 9);
             this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
@@ -398,7 +398,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::NetStalker.Properties.Resources.icons8_ok_96px;
+            this.pictureBox1.Image = global::NetStalker.Properties.Resources.color_ok;
             this.pictureBox1.Location = new System.Drawing.Point(1052, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
@@ -412,7 +412,7 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton1.Icon")));
+            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_gps_receiving;
             this.materialFlatButton1.Location = new System.Drawing.Point(10, 9);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -534,7 +534,7 @@
             this.materialFlatButton5.AutoSize = true;
             this.materialFlatButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton5.Depth = 0;
-            this.materialFlatButton5.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton5.Icon")));
+            this.materialFlatButton5.Icon = global::NetStalker.Properties.Resources.color_restart;
             this.materialFlatButton5.Location = new System.Drawing.Point(111, 9);
             this.materialFlatButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton5.MouseState = MaterialSkin.MouseState.HOVER;
@@ -564,7 +564,7 @@
             this.materialFlatButton3.AutoSize = true;
             this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton3.Icon")));
+            this.materialFlatButton3.Icon = global::NetStalker.Properties.Resources.color_about;
             this.materialFlatButton3.Location = new System.Drawing.Point(393, 9);
             this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
@@ -583,7 +583,7 @@
             this.materialFlatButton2.AutoSize = true;
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton2.Icon")));
+            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_help;
             this.materialFlatButton2.Location = new System.Drawing.Point(294, 9);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;

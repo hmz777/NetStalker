@@ -315,15 +315,15 @@ namespace NetStalker
                 e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
                 e.Graphics.FillRectangle(Brushes.DimGray, e.Bounds);
                 e.Graphics.DrawString(Nics[e.Index].Name, new Font("Roboto", 9), Brushes.LightGray,
-                    new Point(Properties.Resources.icons8_network_card_16.Width * 2, e.Bounds.Y));
-                e.Graphics.DrawImage(Properties.Resources.icons8_network_card_16, new Point(e.Bounds.X, e.Bounds.Y));
+                    new Point(Properties.Resources.color_network_card.Width * 2, e.Bounds.Y));
+                e.Graphics.DrawImage(Properties.Resources.color_network_card, new Point(e.Bounds.X, e.Bounds.Y));
 
                 if ((e.State & DrawItemState.Focus) == 0)
                 {
                     e.Graphics.FillRectangle(Brushes.LightGray, e.Bounds);
                     e.Graphics.DrawString(Nics[e.Index].Name, new Font("Roboto", 9), Brushes.DimGray,
-                        new Point(Properties.Resources.icons8_network_card_16.Width * 2, e.Bounds.Y));
-                    e.Graphics.DrawImage(Properties.Resources.icons8_network_card_16, new Point(e.Bounds.X, e.Bounds.Y));
+                        new Point(Properties.Resources.color_network_card.Width * 2, e.Bounds.Y));
+                    e.Graphics.DrawImage(Properties.Resources.color_network_card, new Point(e.Bounds.X, e.Bounds.Y));
                 }
             }
         }

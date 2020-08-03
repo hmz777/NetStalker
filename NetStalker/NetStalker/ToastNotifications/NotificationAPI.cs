@@ -198,7 +198,7 @@ namespace NetStalker.ToastNotifications
                                         Device.Blocked = true;
                                         Device.DeviceStatus = "Offline";
                                         main.fastObjectListView1.UpdateObject(Device);
-                                        main.pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
+                                        main.pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
                                     }
 
                                 }));

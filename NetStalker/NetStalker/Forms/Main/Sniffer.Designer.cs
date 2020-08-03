@@ -115,11 +115,11 @@
             this.olvColumn8});
             this.materialListView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.materialListView1.EmptyListMsg = "Packet list is empty";
-            this.materialListView1.EmptyListMsgFont = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialListView1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialListView1.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialListView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderFont = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialListView1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialListView1.HeaderFormatStyle = this.DarkHeaders;
             this.materialListView1.HideSelection = false;
             this.materialListView1.HotItemStyle = this.DarkHot;
@@ -225,22 +225,22 @@
             // DarkHeaders
             // 
             headerStateStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            headerStateStyle1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStateStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.DarkHeaders.Hot = headerStateStyle1;
             headerStateStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            headerStateStyle2.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStateStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.DarkHeaders.Normal = headerStateStyle2;
             headerStateStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            headerStateStyle3.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStateStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.DarkHeaders.Pressed = headerStateStyle3;
             // 
             // DarkHot
             // 
             this.DarkHot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            this.DarkHot.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DarkHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DarkHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             // 
             // imageList1
@@ -282,7 +282,7 @@
             this.materialFlatButton6.AutoSize = true;
             this.materialFlatButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton6.Depth = 0;
-            this.materialFlatButton6.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton6.Icon")));
+            this.materialFlatButton6.Icon = global::NetStalker.Properties.Resources.color_gear;
             this.materialFlatButton6.Location = new System.Drawing.Point(6, 175);
             this.materialFlatButton6.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton6.MouseState = MaterialSkin.MouseState.HOVER;
@@ -328,7 +328,7 @@
             this.materialFlatButton5.AutoSize = true;
             this.materialFlatButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton5.Depth = 0;
-            this.materialFlatButton5.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton5.Icon")));
+            this.materialFlatButton5.Icon = global::NetStalker.Properties.Resources.color_help  ;
             this.materialFlatButton5.Location = new System.Drawing.Point(18, 227);
             this.materialFlatButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton5.MouseState = MaterialSkin.MouseState.HOVER;
@@ -346,7 +346,7 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton1.Icon")));
+            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_external;
             this.materialFlatButton1.Location = new System.Drawing.Point(9, 123);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -364,7 +364,7 @@
             this.materialFlatButton4.AutoSize = true;
             this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton4.Depth = 0;
-            this.materialFlatButton4.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton4.Icon")));
+            this.materialFlatButton4.Icon = global::NetStalker.Properties.Resources.color_clear_symbol;
             this.materialFlatButton4.Location = new System.Drawing.Point(14, 71);
             this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
@@ -396,7 +396,7 @@
             this.materialFlatButton3.AutoSize = true;
             this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton3.Icon")));
+            this.materialFlatButton3.Icon = global::NetStalker.Properties.Resources.color_start;
             this.materialFlatButton3.Location = new System.Drawing.Point(13, 19);
             this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
@@ -414,7 +414,7 @@
             this.materialFlatButton2.AutoSize = true;
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton2.Icon")));
+            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_stop_squared;
             this.materialFlatButton2.Location = new System.Drawing.Point(17, 279);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -508,7 +508,7 @@
             this.metroTextBox1.CustomButton.AutoSize = true;
             this.metroTextBox1.CustomButton.BackColor = System.Drawing.Color.DarkRed;
             this.metroTextBox1.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroTextBox1.CustomButton.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroTextBox1.CustomButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.metroTextBox1.CustomButton.ForeColor = System.Drawing.Color.White;
             this.metroTextBox1.CustomButton.Image = null;
             this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(514, 1);
@@ -528,7 +528,7 @@
             this.metroTextBox1.Multiline = true;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.WaterMark = "Packet Viewer";
+            this.metroTextBox1.PromptText = "Packet Viewer";
             this.metroTextBox1.ReadOnly = true;
             this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.metroTextBox1.SelectedText = "";
@@ -587,7 +587,7 @@
             this.metroTextBox2.Multiline = true;
             this.metroTextBox2.Name = "metroTextBox2";
             this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.WaterMark = "Status";
+            this.metroTextBox2.PromptText = "Status";
             this.metroTextBox2.ReadOnly = true;
             this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.metroTextBox2.SelectedText = "";
@@ -613,21 +613,21 @@
             // LightHot
             // 
             this.LightHot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.LightHot.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LightHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LightHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             // 
             // LightHeaders
             // 
             headerStateStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            headerStateStyle4.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStateStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.LightHeaders.Hot = headerStateStyle4;
             headerStateStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            headerStateStyle5.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStateStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.LightHeaders.Normal = headerStateStyle5;
             headerStateStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            headerStateStyle6.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LightHeaders.Pressed = headerStateStyle6;
             // 
             // Sniffer

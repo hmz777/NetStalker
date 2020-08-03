@@ -118,18 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="materialFlatButton2.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAUlJREFUaEPtmM0OgjAQBnkYvXgHvZmI7/8SmKg3f7hrV/tp1AKrbNuN2Ul6IJDt
-        jCFCKAzDMAyDy2lVzY7r+dQfikOzaQ9/KAsNblfl/lyXmxgRNNPNbtq63IlHQL6tqwst6Yin/H2+aMS7
-        PJZUxKe8X25PkYjDcjEJbuDW2IhOeYHZL8SISCYPJCOSy4OBiIazcTZ5MCYiuzz4JUKNPPgmQp084ESo
-        lQf9gtWWVvicAnnQFxFaquQBN0KlPLhHhG8ZWif3kqZWnhgKoHPKf33WLcR6YieFK4+lKqJPfuBvNH9E
-        vzzrQdbQw9CPSwtH3l86eG3yiG/kgZqIX+RB9ogx8iBbhIQ88LM2XbPEIyTlQbKIGPIgScTtw5Z7CQtt
-        MEYedEZIfdgi3iOk5MFHhKQ8QIS0PHhExJAHNDiGPKDZ0eQNwzCMP6QorhA0CztvJzVZAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAEBAAAAEAIABoBAAAZgAAACAgAAABACAAqBAAAM4EAAAwMAAAAQAgAKglAAB2FQAAQEAAAAEA

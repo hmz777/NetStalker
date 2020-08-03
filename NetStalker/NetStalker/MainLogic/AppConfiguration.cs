@@ -67,6 +67,14 @@ namespace NetStalker.MainLogic
         public static IPAddress BroadcastAddress => IPAddress.Parse(NetStalker.Properties.Settings.Default.BroadcastAddress);
 
         /// <summary>
+        /// Returns the chosen packet direction that is used by the sniffer.
+        /// </summary>
+        /// <remarks>
+        /// This is used by the sniffer to determine which packets to capture.
+        /// </remarks>
+        public static string SnifferPacketDirection => NetStalker.Properties.Settings.Default.PacketDirection;
+
+        /// <summary>
         /// App User Model Id (Necessary for the toast notification service)
         /// </summary>
         public const String APP_ID = "HMZSoftware.NetStalker";

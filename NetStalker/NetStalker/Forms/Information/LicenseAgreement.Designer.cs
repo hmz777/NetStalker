@@ -98,7 +98,7 @@
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
             this.materialFlatButton2.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.materialFlatButton2.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton2.Icon")));
+            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_cancel;
             this.materialFlatButton2.Location = new System.Drawing.Point(276, 424);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -117,7 +117,7 @@
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.Complete_Symbol_5212;
+            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_ok;
             this.materialFlatButton1.Location = new System.Drawing.Point(387, 424);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -146,11 +146,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(13, 395);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(431, 14);
+            this.label1.Size = new System.Drawing.Size(399, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Please take sometime to read the help section in order to use this software prope" +
     "rly.";

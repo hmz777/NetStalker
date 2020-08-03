@@ -38,7 +38,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::NetStalker.Properties.Resources.color_cancel;
             this.pictureBox1.Location = new System.Drawing.Point(18, 90);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 80);
@@ -50,10 +50,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Roboto Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(107, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(341, 40);
+            this.label1.Size = new System.Drawing.Size(386, 36);
             this.label1.TabIndex = 1;
             this.label1.Text = "It appears that you don\'t have the Winpcap driver installed.\r\nplease install it f" +
     "rom below and restart the program";
@@ -64,8 +64,8 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.Complete_Symbol_5212;
-            this.materialFlatButton1.Location = new System.Drawing.Point(409, 181);
+            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_ok;
+            this.materialFlatButton1.Location = new System.Drawing.Point(436, 181);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -79,10 +79,10 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Roboto Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.Location = new System.Drawing.Point(107, 150);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(120, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(137, 18);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Winpcap Download";
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 232);
+            this.ClientSize = new System.Drawing.Size(516, 232);
             this.ControlBox = false;
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.materialFlatButton1);

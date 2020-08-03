@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -31,6 +33,9 @@ namespace NetStalker
             {
                 groupBox1.ForeColor = Color.Black;
             }
+
+            materialLabel10.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            materialLabel11.Text = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
         }
 
         private void LinkLabel1_Click(object sender, EventArgs e)

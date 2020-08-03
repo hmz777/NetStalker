@@ -29,10 +29,6 @@ namespace NetStalker
         /// </summary>
         public TextOverlay ListOverlay;
         /// <summary>
-        /// The loading dialog that is shown when performing a long running operation.
-        /// </summary>
-        private Loading LoadingDialog;
-        /// <summary>
         /// The timer that is responsible for updating the speed values in the UI.
         /// </summary>
         private readonly Timer ValuesTimer;
@@ -378,7 +374,7 @@ namespace NetStalker
                 materialLabel3.Text = "Working";
                 fastObjectListView1.EmptyListMsg = "Scanning...";
                 StatusLabel.Text = "Please wait...";
-                pictureBox1.Image = Properties.Resources.icons8_attention_96px;
+                pictureBox1.Image = Properties.Resources.color_error;
 
                 AliveTimer.Enabled = true;
 
@@ -632,7 +628,7 @@ namespace NetStalker
                     device.Blocked = true;
                     device.DeviceStatus = "Offline";
                     fastObjectListView1.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
+                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
 
                     //Activate the BR if it's not already active
                     if (!Blocker_Redirector.BRMainSwitch)
@@ -657,7 +653,7 @@ namespace NetStalker
                     device.DownloadCap = 0;
                     device.UploadCap = 0;
                     fastObjectListView1.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96;
+                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
 
                     //Activate the BR if it's not already active
                     if (!Blocker_Redirector.BRMainSwitch)
@@ -689,7 +685,7 @@ namespace NetStalker
                     //Checks if there are any devices left with active targeting
                     if (!Devices.Any(D => D.Value.Blocked == true))
                     {
-                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
+                        pictureBox1.Image = NetStalker.Properties.Resources.color_ok;
                         Blocker_Redirector.BRMainSwitch = false;
                     }
                 }
@@ -714,7 +710,7 @@ namespace NetStalker
                     //Checks if there are any devices left with the Redirected switch
                     if (!Devices.Any(D => D.Value.Redirected == true))
                     {
-                        pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_96px;
+                        pictureBox1.Image = NetStalker.Properties.Resources.color_ok;
                         Blocker_Redirector.BRMainSwitch = false;
                         ValuesTimer.Enabled = false;
                         ValuesTimer.Stop();

@@ -14,7 +14,6 @@ namespace NetStalker
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-
         }
 
         private void LicenseAgreement_Load(object sender, EventArgs e)
@@ -29,10 +28,7 @@ namespace NetStalker
             if (Properties.Settings.Default.Color == "Dark")
             {
                 label1.ForeColor = Color.FromArgb(204, 204, 204);
-
             }
-
-
         }
 
         private void MaterialFlatButton2_Click(object sender, EventArgs e)

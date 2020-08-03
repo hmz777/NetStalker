@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using NetStalker.MainLogic;
 
 namespace NetStalker
 {
@@ -23,24 +24,20 @@ namespace NetStalker
 
         private void MaterialFlatButton1_Click(object sender, EventArgs e)
         {
-          
             if (!string.IsNullOrEmpty(comboBox2.Text))
             {
-                Properties.Settings.Default.PacketDirection = comboBox2.Text;
+                Properties.Settings.Default.PacketDirection = comboBox2.SelectedText;
+                Properties.Settings.Default.Save();
             }
 
-            Properties.Settings.Default.Save();
             this.Close();
-
-
         }
 
         private void SnifferOptions_Load(object sender, EventArgs e)
         {
-
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.PacketDirection))
+            if (!string.IsNullOrEmpty(AppConfiguration.SnifferPacketDirection))
             {
-                comboBox2.Text = Properties.Settings.Default.PacketDirection;
+                comboBox2.SelectedValue = (AppConfiguration.SnifferPacketDirection == "Outbound") ? "Outbound" : "Inbound/Outbound";
             }
             else
             {

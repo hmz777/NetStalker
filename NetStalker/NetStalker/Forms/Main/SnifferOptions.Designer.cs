@@ -53,7 +53,7 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.Complete_Symbol_5212;
+            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_ok;
             this.materialFlatButton1.Location = new System.Drawing.Point(283, 83);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -74,7 +74,7 @@
             this.comboBox2.ItemHeight = 23;
             this.comboBox2.Items.AddRange(new object[] {
             "Outbound",
-            "Inbound"});
+            "Inbound/Outbound"});
             this.comboBox2.Location = new System.Drawing.Point(92, 87);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.PromptText = "Packet Direction";

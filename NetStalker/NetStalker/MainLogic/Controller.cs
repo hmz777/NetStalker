@@ -27,6 +27,8 @@ namespace NetStalker
         {
             Application.ApplicationExit += (object sender, EventArgs e) =>
             {
+                if (Main.Devices == null)
+                    return;
 
                 //Turn off the BR
                 Blocker_Redirector.BRMainSwitch = false;

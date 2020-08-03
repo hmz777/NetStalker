@@ -47,8 +47,8 @@
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.materialFlatButton1.Icon = ((System.Drawing.Image)(resources.GetObject("materialFlatButton1.Icon")));
-            this.materialFlatButton1.Location = new System.Drawing.Point(282, 91);
+            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_define_location;
+            this.materialFlatButton1.Location = new System.Drawing.Point(290, 91);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 163);
+            this.ClientSize = new System.Drawing.Size(376, 163);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialLabel4);

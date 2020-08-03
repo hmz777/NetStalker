@@ -35,7 +35,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>
     </DefineConstants>
@@ -114,12 +114,6 @@
     <Compile Include="Forms\Information\LicenseAgreement.Designer.cs">
       <DependentUpon>LicenseAgreement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Information\Loading.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Information\Loading.Designer.cs">
-      <DependentUpon>Loading.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainLogic\AppConfiguration.cs" />
     <Compile Include="MainLogic\Blocker-Redirector.cs" />
     <Compile Include="MainLogic\BROperation.cs" />
@@ -168,9 +162,6 @@
     <Compile Include="Forms\Main\SnifferOptions.Designer.cs">
       <DependentUpon>SnifferOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Notifications Testing\DesktopNotificationManagerCompat.cs" />
-    <Compile Include="Notifications Testing\MyNotification.cs" />
-    <Compile Include="Notifications Testing\NotificationAPI.cs" />
     <Compile Include="ToastNotifications\MyNotification.cs" />
     <Compile Include="ToastNotifications\NotificationAPI.cs" />
     <Compile Include="ToastNotifications\ShellHelpers.cs" />
@@ -184,9 +175,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Information\LicenseAgreement.resx">
       <DependentUpon>LicenseAgreement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Information\Loading.resx">
-      <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -234,29 +222,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Complete_Symbol-5212.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-box-important-4825.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\image %284%2925.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-network-card-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_info_30px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\icons8-ok-red.png" />
+    <None Include="Resources\icons8-info-35.png" />
+    <None Include="Resources\color_stop-squared.PNG" />
+    <None Include="Resources\color_start.PNG" />
+    <None Include="Resources\color_restart.PNG" />
+    <None Include="Resources\color_ok.PNG" />
+    <None Include="Resources\color_keyhole-shield.PNG" />
+    <None Include="Resources\color_info.PNG" />
+    <None Include="Resources\color_help.PNG" />
+    <None Include="Resources\color_gps-receiving.PNG" />
+    <None Include="Resources\color_gear.PNG" />
+    <None Include="Resources\color_external.PNG" />
+    <None Include="Resources\color_error.PNG" />
+    <None Include="Resources\color_define-location.PNG" />
+    <None Include="Resources\color_clear-symbol.PNG" />
+    <None Include="Resources\color_cancel.PNG" />
+    <None Include="Resources\color_about.PNG" />
+    <None Include="Resources\color_network-card.PNG" />
     <EmbeddedResource Include="Resources\D.txt" />
     <None Include="Resources\30G.gif" />
     <None Include="Resources\30W.gif" />
-    <None Include="Resources\logo.png" />
-    <None Include="Resources\icons8_attention_96px.png" />
-    <None Include="Resources\icons8_ok_96px.png" />
-    <None Include="Resources\icons8-ok-96.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

@@ -176,7 +176,8 @@ namespace NetStalker
                 catch
                 {
                     //Show an error in the UI in case something went wrong
-                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = "Error occurred"));
+                    view.MainForm.Invoke(new Action(() => { view.StatusLabel.Text = "Error occurred";
+                        view.PictureBox.Image = Properties.Resources.color_error; }));
                 }
             });
 
@@ -299,7 +300,7 @@ namespace NetStalker
             //Update UI state
             view.MainForm.BeginInvoke(new Action(() =>
             {
-                view.PictureBox.Image = NetStalker.Properties.Resources.icons8_ok_96px;
+                view.PictureBox.Image = NetStalker.Properties.Resources.color_ok;
                 view.StatusLabel2.Text = "Ready";
                 view.Tile.Enabled = true;
                 view.Tile2.Enabled = true;

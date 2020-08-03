@@ -7,18 +7,19 @@ using NetStalker.MainLogic;
 using PacketDotNet;
 using SharpPcap;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NetStalker
 {
+    /// <summary>
+    /// This class contains the logic for the packet sniffer.
+    /// </summary>
     public partial class Sniffer : MaterialForm
     {
 
@@ -85,7 +86,10 @@ namespace NetStalker
                 {
                     AcceptedPacket packet = rowObject as AcceptedPacket;
 
-                    if (packet != null && string.IsNullOrEmpty(packet.Host) && packet.Source.Equals(device.IP) || packet.Host == "Not found")
+                    if (packet == null)
+                        return null;
+
+                    if (string.IsNullOrEmpty(packet.Host) && packet.Source.Equals(device.IP) || packet.Host == "Not found")
                         return "Resolve";
 
                 }
@@ -97,7 +101,7 @@ namespace NetStalker
             //Select row icon based on the packet type (Request or Response)
             olvColumn1.ImageGetter = delegate (object rowObject)
             {
-                AcceptedPacket Packet = rowObject as AcceptedPacket;                
+                AcceptedPacket Packet = rowObject as AcceptedPacket;
                 if (Packet == null)
                     return default;
 
@@ -307,33 +311,6 @@ namespace NetStalker
             Activate();
         }
 
-        #endregion
-
-        /// <summary>
-        /// Perform the initialization of the capture device.
-        /// </summary>
-        public void ConfigureCaptureDevice()
-        {
-            if (!CaptureDeviceConfigured)
-            {
-                metroTextBox2.BeginInvoke(new Action(() =>
-                {
-                    metroTextBox2.Text += "Preparing network adapter..." + Environment.NewLine;
-                }));
-
-                CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
-                capturedevicelist.Refresh();
-
-                CaptureDevice = CaptureDeviceList.New()[AppConfiguration.AdapterName];
-                CaptureDeviceConfigured = true;
-
-                metroTextBox2.BeginInvoke(new Action(() =>
-                {
-                    metroTextBox2.Text += "Ready" + Environment.NewLine;
-                }));
-            }
-        }
-
         /// <summary>
         /// The event handler for the Start button.
         /// </summary>
@@ -375,69 +352,6 @@ namespace NetStalker
 
         }
 
-        private void StartSniffer()
-        {
-            RawCapture rawCapture;
-            do
-            {
-                if ((rawCapture = CaptureDevice.GetNextPacket()) != null)
-                {
-                    EthernetPacket Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
-                    if (Packet == null) { return; }
-
-                    AcceptedPacket acPacket = new AcceptedPacket();
-                    acPacket.Packet = Packet;
-
-                    if (Packet.SourceHardwareAddress.Equals(Device.MAC))
-                    {
-                        if (acPacket.TCPPacket != null)
-                        {
-                            materialListView1.BeginInvoke(new Action(() =>
-                            {
-                                materialListView1.AddObject(acPacket);
-
-                                if (materialListView1.Items.Count > 15 && !ResizeDone)
-                                {
-                                    olvColumn8.MaximumWidth = 65;
-                                    olvColumn8.MinimumWidth = 65;
-                                    olvColumn8.Width = 65;
-                                    ResizeDone = true;
-                                }
-
-                            }));
-                        }
-                    }
-                    else if (Packet.SourceHardwareAddress.Equals(AppConfiguration.GatewayMac))
-                    {
-                        if (Properties.Settings.Default.PacketDirection == "Inbound")
-                        {
-                            IPv4Packet IPV4 = Packet.Extract<IPv4Packet>();
-
-                            if (IPV4.DestinationAddress.Equals(Device.IP))
-                            {
-                                if (acPacket.TCPPacket != null)
-                                {
-                                    materialListView1.BeginInvoke(new Action(() =>
-                                    {
-                                        materialListView1.AddObject(acPacket);
-
-                                        if (materialListView1.Items.Count > 15 && !ResizeDone)
-                                        {
-                                            olvColumn8.MaximumWidth = 65;
-                                            olvColumn8.MinimumWidth = 65;
-                                            olvColumn8.Width = 65;
-                                            ResizeDone = true;
-                                        }
-                                    }));
-                                }
-                            }
-                        }
-                    }
-                }
-
-            } while (SnifferActive);
-        }
-
         /// <summary>
         /// The event handler for the Stop button.
         /// </summary>
@@ -445,58 +359,68 @@ namespace NetStalker
         /// <param name="e"></param>
         private void materialFlatButton2_Click(object sender, EventArgs e)
         {
-            if (CaptureDevice != null && SnifferActive)
+            if (CaptureDevice != null)
             {
-                SnifferActive = false;
-
-                if (SnifferTask != null)
-                {
-                    if (SnifferTask.Status == TaskStatus.Running)
-                    {
-                        metroTextBox2.Text += "Stopping capture, please wait..." + Environment.NewLine;
-                        SnifferTask.Wait();
-                    }
-
-                    SnifferTask.Dispose();
-                }
-
-                if (CaptureDevice != null)
-                    CaptureDevice.Close();
-
-                materialListView1.EmptyListMsg = "Stopped";
-                metroTextBox2.Text += "Stopped" + Environment.NewLine;
-            }
-        }
-
-        private void Sniffer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (SnifferActive && CaptureDevice != null)
-            {
-                if (MetroMessageBox.Show(this, "The sniffer is still working, continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (SnifferActive)
                 {
                     SnifferActive = false;
-
-                    if (PacketMenu != null)
-                        PacketMenu.Dispose();
 
                     if (SnifferTask != null)
                     {
                         if (SnifferTask.Status == TaskStatus.Running)
+                        {
+                            metroTextBox2.Text += "Stopping capture, please wait..." + Environment.NewLine;
                             SnifferTask.Wait();
+                        }
 
                         SnifferTask.Dispose();
                     }
 
                     CaptureDevice.Close();
-                    CaptureDevice = null;
-                }
-                else
-                {
-                    e.Cancel = true;
+
+                    materialListView1.EmptyListMsg = "Stopped";
+                    metroTextBox2.Text += "Stopped" + Environment.NewLine;
                 }
             }
         }
 
+        private void Sniffer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (CaptureDevice != null)
+            {
+                if (SnifferActive)
+                {
+                    if (MetroMessageBox.Show(this, "The sniffer is still working, continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        SnifferActive = false;
+
+                        if (PacketMenu != null)
+                            PacketMenu.Dispose();
+
+                        if (SnifferTask != null)
+                        {
+                            if (SnifferTask.Status == TaskStatus.Running)
+                                SnifferTask.Wait();
+
+                            SnifferTask.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+                }
+
+                CaptureDevice.Close();
+                CaptureDevice = null;
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the Clear button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialFlatButton4_Click_1(object sender, EventArgs e)
         {
             if (materialListView1.GetItemCount() > 0)
@@ -542,6 +466,11 @@ namespace NetStalker
 
         }
 
+        /// <summary>
+        /// The event handler of the Export button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
             if (SnifferActive)
@@ -578,6 +507,12 @@ namespace NetStalker
             }
         }
 
+
+        /// <summary>
+        /// The event handler for the resolve button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialListView1_ButtonClick(object sender, CellClickEventArgs e)
         {
             Task.Run(() =>
@@ -613,11 +548,21 @@ namespace NetStalker
             });
         }
 
+        /// <summary>
+        /// The event handler for the Clear packet button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroButton1_Click(object sender, EventArgs e)
         {
             metroTextBox1.Clear();
         }
 
+        /// <summary>
+        /// The event handler for the Save packet button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroButton2_Click(object sender, EventArgs e)
         {
             if (metroTextBox1.Text.Length > 0)
@@ -646,6 +591,11 @@ namespace NetStalker
             }
         }
 
+        /// <summary>
+        /// The event handler for the Extend viewer button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroButton3_Click(object sender, EventArgs e)
         {
             if (ViewerExtended)
@@ -664,6 +614,11 @@ namespace NetStalker
             }
         }
 
+        /// <summary>
+        /// The event handler for the Change font button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroButton4_Click(object sender, EventArgs e)
         {
             if (metroTextBox1.FontSize == MetroTextBoxSize.Tall)
@@ -680,6 +635,12 @@ namespace NetStalker
             }
         }
 
+
+        /// <summary>
+        /// The event handler for the sniffer options button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MaterialFlatButton6_Click(object sender, EventArgs e)
         {
             var snifferOptions = new SnifferOptions();
@@ -687,5 +648,97 @@ namespace NetStalker
             snifferOptions.Dispose();
         }
 
+        #endregion
+
+        /// <summary>
+        /// Perform the initialization of the capture device.
+        /// </summary>
+        public void ConfigureCaptureDevice()
+        {
+            if (!CaptureDeviceConfigured)
+            {
+                metroTextBox2.BeginInvoke(new Action(() =>
+                {
+                    metroTextBox2.Text += "Preparing network adapter..." + Environment.NewLine;
+                }));
+
+                CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
+                capturedevicelist.Refresh();
+
+                CaptureDevice = CaptureDeviceList.New()[AppConfiguration.AdapterName];
+                CaptureDeviceConfigured = true;
+
+                metroTextBox2.BeginInvoke(new Action(() =>
+                {
+                    metroTextBox2.Text += "Ready" + Environment.NewLine;
+                }));
+            }
+        }
+
+        /// <summary>
+        /// The main sniffer job.
+        /// </summary>
+        private void StartSniffer()
+        {
+            RawCapture rawCapture;
+            do
+            {
+                if ((rawCapture = CaptureDevice.GetNextPacket()) != null)
+                {
+                    EthernetPacket Packet = PacketDotNet.Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
+                    if (Packet == null) { return; }
+
+                    AcceptedPacket acPacket = new AcceptedPacket();
+                    acPacket.Packet = Packet;
+
+                    if (Packet.SourceHardwareAddress.Equals(Device.MAC))
+                    {
+                        if (acPacket.TCPPacket != null)
+                        {
+                            materialListView1.BeginInvoke(new Action(() =>
+                            {
+                                materialListView1.AddObject(acPacket);
+
+                                if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                {
+                                    olvColumn8.MaximumWidth = 65;
+                                    olvColumn8.MinimumWidth = 65;
+                                    olvColumn8.Width = 65;
+                                    ResizeDone = true;
+                                }
+
+                            }));
+                        }
+                    }
+                    else if (Packet.SourceHardwareAddress.Equals(AppConfiguration.GatewayMac))
+                    {
+                        if (AppConfiguration.SnifferPacketDirection == "Inbound") //Catch inbound packets
+                        {
+                            IPv4Packet IPV4 = Packet.Extract<IPv4Packet>();
+
+                            if (IPV4.DestinationAddress.Equals(Device.IP))
+                            {
+                                if (acPacket.TCPPacket != null)
+                                {
+                                    materialListView1.BeginInvoke(new Action(() =>
+                                    {
+                                        materialListView1.AddObject(acPacket);
+
+                                        if (materialListView1.Items.Count > 15 && !ResizeDone)
+                                        {
+                                            olvColumn8.MaximumWidth = 65;
+                                            olvColumn8.MinimumWidth = 65;
+                                            olvColumn8.Width = 65;
+                                            ResizeDone = true;
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                }
+
+            } while (SnifferActive);
+        }
     }
 }
