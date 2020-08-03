@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+﻿using BrightIdeasSoftware;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using ShellHelpers;
 using System;
 using System.Diagnostics;
@@ -6,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Reflection;
 
 namespace NetStalker.MainLogic
 {

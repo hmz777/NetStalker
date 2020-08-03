@@ -52,6 +52,10 @@ namespace NetStalker
         /// The list of targets of type <see cref="Device"/>
         /// </summary>
         public static ConcurrentDictionary<IPAddress, Device> Devices;
+        /// <summary>
+        /// An indication that the app is being closed from the tray icon's context menu.
+        /// </summary>
+        public bool TrayExitFlag = false;
         #endregion
 
         public Main(string[] args = null)
@@ -344,9 +348,14 @@ namespace NetStalker
                     ValuesTimer.Dispose();
                 }
 
-                if (MetroMessageBox.Show(this, "Quit the application ?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                Devices = null;
+
+                if (e.CloseReason == CloseReason.UserClosing && !TrayExitFlag)
                 {
-                    e.Cancel = true;
+                    if (MetroMessageBox.Show(this, "Quit the application ?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                    {
+                        e.Cancel = true;
+                    }
                 }
             }
         }
@@ -591,7 +600,7 @@ namespace NetStalker
                 if (Ad.Count > 0)
                 {
                     Device Device = Ad[0];
-                    NotificationAPI Napi = new NotificationAPI(Device);
+                    NotificationAPI Napi = new NotificationAPI(Device, this);
                     Napi.CreateNotification();
                     Napi.AttachHandlers();
                     Napi.ShowToast();
@@ -601,6 +610,11 @@ namespace NetStalker
         }
 
         private void FastObjectListView1_SubItemChecking(object sender, SubItemCheckingEventArgs e)
+        {
+            SubItemCheckingHandler(e);
+        }
+
+        public void SubItemCheckingHandler(SubItemCheckingEventArgs e)
         {
             try
             {
@@ -633,6 +647,9 @@ namespace NetStalker
                     //Activate the BR if it's not already active
                     if (!Blocker_Redirector.BRMainSwitch)
                     {
+                        if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == TaskStatus.Running)
+                            Blocker_Redirector.BRTask.Wait();
+
                         Blocker_Redirector.BRMainSwitch = true;
                         Blocker_Redirector.BlockAndRedirect();
                     }
@@ -658,6 +675,9 @@ namespace NetStalker
                     //Activate the BR if it's not already active
                     if (!Blocker_Redirector.BRMainSwitch)
                     {
+                        if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == TaskStatus.Running)
+                            Blocker_Redirector.BRTask.Wait();
+
                         Blocker_Redirector.BRMainSwitch = true;
                         Blocker_Redirector.BlockAndRedirect();
                     }

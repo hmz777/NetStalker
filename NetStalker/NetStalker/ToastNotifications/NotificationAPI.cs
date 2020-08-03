@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+﻿using BrightIdeasSoftware;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Drawing;
 using System.IO;
@@ -13,10 +14,12 @@ namespace NetStalker.ToastNotifications
         public ToastNotification toast;
         private Main main = Application.OpenForms["Main"] as Main;
         private Device Device;
+        private readonly IView view;
 
-        public NotificationAPI(Device device = null)
+        public NotificationAPI(Device device = null, IView view = null)
         {
             this.Device = device;
+            this.view = view;
         }
 
         public void CreateNotification()
@@ -193,16 +196,13 @@ namespace NetStalker.ToastNotifications
                             {
                                 main.BeginInvoke(new Action(() =>
                                 {
-                                    if (!Device.Blocked && !Device.Redirected)
-                                    {
-                                        Device.Blocked = true;
-                                        Device.DeviceStatus = "Offline";
-                                        main.fastObjectListView1.UpdateObject(Device);
-                                        main.pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
-                                    }
+                                    main.SubItemCheckingHandler(new SubItemCheckingEventArgs(view.ListView1.GetColumn(6), new OLVListItem(Device), 6, CheckState.Unchecked, CheckState.Checked));
 
                                 }));
-
+                            }
+                            else
+                            {
+                                main.SubItemCheckingHandler(new SubItemCheckingEventArgs(view.ListView1.GetColumn(6), new OLVListItem(Device), 6, CheckState.Unchecked, CheckState.Checked));
                             }
                         }
                         catch
@@ -254,7 +254,6 @@ namespace NetStalker.ToastNotifications
                         Properties.Settings.Default.Save();
                         break;
                     }
-
             }
         }
 

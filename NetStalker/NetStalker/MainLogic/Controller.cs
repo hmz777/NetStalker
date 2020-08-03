@@ -1,4 +1,5 @@
 ﻿using NetStalker.MainLogic;
+using NetStalker.ToastNotifications;
 using System;
 using System.Windows.Forms;
 
@@ -53,7 +54,7 @@ namespace NetStalker
                 Scanner.CloseAllCaptures(view);
 
                 //Clean all notifications
-                //NotificationAPI.ClearNotifications();
+                NotificationAPI.ClearNotifications();
             };
         }
     }

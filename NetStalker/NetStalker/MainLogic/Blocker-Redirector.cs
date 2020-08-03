@@ -46,50 +46,50 @@ namespace NetStalker.MainLogic
             MainDevice.Filter = "ip";
 
             BRTask = Task.Run(() =>
-             {
-                 RawCapture rawCapture;
-                 EthernetPacket packet;
+            {
+                RawCapture rawCapture;
+                EthernetPacket packet;
 
-                 while (BRMainSwitch)
-                 {
-                     if ((rawCapture = MainDevice.GetNextPacket()) != null)
-                     {
-                         packet = Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
-                         if (packet == null)
-                             continue;
+                while (BRMainSwitch)
+                {
+                    if ((rawCapture = MainDevice.GetNextPacket()) != null)
+                    {
+                        packet = Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
+                        if (packet == null)
+                            continue;
 
-                         KeyValuePair<IPAddress, Device> device;
+                        KeyValuePair<IPAddress, Device> device;
 
-                         if (!(device = Main.Devices.FirstOrDefault(D => D.Value.MAC.Equals(packet.SourceHardwareAddress))).Equals(default(KeyValuePair<IPAddress, Device>)) && device.Value.Redirected)
-                         {
-                             if (device.Value.UploadCap == 0 || device.Value.UploadCap > device.Value.PacketsSentSinceLastReset)
-                             {
-                                 packet.SourceHardwareAddress = MainDevice.MacAddress;
-                                 packet.DestinationHardwareAddress = AppConfiguration.GatewayMac;
-                                 MainDevice.SendPacket(packet);
-                                 device.Value.PacketsSentSinceLastReset += packet.Bytes.Length;
-                             }
-                         }
-                         else if (packet.SourceHardwareAddress.Equals(AppConfiguration.GatewayMac))
-                         {
-                             IPv4Packet IPV4 = packet.Extract<IPv4Packet>();
+                        if (!(device = Main.Devices.FirstOrDefault(D => D.Value.MAC.Equals(packet.SourceHardwareAddress))).Equals(default(KeyValuePair<IPAddress, Device>)) && device.Value.Redirected)
+                        {
+                            if (device.Value.UploadCap == 0 || device.Value.UploadCap > device.Value.PacketsSentSinceLastReset)
+                            {
+                                packet.SourceHardwareAddress = MainDevice.MacAddress;
+                                packet.DestinationHardwareAddress = AppConfiguration.GatewayMac;
+                                MainDevice.SendPacket(packet);
+                                device.Value.PacketsSentSinceLastReset += packet.Bytes.Length;
+                            }
+                        }
+                        else if (packet.SourceHardwareAddress.Equals(AppConfiguration.GatewayMac))
+                        {
+                            IPv4Packet IPV4 = packet.Extract<IPv4Packet>();
 
-                             if (!(device = Main.Devices.FirstOrDefault(D => D.Key.Equals(IPV4.DestinationAddress))).Equals(default(KeyValuePair<IPAddress, Device>)) && device.Value.Redirected)
-                             {
-                                 if (device.Value.DownloadCap == 0 || device.Value.DownloadCap > device.Value.PacketsReceivedSinceLastReset)
-                                 {
-                                     packet.SourceHardwareAddress = MainDevice.MacAddress;
-                                     packet.DestinationHardwareAddress = device.Value.MAC;
-                                     MainDevice.SendPacket(packet);
-                                     device.Value.PacketsReceivedSinceLastReset += packet.Bytes.Length;
-                                 }
-                             }
-                         }
-                     }
+                            if (!(device = Main.Devices.FirstOrDefault(D => D.Key.Equals(IPV4.DestinationAddress))).Equals(default(KeyValuePair<IPAddress, Device>)) && device.Value.Redirected)
+                            {
+                                if (device.Value.DownloadCap == 0 || device.Value.DownloadCap > device.Value.PacketsReceivedSinceLastReset)
+                                {
+                                    packet.SourceHardwareAddress = MainDevice.MacAddress;
+                                    packet.DestinationHardwareAddress = device.Value.MAC;
+                                    MainDevice.SendPacket(packet);
+                                    device.Value.PacketsReceivedSinceLastReset += packet.Bytes.Length;
+                                }
+                            }
+                        }
+                    }
 
-                     SpoofClients();
-                 }
-             });
+                    SpoofClients();
+                }
+            });
         }
 
         /// <summary>
@@ -135,12 +135,12 @@ namespace NetStalker.MainLogic
             }
             else
             {
-                ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, AppConfiguration.LocalIp, device.MAC, device.IP);
-                ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, AppConfiguration.LocalIp, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp)
+                ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Response, MainDevice.MacAddress, AppConfiguration.LocalIp, device.MAC, device.IP);
+                ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Response, MainDevice.MacAddress, AppConfiguration.LocalIp, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
+                EthernetPacket EtherPacketForVicProtection = new EthernetPacket(device.MAC, MainDevice.MacAddress, EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForVicProtection
                 };
-                EthernetPacket EtherPacketForVicProtection = new EthernetPacket(device.MAC, MainDevice.MacAddress, EthernetType.Arp);
                 EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(AppConfiguration.GatewayMac, MainDevice.MacAddress, EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForGatewayProtection
