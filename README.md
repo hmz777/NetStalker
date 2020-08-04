@@ -5,7 +5,9 @@
  [![HitCount](http://hits.dwyl.com/hmz777/NetStalker.svg)](http://hits.dwyl.com/hmz777/NetStalker)
 ![GitHub All Releases](https://img.shields.io/github/downloads/hmz777/NetStalker/total?color=orange&label=downloads&style=flat-square) 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmz777/NetStalker?color=yellow&label=latest%20release&style=flat-square) 
+![GitHub Release Date](https://img.shields.io/github/release-date/hmz777/NetStalker?color=yellow&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/hmz777/NetStalker?color=blue&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/hmz777/NetStalker?color=black&style=flat-square)
 
 # NetStalker
 A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built in packet sniffer.
