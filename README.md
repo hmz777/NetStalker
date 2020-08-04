@@ -4,7 +4,7 @@
 
  [![HitCount](http://hits.dwyl.com/hmz777/NetStalker.svg)](http://hits.dwyl.com/hmz777/NetStalker)
 ![GitHub All Releases](https://img.shields.io/github/downloads/hmz777/NetStalker/total?color=orange&label=downloads&style=flat-square) 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmz777/NetStalker?color=yellow&label=latest%20stable%20version&style=flat-square) 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmz777/NetStalker?color=yellow&label=latest%20release&style=flat-square) 
 ![GitHub](https://img.shields.io/github/license/hmz777/NetStalker?color=blue&style=flat-square)
 
 # NetStalker
