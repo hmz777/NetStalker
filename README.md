@@ -2,7 +2,7 @@
   <img align="center" src="https://i.imgur.com/4NdcRHF.png" alt="NetStalker">
 </p>
 
-[![HitCount](http://hits.dwyl.com/hmz777/NetStalker.svg)](http://hits.dwyl.com/hmz777/NetStalker)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fhmz777%2FNetStalker)
 ![GitHub All Releases](https://img.shields.io/github/downloads/hmz777/NetStalker/total?color=orange&label=downloads&style=flat-square) 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmz777/NetStalker?color=yellow&label=latest%20release&style=flat-square) 
 ![GitHub Release Date](https://img.shields.io/github/release-date/hmz777/NetStalker?color=yellow&style=flat-square)
