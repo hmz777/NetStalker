@@ -100,11 +100,11 @@ namespace NetStalker.MainLogic
         }
 
         /// <summary>
-        /// Return the gateway Mac address of the selected network interface
+        /// Return the Mac address of the selected network interface
         /// </summary>
         /// <param name="friendlyname"></param>
         /// <returns></returns>
-        public static PhysicalAddress GetGatewayMAC(string FriendlyName)
+        public static PhysicalAddress GetLocalMac(string FriendlyName)
         {
             if (string.IsNullOrEmpty(FriendlyName))
                 throw new NullReferenceException("\"FriendlyName\" is null");

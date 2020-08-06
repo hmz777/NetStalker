@@ -44,7 +44,7 @@ namespace NetStalker
         {
             get
             {
-                if (MAC.Equals(AppConfiguration.GatewayMac))
+                if (IP.Equals(AppConfiguration.GatewayIp))
                 {
                     return true;
                 }
