@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.Win32;
+using NetStalker.MainLogic;
 using Timer = System.Timers.Timer;
 
 namespace NetStalker
@@ -152,98 +153,6 @@ namespace NetStalker
             this.Close();
         }
 
-        public byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
-        {
-            byte[] encryptedBytes = null;
-
-
-            byte[] saltBytes = new byte[] { 19, 9, 94, 1, 94, 9, 19, 2 };
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (RijndaelManaged AES = new RijndaelManaged())
-                {
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                    AES.Mode = CipherMode.CBC;
-
-                    using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
-                        cs.Close();
-                    }
-
-                    encryptedBytes = ms.ToArray();
-                }
-            }
-
-            return encryptedBytes;
-        }
-
-        public string EncryptText(string input, string password)
-        {
-            byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-
-            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-            byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
-
-            string result = Convert.ToBase64String(bytesEncrypted);
-
-            return result;
-        }
-
-        public byte[] AES_Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
-        {
-            byte[] decryptedBytes = null;
-
-            byte[] saltBytes = new byte[] { 19, 9, 94, 1, 94, 9, 19, 2 };
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (RijndaelManaged AES = new RijndaelManaged())
-                {
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                    AES.Mode = CipherMode.CBC;
-
-                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
-                        cs.Close();
-                    }
-
-                    decryptedBytes = ms.ToArray();
-                }
-            }
-
-            return decryptedBytes;
-        }
-
-        public string DecryptText(string input, string password)
-        {
-            byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-            byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
-
-            string result = Encoding.UTF8.GetString(bytesDecrypted);
-
-            return result;
-        }
-
         private void materialSingleLineTextField2_TextChanged(object sender, EventArgs e)
         {
 
@@ -276,7 +185,7 @@ namespace NetStalker
             {
                 string strText = materialSingleLineTextField1.Text;
                 string key = "h777m777z777@netstalker.app";
-                string encText = EncryptText(strText, key);
+                string encText = Tools.EncryptText(strText, key);
 
                 var root = Registry.CurrentUser;
                 RegistryKey reg = root.OpenSubKey("Software", true).CreateSubKey("hSmNz");
@@ -301,9 +210,6 @@ namespace NetStalker
                     materialLabel4.Invoke(new Action(() => { materialLabel4.Text = ""; }));
                     t1.Stop();
                 };
-
-
-
             }
         }
 

@@ -1,19 +1,18 @@
-﻿using PacketDotNet;
-using SharpPcap;
-using SharpPcap.Npcap;
+﻿using NetStalker.MainLogic;
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Runtime.ExceptionServices;
-using System.Security;
-using System.Threading;
 
 namespace NetStalker
 {
     public class Device
     {
-        public DateTime TimeSinceLastArp = DateTime.Now;
+        public Device()
+        {
+            TimeSinceLastArp = DateTime.Now;
+        }
+
+        public DateTime TimeSinceLastArp { get; set; }
         public IPAddress IP { get; set; }
         public PhysicalAddress MAC { get; set; }
         public string DeviceStatus { get; set; }
@@ -30,7 +29,7 @@ namespace NetStalker
         {
             get
             {
-                if (IP.ToString() == Properties.Settings.Default.LocalIp)
+                if (IP.Equals(AppConfiguration.LocalIp))
                 {
                     return true;
                 }
@@ -45,7 +44,7 @@ namespace NetStalker
         {
             get
             {
-                if (IP.ToString() == Properties.Settings.Default.Gateway)
+                if (MAC.Equals(AppConfiguration.GatewayMac))
                 {
                     return true;
                 }

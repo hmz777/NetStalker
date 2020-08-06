@@ -133,7 +133,7 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 600000000L) //1 minute
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 900000000L) //1.5 minute
                     {
                         Devices.TryRemove(Device.Key, out _);
                         Scanner.ClientList.Remove(Device.Key);
@@ -408,7 +408,6 @@ namespace NetStalker
                 MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 375);
         }
 
-
         /// <summary>
         /// The click event handler for the "About button"
         /// </summary>
@@ -541,11 +540,6 @@ namespace NetStalker
                     {
                         fastObjectListView1.UpdateObject(device);
                     }
-                    else
-                    {
-                        MetroMessageBox.Show(this, "Start redirection first!", "Error", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
 
                     ls.Dispose();
                 }
@@ -612,20 +606,30 @@ namespace NetStalker
             SubItemCheckingHandler(e);
         }
 
-        public void SubItemCheckingHandler(SubItemCheckingEventArgs e)
+        public async void SubItemCheckingHandler(SubItemCheckingEventArgs e)
         {
             try
             {
                 //Don't allow blocking / redirection while the sniffer is active or any other operation.
                 if (OperationIsInProgress)
-                    throw new CustomExceptions.OperationInProgressException();
+                {
+                    MetroMessageBox.Show(this, "The Speed Limiter can't be used while the sniffer is active!", "Error", MessageBoxButtons.OK,
+                                         MessageBoxIcon.Error);
+                    e.Canceled = true;
+                    return;
+                }
 
                 //Get the device in the selected row
                 fastObjectListView1.SelectObject(e.RowObject);
                 Device device = e.RowObject as Device;
 
                 if (device.IsGateway || device.IsLocalDevice)
-                    throw new CustomExceptions.GatewayTargeted();
+                {
+                    MetroMessageBox.Show(this, "This operation can not target the gateway or your own ip address!", "Error", MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
+                    e.Canceled = true;
+                    return;
+                }
 
                 if (e.NewValue == CheckState.Checked && e.Column.Index == 6 && !device.Blocked && !device.Redirected)
                 {
@@ -700,6 +704,8 @@ namespace NetStalker
                     device.DeviceStatus = "Online";
                     fastObjectListView1.UpdateObject(device);
 
+                    await Scanner.RestoreDevice(device);
+
                     //Checks if there are any devices left with active targeting
                     if (!Devices.Any(D => D.Value.Blocked == true))
                     {
@@ -716,14 +722,20 @@ namespace NetStalker
 
                     listDevice.Value.Blocked = false;
                     listDevice.Value.Redirected = false;
+                    listDevice.Value.Limited = false;
+                    listDevice.Value.DownloadCap = 0;
+                    listDevice.Value.UploadCap = 0;
 
                     device.Blocked = false;
                     device.Redirected = false;
+                    device.Limited = false;
                     device.DownloadCap = 0;
                     device.UploadCap = 0;
                     device.DownloadSpeed = "";
                     device.UploadSpeed = "";
                     fastObjectListView1.UpdateObject(device);
+
+                    await Scanner.RestoreDevice(device);
 
                     //Checks if there are any devices left with the Redirected switch
                     if (!Devices.Any(D => D.Value.Redirected == true))
@@ -742,21 +754,11 @@ namespace NetStalker
                 }
 
             }
-            catch (CustomExceptions.GatewayTargeted)
-            {
-                MetroMessageBox.Show(this, "This operation can not target the gateway or your own ip address!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                e.Canceled = true;
-            }
-            catch (CustomExceptions.OperationInProgressException)
-            {
-                MetroMessageBox.Show(this, "The Speed Limiter can't be used while the sniffer is active!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
             catch (CustomExceptions.DeviceNotInListException)
             {
                 MetroMessageBox.Show(this, "The selected device was not found in the list or targets", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                e.Canceled = true;
             }
         }
 

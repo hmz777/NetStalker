@@ -176,8 +176,11 @@ namespace NetStalker
                 catch
                 {
                     //Show an error in the UI in case something went wrong
-                    view.MainForm.Invoke(new Action(() => { view.StatusLabel.Text = "Error occurred";
-                        view.PictureBox.Image = Properties.Resources.color_error; }));
+                    view.MainForm.Invoke(new Action(() =>
+                    {
+                        view.StatusLabel.Text = "Error occurred";
+                        view.PictureBox.Image = Properties.Resources.color_error;
+                    }));
                 }
             });
 
@@ -332,9 +335,9 @@ namespace NetStalker
             else
             {
                 if (AppConfiguration.NetworkSize == 1)
-                    DiscoveryTimer.Change(10000, 30000);
+                    DiscoveryTimer.Change(7000, 30000);
                 else if (AppConfiguration.NetworkSize == 2)
-                    DiscoveryTimer.Change(30000, 60000);
+                    DiscoveryTimer.Change(15000, 60000);
             }
         }
 
@@ -430,6 +433,35 @@ namespace NetStalker
                         }
                     }
                 }
+            });
+        }
+
+        /// <summary>
+        /// Reconnects device and gateway again disabling the spoofing effect on the selected device.
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
+        public async static Task RestoreDevice(Device device)
+        {
+            await Task.Run(() =>
+            {
+                ArpPacket devicePacket = new ArpPacket(ArpOperation.Response, device.MAC, device.IP, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
+                EthernetPacket deviceEtherPacket = new EthernetPacket(AppConfiguration.GatewayMac, device.MAC, EthernetType.Arp)
+                {
+                    PayloadPacket = devicePacket
+                };
+                ArpPacket gatewayPacket = new ArpPacket(ArpOperation.Request, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp, device.MAC, device.IP);
+                EthernetPacket gatewayEtherPacket = new EthernetPacket(device.MAC, AppConfiguration.GatewayMac, EthernetType.Arp)
+                {
+                    PayloadPacket = gatewayPacket
+                };
+
+                for (int i = 0; i < 20; i++)
+                {
+                    capturedevice.SendPacket(gatewayEtherPacket);
+                    capturedevice.SendPacket(deviceEtherPacket);
+                }
+
             });
         }
 
