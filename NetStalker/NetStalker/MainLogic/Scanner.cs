@@ -445,12 +445,12 @@ namespace NetStalker
         {
             await Task.Run(() =>
             {
-                ArpPacket devicePacket = new ArpPacket(ArpOperation.Response, device.MAC, device.IP, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
+                ArpPacket devicePacket = new ArpPacket(ArpOperation.Response, AppConfiguration.BroadcastMac, device.IP, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
                 EthernetPacket deviceEtherPacket = new EthernetPacket(AppConfiguration.GatewayMac, device.MAC, EthernetType.Arp)
                 {
                     PayloadPacket = devicePacket
                 };
-                ArpPacket gatewayPacket = new ArpPacket(ArpOperation.Request, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp, device.MAC, device.IP);
+                ArpPacket gatewayPacket = new ArpPacket(ArpOperation.Response, AppConfiguration.BroadcastMac, AppConfiguration.GatewayIp, device.MAC, device.IP);
                 EthernetPacket gatewayEtherPacket = new EthernetPacket(device.MAC, AppConfiguration.GatewayMac, EthernetType.Arp)
                 {
                     PayloadPacket = gatewayPacket

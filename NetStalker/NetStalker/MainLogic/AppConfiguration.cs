@@ -59,13 +59,17 @@ namespace NetStalker.MainLogic
         public static string SubnetMask => NetStalker.Properties.Settings.Default.NetMask;
 
         /// <summary>
-        /// Returns the broadcast address of the current network.
+        /// Returns the broadcast ip address of the current network.
         /// </summary>
         /// <remarks>
         /// This is used to send arp packets across the network.
         /// </remarks>
         public static IPAddress BroadcastAddress => IPAddress.Parse(NetStalker.Properties.Settings.Default.BroadcastAddress);
 
+        /// <summary>
+        /// Returns the broadcast mac address of the current network.
+        /// </summary>
+        public static PhysicalAddress BroadcastMac => PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF");
         /// <summary>
         /// Returns the chosen packet direction that is used by the sniffer.
         /// </summary>

