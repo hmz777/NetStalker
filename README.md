@@ -43,7 +43,7 @@ A network tool to control the bandwidth over your local network, it can block in
 
 # Binaries
 The latest stable version:
-- NetStalker [Download Setup package](https://github.com/hmz777/NetStalker/releases/download/v2.0/NetStalker.exe)
+- NetStalker [Download Setup package](https://github.com/hmz777/NetStalker/releases/download/v2.1/NetStalker.exe)
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
