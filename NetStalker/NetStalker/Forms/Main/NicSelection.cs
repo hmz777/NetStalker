@@ -7,8 +7,10 @@ using SharpPcap;
 using SharpPcap.Npcap;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -140,7 +142,7 @@ namespace NetStalker
             #endregion
 
             //Open the registry, show the License Agreement dialog if it's not accepted,
-            //then check for the WinPcap driver and display an error dialog if it's not installed,
+            //then check for the Npcap driver and display an error dialog if it's not installed,
             //otherwise grab the driver version and show it.
             var root = Registry.CurrentUser;
             RegistryKey reg1 = root.OpenSubKey("Software", true).CreateSubKey("hSmNz");
@@ -166,37 +168,45 @@ namespace NetStalker
 
                 #endregion
 
-                #region WinPcap driver check
+                #region Npcap driver check
 
-                RegistryKey winpcapkey = null;
-                if (Environment.Is64BitOperatingSystem)
-                {
-                    winpcapkey =
-                       Registry.LocalMachine.OpenSubKey(
-                           @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\WinPcapInst");
-                }
-                else
-                {
-                    winpcapkey =
-                        Registry.LocalMachine.OpenSubKey(
-                            @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinPcapInst");
-                }
+                string ver = null;
 
-                if (winpcapkey != null)
+                if (!Environment.Is64BitOperatingSystem)
                 {
-                    string ver = (string)winpcapkey.GetValue("DisplayName");
-                    if (!string.IsNullOrEmpty(ver))
+                    using (RegistryKey np = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Npcap", false))
                     {
-                        materialLabel3.Text = ver;
-                        winpcapkey.Close();
+                        //Get Npcap installation path
+                        var InstallationPath = np.GetValue(string.Empty) as string;
+
+                        if (!string.IsNullOrEmpty(InstallationPath))
+                        {
+                            ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+
+                            materialLabel3.Text = ver;
+                        }
                     }
                 }
                 else
                 {
-                    winpcapkey.Close();
+                    using (RegistryKey np = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Npcap", false))
+                    {
+                        //Get Npcap installation path
+                        var InstallationPath = np.GetValue(string.Empty) as string;
 
-                    ErrorForm EF = new ErrorForm();
-                    EF.ShowDialog();
+                        if (!string.IsNullOrEmpty(InstallationPath))
+                        {
+                            ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+
+                            materialLabel3.Text = ver;
+                        }
+                    }
+                }
+
+                if (string.IsNullOrEmpty(ver))
+                {
+                    var verError = new ErrorForm();
+                    verError.ShowDialog();
                 }
 
                 #endregion

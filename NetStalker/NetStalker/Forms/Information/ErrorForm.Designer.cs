@@ -53,10 +53,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(107, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(386, 36);
+            this.label1.Size = new System.Drawing.Size(371, 36);
             this.label1.TabIndex = 1;
-            this.label1.Text = "It appears that you don\'t have the Winpcap driver installed.\r\nplease install it f" +
-    "rom below and restart the program";
+            this.label1.Text = "It appears that you don\'t have the Npcap driver installed.\r\nplease install it fro" +
+    "m below and restart the program";
             // 
             // materialFlatButton1
             // 
@@ -80,12 +80,13 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
             this.linkLabel1.Location = new System.Drawing.Point(107, 150);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(137, 18);
+            this.linkLabel1.Size = new System.Drawing.Size(122, 18);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Winpcap Download";
+            this.linkLabel1.Text = "Npcap Download";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // ErrorForm

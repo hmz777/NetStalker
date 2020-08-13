@@ -23,7 +23,7 @@ namespace NetStalker
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe");
+            Process.Start("https://nmap.org/download.html");
         }
 
         private void ErrorForm_Load(object sender, EventArgs e)
