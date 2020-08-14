@@ -376,6 +376,9 @@ namespace NetStalker
                 {
                     for (int ipindex = 1; ipindex <= 255; ipindex++)
                     {
+                        if (capturedevice.MacAddress == null) {
+                            continue;
+                        }
                         ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
                         EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetType.Arp);
                         ethernetpacket.PayloadPacket = arprequestpacket;

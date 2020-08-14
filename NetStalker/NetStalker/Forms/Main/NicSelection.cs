@@ -191,14 +191,16 @@ namespace NetStalker
                 {
                     using (RegistryKey np = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Npcap", false))
                     {
-                        //Get Npcap installation path
-                        var InstallationPath = np.GetValue(string.Empty) as string;
+                        if (np != null) {
+                            //Get Npcap installation path
+                            var InstallationPath = np.GetValue(string.Empty) as string;
 
-                        if (!string.IsNullOrEmpty(InstallationPath))
-                        {
-                            ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+                            if (!string.IsNullOrEmpty(InstallationPath))
+                            {
+                                ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
 
-                            materialLabel3.Text = ver;
+                                materialLabel3.Text = ver;
+                            }
                         }
                     }
                 }
