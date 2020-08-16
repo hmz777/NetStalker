@@ -47,7 +47,7 @@ A network tool to control the bandwidth over your local network, it can block in
 - Included a packaged installer.
 
 # Binaries
-### Make sure you have the Npcap driver before installing NetStalker [Npcap](https://nmap.org/download.html).
+### Make sure you have the Npcap driver before installing NetStalker. [Npcap](https://nmap.org/download.html).
 The latest stable version:
 - NetStalker [Download Setup package](https://github.com/hmz777/NetStalker/releases/download/v2.2/NetStalker.exe)
 
@@ -75,6 +75,13 @@ The latest stable version:
 
 ### Expanded Packet Viewer:
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
+
+# Issues
+- Before creating a new issue please make sure you have the latest release version or the latest compiled version if you're compiling the app your self.
+- Include the app version.
+- Include the full stacktrace.
+- I do not issue setup installers for every release, so if you're having a problem with a previous version try compiling the app you self first.
+- Follow the issue template.
 
 # Disclaimer
 NetStalker is provided by HMZ-Software "as is" and "with all faults". The provider makes no representations or warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software. There are inherent dangers in the use of any software, and you are solely responsible for determining whether NetStalker is compatible with your equipment and other software installed on your equipment. You are also solely responsible for the protection of your equipment and backup of your data, and the provider will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software.
