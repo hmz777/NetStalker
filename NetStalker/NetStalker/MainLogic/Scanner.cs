@@ -165,7 +165,7 @@ namespace NetStalker
                     }
 
                     stopwatch.Stop();
-                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = ClientList.Count.ToString() + " device(s) found"));
+                    view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = ClientList.Count.ToString() + " device(s) found"));
 
                     //Initial scanning is over now we start the background scan.
                     Main.OperationIsInProgress = false;
@@ -176,11 +176,15 @@ namespace NetStalker
                 catch
                 {
                     //Show an error in the UI in case something went wrong
-                    view.MainForm.Invoke(new Action(() =>
+                    try
                     {
-                        view.StatusLabel.Text = "Error occurred";
-                        view.PictureBox.Image = Properties.Resources.color_error;
-                    }));
+                        view.MainForm.BeginInvoke(new Action(() =>
+                        {
+                            view.StatusLabel.Text = "Error occurred";
+                            view.PictureBox.Image = Properties.Resources.color_error;
+                        }));
+                    }
+                    catch { } //Swallow exception when the user closes the app during the scan operation
                 }
             });
 
@@ -213,7 +217,7 @@ namespace NetStalker
                 if (!ClientList.ContainsKey(ArpPacket.SenderProtocolAddress) && ArpPacket.SenderProtocolAddress.ToString() != "0.0.0.0" && Tools.AreCompatibleIPs(ArpPacket.SenderProtocolAddress, myipaddress, AppConfiguration.NetworkSize))
                 {
                     ClientList.Add(ArpPacket.SenderProtocolAddress, ArpPacket.SenderHardwareAddress);
-                    view.ListView1.Invoke(new Action(() =>
+                    view.ListView1.BeginInvoke(new Action(() =>
                     {
                         string mac = Tools.GetMACString(ArpPacket.SenderHardwareAddress);
                         string ip = ArpPacket.SenderProtocolAddress.ToString();
@@ -281,7 +285,7 @@ namespace NetStalker
 
                     }));
 
-                    view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = ClientList.Count + " device(s) found"));
+                    view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = ClientList.Count + " device(s) found"));
 
                 }
                 else if (ClientList.ContainsKey(ArpPacket.SenderProtocolAddress))
@@ -315,7 +319,7 @@ namespace NetStalker
                 view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
             }
 
-            view.MainForm.Invoke(new Action(() => view.StatusLabel.Text = ClientList.Count + " device(s) found"));
+            view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = ClientList.Count + " device(s) found"));
 
             #endregion
         }
@@ -376,6 +380,9 @@ namespace NetStalker
                 {
                     for (int ipindex = 1; ipindex <= 255; ipindex++)
                     {
+                        if (capturedevice == null || capturedevice.Started == false)
+                            break;
+
                         ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
                         EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetType.Arp);
                         ethernetpacket.PayloadPacket = arprequestpacket;
@@ -387,8 +394,14 @@ namespace NetStalker
                 {
                     for (int i = 1; i <= 255; i++)
                     {
+                        if (capturedevice == null || capturedevice.Started == false)
+                            break;
+
                         for (int j = 1; j <= 255; j++)
                         {
+                            if (capturedevice == null || capturedevice.Started == false)
+                                break;
+
                             ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j), capturedevice.MacAddress, myipaddress);
                             EthernetPacket ethernetpacket = new EthernetPacket(capturedevice.MacAddress, PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF"), EthernetType.Arp);
                             ethernetpacket.PayloadPacket = arprequestpacket;
@@ -409,10 +422,19 @@ namespace NetStalker
                 {
                     for (int i = 1; i <= 255; i++)
                     {
+                        if (capturedevice == null || capturedevice.Started == false)
+                            break;
+
                         for (int j = 1; j <= 255; j++)
                         {
+                            if (capturedevice == null || capturedevice.Started == false)
+                                break;
+
                             for (int k = 1; k <= 255; k++)
                             {
+                                if (capturedevice == null || capturedevice.Started == false)
+                                    break;
+
                                 ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request,
                                     PhysicalAddress.Parse("00-00-00-00-00-00"),
                                     IPAddress.Parse(Root + i + '.' + j + '.' + k), capturedevice.MacAddress,
