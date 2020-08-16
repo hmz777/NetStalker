@@ -177,13 +177,16 @@ namespace NetStalker
                     using (RegistryKey np = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Npcap", false))
                     {
                         //Get Npcap installation path
-                        var InstallationPath = np.GetValue(string.Empty) as string;
-
-                        if (!string.IsNullOrEmpty(InstallationPath))
+                        if (np != null)
                         {
-                            ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+                            var InstallationPath = np.GetValue(string.Empty) as string;
 
-                            materialLabel3.Text = ver;
+                            if (!string.IsNullOrEmpty(InstallationPath))
+                            {
+                                ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+
+                                materialLabel3.Text = ver;
+                            }
                         }
                     }
                 }
@@ -192,13 +195,16 @@ namespace NetStalker
                     using (RegistryKey np = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Npcap", false))
                     {
                         //Get Npcap installation path
-                        var InstallationPath = np.GetValue(string.Empty) as string;
-
-                        if (!string.IsNullOrEmpty(InstallationPath))
+                        if (np != null)
                         {
-                            ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+                            var InstallationPath = np.GetValue(string.Empty) as string;
 
-                            materialLabel3.Text = ver;
+                            if (!string.IsNullOrEmpty(InstallationPath))
+                            {
+                                ver = FileVersionInfo.GetVersionInfo(Path.Combine(InstallationPath, "NPFInstall.exe")).FileVersion;
+
+                                materialLabel3.Text = ver;
+                            }
                         }
                     }
                 }
