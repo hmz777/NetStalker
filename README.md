@@ -47,6 +47,7 @@ A network tool to control the bandwidth over your local network, it can block in
 - Included a packaged installer.
 
 # Binaries
+### Make sure you have the Npcap driver before installing NetStalker [Npcap](https://nmap.org/download.html).
 The latest stable version:
 - NetStalker [Download Setup package](https://github.com/hmz777/NetStalker/releases/download/v2.2/NetStalker.exe)
 
