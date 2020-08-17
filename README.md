@@ -80,7 +80,7 @@ The latest stable version:
 - Before creating a new issue please make sure you have the latest release version or the latest compiled version if you're compiling the app your self.
 - Include the app version.
 - Include the full stacktrace.
-- I do not issue setup installers for every release, so if you're having a problem with a previous version try compiling the app you self first.
+- I do not issue setup installers for every release, so if you're having a problem with a previous version try compiling the app your self first.
 - Follow the issue template.
 
 # Disclaimer
