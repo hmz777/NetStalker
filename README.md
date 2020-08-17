@@ -76,7 +76,7 @@ The latest stable version:
 ### Expanded Packet Viewer:
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
 
-# contributions
+# Contributions
 - Before submitting a pull request, please take sometime to understand how NetStalker and the SharpPcap library work. 
 
 # Issues
