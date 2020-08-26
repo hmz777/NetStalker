@@ -329,19 +329,25 @@ namespace NetStalker
         /// </summary>
         public static void StartDescoveryTimer()
         {
-            if (DiscoveryTimer == null)
+            try
             {
-                if (AppConfiguration.NetworkSize == 1)
-                    DiscoveryTimer = new Timer(ProbingHandler, null, 0, 30000);
-                else if (AppConfiguration.NetworkSize == 2)
-                    DiscoveryTimer = new Timer(ProbingHandler, null, 0, 60000);
+                if (DiscoveryTimer == null)
+                {
+                    if (AppConfiguration.NetworkSize == 1)
+                        DiscoveryTimer = new Timer(ProbingHandler, null, 0, 30000);
+                    else if (AppConfiguration.NetworkSize == 2)
+                        DiscoveryTimer = new Timer(ProbingHandler, null, 0, 60000);
+                }
+                else
+                {
+                    if (AppConfiguration.NetworkSize == 1)
+                        DiscoveryTimer.Change(7000, 30000);
+                    else if (AppConfiguration.NetworkSize == 2)
+                        DiscoveryTimer.Change(15000, 60000);
+                }
             }
-            else
+            catch
             {
-                if (AppConfiguration.NetworkSize == 1)
-                    DiscoveryTimer.Change(7000, 30000);
-                else if (AppConfiguration.NetworkSize == 2)
-                    DiscoveryTimer.Change(15000, 60000);
             }
         }
 
