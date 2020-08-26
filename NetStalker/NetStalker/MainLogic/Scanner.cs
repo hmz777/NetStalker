@@ -134,26 +134,32 @@ namespace NetStalker
                                  }
                                  catch (Exception ex)
                                  {
-                                     if (ex is SocketException)
+                                     try
                                      {
-                                         var Name = VendorAPI.GetVendorInfo(mac);
-                                         device.ManName = (Name is null) ? "" : Name.data.organization_name;
-
-                                         view.ListView1.BeginInvoke(new Action(() =>
+                                         if (ex is SocketException)
                                          {
-                                             device.DeviceName = ip;
-                                             view.ListView1.UpdateObject(device);
-                                         }));
-                                     }
-                                     else
-                                     {
-                                         view.MainForm.BeginInvoke(
-                                             new Action(() =>
+                                             var Name = VendorAPI.GetVendorInfo(mac);
+                                             device.ManName = (Name is null) ? "" : Name.data.organization_name;
+
+                                             view.ListView1.BeginInvoke(new Action(() =>
                                              {
                                                  device.DeviceName = ip;
-                                                 device.ManName = "Error";
                                                  view.ListView1.UpdateObject(device);
                                              }));
+                                         }
+                                         else
+                                         {
+                                             view.MainForm.BeginInvoke(
+                                                 new Action(() =>
+                                                 {
+                                                     device.DeviceName = ip;
+                                                     device.ManName = "Error";
+                                                     view.ListView1.UpdateObject(device);
+                                                 }));
+                                         }
+                                     }
+                                     catch
+                                     {
                                      }
                                  }
                              });
@@ -259,26 +265,32 @@ namespace NetStalker
                             }
                             catch (Exception ex)
                             {
-                                if (ex is SocketException)
+                                try
                                 {
-                                    var Name = VendorAPI.GetVendorInfo(mac);
-                                    device.ManName = (Name is null) ? "" : Name.data.organization_name;
-
-                                    view.ListView1.BeginInvoke(new Action(() =>
+                                    if (ex is SocketException)
                                     {
-                                        device.DeviceName = ip;
-                                        view.ListView1.UpdateObject(device);
-                                    }));
-                                }
-                                else
-                                {
-                                    view.MainForm.BeginInvoke(
-                                        new Action(() =>
+                                        var Name = VendorAPI.GetVendorInfo(mac);
+                                        device.ManName = (Name is null) ? "" : Name.data.organization_name;
+
+                                        view.ListView1.BeginInvoke(new Action(() =>
                                         {
                                             device.DeviceName = ip;
-                                            device.ManName = "Error";
                                             view.ListView1.UpdateObject(device);
                                         }));
+                                    }
+                                    else
+                                    {
+                                        view.MainForm.BeginInvoke(
+                                            new Action(() =>
+                                            {
+                                                device.DeviceName = ip;
+                                                device.ManName = "Error";
+                                                view.ListView1.UpdateObject(device);
+                                            }));
+                                    }
+                                }
+                                catch
+                                {
                                 }
                             }
                         });
@@ -527,22 +539,28 @@ namespace NetStalker
         /// <param name="view"></param>
         public static void CallTheLoadingBar(IView view)
         {
-            if (view.LoadingBar.InvokeRequired)
+            try
             {
-                view.LoadingBar.BeginInvoke(new Action(() =>
+                if (view.LoadingBar.InvokeRequired)
+                {
+                    view.LoadingBar.BeginInvoke(new Action(() =>
+                    {
+                        view.LoadingBar.Enabled = true;
+                        view.LoadingBar.Show();
+                        LoadingBarCalled = true;
+
+                    }));
+                }
+                else
                 {
                     view.LoadingBar.Enabled = true;
                     view.LoadingBar.Show();
                     LoadingBarCalled = true;
 
-                }));
+                }
             }
-            else
+            catch
             {
-                view.LoadingBar.Enabled = true;
-                view.LoadingBar.Show();
-                LoadingBarCalled = true;
-
             }
         }
 
@@ -552,25 +570,31 @@ namespace NetStalker
         /// <param name="view"></param>
         public static void StopTheLoadingBar(IView view)
         {
-            if (view.LoadingBar.InvokeRequired)
+            try
             {
-                view.LoadingBar.BeginInvoke(new Action(() =>
+                if (view.LoadingBar.InvokeRequired)
+                {
+                    view.LoadingBar.BeginInvoke(new Action(() =>
+                    {
+                        view.LoadingBar.Enabled = false;
+                        view.LoadingBar.Visible = false;
+                        view.LoadingBar.Hide();
+                        LoadingBarCalled = false;
+
+
+                    }));
+                }
+                else
                 {
                     view.LoadingBar.Enabled = false;
                     view.LoadingBar.Visible = false;
                     view.LoadingBar.Hide();
                     LoadingBarCalled = false;
 
-
-                }));
+                }
             }
-            else
+            catch
             {
-                view.LoadingBar.Enabled = false;
-                view.LoadingBar.Visible = false;
-                view.LoadingBar.Hide();
-                LoadingBarCalled = false;
-
             }
         }
     }
