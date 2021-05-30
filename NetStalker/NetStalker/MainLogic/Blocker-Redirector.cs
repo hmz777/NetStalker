@@ -1,5 +1,6 @@
 ﻿using PacketDotNet;
 using SharpPcap;
+using SharpPcap.LibPcap;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace NetStalker.MainLogic
         /// <summary>
         /// Main capture device.
         /// </summary>
-        public static ICaptureDevice MainDevice;
+        public static LibPcapLiveDevice BRDevice;
 
         /// <summary>
         /// Blocker-Redirector task.
@@ -37,11 +38,11 @@ namespace NetStalker.MainLogic
                 Properties.Settings.Default.Save();
             }
 
-            if (MainDevice == null)
-                MainDevice = CaptureDeviceList.New()[AppConfiguration.AdapterName];
+            if (BRDevice == null)
+                BRDevice = (LibPcapLiveDevice)CaptureDeviceList.New()[AppConfiguration.AdapterName];
 
-            MainDevice.Open(DeviceMode.Promiscuous, 1000);
-            MainDevice.Filter = "ip";
+            BRDevice.Open(DeviceModes.Promiscuous, 1000);
+            BRDevice.Filter = "ip";
 
             BRTask = Task.Run(() =>
             {
@@ -50,9 +51,11 @@ namespace NetStalker.MainLogic
 
                 while (BRMainSwitch)
                 {
-                    if ((rawCapture = MainDevice.GetNextPacket()) != null)
+                    if (BRDevice.GetNextPacket(out PacketCapture packetCapture) == GetPacketStatus.PacketRead)
                     {
+                        rawCapture = packetCapture.GetPacket();
                         packet = Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data) as EthernetPacket;
+
                         if (packet == null)
                             continue;
 
@@ -62,9 +65,9 @@ namespace NetStalker.MainLogic
                         {
                             if (device.UploadCap == 0 || device.UploadCap > device.PacketsSentSinceLastReset)
                             {
-                                packet.SourceHardwareAddress = MainDevice.MacAddress;
+                                packet.SourceHardwareAddress = BRDevice.MacAddress;
                                 packet.DestinationHardwareAddress = AppConfiguration.GatewayMac;
-                                MainDevice.SendPacket(packet);
+                                BRDevice.SendPacket(packet);
                                 device.PacketsSentSinceLastReset += packet.Bytes.Length;
                             }
                         }
@@ -76,9 +79,9 @@ namespace NetStalker.MainLogic
                             {
                                 if (device.DownloadCap == 0 || device.DownloadCap > device.PacketsReceivedSinceLastReset)
                                 {
-                                    packet.SourceHardwareAddress = MainDevice.MacAddress;
+                                    packet.SourceHardwareAddress = BRDevice.MacAddress;
                                     packet.DestinationHardwareAddress = device.MAC;
-                                    MainDevice.SendPacket(packet);
+                                    BRDevice.SendPacket(packet);
                                     device.PacketsReceivedSinceLastReset += packet.Bytes.Length;
                                 }
                             }
@@ -118,11 +121,11 @@ namespace NetStalker.MainLogic
                 ArpPacket ArpPacketForVicSpoof = new ArpPacket(ArpOperation.Request,
                     targetHardwareAddress: device.MAC,
                     targetProtocolAddress: device.IP,
-                    senderHardwareAddress: MainDevice.MacAddress,
+                    senderHardwareAddress: BRDevice.MacAddress,
                     senderProtocolAddress: AppConfiguration.GatewayIp);
 
                 EthernetPacket EtherPacketForVicSpoof = new EthernetPacket(
-                    sourceHardwareAddress: MainDevice.MacAddress,
+                    sourceHardwareAddress: BRDevice.MacAddress,
                     destinationHardwareAddress: device.MAC,
                     EthernetType.Arp)
                 {
@@ -132,53 +135,87 @@ namespace NetStalker.MainLogic
                 ArpPacket ArpPacketForGatewaySpoof = new ArpPacket(ArpOperation.Request,
                     targetHardwareAddress: AppConfiguration.GatewayMac,
                     targetProtocolAddress: AppConfiguration.GatewayIp,
-                    senderHardwareAddress: MainDevice.MacAddress,
+                    senderHardwareAddress: BRDevice.MacAddress,
                     senderProtocolAddress: device.IP);
 
                 EthernetPacket EtherPacketForGatewaySpoof = new EthernetPacket(
-                     sourceHardwareAddress: MainDevice.MacAddress,
+                     sourceHardwareAddress: BRDevice.MacAddress,
                      destinationHardwareAddress: AppConfiguration.GatewayMac,
                      EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForGatewaySpoof
                 };
 
-                MainDevice.SendPacket(EtherPacketForVicSpoof);
+                BRDevice.SendPacket(EtherPacketForVicSpoof);
                 if (device.Redirected)
-                    MainDevice.SendPacket(EtherPacketForGatewaySpoof);
+                    BRDevice.SendPacket(EtherPacketForGatewaySpoof);
             }
             else
             {
                 ArpPacket ArpPacketForVicProtection = new ArpPacket(ArpOperation.Response,
-                    targetHardwareAddress: MainDevice.MacAddress,
+                    targetHardwareAddress: BRDevice.MacAddress,
                     targetProtocolAddress: AppConfiguration.LocalIp,
                     senderHardwareAddress: device.MAC,
                     senderProtocolAddress: device.IP);
 
                 EthernetPacket EtherPacketForVicProtection = new EthernetPacket(
                    sourceHardwareAddress: device.MAC,
-                   destinationHardwareAddress: MainDevice.MacAddress,
+                   destinationHardwareAddress: BRDevice.MacAddress,
                    EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForVicProtection
                 };
 
                 ArpPacket ArpPacketForGatewayProtection = new ArpPacket(ArpOperation.Response,
-                   targetHardwareAddress: MainDevice.MacAddress,
+                   targetHardwareAddress: BRDevice.MacAddress,
                    targetProtocolAddress: AppConfiguration.LocalIp,
                    senderHardwareAddress: AppConfiguration.GatewayMac,
                    senderProtocolAddress: AppConfiguration.GatewayIp);
 
                 EthernetPacket EtherPacketForGatewayProtection = new EthernetPacket(
                    sourceHardwareAddress: AppConfiguration.GatewayMac,
-                   destinationHardwareAddress: MainDevice.MacAddress,
+                   destinationHardwareAddress: BRDevice.MacAddress,
                     EthernetType.Arp)
                 {
                     PayloadPacket = ArpPacketForGatewayProtection
                 };
 
-                MainDevice.SendPacket(EtherPacketForGatewayProtection);
-                MainDevice.SendPacket(EtherPacketForVicProtection);
+                BRDevice.SendPacket(EtherPacketForGatewayProtection);
+                BRDevice.SendPacket(EtherPacketForVicProtection);
+            }
+        }
+
+        /// <summary>
+        /// Close the Blocker/Redirector and release all its resources.
+        /// </summary>
+        public static void CLoseBR()
+        {
+            //Turn off the BR
+            BRMainSwitch = false;
+
+            if (Main.Devices != null)
+            {
+                foreach (var device in Main.Devices)
+                {
+                    device.Value.Redirected = false;
+                    device.Value.Blocked = false;
+                    device.Value.Limited = false;
+                }
+            }
+
+            if (BRTask != null)
+            {
+                if (BRTask.Status == TaskStatus.Running)
+                {
+                    //Wait for the BR task to finish
+                    BRTask.Wait();
+                }
+
+                //Dispose of the BR task
+                BRTask.Dispose();
+
+                BRDevice.Close();
+                BRDevice.Dispose();
             }
         }
     }

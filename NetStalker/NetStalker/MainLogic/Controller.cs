@@ -28,33 +28,17 @@ namespace NetStalker
         {
             Application.ApplicationExit += (object sender, EventArgs e) =>
             {
-                if (Main.Devices == null)
-                    return;
-
-                //Turn off the BR
-                Blocker_Redirector.BRMainSwitch = false;
-
-                foreach (var device in Main.Devices)
-                {
-                    device.Value.Redirected = false;
-                    device.Value.Blocked = false;
-                    device.Value.Limited = false;
-                }
-
-                if (Blocker_Redirector.BRTask != null && Blocker_Redirector.BRTask.Status == System.Threading.Tasks.TaskStatus.Running)
-                {
-                    //Wait for the BR task to finish
-                    Blocker_Redirector.BRTask.Wait();
-
-                    //Dispose of the BR task
-                    Blocker_Redirector.BRTask.Dispose();
-                }
+                //Terminate the Blocker/Redirector
+                Blocker_Redirector.CLoseBR();
 
                 //Terminate the scanner
                 Scanner.CloseAllCaptures(view);
 
                 //Clean all notifications
-                NotificationAPI.ClearNotifications();
+                ToastAPI.ClearNotificationHistory();
+
+                //Toast notifications service cleanup
+                ToastAPI.DestroyAPI();
             };
         }
     }
