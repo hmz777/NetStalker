@@ -1,7 +1,6 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using NetStalker.MainLogic;
-using NetStalker.ToastNotifications;
+﻿using NetStalker.ToastNotifications;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace NetStalker
@@ -15,11 +14,17 @@ namespace NetStalker
         [STAThread]
         static void Main(string[] args)
         {
-            DesktopNotificationManagerCompat.RegisterAumidAndComServer<MyNotification>(AppConfiguration.APP_ID);
-            DesktopNotificationManagerCompat.RegisterActivator<MyNotification>();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main(args));
+            //Allow only one instance of NetStalker to be running at a time
+            using (Mutex AppMutex = new Mutex(true, "NetStalker", out bool createdNew))
+            {
+                if (createdNew)
+                {
+                    ToastAPI.AttachHandler();
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new Main(args));
+                }
+            }
         }
     }
 }
