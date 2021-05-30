@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NetStalker")]
-[assembly: AssemblyDescription("Internet Blocker/Redirector and a Packet Sniffer")]
+[assembly: AssemblyDescription("Internet Blocker/Redirector and a Packet Sniffer.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HMZ-Software")]
+[assembly: AssemblyCompany("Hamzi Alsheikh")]
 [assembly: AssemblyProduct("NetStalker")]
-[assembly: AssemblyCopyright("Copyright © 2020 HMZ-Software")]
+[assembly: AssemblyCopyright("Copyright © 2021 Hamzi Alsheikh")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.2.1.0")]
-[assembly: AssemblyFileVersion("2.2.1.0")]
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyFileVersion("3.0.0.0")]
 [assembly: NeutralResourcesLanguage("en-US")]
