@@ -1,8 +1,9 @@
 ﻿using NetStalker.MainLogic;
 using PacketDotNet;
 using SharpPcap;
-using SharpPcap.Npcap;
+using SharpPcap.LibPcap;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,16 +12,16 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Concurrent;
+using System.Windows.Forms;
 using Timer = System.Threading.Timer;
 
 namespace NetStalker
 {
     public static class Scanner
     {
-        #region Vars
+        #region Static Fields
 
-        public static ICaptureDevice capturedevice;
+        public static LibPcapLiveDevice capturedevice;
         public static bool BackgroundScanDisabled;
         private static bool GatewayCalled;
         public static bool LoadingBarCalled;
@@ -61,9 +62,9 @@ namespace NetStalker
             CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
             //crucial for reflection on any network changes
             capturedevicelist.Refresh();
-            capturedevice = (from devicex in capturedevicelist where ((NpcapDevice)devicex).Interface.FriendlyName == InterfaceFriendlyName select devicex).ToList()[0];
+            capturedevice = (LibPcapLiveDevice)(from devicex in capturedevicelist where ((LibPcapLiveDevice)devicex).Interface.FriendlyName == InterfaceFriendlyName select devicex).ToList()[0];
             //open device in promiscuous mode with 1000ms timeout
-            capturedevice.Open(DeviceMode.Promiscuous, 1000);
+            capturedevice.Open(DeviceModes.Promiscuous, 1000);
             //Arp filter
             capturedevice.Filter = "arp";
 
@@ -76,7 +77,7 @@ namespace NetStalker
             #region Retrieving ARP packets floating around and find out the sender's IP and MAC
 
             //Scan duration
-            long scanduration = 8000;
+            long scanduration = 10000;
             RawCapture rawcapture = null;
 
             //Main scanning task
@@ -86,8 +87,14 @@ namespace NetStalker
                 {
                     Stopwatch stopwatch = new Stopwatch();
                     stopwatch.Start();
-                    while ((rawcapture = capturedevice.GetNextPacket()) != null && stopwatch.ElapsedMilliseconds <= scanduration)
+                    while (stopwatch.ElapsedMilliseconds <= scanduration)
                     {
+                        if (capturedevice.GetNextPacket(out PacketCapture packetCapture) != GetPacketStatus.PacketRead)
+                        {
+                            continue;
+                        }
+
+                        rawcapture = packetCapture.GetPacket();
                         Packet packet = Packet.ParsePacket(rawcapture.LinkLayerType, rawcapture.Data);
                         ArpPacket ArpPacket = packet.Extract<ArpPacket>();
                         if (!ClientList.ContainsKey(ArpPacket.SenderProtocolAddress) && ArpPacket.SenderProtocolAddress.ToString() != "0.0.0.0" && Tools.AreCompatibleIPs(ArpPacket.SenderProtocolAddress, myipaddress, AppConfiguration.NetworkSize))
@@ -211,11 +218,13 @@ namespace NetStalker
 
             #region Assign OnPacketArrival event handler and start capturing
 
-            capturedevice.OnPacketArrival += (object sender, CaptureEventArgs e) =>
+            capturedevice.OnPacketArrival += (object sender, PacketCapture e) =>
             {
                 if (BackgroundScanDisabled) { return; }
 
-                Packet packet = Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+                var rawCapture = e.GetPacket();
+
+                Packet packet = Packet.ParsePacket(rawCapture.LinkLayerType, rawCapture.Data);
                 if (packet == null) { return; }
 
                 ArpPacket ArpPacket = packet.Extract<ArpPacket>();
@@ -349,6 +358,8 @@ namespace NetStalker
                         DiscoveryTimer = new Timer(ProbingHandler, null, 0, 30000);
                     else if (AppConfiguration.NetworkSize == 2)
                         DiscoveryTimer = new Timer(ProbingHandler, null, 0, 60000);
+                    else
+                        DiscoveryTimer = new Timer(ProbingHandler, null, 0, 90000);
                 }
                 else
                 {
@@ -356,11 +367,11 @@ namespace NetStalker
                         DiscoveryTimer.Change(7000, 30000);
                     else if (AppConfiguration.NetworkSize == 2)
                         DiscoveryTimer.Change(15000, 60000);
+                    else
+                        DiscoveryTimer.Change(30000, 90000);
                 }
             }
-            catch
-            {
-            }
+            catch { }
         }
 
         /// <summary>
@@ -398,7 +409,7 @@ namespace NetStalker
                 {
                     for (int ipindex = 1; ipindex <= 255; ipindex++)
                     {
-                        if (capturedevice == null || capturedevice.Started == false)
+                        if (capturedevice == null || capturedevice.Opened == false)
                             break;
 
                         ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + ipindex), capturedevice.MacAddress, myipaddress);
@@ -407,17 +418,16 @@ namespace NetStalker
                         capturedevice.SendPacket(ethernetpacket);
                     }
                 }
-
                 else if (AppConfiguration.NetworkSize == 2)
                 {
                     for (int i = 1; i <= 255; i++)
                     {
-                        if (capturedevice == null || capturedevice.Started == false)
+                        if (capturedevice == null || capturedevice.Opened == false)
                             break;
 
                         for (int j = 1; j <= 255; j++)
                         {
-                            if (capturedevice == null || capturedevice.Started == false)
+                            if (capturedevice == null || capturedevice.Opened == false)
                                 break;
 
                             ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request, PhysicalAddress.Parse("00-00-00-00-00-00"), IPAddress.Parse(Root + i + '.' + j), capturedevice.MacAddress, myipaddress);
@@ -435,22 +445,21 @@ namespace NetStalker
                         }
                     }
                 }
-
                 else if (AppConfiguration.NetworkSize == 3)
                 {
                     for (int i = 1; i <= 255; i++)
                     {
-                        if (capturedevice == null || capturedevice.Started == false)
+                        if (capturedevice == null || capturedevice.Opened == false)
                             break;
 
                         for (int j = 1; j <= 255; j++)
                         {
-                            if (capturedevice == null || capturedevice.Started == false)
+                            if (capturedevice == null || capturedevice.Opened == false)
                                 break;
 
                             for (int k = 1; k <= 255; k++)
                             {
-                                if (capturedevice == null || capturedevice.Started == false)
+                                if (capturedevice == null || capturedevice.Opened == false)
                                     break;
 
                                 ArpPacket arprequestpacket = new ArpPacket(ArpOperation.Request,
@@ -485,15 +494,16 @@ namespace NetStalker
         {
             await Task.Run(() =>
             {
-                ArpPacket devicePacket = new ArpPacket(ArpOperation.Response, AppConfiguration.BroadcastMac, device.IP, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
-                EthernetPacket deviceEtherPacket = new EthernetPacket(AppConfiguration.GatewayMac, device.MAC, EthernetType.Arp)
-                {
-                    PayloadPacket = devicePacket
-                };
                 ArpPacket gatewayPacket = new ArpPacket(ArpOperation.Response, AppConfiguration.BroadcastMac, AppConfiguration.GatewayIp, device.MAC, device.IP);
-                EthernetPacket gatewayEtherPacket = new EthernetPacket(device.MAC, AppConfiguration.GatewayMac, EthernetType.Arp)
+                EthernetPacket gatewayEtherPacket = new EthernetPacket(device.MAC, AppConfiguration.BroadcastMac, EthernetType.Arp)
                 {
                     PayloadPacket = gatewayPacket
+                };
+
+                ArpPacket devicePacket = new ArpPacket(ArpOperation.Response, AppConfiguration.BroadcastMac, device.IP, AppConfiguration.GatewayMac, AppConfiguration.GatewayIp);
+                EthernetPacket deviceEtherPacket = new EthernetPacket(AppConfiguration.GatewayMac, AppConfiguration.BroadcastMac, EthernetType.Arp)
+                {
+                    PayloadPacket = devicePacket
                 };
 
                 for (int i = 0; i < 20; i++)
@@ -526,7 +536,7 @@ namespace NetStalker
             {
                 capturedevice.StopCapture();
                 capturedevice.Close();
-                capturedevice = null;
+                capturedevice.Dispose();
             }
 
             if (view != null && LoadingBarCalled)
@@ -599,4 +609,3 @@ namespace NetStalker
         }
     }
 }
-
