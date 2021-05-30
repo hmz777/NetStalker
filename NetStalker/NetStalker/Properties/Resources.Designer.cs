@@ -257,6 +257,24 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spoof Protection occurs whenever a blocking or a redirection operation is active.{0}It protects you pc from being blocked or redirected by the same tool{0}or any other spoofing software..
+        /// </summary>
+        internal static string HelpBubble {
+            get {
+                return ResourceManager.GetString("HelpBubble", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some guidelines on how to use this software properly:\n\n1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.\n2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the spe [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string HelpText {
+            get {
+                return ResourceManager.GetString("HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_info_35 {
@@ -273,6 +291,24 @@ namespace NetStalker.Properties {
             get {
                 object obj = ResourceManager.GetObject("icons8_ok_red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new device detected!.
+        /// </summary>
+        internal static string NewTargetNotificationPrompt {
+            get {
+                return ResourceManager.GetString("NewTargetNotificationPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want me to inform you of newly connected devices? (This option can be changed back in the options menu).
+        /// </summary>
+        internal static string NotificationsPrompt {
+            get {
+                return ResourceManager.GetString("NotificationsPrompt", resourceCulture);
             }
         }
     }
