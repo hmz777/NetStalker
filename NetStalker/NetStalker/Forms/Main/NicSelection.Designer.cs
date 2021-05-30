@@ -30,22 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NicSelection));
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
+            this.NICLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.IPLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.MACLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.GatewayLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.SSIDLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.comboBox1 = new MetroFramework.Controls.MetroComboBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.NICValue = new MaterialSkin.Controls.MaterialLabel();
+            this.IPValue = new MaterialSkin.Controls.MaterialLabel();
+            this.MACValue = new MaterialSkin.Controls.MaterialLabel();
+            this.GatewayValue = new MaterialSkin.Controls.MaterialLabel();
+            this.SSIDValue = new MaterialSkin.Controls.MaterialLabel();
+            this.OkButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.QuitButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.AdapterComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.DriverLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.DriverValue = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // materialLabel6
@@ -61,75 +61,75 @@
             this.materialLabel6.Size = new System.Drawing.Size(0, 19);
             this.materialLabel6.TabIndex = 8;
             // 
-            // materialLabel13
+            // NICLabel
             // 
-            this.materialLabel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Depth = 0;
-            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel13.Location = new System.Drawing.Point(12, 133);
-            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(74, 19);
-            this.materialLabel13.TabIndex = 35;
-            this.materialLabel13.Text = "NIC Type:";
+            this.NICLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NICLabel.AutoSize = true;
+            this.NICLabel.Depth = 0;
+            this.NICLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.NICLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NICLabel.Location = new System.Drawing.Point(12, 133);
+            this.NICLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.NICLabel.Name = "NICLabel";
+            this.NICLabel.Size = new System.Drawing.Size(74, 19);
+            this.NICLabel.TabIndex = 35;
+            this.NICLabel.Text = "NIC Type:";
             // 
-            // materialLabel14
+            // IPLabel
             // 
-            this.materialLabel14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(12, 161);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(85, 19);
-            this.materialLabel14.TabIndex = 36;
-            this.materialLabel14.Text = "IP Address:";
+            this.IPLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.IPLabel.AutoSize = true;
+            this.IPLabel.Depth = 0;
+            this.IPLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.IPLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IPLabel.Location = new System.Drawing.Point(12, 161);
+            this.IPLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.IPLabel.Name = "IPLabel";
+            this.IPLabel.Size = new System.Drawing.Size(85, 19);
+            this.IPLabel.TabIndex = 36;
+            this.IPLabel.Text = "IP Address:";
             // 
-            // materialLabel15
+            // MACLabel
             // 
-            this.materialLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel15.AutoSize = true;
-            this.materialLabel15.Depth = 0;
-            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(13, 189);
-            this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(105, 19);
-            this.materialLabel15.TabIndex = 37;
-            this.materialLabel15.Text = "MAC Address:";
+            this.MACLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MACLabel.AutoSize = true;
+            this.MACLabel.Depth = 0;
+            this.MACLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.MACLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MACLabel.Location = new System.Drawing.Point(13, 189);
+            this.MACLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MACLabel.Name = "MACLabel";
+            this.MACLabel.Size = new System.Drawing.Size(105, 19);
+            this.MACLabel.TabIndex = 37;
+            this.MACLabel.Text = "MAC Address:";
             // 
-            // materialLabel16
+            // GatewayLabel
             // 
-            this.materialLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel16.AutoSize = true;
-            this.materialLabel16.Depth = 0;
-            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(12, 217);
-            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(70, 19);
-            this.materialLabel16.TabIndex = 38;
-            this.materialLabel16.Text = "Gateway:";
+            this.GatewayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GatewayLabel.AutoSize = true;
+            this.GatewayLabel.Depth = 0;
+            this.GatewayLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.GatewayLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GatewayLabel.Location = new System.Drawing.Point(12, 217);
+            this.GatewayLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.GatewayLabel.Name = "GatewayLabel";
+            this.GatewayLabel.Size = new System.Drawing.Size(70, 19);
+            this.GatewayLabel.TabIndex = 38;
+            this.GatewayLabel.Text = "Gateway:";
             // 
-            // materialLabel17
+            // SSIDLabel
             // 
-            this.materialLabel17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel17.AutoSize = true;
-            this.materialLabel17.Depth = 0;
-            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(12, 245);
-            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(106, 19);
-            this.materialLabel17.TabIndex = 39;
-            this.materialLabel17.Text = "Network SSID:";
+            this.SSIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSIDLabel.AutoSize = true;
+            this.SSIDLabel.Depth = 0;
+            this.SSIDLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.SSIDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SSIDLabel.Location = new System.Drawing.Point(12, 245);
+            this.SSIDLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SSIDLabel.Name = "SSIDLabel";
+            this.SSIDLabel.Size = new System.Drawing.Size(106, 19);
+            this.SSIDLabel.TabIndex = 39;
+            this.SSIDLabel.Text = "Network SSID:";
             // 
             // materialLabel2
             // 
@@ -145,178 +145,178 @@
             this.materialLabel2.TabIndex = 40;
             this.materialLabel2.Text = "Network Adapters:";
             // 
-            // materialLabel10
+            // NICValue
             // 
-            this.materialLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel10.AutoSize = true;
-            this.materialLabel10.Depth = 0;
-            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(133, 133);
-            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel10.TabIndex = 41;
+            this.NICValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NICValue.AutoSize = true;
+            this.NICValue.Depth = 0;
+            this.NICValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.NICValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NICValue.Location = new System.Drawing.Point(133, 133);
+            this.NICValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.NICValue.Name = "NICValue";
+            this.NICValue.Size = new System.Drawing.Size(0, 19);
+            this.NICValue.TabIndex = 41;
             // 
-            // materialLabel4
+            // IPValue
             // 
-            this.materialLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(133, 161);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel4.TabIndex = 42;
+            this.IPValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.IPValue.AutoSize = true;
+            this.IPValue.Depth = 0;
+            this.IPValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.IPValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IPValue.Location = new System.Drawing.Point(133, 161);
+            this.IPValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.IPValue.Name = "IPValue";
+            this.IPValue.Size = new System.Drawing.Size(0, 19);
+            this.IPValue.TabIndex = 42;
             // 
-            // materialLabel5
+            // MACValue
             // 
-            this.materialLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(133, 189);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel5.TabIndex = 43;
+            this.MACValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MACValue.AutoSize = true;
+            this.MACValue.Depth = 0;
+            this.MACValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.MACValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MACValue.Location = new System.Drawing.Point(133, 189);
+            this.MACValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MACValue.Name = "MACValue";
+            this.MACValue.Size = new System.Drawing.Size(0, 19);
+            this.MACValue.TabIndex = 43;
             // 
-            // materialLabel7
+            // GatewayValue
             // 
-            this.materialLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(133, 217);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel7.TabIndex = 44;
+            this.GatewayValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GatewayValue.AutoSize = true;
+            this.GatewayValue.Depth = 0;
+            this.GatewayValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.GatewayValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GatewayValue.Location = new System.Drawing.Point(133, 217);
+            this.GatewayValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.GatewayValue.Name = "GatewayValue";
+            this.GatewayValue.Size = new System.Drawing.Size(0, 19);
+            this.GatewayValue.TabIndex = 44;
             // 
-            // materialLabel12
+            // SSIDValue
             // 
-            this.materialLabel12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel12.AutoSize = true;
-            this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(133, 245);
-            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel12.TabIndex = 45;
+            this.SSIDValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSIDValue.AutoSize = true;
+            this.SSIDValue.Depth = 0;
+            this.SSIDValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.SSIDValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SSIDValue.Location = new System.Drawing.Point(133, 245);
+            this.SSIDValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SSIDValue.Name = "SSIDValue";
+            this.SSIDValue.Size = new System.Drawing.Size(0, 19);
+            this.SSIDValue.TabIndex = 45;
             // 
-            // materialFlatButton1
+            // OkButton
             // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.materialFlatButton1.Location = new System.Drawing.Point(347, 326);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(67, 36);
-            this.materialFlatButton1.TabIndex = 6;
-            this.materialFlatButton1.Text = "Ok";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.AutoSize = true;
+            this.OkButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OkButton.Depth = 0;
+            this.OkButton.Icon = global::NetStalker.Properties.Resources.color_ok;
+            this.OkButton.Location = new System.Drawing.Point(347, 326);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.OkButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Primary = false;
+            this.OkButton.Size = new System.Drawing.Size(67, 36);
+            this.OkButton.TabIndex = 6;
+            this.OkButton.Text = "Ok";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // materialFlatButton2
+            // QuitButton
             // 
-            this.materialFlatButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_cancel;
-            this.materialFlatButton2.Location = new System.Drawing.Point(259, 326);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(80, 36);
-            this.materialFlatButton2.TabIndex = 7;
-            this.materialFlatButton2.Text = "Quit";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            this.QuitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuitButton.AutoSize = true;
+            this.QuitButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.QuitButton.Depth = 0;
+            this.QuitButton.Icon = global::NetStalker.Properties.Resources.color_cancel;
+            this.QuitButton.Location = new System.Drawing.Point(259, 326);
+            this.QuitButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.QuitButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.Primary = false;
+            this.QuitButton.Size = new System.Drawing.Size(80, 36);
+            this.QuitButton.TabIndex = 7;
+            this.QuitButton.Text = "Quit";
+            this.QuitButton.UseVisualStyleBackColor = true;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
-            // comboBox1
+            // AdapterComboBox
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 23;
-            this.comboBox1.Location = new System.Drawing.Point(152, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.PromptText = "Choose an adapter";
-            this.comboBox1.Size = new System.Drawing.Size(265, 29);
-            this.comboBox1.Style = MetroFramework.MetroColorStyle.Teal;
-            this.comboBox1.TabIndex = 46;
-            this.comboBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.comboBox1.UseCustomBackColor = true;
-            this.comboBox1.UseCustomForeColor = true;
-            this.comboBox1.UseSelectable = true;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.AdapterComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.AdapterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdapterComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.AdapterComboBox.FormattingEnabled = true;
+            this.AdapterComboBox.ItemHeight = 23;
+            this.AdapterComboBox.Location = new System.Drawing.Point(152, 83);
+            this.AdapterComboBox.Name = "AdapterComboBox";
+            this.AdapterComboBox.PromptText = "Choose an adapter";
+            this.AdapterComboBox.Size = new System.Drawing.Size(265, 29);
+            this.AdapterComboBox.Style = MetroFramework.MetroColorStyle.Teal;
+            this.AdapterComboBox.TabIndex = 46;
+            this.AdapterComboBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.AdapterComboBox.UseCustomBackColor = true;
+            this.AdapterComboBox.UseCustomForeColor = true;
+            this.AdapterComboBox.UseSelectable = true;
+            this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.AdapterComboBox_SelectedIndexChanged);
             // 
-            // materialLabel1
+            // DriverLabel
             // 
-            this.materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 273);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(114, 19);
-            this.materialLabel1.TabIndex = 47;
-            this.materialLabel1.Text = "WinPcap Driver:";
+            this.DriverLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DriverLabel.AutoSize = true;
+            this.DriverLabel.Depth = 0;
+            this.DriverLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.DriverLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.DriverLabel.Location = new System.Drawing.Point(12, 273);
+            this.DriverLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DriverLabel.Name = "DriverLabel";
+            this.DriverLabel.Size = new System.Drawing.Size(108, 19);
+            this.DriverLabel.TabIndex = 47;
+            this.DriverLabel.Text = "Driver Version:";
             // 
-            // materialLabel3
+            // DriverValue
             // 
-            this.materialLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(133, 273);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel3.TabIndex = 48;
+            this.DriverValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DriverValue.AutoSize = true;
+            this.DriverValue.Depth = 0;
+            this.DriverValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.DriverValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.DriverValue.Location = new System.Drawing.Point(133, 273);
+            this.DriverValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DriverValue.Name = "DriverValue";
+            this.DriverValue.Size = new System.Drawing.Size(0, 19);
+            this.DriverValue.TabIndex = 48;
             // 
             // NicSelection
             // 
-            this.AcceptButton = this.materialFlatButton1;
+            this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(427, 377);
             this.ControlBox = false;
-            this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.materialLabel12);
-            this.Controls.Add(this.materialLabel7);
-            this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.materialLabel10);
+            this.Controls.Add(this.DriverValue);
+            this.Controls.Add(this.DriverLabel);
+            this.Controls.Add(this.AdapterComboBox);
+            this.Controls.Add(this.SSIDValue);
+            this.Controls.Add(this.GatewayValue);
+            this.Controls.Add(this.MACValue);
+            this.Controls.Add(this.IPValue);
+            this.Controls.Add(this.NICValue);
             this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel17);
-            this.Controls.Add(this.materialLabel16);
-            this.Controls.Add(this.materialLabel15);
-            this.Controls.Add(this.materialLabel14);
-            this.Controls.Add(this.materialLabel13);
+            this.Controls.Add(this.SSIDLabel);
+            this.Controls.Add(this.GatewayLabel);
+            this.Controls.Add(this.MACLabel);
+            this.Controls.Add(this.IPLabel);
+            this.Controls.Add(this.NICLabel);
             this.Controls.Add(this.materialLabel6);
-            this.Controls.Add(this.materialFlatButton2);
-            this.Controls.Add(this.materialFlatButton1);
+            this.Controls.Add(this.QuitButton);
+            this.Controls.Add(this.OkButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -332,22 +332,22 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
+        private MaterialSkin.Controls.MaterialFlatButton OkButton;
+        private MaterialSkin.Controls.MaterialFlatButton QuitButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialLabel materialLabel17;
+        private MaterialSkin.Controls.MaterialLabel NICLabel;
+        private MaterialSkin.Controls.MaterialLabel IPLabel;
+        private MaterialSkin.Controls.MaterialLabel MACLabel;
+        private MaterialSkin.Controls.MaterialLabel GatewayLabel;
+        private MaterialSkin.Controls.MaterialLabel SSIDLabel;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MetroFramework.Controls.MetroComboBox comboBox1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel NICValue;
+        private MaterialSkin.Controls.MaterialLabel IPValue;
+        private MaterialSkin.Controls.MaterialLabel MACValue;
+        private MaterialSkin.Controls.MaterialLabel GatewayValue;
+        private MaterialSkin.Controls.MaterialLabel SSIDValue;
+        private MetroFramework.Controls.MetroComboBox AdapterComboBox;
+        private MaterialSkin.Controls.MaterialLabel DriverLabel;
+        private MaterialSkin.Controls.MaterialLabel DriverValue;
     }
 }
