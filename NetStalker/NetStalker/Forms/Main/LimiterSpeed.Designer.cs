@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LimiterSpeed));
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.SetButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -40,24 +40,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialFlatButton1
+            // SetButton
             // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_define_location;
-            this.materialFlatButton1.Location = new System.Drawing.Point(290, 91);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(73, 36);
-            this.materialFlatButton1.TabIndex = 44;
-            this.materialFlatButton1.Text = "Set";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.SetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetButton.AutoSize = true;
+            this.SetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SetButton.Depth = 0;
+            this.SetButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.SetButton.Icon = global::NetStalker.Properties.Resources.color_define_location;
+            this.SetButton.Location = new System.Drawing.Point(290, 91);
+            this.SetButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.SetButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SetButton.Name = "SetButton";
+            this.SetButton.Primary = false;
+            this.SetButton.Size = new System.Drawing.Size(73, 36);
+            this.SetButton.TabIndex = 44;
+            this.SetButton.Text = "Set";
+            this.SetButton.UseVisualStyleBackColor = true;
+            this.SetButton.Click += new System.EventHandler(this.SetButton_Click);
             // 
             // numericUpDown1
             // 
@@ -145,7 +145,7 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.materialFlatButton1);
+            this.Controls.Add(this.SetButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -164,7 +164,7 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton SetButton;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
