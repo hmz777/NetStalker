@@ -120,9 +120,9 @@
             this.materialLabel5.Location = new System.Drawing.Point(115, 343);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(204, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(209, 19);
             this.materialLabel5.TabIndex = 5;
-            this.materialLabel5.Text = "https://www.hmz-software.tk";
+            this.materialLabel5.Text = "https://www.hamzialsheikh.tk";
             this.materialLabel5.Click += new System.EventHandler(this.MaterialLabel5_Click);
             // 
             // materialLabel6
@@ -162,9 +162,9 @@
             this.materialLabel8.Location = new System.Drawing.Point(13, 371);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel8.Size = new System.Drawing.Size(59, 19);
             this.materialLabel8.TabIndex = 6;
-            this.materialLabel8.Text = "Github:";
+            this.materialLabel8.Text = "GitHub:";
             // 
             // groupBox1
             // 
