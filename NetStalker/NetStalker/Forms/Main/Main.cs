@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
@@ -19,11 +20,21 @@ namespace NetStalker
 {
     public partial class Main : MaterialForm, IView
     {
-        #region Main Vars
+        #region Static Fields
+
         /// <summary>
         /// Inication that an operation is in progress.
         /// </summary>
         public static bool OperationIsInProgress;
+        /// <summary>
+        /// The list of targets of type <see cref="Device"/>
+        /// </summary>
+        public static ConcurrentDictionary<IPAddress, Device> Devices;
+
+        #endregion
+
+        #region Instance Fields
+
         /// <summary>
         /// The list overlay that represents the status of the list when its empty.
         /// </summary>
@@ -37,26 +48,17 @@ namespace NetStalker
         /// </summary>
         private readonly Timer AliveTimer;
         /// <summary>
-        /// A flag to indicate if a toast notification should be shown to the user regarding showing notifications on device discovery (Can be disabled in <see cref="Options"/>).
-        /// </summary>
-        public bool PromptCalled;
-        /// <summary>
         /// A flag to indicate if a list resize should be done. (This is used when the list is cleared or a scroll bar is shown).
         /// </summary>
         private bool ResizeDone;
         /// <summary>
-        /// A string to indicate which event handler to use on form minimization according to the user preference.
-        /// </summary>
-        public string ResizeState;
-        /// <summary>
-        /// The list of targets of type <see cref="Device"/>
-        /// </summary>
-        public static ConcurrentDictionary<IPAddress, Device> Devices;
-        /// <summary>
         /// An indication that the app is being closed from the tray icon's context menu.
         /// </summary>
         public bool TrayExitFlag = false;
+
         #endregion
+
+        #region Constructor
 
         public Main(string[] args = null)
         {
@@ -97,9 +99,29 @@ namespace NetStalker
                 }
             };
             this.olvColumn1.GroupKeyToTitleConverter = delegate (object key) { return key.ToString(); }; //Convert the key to a title for the groups
-            fastObjectListView1.ShowGroups = true;
+            DeviceList.ShowGroups = true;
 
-            ListOverlay = this.fastObjectListView1.EmptyListMsgOverlay as TextOverlay;
+            this.olvColumn5.AspectGetter = delegate (object rowObject)
+            {
+                return (rowObject as Device).Redirected;
+            };
+
+            this.olvColumn5.AspectPutter = delegate (object rowObject, object newValue)
+            {
+                (rowObject as Device).Redirected = (bool)newValue;
+            };
+
+            this.olvColumn6.AspectGetter = delegate (object rowObject)
+            {
+                return (rowObject as Device).Blocked;
+            };
+
+            this.olvColumn6.AspectPutter = delegate (object rowObject, object newValue)
+            {
+                (rowObject as Device).Blocked = (bool)newValue;
+            };
+
+            ListOverlay = this.DeviceList.EmptyListMsgOverlay as TextOverlay;
             ListOverlay.Font = new Font("Roboto", 25);
 
             #endregion
@@ -123,6 +145,8 @@ namespace NetStalker
             #endregion
         }
 
+        #endregion
+
         #region Timers Handlers
 
         //Timeout handler: it removes devices once they exceed the timeoout period
@@ -133,15 +157,17 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 900000000L) //1.5 minute
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 600000000L) //60 seconds
                     {
-                        Devices.TryRemove(Device.Key, out _);
-                        Scanner.ClientList.Remove(Device.Key);
+                        if (Devices.TryRemove(Device.Key, out Device Target))
+                        {
+                            Scanner.ClientList.Remove(Target.IP);
 
-                        Device.Value.Blocked = false;
-                        Device.Value.Redirected = false;
-                        Device.Value.Limited = false;
-                        fastObjectListView1.RemoveObject(Device.Value);
+                            Target.Blocked = false;
+                            Target.Redirected = false;
+                            Target.Limited = false;
+                            DeviceList.RemoveObject(Target);
+                        }
                     }
                 }
             }
@@ -150,14 +176,17 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 3000000000L) //5 minutes
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 900000000L) //1.5 minutes
                     {
-                        Devices.TryRemove(Device.Key, out _);
-                        Scanner.ClientList.Remove(Device.Key);
+                        if (Devices.TryRemove(Device.Key, out Device Target))
+                        {
+                            Scanner.ClientList.Remove(Target.IP);
 
-                        Device.Value.Blocked = false;
-                        Device.Value.Redirected = false;
-                        fastObjectListView1.RemoveObject(Device.Value);
+                            Target.Blocked = false;
+                            Target.Redirected = false;
+                            Target.Limited = false;
+                            DeviceList.RemoveObject(Target);
+                        }
                     }
                 }
             }
@@ -168,12 +197,15 @@ namespace NetStalker
                 {
                     if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 6000000000L) //10 minutes, extremely large networks this option could theoretically work, but not worth it.
                     {
-                        Devices.TryRemove(Device.Key, out _);
-                        Scanner.ClientList.Remove(Device.Key);
+                        if (Devices.TryRemove(Device.Key, out Device Target))
+                        {
+                            Scanner.ClientList.Remove(Target.IP);
 
-                        Device.Value.Blocked = false;
-                        Device.Value.Redirected = false;
-                        fastObjectListView1.RemoveObject(Device.Value);
+                            Target.Blocked = false;
+                            Target.Redirected = false;
+                            Target.Limited = false;
+                            DeviceList.RemoveObject(Target);
+                        }
                     }
                 }
             }
@@ -203,11 +235,13 @@ namespace NetStalker
                         string str3 = U;
                         U = str3.Remove(str3.IndexOf(".") + 1, U.Length + num);
                     }
+
                     Device.Value.DownloadSpeed = D + " KB/s";
                     Device.Value.UploadSpeed = U + " KB/s";
-                    fastObjectListView1.UpdateObject(Device.Value);
+                    DeviceList.UpdateObject(Device.Value);
                 }
             }
+
             ResetPacketCount();
         }
 
@@ -235,21 +269,21 @@ namespace NetStalker
         {
             get
             {
-                return fastObjectListView1;
+                return DeviceList;
             }
         }
         public MaterialLabel StatusLabel
         {
             get
             {
-                return materialLabel2;
+                return DeviceCountLabel;
             }
         }
         public MaterialLabel StatusLabel2
         {
             get
             {
-                return materialLabel3;
+                return CurrentOperationStatusLabel;
             }
         }
         public Form MainForm
@@ -272,20 +306,18 @@ namespace NetStalker
         }
         public ToolTip TTip
         {
-            get { return toolTip1; }
+            get { return Tooltip; }
         }
         public MetroTile Tile
         {
-            get { return metroTile1; }
+            get { return SnifferButton; }
         }
         public MetroTile Tile2
         {
-            get { return metroTile2; }
+            get { return LimiterButton; }
         }
 
         #endregion
-
-        #region Main Form Event Handlers
 
         #region From Event Handlers
 
@@ -299,36 +331,23 @@ namespace NetStalker
         private void Main_Load(object sender, EventArgs e)
         {
             Controller.AttachOnExitEventHandler(this);
-
-            Tools.TryCreateShortcut();
+            ToastAPI.AttachHandler();
         }
 
         public void Main_Resize(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized && !PromptCalled)
+            if (WindowState == FormWindowState.Minimized)
             {
-                Hide();
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(2);
-
-                if (string.IsNullOrEmpty(Properties.Settings.Default.SuppressN))
+                if (Properties.Settings.Default.Minimize == "Tray")
                 {
-                    NotificationAPI napi = new NotificationAPI();
-                    napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
-                    PromptCalled = true;
+                    Hide();
+                    TrayIcon.Visible = true;
+                    TrayIcon.ShowBalloonTip(2);
                 }
-            }
-        }
 
-        public void Main_Resize_1(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized && !PromptCalled)
-            {
-                if (string.IsNullOrEmpty(Properties.Settings.Default.SuppressN))
+                if (Properties.Settings.Default.SuppressNotifications == 0)
                 {
-                    NotificationAPI napi = new NotificationAPI();
-                    napi.CreateAndShowPrompt("Do you want me to inform you of newly connected devices?\n\n(This option can be changed back in the Options menu)");
-                    PromptCalled = true;
+                    ToastAPI.ShowPrompt(Properties.Resources.NotificationsPrompt, NotificationPurpose.NotificationsSuppression);
                 }
             }
         }
@@ -366,20 +385,20 @@ namespace NetStalker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void materialFlatButton1_Click(object sender, EventArgs e)
+        private void ScanButton_Click(object sender, EventArgs e)
         {
             if (!OperationIsInProgress)
             {
-                materialFlatButton1.Enabled = false;
-                metroTile1.Enabled = false;
-                metroTile2.Enabled = false;
+                ScanButton.Enabled = false;
+                SnifferButton.Enabled = false;
+                LimiterButton.Enabled = false;
                 OperationIsInProgress = true;
                 olvColumn7.MaximumWidth = 100;
                 olvColumn7.MinimumWidth = 100;
                 olvColumn7.Width = 100;
                 ResizeDone = false;
-                materialLabel3.Text = "Working";
-                fastObjectListView1.EmptyListMsg = "Scanning...";
+                StatusLabel.Text = "Working";
+                DeviceList.EmptyListMsg = "Scanning...";
                 StatusLabel.Text = "Please wait...";
                 pictureBox1.Image = Properties.Resources.color_error;
 
@@ -402,9 +421,9 @@ namespace NetStalker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MaterialFlatButton2_Click(object sender, EventArgs e)
+        private void HelpButton_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(this, "Some guidelines on how to use this software properly:\n\n1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.\n2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the speed limiter (on the bottom right) and set the desired speed for each device (0 means no limitation).\n3- Blocking and redirection can not be activated at the sametime, you either block a device or limit its speed.\n4- It's recommended for most stability to wait until the scanner is done before performing any action.\n5- NetStalker can be protected with a password, and can be set or removed via Options.\n6- NetStalker is available in dark and light modes.\n7- NetStalker has an option for spoof protection, if activated it can prevent your pc from being redirected or blocked by the same tool or any other spoofing software.\n8- Background scanning is always active so you don't have to consistently press scan to discover newly connected devices.", "Help", MessageBoxButtons.OK,
+            MetroMessageBox.Show(this, Properties.Resources.HelpText, "Help", MessageBoxButtons.OK,
                 MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 375);
         }
 
@@ -413,7 +432,7 @@ namespace NetStalker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MaterialFlatButton3_Click_1(object sender, EventArgs e)
+        private void AboutButton_Click(object sender, EventArgs e)
         {
             AboutForm af = new AboutForm();
             af.ShowDialog();
@@ -424,30 +443,29 @@ namespace NetStalker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void materialFlatButton4_Click(object sender, EventArgs e)
+        private void OptionsButton_Click(object sender, EventArgs e)
         {
             Options options = new Options();
             options.ShowDialog();
         }
-
 
         /// <summary>
         /// The click event handler for the "Refresh" button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void materialFlatButton5_Click(object sender, EventArgs e)
+        private async void Refresh_Click(object sender, EventArgs e)
         {
             try
             {
                 if (Scanner.ScannerTask == null || OperationIsInProgress)
                     throw new Exception("In order to do a refresh, the scanner must be active and no other operations are in progress.");
 
-                materialFlatButton5.Enabled = false;
+                RefreshButton.Enabled = false;
 
                 await Scanner.ProbeDevices();
 
-                materialFlatButton5.Enabled = true;
+                RefreshButton.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -455,22 +473,21 @@ namespace NetStalker
             }
         }
 
-
         /// <summary>
         /// The click event handler for the "Sniffer" button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void metroTile1_Click(object sender, EventArgs e)
+        private void SnifferButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (fastObjectListView1.SelectedObjects.Count == 0)
+                if (DeviceList.SelectedObjects.Count == 0)
                 {
                     throw new ArgumentNullException();
                 }
 
-                var selectedDevice = fastObjectListView1.SelectedObject as Device;
+                var selectedDevice = DeviceList.SelectedObject as Device;
 
                 //Device should be redirected and not a gateway or a local device
                 if (!selectedDevice.Redirected && !(selectedDevice.IsGateway || selectedDevice.IsLocalDevice))
@@ -482,11 +499,11 @@ namespace NetStalker
                 Sniffer sniff = new Sniffer(selectedDevice);
                 sniff.ShowDialog(this);
 
-                fastObjectListView1.SelectedObjects.Clear();
+                DeviceList.SelectedObjects.Clear();
 
                 sniff.Dispose();
 
-                fastObjectListView1.UpdateObject(selectedDevice);
+                DeviceList.UpdateObject(selectedDevice);
             }
             catch (ArgumentNullException)
             {
@@ -511,17 +528,17 @@ namespace NetStalker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void metroTile2_Click(object sender, EventArgs e)
+        private void LimiterButton_Click(object sender, EventArgs e)
         {
             try
             {
                 //No selected device
-                if (fastObjectListView1.SelectedObjects.Count == 0)
+                if (DeviceList.SelectedObjects.Count == 0)
                 {
                     throw new ArgumentNullException();
                 }
 
-                var device = fastObjectListView1.SelectedObject as Device;
+                var device = DeviceList.SelectedObject as Device;
 
                 //Check if the selected device is a gateway or own device
                 if (device.IsGateway || device.IsLocalDevice)
@@ -538,7 +555,7 @@ namespace NetStalker
                 {
                     if (device.Limited)
                     {
-                        fastObjectListView1.UpdateObject(device);
+                        DeviceList.UpdateObject(device);
                     }
 
                     ls.Dispose();
@@ -566,19 +583,19 @@ namespace NetStalker
 
         #region List Event Handlers
 
-        private void FastObjectListView1_MouseDown(object sender, MouseEventArgs e)
+        private void DeviceList_MouseDown(object sender, MouseEventArgs e)
         {
-            var item = fastObjectListView1.GetItemAt(e.X, e.Y);
+            var item = DeviceList.GetItemAt(e.X, e.Y);
             if (item == null)
             {
-                fastObjectListView1.ContextMenu = null;
-                fastObjectListView1.SelectedObjects.Clear();
+                DeviceList.ContextMenu = null;
+                DeviceList.SelectedObjects.Clear();
             }
         }
 
-        private void FastObjectListView1_ItemsAdding(object sender, ItemsAddingEventArgs e)
+        private void DeviceList_ItemsAdding(object sender, ItemsAddingEventArgs e)
         {
-            if (fastObjectListView1.Items.Count >= 8 && !ResizeDone)
+            if (DeviceList.Items.Count >= 8 && !ResizeDone)
             {
                 olvColumn7.MaximumWidth = 83;
                 olvColumn7.MinimumWidth = 83;
@@ -586,27 +603,32 @@ namespace NetStalker
                 ResizeDone = true;
             }
 
-            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressN == "False")
+            //Notifications are not suppressed
+            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
             {
                 var Ad = e.ObjectsToAdd.Cast<Device>().ToList();
                 if (Ad.Count > 0)
                 {
                     Device Device = Ad[0];
-                    NotificationAPI Napi = new NotificationAPI(Device, this);
-                    Napi.CreateNotification();
-                    Napi.AttachHandlers();
-                    Napi.ShowToast();
-                }
 
+                    ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}",
+                        Properties.Resources.NewTargetNotificationPrompt,
+                        Device.IP,
+                        Device.MAC), NotificationPurpose.TargetDiscovery, Device.IP.ToString(), Device.MAC.ToString());
+                }
             }
         }
 
-        private void FastObjectListView1_SubItemChecking(object sender, SubItemCheckingEventArgs e)
+        private async void DeviceList_SubItemChecking(object sender, SubItemCheckingEventArgs e)
         {
-            SubItemCheckingHandler(e);
+            if (!await SubItemCheckingHandler(e.CurrentValue, e.NewValue, e.Column.Index, e.RowObject))
+            {
+                e.Canceled = true;
+                e.NewValue = e.CurrentValue;
+            }
         }
 
-        public async void SubItemCheckingHandler(SubItemCheckingEventArgs e)
+        public async Task<bool> SubItemCheckingHandler(CheckState CurrentValue, CheckState NewValue, int ColumnIndex, object RowObject)
         {
             try
             {
@@ -615,23 +637,23 @@ namespace NetStalker
                 {
                     MetroMessageBox.Show(this, "The Speed Limiter can't be used while the sniffer is active!", "Error", MessageBoxButtons.OK,
                                          MessageBoxIcon.Error);
-                    e.Canceled = true;
-                    return;
+
+                    return false;
                 }
 
                 //Get the device in the selected row
-                fastObjectListView1.SelectObject(e.RowObject);
-                Device device = e.RowObject as Device;
+                DeviceList.SelectObject(RowObject);
+                Device device = RowObject as Device;
 
                 if (device.IsGateway || device.IsLocalDevice)
                 {
                     MetroMessageBox.Show(this, "This operation can not target the gateway or your own ip address!", "Error", MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);
-                    e.Canceled = true;
-                    return;
+
+                    return false;
                 }
 
-                if (e.NewValue == CheckState.Checked && e.Column.Index == 6 && !device.Blocked && !device.Redirected)
+                if (NewValue == CheckState.Checked && ColumnIndex == 6 && !device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
@@ -643,7 +665,7 @@ namespace NetStalker
                     //Update device state in UI
                     device.Blocked = true;
                     device.DeviceStatus = "Offline";
-                    fastObjectListView1.UpdateObject(device);
+                    DeviceList.UpdateObject(device);
                     pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
 
                     //Activate the BR if it's not already active
@@ -656,7 +678,7 @@ namespace NetStalker
                         Blocker_Redirector.BlockAndRedirect();
                     }
                 }
-                else if (e.NewValue == CheckState.Checked && e.Column.Index == 5 && !device.Blocked && !device.Redirected)
+                else if (NewValue == CheckState.Checked && ColumnIndex == 5 && !device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
@@ -671,7 +693,7 @@ namespace NetStalker
                     device.Redirected = true;
                     device.DownloadCap = 0;
                     device.UploadCap = 0;
-                    fastObjectListView1.UpdateObject(device);
+                    DeviceList.UpdateObject(device);
                     pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
 
                     //Activate the BR if it's not already active
@@ -690,7 +712,7 @@ namespace NetStalker
                         ValuesTimer.Enabled = true;
                     }
                 }
-                else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 6 && device.Blocked && !device.Redirected)
+                else if (NewValue == CheckState.Unchecked && ColumnIndex == 6 && device.Blocked && !device.Redirected)
                 {
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
@@ -702,7 +724,7 @@ namespace NetStalker
                     //Update device state in UI
                     device.Blocked = false;
                     device.DeviceStatus = "Online";
-                    fastObjectListView1.UpdateObject(device);
+                    DeviceList.UpdateObject(device);
 
                     await Scanner.RestoreDevice(device);
 
@@ -713,7 +735,7 @@ namespace NetStalker
                         Blocker_Redirector.BRMainSwitch = false;
                     }
                 }
-                else if (e.NewValue == CheckState.Unchecked && e.Column.Index == 5 && device.Redirected)
+                else if (NewValue == CheckState.Unchecked && ColumnIndex == 5 && device.Redirected)
                 {
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
@@ -733,7 +755,7 @@ namespace NetStalker
                     device.UploadCap = 0;
                     device.DownloadSpeed = "";
                     device.UploadSpeed = "";
-                    fastObjectListView1.UpdateObject(device);
+                    DeviceList.UpdateObject(device);
 
                     await Scanner.RestoreDevice(device);
 
@@ -749,8 +771,7 @@ namespace NetStalker
                 else
                 {
                     //The user action didn't hit any of our conditions so we cancel it and reset the value
-                    e.Canceled = true;
-                    e.NewValue = e.CurrentValue;
+                    return false;
                 }
 
             }
@@ -758,15 +779,18 @@ namespace NetStalker
             {
                 MetroMessageBox.Show(this, "The selected device was not found in the list or targets", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                e.Canceled = true;
+
+                return false;
             }
+
+            return true;
         }
 
         #endregion
 
         #region Tooltip Event Handlers
 
-        private void ToolTip1_Draw(object sender, DrawToolTipEventArgs e)
+        private void ToolTip_Draw(object sender, DrawToolTipEventArgs e)
         {
             e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51, 51, 51)), e.Bounds);//Background color
 
@@ -776,7 +800,7 @@ namespace NetStalker
             e.Graphics.DrawString(e.ToolTipText, new Font("Roboto", 9), new SolidBrush(Color.FromArgb(204, 204, 204)), e.Bounds.X + 8, e.Bounds.Y + 7); //Text with image location
         }
 
-        private void ToolTip1_Popup(object sender, PopupEventArgs e)
+        private void ToolTip_Popup(object sender, PopupEventArgs e)
         {
             e.ToolTipSize = new Size(e.ToolTipSize.Width - 7, e.ToolTipSize.Height - 5);
         }
@@ -789,7 +813,7 @@ namespace NetStalker
         {
             Show();
             WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
+            TrayIcon.Visible = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -798,6 +822,29 @@ namespace NetStalker
         }
 
         #endregion
+
+        #region Toast Actions
+
+        public async Task BlockDevice(string IpAddress, string MacAddress)
+        {
+            try
+            {
+                var ListDevice = DeviceList.Objects.Cast<Device>().FirstOrDefault(d => d.MAC.Equals(PhysicalAddress.Parse(MacAddress)));
+
+                if (ListDevice != null && !(ListDevice.IsGateway || ListDevice.IsLocalDevice) && !(ListDevice.Blocked || ListDevice.Redirected))
+                {
+                    //6 is the index of the blocking column
+                    if (await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 6, ListDevice))
+                    {
+                        DeviceList.CheckSubItem(ListDevice, olvColumn6);
+                    }
+                }
+            }
+            catch
+            {
+                MetroMessageBox.Show(this, "Operation failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
     }

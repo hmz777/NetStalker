@@ -37,7 +37,7 @@
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
+            this.DeviceList = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -47,38 +47,38 @@
             this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.DarkHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
             this.DarkHot = new BrightIdeasSoftware.HotItemStyle();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.DeviceCountLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.CurrentOperationStatusLabel = new MaterialSkin.Controls.MaterialLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.OptionsButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.ScanButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.SnifferButton = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.materialContextMenuStrip1 = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.LimiterButton = new MetroFramework.Controls.MetroTile();
+            this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.TrayMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.materialFlatButton5 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.RefreshButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.AboutButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.FormHelpButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.LightHot = new BrightIdeasSoftware.HotItemStyle();
             this.LightHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.materialContextMenuStrip1.SuspendLayout();
+            this.TrayMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -88,28 +88,28 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.fastObjectListView1);
+            this.panel1.Controls.Add(this.DeviceList);
             this.panel1.Location = new System.Drawing.Point(3, 64);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1057, 375);
             this.panel1.TabIndex = 0;
             // 
-            // fastObjectListView1
+            // DeviceList
             // 
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn1);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn2);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn3);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn9);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn4);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn5);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn6);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn8);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumn7);
-            this.fastObjectListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.fastObjectListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fastObjectListView1.CellEditUseWholeCell = false;
-            this.fastObjectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.DeviceList.AllColumns.Add(this.olvColumn1);
+            this.DeviceList.AllColumns.Add(this.olvColumn2);
+            this.DeviceList.AllColumns.Add(this.olvColumn3);
+            this.DeviceList.AllColumns.Add(this.olvColumn9);
+            this.DeviceList.AllColumns.Add(this.olvColumn4);
+            this.DeviceList.AllColumns.Add(this.olvColumn5);
+            this.DeviceList.AllColumns.Add(this.olvColumn6);
+            this.DeviceList.AllColumns.Add(this.olvColumn8);
+            this.DeviceList.AllColumns.Add(this.olvColumn7);
+            this.DeviceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.DeviceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DeviceList.CellEditUseWholeCell = false;
+            this.DeviceList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
             this.olvColumn2,
             this.olvColumn3,
@@ -119,47 +119,48 @@
             this.olvColumn6,
             this.olvColumn8,
             this.olvColumn7});
-            this.fastObjectListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.fastObjectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastObjectListView1.EmptyListMsg = "Device list is empty";
-            this.fastObjectListView1.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastObjectListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastObjectListView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.fastObjectListView1.FullRowSelect = true;
-            this.fastObjectListView1.GroupImageList = this.imageList1;
-            this.fastObjectListView1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastObjectListView1.HeaderFormatStyle = this.DarkHeaders;
-            this.fastObjectListView1.HideSelection = false;
-            this.fastObjectListView1.HotItemStyle = this.DarkHot;
-            this.fastObjectListView1.Location = new System.Drawing.Point(0, 0);
-            this.fastObjectListView1.MultiSelect = false;
-            this.fastObjectListView1.Name = "fastObjectListView1";
-            this.fastObjectListView1.OverlayImage.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.fastObjectListView1.RowHeight = 30;
-            this.fastObjectListView1.SelectAllOnControlA = false;
-            this.fastObjectListView1.SelectColumnsMenuStaysOpen = false;
-            this.fastObjectListView1.SelectColumnsOnRightClick = false;
-            this.fastObjectListView1.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
-            this.fastObjectListView1.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.fastObjectListView1.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.fastObjectListView1.ShowFilterMenuOnRightClick = false;
-            this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.ShowImagesOnSubItems = true;
-            this.fastObjectListView1.ShowSortIndicators = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(1057, 375);
-            this.fastObjectListView1.SmallImageList = this.imageList1;
-            this.fastObjectListView1.SpaceBetweenGroups = 1;
-            this.fastObjectListView1.TabIndex = 0;
-            this.fastObjectListView1.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.fastObjectListView1.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView1.UseHotItem = true;
-            this.fastObjectListView1.UseSubItemCheckBoxes = true;
-            this.fastObjectListView1.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView1.VirtualMode = true;
-            this.fastObjectListView1.SubItemChecking += new System.EventHandler<BrightIdeasSoftware.SubItemCheckingEventArgs>(this.FastObjectListView1_SubItemChecking);
-            this.fastObjectListView1.ItemsAdding += new System.EventHandler<BrightIdeasSoftware.ItemsAddingEventArgs>(this.FastObjectListView1_ItemsAdding);
-            this.fastObjectListView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FastObjectListView1_MouseDown);
+            this.DeviceList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeviceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeviceList.EmptyListMsg = "Device list is empty";
+            this.DeviceList.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DeviceList.FullRowSelect = true;
+            this.DeviceList.GroupImageList = this.IconList;
+            this.DeviceList.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.HeaderFormatStyle = this.DarkHeaders;
+            this.DeviceList.HideSelection = false;
+            this.DeviceList.HotItemStyle = this.DarkHot;
+            this.DeviceList.Location = new System.Drawing.Point(0, 0);
+            this.DeviceList.MultiSelect = false;
+            this.DeviceList.Name = "DeviceList";
+            this.DeviceList.OverlayImage.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DeviceList.RowHeight = 30;
+            this.DeviceList.SelectAllOnControlA = false;
+            this.DeviceList.SelectColumnsMenuStaysOpen = false;
+            this.DeviceList.SelectColumnsOnRightClick = false;
+            this.DeviceList.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
+            this.DeviceList.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.DeviceList.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DeviceList.ShowFilterMenuOnRightClick = false;
+            this.DeviceList.ShowGroups = false;
+            this.DeviceList.ShowImagesOnSubItems = true;
+            this.DeviceList.ShowSortIndicators = false;
+            this.DeviceList.Size = new System.Drawing.Size(1057, 375);
+            this.DeviceList.SmallImageList = this.IconList;
+            this.DeviceList.SpaceBetweenGroups = 1;
+            this.DeviceList.TabIndex = 0;
+            this.DeviceList.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DeviceList.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.DeviceList.UseCompatibleStateImageBehavior = false;
+            this.DeviceList.UseHotItem = true;
+            this.DeviceList.UseNotifyPropertyChanged = true;
+            this.DeviceList.UseSubItemCheckBoxes = true;
+            this.DeviceList.View = System.Windows.Forms.View.Details;
+            this.DeviceList.VirtualMode = true;
+            this.DeviceList.SubItemChecking += new System.EventHandler<BrightIdeasSoftware.SubItemCheckingEventArgs>(this.DeviceList_SubItemChecking);
+            this.DeviceList.ItemsAdding += new System.EventHandler<BrightIdeasSoftware.ItemsAddingEventArgs>(this.DeviceList_ItemsAdding);
+            this.DeviceList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DeviceList_MouseDown);
             // 
             // olvColumn1
             // 
@@ -282,12 +283,12 @@
             this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn7.Width = 100;
             // 
-            // imageList1
+            // IconList
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "router");
-            this.imageList1.Images.SetKeyName(1, "pc");
+            this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
+            this.IconList.TransparentColor = System.Drawing.Color.Transparent;
+            this.IconList.Images.SetKeyName(0, "router");
+            this.IconList.Images.SetKeyName(1, "pc");
             // 
             // DarkHeaders
             // 
@@ -324,33 +325,33 @@
             this.materialLabel1.TabIndex = 4;
             this.materialLabel1.Text = "Status:";
             // 
-            // materialLabel2
+            // DeviceCountLabel
             // 
-            this.materialLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(743, 17);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(33, 19);
-            this.materialLabel2.TabIndex = 5;
-            this.materialLabel2.Text = "Idle";
+            this.DeviceCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeviceCountLabel.AutoSize = true;
+            this.DeviceCountLabel.Depth = 0;
+            this.DeviceCountLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.DeviceCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.DeviceCountLabel.Location = new System.Drawing.Point(743, 17);
+            this.DeviceCountLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DeviceCountLabel.Name = "DeviceCountLabel";
+            this.DeviceCountLabel.Size = new System.Drawing.Size(33, 19);
+            this.DeviceCountLabel.TabIndex = 5;
+            this.DeviceCountLabel.Text = "Idle";
             // 
-            // materialLabel3
+            // CurrentOperationStatusLabel
             // 
-            this.materialLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(973, 17);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(49, 19);
-            this.materialLabel3.TabIndex = 6;
-            this.materialLabel3.Text = "Ready";
+            this.CurrentOperationStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CurrentOperationStatusLabel.AutoSize = true;
+            this.CurrentOperationStatusLabel.Depth = 0;
+            this.CurrentOperationStatusLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.CurrentOperationStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(973, 17);
+            this.CurrentOperationStatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CurrentOperationStatusLabel.Name = "CurrentOperationStatusLabel";
+            this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(49, 19);
+            this.CurrentOperationStatusLabel.TabIndex = 6;
+            this.CurrentOperationStatusLabel.Text = "Ready";
             // 
             // label1
             // 
@@ -376,24 +377,24 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "|";
             // 
-            // materialFlatButton4
+            // OptionsButton
             // 
-            this.materialFlatButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialFlatButton4.AutoSize = true;
-            this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton4.Depth = 0;
-            this.materialFlatButton4.Icon = global::NetStalker.Properties.Resources.color_gear;
-            this.materialFlatButton4.Location = new System.Drawing.Point(171, 9);
-            this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton4.Name = "materialFlatButton4";
-            this.materialFlatButton4.Primary = false;
-            this.materialFlatButton4.Size = new System.Drawing.Size(107, 36);
-            this.materialFlatButton4.TabIndex = 10;
-            this.materialFlatButton4.Text = "Options";
-            this.toolTip1.SetToolTip(this.materialFlatButton4, "Change NetStalker settings");
-            this.materialFlatButton4.UseVisualStyleBackColor = true;
-            this.materialFlatButton4.Click += new System.EventHandler(this.materialFlatButton4_Click);
+            this.OptionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.OptionsButton.AutoSize = true;
+            this.OptionsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OptionsButton.Depth = 0;
+            this.OptionsButton.Icon = global::NetStalker.Properties.Resources.color_gear;
+            this.OptionsButton.Location = new System.Drawing.Point(171, 9);
+            this.OptionsButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.OptionsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.OptionsButton.Name = "OptionsButton";
+            this.OptionsButton.Primary = false;
+            this.OptionsButton.Size = new System.Drawing.Size(107, 36);
+            this.OptionsButton.TabIndex = 10;
+            this.OptionsButton.Text = "Options";
+            this.Tooltip.SetToolTip(this.OptionsButton, "Change NetStalker settings");
+            this.OptionsButton.UseVisualStyleBackColor = true;
+            this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
             // pictureBox1
             // 
@@ -406,92 +407,92 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // materialFlatButton1
+            // ScanButton
             // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_gps_receiving;
-            this.materialFlatButton1.Location = new System.Drawing.Point(10, 9);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(85, 36);
-            this.materialFlatButton1.TabIndex = 1;
-            this.materialFlatButton1.Text = "Scan";
-            this.toolTip1.SetToolTip(this.materialFlatButton1, "Initiate a new device scan");
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.ScanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ScanButton.AutoSize = true;
+            this.ScanButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ScanButton.Depth = 0;
+            this.ScanButton.Icon = global::NetStalker.Properties.Resources.color_gps_receiving;
+            this.ScanButton.Location = new System.Drawing.Point(10, 9);
+            this.ScanButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ScanButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ScanButton.Name = "ScanButton";
+            this.ScanButton.Primary = false;
+            this.ScanButton.Size = new System.Drawing.Size(85, 36);
+            this.ScanButton.TabIndex = 1;
+            this.ScanButton.Text = "Scan";
+            this.Tooltip.SetToolTip(this.ScanButton, "Initiate a new device scan");
+            this.ScanButton.UseVisualStyleBackColor = true;
+            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
             // 
-            // metroTile1
+            // SnifferButton
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.metroTile1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroTile1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroTile1.Location = new System.Drawing.Point(0, 0);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(29, 187);
-            this.metroTile1.TabIndex = 0;
-            this.metroTile1.Text = "S\r\nN\r\nI\r\nF\r\nF\r\nE\r\nR";
-            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.toolTip1.SetToolTip(this.metroTile1, "Start the Packet Sniffer");
-            this.metroTile1.UseCustomBackColor = true;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            this.SnifferButton.ActiveControl = null;
+            this.SnifferButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
+            this.SnifferButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SnifferButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.SnifferButton.Location = new System.Drawing.Point(0, 0);
+            this.SnifferButton.Name = "SnifferButton";
+            this.SnifferButton.Size = new System.Drawing.Size(29, 187);
+            this.SnifferButton.TabIndex = 0;
+            this.SnifferButton.Text = "S\r\nN\r\nI\r\nF\r\nF\r\nE\r\nR";
+            this.SnifferButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.SnifferButton.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.SnifferButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.Tooltip.SetToolTip(this.SnifferButton, "Start the Packet Sniffer");
+            this.SnifferButton.UseCustomBackColor = true;
+            this.SnifferButton.UseSelectable = true;
+            this.SnifferButton.Click += new System.EventHandler(this.SnifferButton_Click);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.metroTile2);
-            this.panel2.Controls.Add(this.metroTile1);
+            this.panel2.Controls.Add(this.LimiterButton);
+            this.panel2.Controls.Add(this.SnifferButton);
             this.panel2.Location = new System.Drawing.Point(1063, 65);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(29, 375);
             this.panel2.TabIndex = 1;
             // 
-            // metroTile2
+            // LimiterButton
             // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.metroTile2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroTile2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroTile2.Location = new System.Drawing.Point(0, 188);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(29, 187);
-            this.metroTile2.TabIndex = 0;
-            this.metroTile2.Text = "L\r\nI\r\nM\r\nI\r\nT\r\nE\r\nR";
-            this.metroTile2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.toolTip1.SetToolTip(this.metroTile2, "Start the Speed Limiter");
-            this.metroTile2.UseCustomBackColor = true;
-            this.metroTile2.UseSelectable = true;
-            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
+            this.LimiterButton.ActiveControl = null;
+            this.LimiterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
+            this.LimiterButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LimiterButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.LimiterButton.Location = new System.Drawing.Point(0, 188);
+            this.LimiterButton.Name = "LimiterButton";
+            this.LimiterButton.Size = new System.Drawing.Size(29, 187);
+            this.LimiterButton.TabIndex = 0;
+            this.LimiterButton.Text = "L\r\nI\r\nM\r\nI\r\nT\r\nE\r\nR";
+            this.LimiterButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.LimiterButton.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.LimiterButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.Tooltip.SetToolTip(this.LimiterButton, "Start the Speed Limiter");
+            this.LimiterButton.UseCustomBackColor = true;
+            this.LimiterButton.UseSelectable = true;
+            this.LimiterButton.Click += new System.EventHandler(this.LimiterButton_Click);
             // 
-            // notifyIcon1
+            // TrayIcon
             // 
-            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.BalloonTipText = "NetStalker is minimized";
-            this.notifyIcon1.BalloonTipTitle = "Info";
-            this.notifyIcon1.ContextMenuStrip = this.materialContextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "NetStalker";
+            this.TrayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.TrayIcon.BalloonTipText = "NetStalker is minimized";
+            this.TrayIcon.BalloonTipTitle = "Info";
+            this.TrayIcon.ContextMenuStrip = this.TrayMenu;
+            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
+            this.TrayIcon.Text = "NetStalker";
             // 
-            // materialContextMenuStrip1
+            // TrayMenu
             // 
-            this.materialContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialContextMenuStrip1.Depth = 0;
-            this.materialContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TrayMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TrayMenu.Depth = 0;
+            this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem,
             this.exitToolStripMenuItem});
-            this.materialContextMenuStrip1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialContextMenuStrip1.Name = "materialContextMenuStrip1";
-            this.materialContextMenuStrip1.Size = new System.Drawing.Size(104, 48);
+            this.TrayMenu.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TrayMenu.Name = "materialContextMenuStrip1";
+            this.TrayMenu.Size = new System.Drawing.Size(104, 48);
             // 
             // showToolStripMenuItem
             // 
@@ -511,40 +512,40 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.materialFlatButton5);
+            this.panel3.Controls.Add(this.RefreshButton);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.materialFlatButton3);
-            this.panel3.Controls.Add(this.materialFlatButton2);
+            this.panel3.Controls.Add(this.AboutButton);
+            this.panel3.Controls.Add(this.FormHelpButton);
             this.panel3.Controls.Add(this.materialLabel4);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.materialLabel3);
+            this.panel3.Controls.Add(this.CurrentOperationStatusLabel);
             this.panel3.Controls.Add(this.materialLabel1);
-            this.panel3.Controls.Add(this.materialFlatButton4);
-            this.panel3.Controls.Add(this.materialLabel2);
+            this.panel3.Controls.Add(this.OptionsButton);
+            this.panel3.Controls.Add(this.DeviceCountLabel);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.materialFlatButton1);
+            this.panel3.Controls.Add(this.ScanButton);
             this.panel3.Location = new System.Drawing.Point(3, 442);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1086, 56);
             this.panel3.TabIndex = 0;
             // 
-            // materialFlatButton5
+            // RefreshButton
             // 
-            this.materialFlatButton5.AutoSize = true;
-            this.materialFlatButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton5.Depth = 0;
-            this.materialFlatButton5.Icon = global::NetStalker.Properties.Resources.color_restart;
-            this.materialFlatButton5.Location = new System.Drawing.Point(111, 9);
-            this.materialFlatButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton5.Name = "materialFlatButton5";
-            this.materialFlatButton5.Primary = false;
-            this.materialFlatButton5.Size = new System.Drawing.Size(44, 36);
-            this.materialFlatButton5.TabIndex = 27;
-            this.toolTip1.SetToolTip(this.materialFlatButton5, resources.GetString("materialFlatButton5.ToolTip"));
-            this.materialFlatButton5.UseVisualStyleBackColor = true;
-            this.materialFlatButton5.Click += new System.EventHandler(this.materialFlatButton5_Click);
+            this.RefreshButton.AutoSize = true;
+            this.RefreshButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RefreshButton.Depth = 0;
+            this.RefreshButton.Icon = global::NetStalker.Properties.Resources.color_restart;
+            this.RefreshButton.Location = new System.Drawing.Point(111, 9);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.RefreshButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Primary = false;
+            this.RefreshButton.Size = new System.Drawing.Size(44, 36);
+            this.RefreshButton.TabIndex = 27;
+            this.Tooltip.SetToolTip(this.RefreshButton, resources.GetString("RefreshButton.ToolTip"));
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.Refresh_Click);
             // 
             // pictureBox2
             // 
@@ -555,46 +556,46 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 26;
             this.pictureBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox2, "Background scanning is active");
+            this.Tooltip.SetToolTip(this.pictureBox2, "Background scanning is active");
             this.pictureBox2.Visible = false;
             // 
-            // materialFlatButton3
+            // AboutButton
             // 
-            this.materialFlatButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialFlatButton3.AutoSize = true;
-            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Icon = global::NetStalker.Properties.Resources.color_about;
-            this.materialFlatButton3.Location = new System.Drawing.Point(393, 9);
-            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton3.Name = "materialFlatButton3";
-            this.materialFlatButton3.Primary = false;
-            this.materialFlatButton3.Size = new System.Drawing.Size(94, 36);
-            this.materialFlatButton3.TabIndex = 25;
-            this.materialFlatButton3.Text = "About";
-            this.toolTip1.SetToolTip(this.materialFlatButton3, "About the developer");
-            this.materialFlatButton3.UseVisualStyleBackColor = true;
-            this.materialFlatButton3.Click += new System.EventHandler(this.MaterialFlatButton3_Click_1);
+            this.AboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AboutButton.AutoSize = true;
+            this.AboutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AboutButton.Depth = 0;
+            this.AboutButton.Icon = global::NetStalker.Properties.Resources.color_about;
+            this.AboutButton.Location = new System.Drawing.Point(393, 9);
+            this.AboutButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.AboutButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AboutButton.Name = "AboutButton";
+            this.AboutButton.Primary = false;
+            this.AboutButton.Size = new System.Drawing.Size(94, 36);
+            this.AboutButton.TabIndex = 25;
+            this.AboutButton.Text = "About";
+            this.Tooltip.SetToolTip(this.AboutButton, "About the developer");
+            this.AboutButton.UseVisualStyleBackColor = true;
+            this.AboutButton.Click += new System.EventHandler(this.AboutButton_Click);
             // 
-            // materialFlatButton2
+            // FormHelpButton
             // 
-            this.materialFlatButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_help;
-            this.materialFlatButton2.Location = new System.Drawing.Point(294, 9);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(83, 36);
-            this.materialFlatButton2.TabIndex = 24;
-            this.materialFlatButton2.Text = "Help";
-            this.toolTip1.SetToolTip(this.materialFlatButton2, "A simple guide on how to use this software properly");
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.MaterialFlatButton2_Click);
+            this.FormHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.FormHelpButton.AutoSize = true;
+            this.FormHelpButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FormHelpButton.Depth = 0;
+            this.FormHelpButton.Icon = global::NetStalker.Properties.Resources.color_help;
+            this.FormHelpButton.Location = new System.Drawing.Point(294, 9);
+            this.FormHelpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.FormHelpButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.FormHelpButton.Name = "FormHelpButton";
+            this.FormHelpButton.Primary = false;
+            this.FormHelpButton.Size = new System.Drawing.Size(83, 36);
+            this.FormHelpButton.TabIndex = 24;
+            this.FormHelpButton.Text = "Help";
+            this.Tooltip.SetToolTip(this.FormHelpButton, "A simple guide on how to use this software properly");
+            this.FormHelpButton.UseVisualStyleBackColor = true;
+            this.FormHelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // materialLabel4
             // 
@@ -630,19 +631,19 @@
             headerStateStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LightHeaders.Pressed = headerStateStyle6;
             // 
-            // toolTip1
+            // Tooltip
             // 
-            this.toolTip1.AutomaticDelay = 1000;
-            this.toolTip1.AutoPopDelay = 10000;
-            this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.toolTip1.InitialDelay = 500;
-            this.toolTip1.OwnerDraw = true;
-            this.toolTip1.ReshowDelay = 200;
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip1.ToolTipTitle = "Info";
-            this.toolTip1.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.ToolTip1_Draw);
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.ToolTip1_Popup);
+            this.Tooltip.AutomaticDelay = 1000;
+            this.Tooltip.AutoPopDelay = 10000;
+            this.Tooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.Tooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.Tooltip.InitialDelay = 500;
+            this.Tooltip.OwnerDraw = true;
+            this.Tooltip.ReshowDelay = 200;
+            this.Tooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.Tooltip.ToolTipTitle = "Info";
+            this.Tooltip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.ToolTip_Draw);
+            this.Tooltip.Popup += new System.Windows.Forms.PopupEventHandler(this.ToolTip_Popup);
             // 
             // Main
             // 
@@ -663,12 +664,12 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
-            this.Resize += new System.EventHandler(this.Main_Resize_1);
+            this.Resize += new System.EventHandler(this.Main_Resize);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.materialContextMenuStrip1.ResumeLayout(false);
+            this.TrayMenu.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -680,17 +681,17 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton ScanButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel DeviceCountLabel;
+        private MaterialSkin.Controls.MaterialLabel CurrentOperationStatusLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton4;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MaterialSkin.Controls.MaterialFlatButton OptionsButton;
+        private MetroFramework.Controls.MetroTile SnifferButton;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.NotifyIcon notifyIcon1;
-        private MetroFramework.Controls.MetroTile metroTile2;
+        public System.Windows.Forms.NotifyIcon TrayIcon;
+        private MetroFramework.Controls.MetroTile LimiterButton;
         private System.Windows.Forms.Panel panel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private BrightIdeasSoftware.OLVColumn olvColumn1;
@@ -700,23 +701,23 @@
         private BrightIdeasSoftware.OLVColumn olvColumn5;
         private BrightIdeasSoftware.OLVColumn olvColumn6;
         public BrightIdeasSoftware.HotItemStyle DarkHot;
-        public BrightIdeasSoftware.FastObjectListView fastObjectListView1;
+        public BrightIdeasSoftware.FastObjectListView DeviceList;
         public BrightIdeasSoftware.HeaderFormatStyle DarkHeaders;
-        public System.Windows.Forms.ImageList imageList1;
+        public System.Windows.Forms.ImageList IconList;
         private BrightIdeasSoftware.OLVColumn olvColumn7;
         private BrightIdeasSoftware.OLVColumn olvColumn8;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
+        private MaterialSkin.Controls.MaterialFlatButton FormHelpButton;
+        private MaterialSkin.Controls.MaterialFlatButton AboutButton;
         public BrightIdeasSoftware.HotItemStyle LightHot;
         public BrightIdeasSoftware.HeaderFormatStyle LightHeaders;
-        public System.Windows.Forms.ToolTip toolTip1;
+        public System.Windows.Forms.ToolTip Tooltip;
         private BrightIdeasSoftware.OLVColumn olvColumn9;
         public System.Windows.Forms.PictureBox pictureBox2;
         public System.Windows.Forms.PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialContextMenuStrip materialContextMenuStrip1;
+        private MaterialSkin.Controls.MaterialContextMenuStrip TrayMenu;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton5;
+        private MaterialSkin.Controls.MaterialFlatButton RefreshButton;
     }
 }
 
