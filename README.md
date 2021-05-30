@@ -27,6 +27,13 @@ A network tool to control the bandwidth over your local network, it can block in
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
+### v3.0
+- Major performance improvements from upgrading to the new SharpPcap v6.0 that uses the new libpcap driver,
+(For a noticeable performance boost, upgrade to the latest Npcap driver (uses the new libpcap driver) (May be required for NetStalker to work properly)).
+- Implement the new Microsoft toast notifications API (ver 7.0.2).
+- Some code refactorings here and there for better performance and code clarity.
+- Give most of the controls meaningful names for better code readability.
+
 ### v2.2
 - Switched driver from Winpcap to Npcap.
 - Npcap driver check added.
