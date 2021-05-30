@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SnifferOptions));
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.comboBox2 = new MetroFramework.Controls.MetroComboBox();
+            this.SaveButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.PacketDirectionComboBox = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // materialLabel2
@@ -47,44 +47,44 @@
             this.materialLabel2.TabIndex = 3;
             this.materialLabel2.Text = "Direction:";
             // 
-            // materialFlatButton1
+            // SaveButton
             // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.materialFlatButton1.Location = new System.Drawing.Point(283, 83);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(83, 36);
-            this.materialFlatButton1.TabIndex = 0;
-            this.materialFlatButton1.Text = "Save";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.MaterialFlatButton1_Click);
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.AutoSize = true;
+            this.SaveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SaveButton.Depth = 0;
+            this.SaveButton.Icon = global::NetStalker.Properties.Resources.color_ok;
+            this.SaveButton.Location = new System.Drawing.Point(283, 83);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.SaveButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Primary = false;
+            this.SaveButton.Size = new System.Drawing.Size(83, 36);
+            this.SaveButton.TabIndex = 0;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // comboBox2
+            // PacketDirectionComboBox
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ItemHeight = 23;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.PacketDirectionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.PacketDirectionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PacketDirectionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketDirectionComboBox.FormattingEnabled = true;
+            this.PacketDirectionComboBox.ItemHeight = 23;
+            this.PacketDirectionComboBox.Items.AddRange(new object[] {
             "Outbound",
             "Inbound/Outbound"});
-            this.comboBox2.Location = new System.Drawing.Point(92, 87);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.PromptText = "Packet Direction";
-            this.comboBox2.Size = new System.Drawing.Size(162, 29);
-            this.comboBox2.Style = MetroFramework.MetroColorStyle.Teal;
-            this.comboBox2.TabIndex = 47;
-            this.comboBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.comboBox2.UseCustomBackColor = true;
-            this.comboBox2.UseCustomForeColor = true;
-            this.comboBox2.UseSelectable = true;
+            this.PacketDirectionComboBox.Location = new System.Drawing.Point(92, 87);
+            this.PacketDirectionComboBox.Name = "PacketDirectionComboBox";
+            this.PacketDirectionComboBox.PromptText = "Packet Direction";
+            this.PacketDirectionComboBox.Size = new System.Drawing.Size(162, 29);
+            this.PacketDirectionComboBox.Style = MetroFramework.MetroColorStyle.Teal;
+            this.PacketDirectionComboBox.TabIndex = 47;
+            this.PacketDirectionComboBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PacketDirectionComboBox.UseCustomBackColor = true;
+            this.PacketDirectionComboBox.UseCustomForeColor = true;
+            this.PacketDirectionComboBox.UseSelectable = true;
             // 
             // SnifferOptions
             // 
@@ -92,9 +92,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 134);
             this.ControlBox = false;
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.PacketDirectionComboBox);
             this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialFlatButton1);
+            this.Controls.Add(this.SaveButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -112,8 +112,8 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton SaveButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MetroFramework.Controls.MetroComboBox comboBox2;
+        private MetroFramework.Controls.MetroComboBox PacketDirectionComboBox;
     }
 }

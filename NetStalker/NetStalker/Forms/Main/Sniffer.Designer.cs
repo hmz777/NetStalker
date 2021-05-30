@@ -37,7 +37,7 @@
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.materialListView1 = new BrightIdeasSoftware.FastObjectListView();
+            this.PacketListView = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -50,21 +50,21 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialFlatButton6 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.OptionsButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton5 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.FormHelpButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.ExportButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.ClearButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.StartButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.StopButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.FontButton = new MetroFramework.Controls.MetroButton();
+            this.ClearViewerButton = new MetroFramework.Controls.MetroButton();
+            this.SaveButton = new MetroFramework.Controls.MetroButton();
+            this.ExpandButton = new MetroFramework.Controls.MetroButton();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -73,7 +73,7 @@
             this.LightHot = new BrightIdeasSoftware.HotItemStyle();
             this.LightHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.materialListView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PacketListView)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -86,26 +86,26 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.materialListView1);
+            this.panel1.Controls.Add(this.PacketListView);
             this.panel1.Location = new System.Drawing.Point(1, 64);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(748, 328);
             this.panel1.TabIndex = 1;
             // 
-            // materialListView1
+            // PacketListView
             // 
-            this.materialListView1.AllColumns.Add(this.olvColumn1);
-            this.materialListView1.AllColumns.Add(this.olvColumn2);
-            this.materialListView1.AllColumns.Add(this.olvColumn3);
-            this.materialListView1.AllColumns.Add(this.olvColumn7);
-            this.materialListView1.AllColumns.Add(this.olvColumn4);
-            this.materialListView1.AllColumns.Add(this.olvColumn6);
-            this.materialListView1.AllColumns.Add(this.olvColumn8);
-            this.materialListView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PacketListView.AllColumns.Add(this.olvColumn1);
+            this.PacketListView.AllColumns.Add(this.olvColumn2);
+            this.PacketListView.AllColumns.Add(this.olvColumn3);
+            this.PacketListView.AllColumns.Add(this.olvColumn7);
+            this.PacketListView.AllColumns.Add(this.olvColumn4);
+            this.PacketListView.AllColumns.Add(this.olvColumn6);
+            this.PacketListView.AllColumns.Add(this.olvColumn8);
+            this.PacketListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.materialListView1.CellEditUseWholeCell = false;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.PacketListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.PacketListView.CellEditUseWholeCell = false;
+            this.PacketListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
             this.olvColumn2,
             this.olvColumn3,
@@ -113,39 +113,39 @@
             this.olvColumn4,
             this.olvColumn6,
             this.olvColumn8});
-            this.materialListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.materialListView1.EmptyListMsg = "Packet list is empty";
-            this.materialListView1.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialListView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialListView1.HeaderFormatStyle = this.DarkHeaders;
-            this.materialListView1.HideSelection = false;
-            this.materialListView1.HotItemStyle = this.DarkHot;
-            this.materialListView1.Location = new System.Drawing.Point(0, 0);
-            this.materialListView1.MultiSelect = false;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.SelectAllOnControlA = false;
-            this.materialListView1.SelectColumnsMenuStaysOpen = false;
-            this.materialListView1.SelectColumnsOnRightClick = false;
-            this.materialListView1.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
-            this.materialListView1.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.materialListView1.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.materialListView1.ShowFilterMenuOnRightClick = false;
-            this.materialListView1.ShowGroups = false;
-            this.materialListView1.ShowSortIndicators = false;
-            this.materialListView1.Size = new System.Drawing.Size(748, 328);
-            this.materialListView1.SmallImageList = this.imageList1;
-            this.materialListView1.TabIndex = 0;
-            this.materialListView1.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.materialListView1.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.UseHotItem = true;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
-            this.materialListView1.VirtualMode = true;
-            this.materialListView1.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.materialListView1_ButtonClick);
-            this.materialListView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.materialListView1_MouseDown_1);
+            this.PacketListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PacketListView.EmptyListMsg = "Packet list is empty";
+            this.PacketListView.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketListView.FullRowSelect = true;
+            this.PacketListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.HeaderFormatStyle = this.DarkHeaders;
+            this.PacketListView.HideSelection = false;
+            this.PacketListView.HotItemStyle = this.DarkHot;
+            this.PacketListView.Location = new System.Drawing.Point(0, 0);
+            this.PacketListView.MultiSelect = false;
+            this.PacketListView.Name = "PacketListView";
+            this.PacketListView.SelectAllOnControlA = false;
+            this.PacketListView.SelectColumnsMenuStaysOpen = false;
+            this.PacketListView.SelectColumnsOnRightClick = false;
+            this.PacketListView.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
+            this.PacketListView.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.PacketListView.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketListView.ShowFilterMenuOnRightClick = false;
+            this.PacketListView.ShowGroups = false;
+            this.PacketListView.ShowSortIndicators = false;
+            this.PacketListView.Size = new System.Drawing.Size(748, 328);
+            this.PacketListView.SmallImageList = this.imageList1;
+            this.PacketListView.TabIndex = 0;
+            this.PacketListView.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketListView.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.PacketListView.UseCompatibleStateImageBehavior = false;
+            this.PacketListView.UseHotItem = true;
+            this.PacketListView.View = System.Windows.Forms.View.Details;
+            this.PacketListView.VirtualMode = true;
+            this.PacketListView.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.PacketListView_ButtonClick);
+            this.PacketListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PacketListView_MouseDown);
             // 
             // olvColumn1
             // 
@@ -262,37 +262,37 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.materialFlatButton6);
+            this.panel2.Controls.Add(this.OptionsButton);
             this.panel2.Controls.Add(this.materialLabel2);
             this.panel2.Controls.Add(this.materialLabel1);
-            this.panel2.Controls.Add(this.materialFlatButton5);
-            this.panel2.Controls.Add(this.materialFlatButton1);
-            this.panel2.Controls.Add(this.materialFlatButton4);
+            this.panel2.Controls.Add(this.FormHelpButton);
+            this.panel2.Controls.Add(this.ExportButton);
+            this.panel2.Controls.Add(this.ClearButton);
             this.panel2.Controls.Add(this.materialLabel3);
-            this.panel2.Controls.Add(this.materialFlatButton3);
-            this.panel2.Controls.Add(this.materialFlatButton2);
+            this.panel2.Controls.Add(this.StartButton);
+            this.panel2.Controls.Add(this.StopButton);
             this.panel2.Location = new System.Drawing.Point(755, 64);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(119, 328);
             this.panel2.TabIndex = 1;
             // 
-            // materialFlatButton6
+            // OptionsButton
             // 
-            this.materialFlatButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton6.AutoSize = true;
-            this.materialFlatButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton6.Depth = 0;
-            this.materialFlatButton6.Icon = global::NetStalker.Properties.Resources.color_gear;
-            this.materialFlatButton6.Location = new System.Drawing.Point(6, 175);
-            this.materialFlatButton6.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton6.Name = "materialFlatButton6";
-            this.materialFlatButton6.Primary = false;
-            this.materialFlatButton6.Size = new System.Drawing.Size(107, 36);
-            this.materialFlatButton6.TabIndex = 42;
-            this.materialFlatButton6.Text = "Options";
-            this.materialFlatButton6.UseVisualStyleBackColor = true;
-            this.materialFlatButton6.Click += new System.EventHandler(this.MaterialFlatButton6_Click);
+            this.OptionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OptionsButton.AutoSize = true;
+            this.OptionsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OptionsButton.Depth = 0;
+            this.OptionsButton.Icon = global::NetStalker.Properties.Resources.color_gear;
+            this.OptionsButton.Location = new System.Drawing.Point(6, 175);
+            this.OptionsButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.OptionsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.OptionsButton.Name = "OptionsButton";
+            this.OptionsButton.Primary = false;
+            this.OptionsButton.Size = new System.Drawing.Size(107, 36);
+            this.OptionsButton.TabIndex = 42;
+            this.OptionsButton.Text = "Options";
+            this.OptionsButton.UseVisualStyleBackColor = true;
+            this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
             // materialLabel2
             // 
@@ -322,59 +322,59 @@
             this.materialLabel1.Size = new System.Drawing.Size(118, 1);
             this.materialLabel1.TabIndex = 40;
             // 
-            // materialFlatButton5
+            // FormHelpButton
             // 
-            this.materialFlatButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton5.AutoSize = true;
-            this.materialFlatButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton5.Depth = 0;
-            this.materialFlatButton5.Icon = global::NetStalker.Properties.Resources.color_help  ;
-            this.materialFlatButton5.Location = new System.Drawing.Point(18, 227);
-            this.materialFlatButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton5.Name = "materialFlatButton5";
-            this.materialFlatButton5.Primary = false;
-            this.materialFlatButton5.Size = new System.Drawing.Size(83, 36);
-            this.materialFlatButton5.TabIndex = 39;
-            this.materialFlatButton5.Text = "Help";
-            this.materialFlatButton5.UseVisualStyleBackColor = true;
-            this.materialFlatButton5.Click += new System.EventHandler(this.materialFlatButton5_Click);
+            this.FormHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FormHelpButton.AutoSize = true;
+            this.FormHelpButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FormHelpButton.Depth = 0;
+            this.FormHelpButton.Icon = global::NetStalker.Properties.Resources.color_help;
+            this.FormHelpButton.Location = new System.Drawing.Point(18, 227);
+            this.FormHelpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.FormHelpButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.FormHelpButton.Name = "FormHelpButton";
+            this.FormHelpButton.Primary = false;
+            this.FormHelpButton.Size = new System.Drawing.Size(83, 36);
+            this.FormHelpButton.TabIndex = 39;
+            this.FormHelpButton.Text = "Help";
+            this.FormHelpButton.UseVisualStyleBackColor = true;
+            this.FormHelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
-            // materialFlatButton1
+            // ExportButton
             // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_external;
-            this.materialFlatButton1.Location = new System.Drawing.Point(9, 123);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(101, 36);
-            this.materialFlatButton1.TabIndex = 2;
-            this.materialFlatButton1.Text = "Export";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.ExportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExportButton.AutoSize = true;
+            this.ExportButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ExportButton.Depth = 0;
+            this.ExportButton.Icon = global::NetStalker.Properties.Resources.color_external;
+            this.ExportButton.Location = new System.Drawing.Point(9, 123);
+            this.ExportButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ExportButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.Primary = false;
+            this.ExportButton.Size = new System.Drawing.Size(101, 36);
+            this.ExportButton.TabIndex = 2;
+            this.ExportButton.Text = "Export";
+            this.ExportButton.UseVisualStyleBackColor = true;
+            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
-            // materialFlatButton4
+            // ClearButton
             // 
-            this.materialFlatButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton4.AutoSize = true;
-            this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton4.Depth = 0;
-            this.materialFlatButton4.Icon = global::NetStalker.Properties.Resources.color_clear_symbol;
-            this.materialFlatButton4.Location = new System.Drawing.Point(14, 71);
-            this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton4.Name = "materialFlatButton4";
-            this.materialFlatButton4.Primary = false;
-            this.materialFlatButton4.Size = new System.Drawing.Size(91, 36);
-            this.materialFlatButton4.TabIndex = 38;
-            this.materialFlatButton4.Text = "Clear";
-            this.materialFlatButton4.UseVisualStyleBackColor = true;
-            this.materialFlatButton4.Click += new System.EventHandler(this.materialFlatButton4_Click_1);
+            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearButton.AutoSize = true;
+            this.ClearButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClearButton.Depth = 0;
+            this.ClearButton.Icon = global::NetStalker.Properties.Resources.color_clear_symbol;
+            this.ClearButton.Location = new System.Drawing.Point(14, 71);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ClearButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Primary = false;
+            this.ClearButton.Size = new System.Drawing.Size(91, 36);
+            this.ClearButton.TabIndex = 38;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // materialLabel3
             // 
@@ -390,41 +390,41 @@
             this.materialLabel3.Size = new System.Drawing.Size(1, 328);
             this.materialLabel3.TabIndex = 23;
             // 
-            // materialFlatButton3
+            // StartButton
             // 
-            this.materialFlatButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton3.AutoSize = true;
-            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Icon = global::NetStalker.Properties.Resources.color_start;
-            this.materialFlatButton3.Location = new System.Drawing.Point(13, 19);
-            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton3.Name = "materialFlatButton3";
-            this.materialFlatButton3.Primary = false;
-            this.materialFlatButton3.Size = new System.Drawing.Size(92, 36);
-            this.materialFlatButton3.TabIndex = 2;
-            this.materialFlatButton3.Text = "Start";
-            this.materialFlatButton3.UseVisualStyleBackColor = true;
-            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
+            this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartButton.AutoSize = true;
+            this.StartButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.StartButton.Depth = 0;
+            this.StartButton.Icon = global::NetStalker.Properties.Resources.color_start;
+            this.StartButton.Location = new System.Drawing.Point(13, 19);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.StartButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Primary = false;
+            this.StartButton.Size = new System.Drawing.Size(92, 36);
+            this.StartButton.TabIndex = 2;
+            this.StartButton.Text = "Start";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // materialFlatButton2
+            // StopButton
             // 
-            this.materialFlatButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_stop_squared;
-            this.materialFlatButton2.Location = new System.Drawing.Point(17, 279);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(84, 36);
-            this.materialFlatButton2.TabIndex = 2;
-            this.materialFlatButton2.Text = "Stop";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            this.StopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StopButton.AutoSize = true;
+            this.StopButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.StopButton.Depth = 0;
+            this.StopButton.Icon = global::NetStalker.Properties.Resources.color_stop_squared;
+            this.StopButton.Location = new System.Drawing.Point(17, 279);
+            this.StopButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.StopButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Primary = false;
+            this.StopButton.Size = new System.Drawing.Size(84, 36);
+            this.StopButton.TabIndex = 2;
+            this.StopButton.Text = "Stop";
+            this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // panel3
             // 
@@ -439,62 +439,62 @@
             // panel6
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.metroButton4);
-            this.panel6.Controls.Add(this.metroButton1);
-            this.panel6.Controls.Add(this.metroButton2);
-            this.panel6.Controls.Add(this.metroButton3);
+            this.panel6.Controls.Add(this.FontButton);
+            this.panel6.Controls.Add(this.ClearViewerButton);
+            this.panel6.Controls.Add(this.SaveButton);
+            this.panel6.Controls.Add(this.ExpandButton);
             this.panel6.Location = new System.Drawing.Point(622, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(26, 103);
             this.panel6.TabIndex = 1;
             // 
-            // metroButton4
+            // FontButton
             // 
-            this.metroButton4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton4.BackgroundImage")));
-            this.metroButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.metroButton4.Location = new System.Drawing.Point(3, 53);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(20, 20);
-            this.metroButton4.TabIndex = 43;
-            this.metroToolTip1.SetToolTip(this.metroButton4, "Change font size");
-            this.metroButton4.UseSelectable = true;
-            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
+            this.FontButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FontButton.BackgroundImage")));
+            this.FontButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FontButton.Location = new System.Drawing.Point(3, 53);
+            this.FontButton.Name = "FontButton";
+            this.FontButton.Size = new System.Drawing.Size(20, 20);
+            this.FontButton.TabIndex = 43;
+            this.metroToolTip1.SetToolTip(this.FontButton, "Change font size");
+            this.FontButton.UseSelectable = true;
+            this.FontButton.Click += new System.EventHandler(this.FontButton_Click);
             // 
-            // metroButton1
+            // ClearViewerButton
             // 
-            this.metroButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton1.BackgroundImage")));
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.metroButton1.Location = new System.Drawing.Point(3, 78);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(20, 20);
-            this.metroButton1.TabIndex = 1;
-            this.metroToolTip1.SetToolTip(this.metroButton1, "Clear the packet viewer");
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.ClearViewerButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClearViewerButton.BackgroundImage")));
+            this.ClearViewerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClearViewerButton.Location = new System.Drawing.Point(3, 78);
+            this.ClearViewerButton.Name = "ClearViewerButton";
+            this.ClearViewerButton.Size = new System.Drawing.Size(20, 20);
+            this.ClearViewerButton.TabIndex = 1;
+            this.metroToolTip1.SetToolTip(this.ClearViewerButton, "Clear the packet viewer");
+            this.ClearViewerButton.UseSelectable = true;
+            this.ClearViewerButton.Click += new System.EventHandler(this.ClearViewerButton_Click);
             // 
-            // metroButton2
+            // SaveButton
             // 
-            this.metroButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton2.BackgroundImage")));
-            this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.metroButton2.Location = new System.Drawing.Point(3, 28);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(20, 20);
-            this.metroButton2.TabIndex = 41;
-            this.metroToolTip1.SetToolTip(this.metroButton2, "Save packet");
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            this.SaveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveButton.BackgroundImage")));
+            this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SaveButton.Location = new System.Drawing.Point(3, 28);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(20, 20);
+            this.SaveButton.TabIndex = 41;
+            this.metroToolTip1.SetToolTip(this.SaveButton, "Save packet");
+            this.SaveButton.UseSelectable = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // metroButton3
+            // ExpandButton
             // 
-            this.metroButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton3.BackgroundImage")));
-            this.metroButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.metroButton3.Location = new System.Drawing.Point(3, 3);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(20, 20);
-            this.metroButton3.TabIndex = 42;
-            this.metroToolTip1.SetToolTip(this.metroButton3, "Extend the packet viewer");
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
+            this.ExpandButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExpandButton.BackgroundImage")));
+            this.ExpandButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ExpandButton.Location = new System.Drawing.Point(3, 3);
+            this.ExpandButton.Name = "ExpandButton";
+            this.ExpandButton.Size = new System.Drawing.Size(20, 20);
+            this.ExpandButton.TabIndex = 42;
+            this.metroToolTip1.SetToolTip(this.ExpandButton, "Extend the packet viewer");
+            this.ExpandButton.UseSelectable = true;
+            this.ExpandButton.Click += new System.EventHandler(this.ExpandButton_Click);
             // 
             // metroTextBox1
             // 
@@ -650,7 +650,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sniffer_FormClosing);
             this.Load += new System.EventHandler(this.Sniffer_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.materialListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PacketListView)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -664,37 +664,37 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
+        private MaterialSkin.Controls.MaterialFlatButton ExportButton;
+        private MaterialSkin.Controls.MaterialFlatButton StopButton;
+        private MaterialSkin.Controls.MaterialFlatButton StartButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private System.Windows.Forms.Panel panel3;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton4;
+        private MaterialSkin.Controls.MaterialFlatButton ClearButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private MetroFramework.Controls.MetroTextBox metroTextBox2;
         private BrightIdeasSoftware.HeaderFormatStyle DarkHeaders;
         public BrightIdeasSoftware.HotItemStyle DarkHot;
         private BrightIdeasSoftware.OLVColumn olvColumn5;
-        private BrightIdeasSoftware.FastObjectListView materialListView1;
+        private BrightIdeasSoftware.FastObjectListView PacketListView;
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
         private BrightIdeasSoftware.OLVColumn olvColumn4;
         private BrightIdeasSoftware.OLVColumn olvColumn6;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton5;
+        private MaterialSkin.Controls.MaterialFlatButton FormHelpButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private BrightIdeasSoftware.OLVColumn olvColumn7;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton ClearViewerButton;
+        private MetroFramework.Controls.MetroButton SaveButton;
         private MetroFramework.Components.MetroToolTip metroToolTip1;
-        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroButton ExpandButton;
         private System.Windows.Forms.Panel panel6;
-        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Controls.MetroButton FontButton;
         private System.Windows.Forms.ImageList imageList1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton6;
+        private MaterialSkin.Controls.MaterialFlatButton OptionsButton;
         private BrightIdeasSoftware.OLVColumn olvColumn8;
         public BrightIdeasSoftware.HotItemStyle LightHot;
         public BrightIdeasSoftware.HeaderFormatStyle LightHeaders;
