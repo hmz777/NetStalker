@@ -250,8 +250,7 @@ namespace NetStalker
 
         private void HelpBubble_MouseEnter(object sender, EventArgs e)
         {
-            ToolTip.SetToolTip(HelpBubble, string.Format(
-                Properties.Resources.HelpBubble, Environment.NewLine));
+            ToolTip.SetToolTip(HelpBubble, Properties.Resources.HelpBubble);
         }
 
         #endregion
