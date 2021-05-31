@@ -54,9 +54,9 @@ A network tool to control the bandwidth over your local network, it can block in
 - Included a packaged installer.
 
 # Binaries
-### Make sure you have the Npcap driver before installing NetStalker. [Npcap](https://nmap.org/download.html).
-The latest stable version:
-- NetStalker [Download Setup package](https://github.com/hmz777/NetStalker/releases/download/v3.0/NetStalkerInstaller.exe)
+***Make sure you have the latest Npcap driver before installing NetStalker.***
+- [Npcap](https://nmap.org/download.html).
+- The latest stable version: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v3.0/NetStalkerInstaller.exe). ***(Currently v3.0)***
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
