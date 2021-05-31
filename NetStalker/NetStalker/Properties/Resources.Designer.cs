@@ -257,7 +257,9 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spoof Protection occurs whenever a blocking or a redirection operation is active.{0}It protects you pc from being blocked or redirected by the same tool{0}or any other spoofing software..
+        ///   Looks up a localized string similar to Spoof Protection occurs whenever a blocking or a redirection operation is active.
+        ///It protects you pc from being blocked or redirected by the same tool
+        ///or any other spoofing software..
         /// </summary>
         internal static string HelpBubble {
             get {
@@ -266,7 +268,10 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some guidelines on how to use this software properly:\n\n1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.\n2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the spe [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Some guidelines on how to use this software properly:
+        ///
+        ///1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.
+        ///2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the spe [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string HelpText {
             get {
@@ -304,7 +309,8 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want me to inform you of newly connected devices? (This option can be changed back in the options menu).
+        ///   Looks up a localized string similar to Do you want me to inform you of newly connected devices?
+        ///(This option can be changed back in the options menu).
         /// </summary>
         internal static string NotificationsPrompt {
             get {

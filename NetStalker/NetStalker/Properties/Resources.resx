@@ -170,10 +170,21 @@
     <value>..\Resources\D.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="HelpBubble" xml:space="preserve">
-    <value>Spoof Protection occurs whenever a blocking or a redirection operation is active.{0}It protects you pc from being blocked or redirected by the same tool{0}or any other spoofing software.</value>
+    <value>Spoof Protection occurs whenever a blocking or a redirection operation is active.
+It protects you pc from being blocked or redirected by the same tool
+or any other spoofing software.</value>
   </data>
   <data name="HelpText" xml:space="preserve">
-    <value>Some guidelines on how to use this software properly:\n\n1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.\n2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the speed limiter (on the bottom right) and set the desired speed for each device (0 means no limitation).\n3- Blocking and redirection can not be activated at the sametime, you either block a device or limit its speed.\n4- It's recommended for most stability to wait until the scanner is done before performing any action.\n5- NetStalker can be protected with a password, and can be set or removed via Options.\n6- NetStalker is available in dark and light modes.\n7- NetStalker has an option for spoof protection, if activated it can prevent your pc from being redirected or blocked by the same tool or any other spoofing software.\n8- Background scanning is always active so you don't have to consistently press scan to discover newly connected devices.</value>
+    <value>Some guidelines on how to use this software properly:
+
+1- In order to use the Packet Sniffer you have to activate redirection for the selected device first. Note: For the Packet Sniffer to work properly, redirection and speed limitation will be deactivated for all but the selected device.
+2- In order to use the Speed Limiter you have to activate redirection for the selected device, once activated it will start redirecting packets for the selected device with no speed limitation, then you can open the speed limiter (on the bottom right) and set the desired speed for each device (0 means no limitation).
+3- Blocking and redirection can not be activated at the sametime, you either block a device or limit its speed.
+4- It's recommended for most stability to wait until the scanner is done before performing any action.
+5- NetStalker can be protected with a password, and can be set or removed via Options.
+6- NetStalker is available in dark and light modes.
+7- NetStalker has an option for spoof protection, if activated it can prevent your pc from being redirected or blocked by the same tool or any other spoofing software.
+8- Background scanning is always active so you don't have to consistently press scan to discover newly connected devices.</value>
   </data>
   <data name="icons8_info_35" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-info-35.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -185,7 +196,8 @@
     <value>A new device detected!</value>
   </data>
   <data name="NotificationsPrompt" xml:space="preserve">
-    <value>Do you want me to inform you of newly connected devices? (This option can be changed back in the options menu)</value>
+    <value>Do you want me to inform you of newly connected devices?
+(This option can be changed back in the options menu)</value>
   </data>
   <data name="_30G" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\30G.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
