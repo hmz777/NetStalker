@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Threading;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace NetStalker
 {
@@ -12,7 +12,7 @@ namespace NetStalker
         public static VendorClass GetVendorInfo(string MAC)
         {
             int tries = 0;
-            rerun:
+        rerun:
             try
             {
                 WebRequest wb = WebRequest.Create($"https://api.macvendors.com/v1/lookup/{MAC.Remove(MAC.Length - 4, 4)}");
@@ -31,7 +31,7 @@ namespace NetStalker
                 {
                     var res = SR.ReadToEnd();
 
-                    Vendor = JsonConvert.DeserializeObject<VendorClass>(res);
+                    Vendor = JsonSerializer.Deserialize<VendorClass>(res);
                 }
 
                 if (Vendor != null)
