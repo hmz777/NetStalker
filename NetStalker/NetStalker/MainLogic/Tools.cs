@@ -1,5 +1,4 @@
 ﻿using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
-using ShellHelpers;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -143,56 +142,6 @@ namespace NetStalker.MainLogic
             }
 
             return default;
-        }
-
-        /// <summary>
-        /// Check if a shortcut is already created, if not then create a new one (Necessary for the toast notification service).
-        /// </summary>
-        /// <returns></returns>
-        public static bool TryCreateShortcut()
-        {
-            String shortcutPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Microsoft\\Windows\\Start Menu\\Programs\\NetStalker.lnk";
-            if (!File.Exists(shortcutPath))
-            {
-                InstallShortcut(shortcutPath);
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Create a start shortcut for the app and set the AppUserModelId and ToastActivatorCLSID in the shortcut property store (Necessary for the toast notification service).
-        /// </summary>
-        /// <param name="shortcutPath"></param>
-        private static void InstallShortcut(String shortcutPath)
-        {
-            // Find the path to the current executable
-            String exePath = Process.GetCurrentProcess().MainModule.FileName;
-            IShellLinkW newShortcut = (IShellLinkW)new CShellLink();
-
-            // Create a shortcut to the exe
-            ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetPath(exePath));
-            ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetArguments(""));
-
-            // Open the shortcut property store, set the AppUserModelId property
-            IPropertyStore newShortcutProperties = (IPropertyStore)newShortcut;
-
-            using (MS.WindowsAPICodePack.Internal.PropVariant appId = new MS.WindowsAPICodePack.Internal.PropVariant(AppConfiguration.APP_ID))
-            {
-                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.SetValue(SystemProperties.System.AppUserModel.ID, appId));
-                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.Commit());
-            }
-
-            using (MS.WindowsAPICodePack.Internal.PropVariant guid = new MS.WindowsAPICodePack.Internal.PropVariant(AppConfiguration.Guid))
-            {
-                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.SetValue(SystemProperties.System.AppUserModel.ToastActivatorCLSID, guid));
-                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutProperties.Commit());
-            }
-
-            // Commit the shortcut to disk
-            ShellHelpers.IPersistFile newShortcutSave = (ShellHelpers.IPersistFile)newShortcut;
-
-            ShellHelpers.ErrorHelper.VerifySucceeded(newShortcutSave.Save(shortcutPath, true));
         }
 
         /// <summary>
