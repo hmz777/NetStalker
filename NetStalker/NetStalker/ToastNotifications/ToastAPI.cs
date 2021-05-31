@@ -26,7 +26,7 @@ namespace NetStalker.ToastNotifications
                 .AddArgument("Action", Purpose)
                 .AddArgument("DeviceIP", DeviceIP)
                 .AddArgument("DeviceMAC", DeviceMAC)
-                .AddText("NetStalker", AdaptiveTextStyle.Header)
+                .AddText("NetStalker")
                 .AddText(Content);
 
             switch (Purpose)
