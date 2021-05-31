@@ -84,7 +84,8 @@ The latest stable version:
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
 
 # Development Notes
-- The project references a modified version of the Windows API Code Pack (see [here](https://stackoverflow.com/questions/54390709/toastactivatorclsid-missing-from-appusermodel)) in order to register the app for the Windows Notifications API.
+- ~~The project references a modified version of the Windows API Code Pack (see [here](https://stackoverflow.com/questions/54390709/toastactivatorclsid-missing-from-appusermodel)) in order to register the app for the Windows Notifications API.~~
+No longer needed since v3.0 (Uses the new toast notifications API).
 
 # Contributions
 - Before submitting a pull request, please take sometime to understand how NetStalker and the SharpPcap library work. 
