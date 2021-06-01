@@ -27,6 +27,9 @@ A network tool to control the bandwidth over your local network, it can block in
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
+### v3.0.1
+- Fix a KeyNotFoundException when the notification arguments didn't have a Choice key.
+
 ### v3.0
 - Major performance improvements from upgrading to the new SharpPcap v6.0 that uses the new libpcap driver,
 (For a noticeable performance boost, upgrade to the latest Npcap driver (uses the new libpcap driver) (May be required for NetStalker to work properly)).
