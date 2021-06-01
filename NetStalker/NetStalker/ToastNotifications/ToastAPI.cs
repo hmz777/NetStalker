@@ -86,9 +86,16 @@ namespace NetStalker.ToastNotifications
                 return;
             }
 
-            if (!Enum.TryParse<NotificationChoice>(args["Choice"], out NotificationChoice NotificationChoice))
+            if (!args.Contains("Choice"))
             {
                 return; //No choice to select then no action required e.g. body tapped
+            }
+
+            NotificationChoice NotificationChoice = NotificationChoice.None;
+
+            if (!Enum.TryParse<NotificationChoice>(args["Choice"], out NotificationChoice))
+            {
+                return; //No valid choice, we return
             }
 
             switch (Enum.Parse(typeof(NotificationPurpose), args["Action"]))

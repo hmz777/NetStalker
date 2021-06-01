@@ -13,5 +13,6 @@ namespace NetStalker.ToastNotifications
         Show,
         Block,
         Suppress,
+        None
     }
 }
