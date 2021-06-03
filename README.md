@@ -108,5 +108,5 @@ NetStalker is provided by Hamzi Alsheikh "as is" and "with all faults". The prov
 If you notice any errors or have a suggestion, you're free to email me or submit a pull request.
 
 # Author
-### Hamzi Alsheikh
-### Website: [https://www.hamzialsheikh.tk](https://www.hamzialsheikh.tk)
+**Hamzi Alsheikh**
+**Website: [https://www.hamzialsheikh.tk](https://www.hamzialsheikh.tk)**
