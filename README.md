@@ -11,7 +11,7 @@
 # NetStalker
 A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built in packet sniffer.
 
-# Features:
+# Features
 - Background Scanning for newly connected devices.
 - Bandwidth limitation for better distribution of internet speed across devices, both upload and download speeds can be controlled for each device separately.
 - A Packet Sniffer that is intended to log addresses that each device on the network visits with the ability to decode Http headers for HTTP packets and resolve domains for HTTPS packets, also the packet direction can be chosen in order to capture requests only or requests and responses.
@@ -27,6 +27,9 @@ A network tool to control the bandwidth over your local network, it can block in
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
+### v3.0.1
+- Fix a KeyNotFoundException when the notification arguments didn't have a Choice key.
+
 ### v3.0
 - Major performance improvements from upgrading to the new SharpPcap v6.0 that uses the new libpcap driver,
 (For a noticeable performance boost, upgrade to the latest Npcap driver (uses the new libpcap driver) (May be required for NetStalker to work properly)).
@@ -56,31 +59,31 @@ A network tool to control the bandwidth over your local network, it can block in
 # Binaries
 ***Make sure you have the latest Npcap driver before installing NetStalker.***
 - [Npcap](https://nmap.org/download.html).
-- The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v3.0/NetStalkerInstaller.exe). ***(Currently v3.0)***
+- The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/3.0.1/NetStalkerInstaller.exe). ***(Currently v3.0.1)***
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
 - The app is tested only on a small amount of network cards, so I can't guarantee it will work on yours.
 - The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the releases section. 
 
-# Pictures:
+# Pictures
 
-### Dark Mode:
+### Dark Mode
 ![MainDark](https://i.imgur.com/CpnUqdC.jpg)
 
-### Light Mode:
+### Light Mode
 ![MainLight](https://i.imgur.com/HOQl1kI.jpg)
 
-### Packet Sniffer Dark:
+### Packet Sniffer Dark
 ![SnifferDark](https://i.imgur.com/6C5qkRu.jpg)
 
-### Packet Sniffer Light:
+### Packet Sniffer Light
 ![SnifferLight](https://i.imgur.com/RtwLAst.jpg)
 
-### Speed Limiter:
+### Speed Limiter
 ![SpeedLimiter](https://i.imgur.com/bJdjiMX.jpg)
 
-### Expanded Packet Viewer:
+### Expanded Packet Viewer
 ![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
 
 # Development Notes
@@ -98,12 +101,13 @@ No longer needed since v3.0 (Uses the new toast notifications API).
 - Follow the issue template.
 
 # Disclaimer
-NetStalker is provided by HMZ-Software "as is" and "with all faults". The provider makes no representations or warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software. There are inherent dangers in the use of any software, and you are solely responsible for determining whether NetStalker is compatible with your equipment and other software installed on your equipment. You are also solely responsible for the protection of your equipment and backup of your data, and the provider will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software.
+NetStalker is provided by Hamzi Alsheikh "as is" and "with all faults". The provider makes no representations or warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software. There are inherent dangers in the use of any software, and you are solely responsible for determining whether NetStalker is compatible with your equipment and other software installed on your equipment. You are also solely responsible for the protection of your equipment and backup of your data, and the provider will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software.
 
 # Additional Information
 
 If you notice any errors or have a suggestion, you're free to email me or submit a pull request.
 
 # Author
-### Hamzi Alsheikh
-### Website: [https://www.hamzialsheikh.tk](https://www.hamzialsheikh.tk)
+**Hamzi Alsheikh**
+
+**Website: [https://www.hamzialsheikh.tk](https://www.hamzialsheikh.tk)**
