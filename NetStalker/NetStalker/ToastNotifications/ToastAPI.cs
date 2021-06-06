@@ -74,14 +74,25 @@ namespace NetStalker.ToastNotifications
 
             if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
             {
-                MainForm.BeginInvoke(new Action(() =>
+                if (MainForm.InvokeRequired)
+                {
+                    MainForm.BeginInvoke(new Action(() =>
+                    {
+                        MetroFramework.MetroMessageBox.Show(MainForm,
+                            "Process has been activated by toast notification trigger.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }));
+                }
+                else
                 {
                     MetroFramework.MetroMessageBox.Show(MainForm,
-                        "Process has been activated by toast notification trigger.",
-                        "Information",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }));
+                            "Process has been activated by toast notification trigger.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                }
 
                 return;
             }
