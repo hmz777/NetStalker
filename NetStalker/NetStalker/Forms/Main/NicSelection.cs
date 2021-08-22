@@ -262,7 +262,7 @@ namespace NetStalker
               SelectedInterface.GetPhysicalAddress().ToString();
 
             Properties.Settings.Default.AdapterName = (from devicex in CaptureDeviceList.Instance
-                                                       where ((LibPcapLiveDevice)devicex).Interface.FriendlyName == AppConfiguration.FriendlyName
+                                                       where ((LibPcapLiveDevice)devicex).Interface.FriendlyName == FriendlyName
                                                        select devicex).ToList()[0].Name;
 
             Properties.Settings.Default.BroadcastAddress = Tools.GetBroadcastAddress(IPAddress.Parse(Properties.Settings.Default.LocalIp), Properties.Settings.Default.NetMask).ToString();
