@@ -132,7 +132,7 @@ namespace NetStalker
 
                                      #region Get MacVendor
 
-                                     var Name = VendorAPI.GetVendorInfo(mac);
+                                     var Name = await VendorAPI.GetVendorInfo(mac);
                                      device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
                                      #endregion
@@ -145,7 +145,7 @@ namespace NetStalker
                                      {
                                          if (ex is SocketException)
                                          {
-                                             var Name = VendorAPI.GetVendorInfo(mac);
+                                             var Name = await VendorAPI.GetVendorInfo(mac);
                                              device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
                                              view.ListView1.BeginInvoke(new Action(() =>
@@ -265,7 +265,7 @@ namespace NetStalker
 
                                 #region Get MacVendor
 
-                                var Name = VendorAPI.GetVendorInfo(mac);
+                                var Name = await VendorAPI.GetVendorInfo(mac);
                                 device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
                                 #endregion
@@ -278,7 +278,7 @@ namespace NetStalker
                                 {
                                     if (ex is SocketException)
                                     {
-                                        var Name = VendorAPI.GetVendorInfo(mac);
+                                        var Name = await VendorAPI.GetVendorInfo(mac);
                                         device.ManName = (Name is null) ? "" : Name.data.organization_name;
 
                                         view.ListView1.BeginInvoke(new Action(() =>
