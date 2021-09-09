@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using Microsoft.Win32;
 using NetStalker.MainLogic;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -77,6 +78,8 @@ namespace NetStalker
             {
                 SuppressNotificationsCheck.Checked = true;
             }
+
+            TokenField.Text = Properties.Settings.Default.APIToken;
         }
 
         private void Options_Click(object sender, EventArgs e)
@@ -293,7 +296,7 @@ namespace NetStalker
             main.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
             main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
             main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            main.pictureBox2.Image = NetStalker.Properties.Resources._30W;
+            main.pictureBox2.Image = NetStalker.Properties.Resources.spinB;
 
         }
 
@@ -333,7 +336,7 @@ namespace NetStalker
             main.DeviceList.SelectedForeColor = Color.FromArgb(204, 204, 204);
             main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(204, 204, 204);
             main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(88, 88, 88);
-            main.pictureBox2.Image = NetStalker.Properties.Resources._30G;
+            main.pictureBox2.Image = NetStalker.Properties.Resources.spinW;
         }
 
         #endregion
@@ -385,8 +388,14 @@ namespace NetStalker
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.APIToken = TokenField.Text;
             Properties.Settings.Default.Save();
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(MacVendorsLinkLabel.Text);
         }
     }
 }

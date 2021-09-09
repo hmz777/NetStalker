@@ -8,7 +8,7 @@ namespace NetStalker
 {
     public class VendorAPI
     {
-        private static string Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImp0aSI6IjE3MWUzMDdjLTJhM2EtNDFiYi04OWJjLWZkMjk4NTViMzBkNiJ9.eyJpc3MiOiJtYWN2ZW5kb3JzIiwiYXVkIjoibWFjdmVuZG9ycyIsImp0aSI6IjE3MWUzMDdjLTJhM2EtNDFiYi04OWJjLWZkMjk4NTViMzBkNiIsImlhdCI6MTU2Mzk3NTQxMiwiZXhwIjoxODc4NDcxNDEyLCJzdWIiOiIxNzIwIiwidHlwIjoiYWNjZXNzIn0.NSuEiqHllfH_TQh8IXjzijsXFdcyRIcbDap5WExsXzlSv8ys4BR10SQn1jvAGTku35Aq8RTBZqs6STmCFM7CSA";
+        private static string Token;
         private static HttpClient HttpClient;
         private static bool HttpClientReady;
 
@@ -20,6 +20,18 @@ namespace NetStalker
 
         public async static Task<VendorClass> GetVendorInfo(string MAC)
         {
+            if (string.IsNullOrEmpty(Token))
+            {
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.APIToken))
+                {
+                    Token = Properties.Settings.Default.APIToken;
+                }
+                else
+                {
+                    return default;
+                }
+            }
+
             if (!HttpClientReady)
             {
                 InitHttpClient();
