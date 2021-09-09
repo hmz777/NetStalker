@@ -393,7 +393,7 @@ namespace NetStalker
             this.Close();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void MacVendorsLinkLabel_Click(object sender, EventArgs e)
         {
             Process.Start(MacVendorsLinkLabel.Text);
         }

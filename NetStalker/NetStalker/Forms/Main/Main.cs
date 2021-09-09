@@ -143,6 +143,11 @@ namespace NetStalker
             AliveTimer.Tick += AliveTimerOnTick;
 
             #endregion
+
+            //if (DeviceDpi >= 120)
+            //{
+            //    PerformDPIChanges();
+            //}
         }
 
         #endregion
@@ -259,6 +264,11 @@ namespace NetStalker
                 device.Value.PacketsSentSinceLastReset = 0;
                 device.Value.PacketsReceivedSinceLastReset = 0;
             }
+        }
+
+        public void PerformDPIChanges()
+        {
+          //React to DPI changes...
         }
 
         #endregion

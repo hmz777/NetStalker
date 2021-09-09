@@ -61,9 +61,8 @@
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.TokenField = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.MacVendorsLinkLabel = new System.Windows.Forms.LinkLabel();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            this.MacVendorsLinkLabel = new MaterialSkin.Controls.MaterialLabel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelpBubble)).BeginInit();
@@ -74,7 +73,7 @@
             this.PasswordField.Depth = 0;
             this.PasswordField.Hint = "Set Password";
             this.PasswordField.Location = new System.Drawing.Point(129, 156);
-            this.PasswordField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PasswordField.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordField.MaxLength = 32767;
             this.PasswordField.MouseState = MaterialSkin.MouseState.HOVER;
             this.PasswordField.Name = "PasswordField";
@@ -93,7 +92,7 @@
             this.ConfirmPasswordField.Depth = 0;
             this.ConfirmPasswordField.Hint = "Confirm Password";
             this.ConfirmPasswordField.Location = new System.Drawing.Point(129, 191);
-            this.ConfirmPasswordField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmPasswordField.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmPasswordField.MaxLength = 32767;
             this.ConfirmPasswordField.MouseState = MaterialSkin.MouseState.HOVER;
             this.ConfirmPasswordField.Name = "ConfirmPasswordField";
@@ -131,7 +130,7 @@
             this.SaveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SaveButton.Depth = 0;
             this.SaveButton.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.SaveButton.Location = new System.Drawing.Point(815, 525);
+            this.SaveButton.Location = new System.Drawing.Point(815, 553);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.SaveButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.SaveButton.Name = "SaveButton";
@@ -302,7 +301,7 @@
             this.StatusLabel.Depth = 0;
             this.StatusLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.StatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.StatusLabel.Location = new System.Drawing.Point(21, 527);
+            this.StatusLabel.Location = new System.Drawing.Point(21, 555);
             this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.StatusLabel.Name = "StatusLabel";
@@ -315,7 +314,7 @@
             this.panel1.Controls.Add(this.DarkCheck);
             this.panel1.Controls.Add(this.LightCheck);
             this.panel1.Location = new System.Drawing.Point(483, 132);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(412, 74);
             this.panel1.TabIndex = 38;
@@ -325,13 +324,13 @@
             this.materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(696, 225);
             this.materialLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(183, 24);
+            this.materialLabel1.Size = new System.Drawing.Size(189, 24);
             this.materialLabel1.TabIndex = 41;
             this.materialLabel1.Text = "Minimize Application";
             // 
@@ -356,7 +355,7 @@
             this.panel3.Controls.Add(this.TaskbarCheck);
             this.panel3.Controls.Add(this.TrayCheck);
             this.panel3.Location = new System.Drawing.Point(483, 262);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(412, 62);
             this.panel3.TabIndex = 42;
@@ -449,7 +448,7 @@
             // 
             this.HelpBubble.Image = global::NetStalker.Properties.Resources.color_help;
             this.HelpBubble.Location = new System.Drawing.Point(265, 370);
-            this.HelpBubble.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpBubble.Margin = new System.Windows.Forms.Padding(4);
             this.HelpBubble.Name = "HelpBubble";
             this.HelpBubble.Size = new System.Drawing.Size(40, 37);
             this.HelpBubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -522,7 +521,7 @@
             // 
             this.TokenField.Depth = 0;
             this.TokenField.Hint = "Token";
-            this.TokenField.Location = new System.Drawing.Point(587, 425);
+            this.TokenField.Location = new System.Drawing.Point(587, 441);
             this.TokenField.MaxLength = 32767;
             this.TokenField.MouseState = MaterialSkin.MouseState.HOVER;
             this.TokenField.Name = "TokenField";
@@ -530,7 +529,7 @@
             this.TokenField.SelectedText = "";
             this.TokenField.SelectionLength = 0;
             this.TokenField.SelectionStart = 0;
-            this.TokenField.Size = new System.Drawing.Size(309, 28);
+            this.TokenField.Size = new System.Drawing.Size(308, 28);
             this.TokenField.TabIndex = 50;
             this.TokenField.TabStop = false;
             this.TokenField.UseSystemPasswordChar = false;
@@ -541,7 +540,7 @@
             this.materialLabel14.Depth = 0;
             this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(479, 427);
+            this.materialLabel14.Location = new System.Drawing.Point(479, 443);
             this.materialLabel14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
@@ -549,56 +548,45 @@
             this.materialLabel14.TabIndex = 51;
             this.materialLabel14.Text = "API Token:";
             // 
-            // MacVendorsLinkLabel
-            // 
-            this.MacVendorsLinkLabel.AutoSize = true;
-            this.MacVendorsLinkLabel.Location = new System.Drawing.Point(715, 462);
-            this.MacVendorsLinkLabel.Name = "MacVendorsLinkLabel";
-            this.MacVendorsLinkLabel.Size = new System.Drawing.Size(181, 17);
-            this.MacVendorsLinkLabel.TabIndex = 52;
-            this.MacVendorsLinkLabel.TabStop = true;
-            this.MacVendorsLinkLabel.Text = "https://macvendors.com/api";
-            this.MacVendorsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // materialLabel15
             // 
             this.materialLabel15.AutoSize = true;
             this.materialLabel15.Depth = 0;
-            this.materialLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(480, 377);
+            this.materialLabel15.Location = new System.Drawing.Point(480, 378);
             this.materialLabel15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(405, 34);
+            this.materialLabel15.Size = new System.Drawing.Size(482, 72);
             this.materialLabel15.TabIndex = 55;
-            this.materialLabel15.Text = "If you can\'t see the device\'s manufacturer, acquire a new token\r\nfrom the link be" +
-    "low and enter it in the API Token field.";
+            this.materialLabel15.Text = "If you can\'t see the device\'s manufacturer, acquire a new\r\ntoken from the link be" +
+    "low and enter it in the API\r\nToken field.";
             // 
-            // materialLabel16
+            // MacVendorsLinkLabel
             // 
-            this.materialLabel16.AutoSize = true;
-            this.materialLabel16.Depth = 0;
-            this.materialLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(586, 462);
-            this.materialLabel16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(122, 17);
-            this.materialLabel16.TabIndex = 56;
-            this.materialLabel16.Text = "Get your token at:";
+            this.MacVendorsLinkLabel.AutoSize = true;
+            this.MacVendorsLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MacVendorsLinkLabel.Depth = 0;
+            this.MacVendorsLinkLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.MacVendorsLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MacVendorsLinkLabel.Location = new System.Drawing.Point(584, 485);
+            this.MacVendorsLinkLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MacVendorsLinkLabel.Name = "MacVendorsLinkLabel";
+            this.MacVendorsLinkLabel.Size = new System.Drawing.Size(255, 24);
+            this.MacVendorsLinkLabel.TabIndex = 57;
+            this.MacVendorsLinkLabel.Text = "https://macvendors.com/api";
+            this.MacVendorsLinkLabel.Click += new System.EventHandler(this.MacVendorsLinkLabel_Click);
             // 
             // Options
             // 
             this.AcceptButton = this.SaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 580);
+            this.ClientSize = new System.Drawing.Size(912, 608);
             this.ControlBox = false;
-            this.Controls.Add(this.materialLabel16);
-            this.Controls.Add(this.materialLabel15);
             this.Controls.Add(this.MacVendorsLinkLabel);
+            this.Controls.Add(this.materialLabel15);
             this.Controls.Add(this.materialLabel14);
             this.Controls.Add(this.TokenField);
             this.Controls.Add(this.materialLabel4);
@@ -626,7 +614,7 @@
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Options";
@@ -679,8 +667,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialSingleLineTextField TokenField;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private System.Windows.Forms.LinkLabel MacVendorsLinkLabel;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialLabel materialLabel16;
+        private MaterialSkin.Controls.MaterialLabel MacVendorsLinkLabel;
     }
 }

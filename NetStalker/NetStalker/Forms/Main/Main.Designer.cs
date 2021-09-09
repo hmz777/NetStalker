@@ -321,7 +321,7 @@
             this.materialLabel1.Location = new System.Drawing.Point(681, 17);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(68, 24);
             this.materialLabel1.TabIndex = 4;
             this.materialLabel1.Text = "Status:";
             // 
@@ -335,7 +335,7 @@
             this.DeviceCountLabel.Location = new System.Drawing.Point(743, 17);
             this.DeviceCountLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.DeviceCountLabel.Name = "DeviceCountLabel";
-            this.DeviceCountLabel.Size = new System.Drawing.Size(33, 19);
+            this.DeviceCountLabel.Size = new System.Drawing.Size(41, 24);
             this.DeviceCountLabel.TabIndex = 5;
             this.DeviceCountLabel.Text = "Idle";
             // 
@@ -349,7 +349,7 @@
             this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(973, 17);
             this.CurrentOperationStatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.CurrentOperationStatusLabel.Name = "CurrentOperationStatusLabel";
-            this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(49, 19);
+            this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(62, 24);
             this.CurrentOperationStatusLabel.TabIndex = 6;
             this.CurrentOperationStatusLabel.Text = "Ready";
             // 
@@ -361,7 +361,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Location = new System.Drawing.Point(942, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 37);
+            this.label1.Size = new System.Drawing.Size(30, 46);
             this.label1.TabIndex = 8;
             this.label1.Text = "|";
             // 
@@ -373,7 +373,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Location = new System.Drawing.Point(650, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 37);
+            this.label2.Size = new System.Drawing.Size(30, 46);
             this.label2.TabIndex = 9;
             this.label2.Text = "|";
             // 
@@ -384,12 +384,12 @@
             this.OptionsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.OptionsButton.Depth = 0;
             this.OptionsButton.Icon = global::NetStalker.Properties.Resources.color_gear;
-            this.OptionsButton.Location = new System.Drawing.Point(171, 9);
+            this.OptionsButton.Location = new System.Drawing.Point(195, 9);
             this.OptionsButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.OptionsButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.OptionsButton.Name = "OptionsButton";
             this.OptionsButton.Primary = false;
-            this.OptionsButton.Size = new System.Drawing.Size(107, 36);
+            this.OptionsButton.Size = new System.Drawing.Size(123, 36);
             this.OptionsButton.TabIndex = 10;
             this.OptionsButton.Text = "Options";
             this.Tooltip.SetToolTip(this.OptionsButton, "Change NetStalker settings");
@@ -410,7 +410,6 @@
             // ScanButton
             // 
             this.ScanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ScanButton.AutoSize = true;
             this.ScanButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ScanButton.Depth = 0;
             this.ScanButton.Icon = global::NetStalker.Properties.Resources.color_gps_receiving;
@@ -419,7 +418,7 @@
             this.ScanButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.ScanButton.Name = "ScanButton";
             this.ScanButton.Primary = false;
-            this.ScanButton.Size = new System.Drawing.Size(85, 36);
+            this.ScanButton.Size = new System.Drawing.Size(95, 36);
             this.ScanButton.TabIndex = 1;
             this.ScanButton.Text = "Scan";
             this.Tooltip.SetToolTip(this.ScanButton, "Initiate a new device scan");
@@ -487,24 +486,25 @@
             // 
             this.TrayMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.TrayMenu.Depth = 0;
+            this.TrayMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.TrayMenu.MouseState = MaterialSkin.MouseState.HOVER;
             this.TrayMenu.Name = "materialContextMenuStrip1";
-            this.TrayMenu.Size = new System.Drawing.Size(104, 48);
+            this.TrayMenu.Size = new System.Drawing.Size(115, 52);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -536,7 +536,7 @@
             this.RefreshButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.RefreshButton.Depth = 0;
             this.RefreshButton.Icon = global::NetStalker.Properties.Resources.color_restart;
-            this.RefreshButton.Location = new System.Drawing.Point(111, 9);
+            this.RefreshButton.Location = new System.Drawing.Point(128, 9);
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.RefreshButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.RefreshButton.Name = "RefreshButton";
@@ -550,9 +550,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(496, 16);
+            this.pictureBox2.Location = new System.Drawing.Point(609, 10);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(148, 25);
+            this.pictureBox2.Size = new System.Drawing.Size(35, 35);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 26;
             this.pictureBox2.TabStop = false;
@@ -566,12 +566,12 @@
             this.AboutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AboutButton.Depth = 0;
             this.AboutButton.Icon = global::NetStalker.Properties.Resources.color_about;
-            this.AboutButton.Location = new System.Drawing.Point(393, 9);
+            this.AboutButton.Location = new System.Drawing.Point(456, 9);
             this.AboutButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.AboutButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AboutButton.Name = "AboutButton";
             this.AboutButton.Primary = false;
-            this.AboutButton.Size = new System.Drawing.Size(94, 36);
+            this.AboutButton.Size = new System.Drawing.Size(106, 36);
             this.AboutButton.TabIndex = 25;
             this.AboutButton.Text = "About";
             this.Tooltip.SetToolTip(this.AboutButton, "About the developer");
@@ -585,12 +585,12 @@
             this.FormHelpButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FormHelpButton.Depth = 0;
             this.FormHelpButton.Icon = global::NetStalker.Properties.Resources.color_help;
-            this.FormHelpButton.Location = new System.Drawing.Point(294, 9);
+            this.FormHelpButton.Location = new System.Drawing.Point(341, 9);
             this.FormHelpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.FormHelpButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.FormHelpButton.Name = "FormHelpButton";
             this.FormHelpButton.Primary = false;
-            this.FormHelpButton.Size = new System.Drawing.Size(83, 36);
+            this.FormHelpButton.Size = new System.Drawing.Size(92, 36);
             this.FormHelpButton.TabIndex = 24;
             this.FormHelpButton.Text = "Help";
             this.Tooltip.SetToolTip(this.FormHelpButton, "A simple guide on how to use this software properly");
@@ -647,7 +647,7 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1092, 500);
