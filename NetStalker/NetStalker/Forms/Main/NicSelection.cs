@@ -120,7 +120,7 @@ namespace NetStalker
                 m.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
                 m.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
                 m.ListOverlay.BorderColor = Color.Teal;
-                m.pictureBox2.Image = NetStalker.Properties.Resources._30G;
+                m.pictureBox2.Image = NetStalker.Properties.Resources.spinW;
 
             }
             else
@@ -137,7 +137,7 @@ namespace NetStalker
                 m.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
                 m.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
                 m.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-                m.pictureBox2.Image = NetStalker.Properties.Resources._30W;
+                m.pictureBox2.Image = NetStalker.Properties.Resources.spinB;
             }
 
             #endregion
