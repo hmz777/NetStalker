@@ -66,6 +66,9 @@ A network tool to control the bandwidth over your local network, it can block in
 - The app is tested only on a small amount of network cards, so I can't guarantee it will work on yours.
 - The source code may contain experimental features, if you're looking for a stable version, refer to the binaries or the releases section. 
 
+# Caveats
+- When releasing a device from redirection, it takes a couple of seconds for this device to regain internet access (Rediscovering the original gateway).
+
 # To Do
 - Add the ability to set friendly names for discovered devices.
 - Redirect IPV6 traffic.
