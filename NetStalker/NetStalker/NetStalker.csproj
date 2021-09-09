@@ -152,6 +152,11 @@
     <Compile Include="Forms\Main\SnifferOptions.Designer.cs">
       <DependentUpon>SnifferOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ToastNotifications\NotificationChoice.cs" />
     <Compile Include="ToastNotifications\NotificationPurpose.cs" />
     <Compile Include="MainLogic\MacVendors\VendorAPI.cs" />
@@ -180,14 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\Main\Sniffer.resx">
       <DependentUpon>Sniffer.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +213,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\spinW.gif" />
+    <None Include="Resources\spinB.gif" />
     <None Include="Resources\icons8-ok-red.png" />
     <None Include="Resources\icons8-info-35.png" />
     <None Include="Resources\color_stop-squared.PNG" />
@@ -232,8 +234,6 @@
     <None Include="Resources\color_about.PNG" />
     <None Include="Resources\color_network-card.PNG" />
     <EmbeddedResource Include="Resources\D.txt" />
-    <None Include="Resources\30G.gif" />
-    <None Include="Resources\30W.gif" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MaterialSkin.Updated">

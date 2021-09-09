@@ -63,26 +63,6 @@ namespace NetStalker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _30G {
-            get {
-                object obj = ResourceManager.GetObject("_30G", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _30W {
-            get {
-                object obj = ResourceManager.GetObject("_30W", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap color_about {
             get {
                 object obj = ResourceManager.GetObject("color_about", resourceCulture);
@@ -241,14 +221,13 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///The information contained on NetStalker Desktop app (the &quot;Service&quot;) is for general information purposes only.
+        ///   Looks up a localized string similar to The information contained on NetStalker Desktop app (the &quot;Service&quot;) is for general information purposes only.
         ///
         ///I (The developer) assumes no responsibility for errors or omissions in the contents on the Service.
         ///
         ///In no event I shall be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service.
         ///
-        ///I can not  [rest of string was truncated]&quot;;.
+        ///I can not wa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string D {
             get {
@@ -315,6 +294,26 @@ namespace NetStalker.Properties {
         internal static string NotificationsPrompt {
             get {
                 return ResourceManager.GetString("NotificationsPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spinB {
+            get {
+                object obj = ResourceManager.GetObject("spinB", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spinW {
+            get {
+                object obj = ResourceManager.GetObject("spinW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
