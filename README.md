@@ -27,6 +27,12 @@ A network tool to control the bandwidth over your local network, it can block in
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
+
+### v3.0.2
+- DPI awareness added (Beta).
+- Small visual updates.
+- Add the ability to change the MAC Vendors API token to your own in order to avoid getting a 429 while fetching the device's manufacturer.
+
 ### v3.0.1
 - Fix a KeyNotFoundException when the notification arguments didn't have a Choice key.
 
