@@ -29,7 +29,7 @@ A network tool to control the bandwidth over your local network, it can block in
 # Changelog
 
 ### v4.0
-- Drop all the UI dependencies and re-create the whole UI from the original controls.
+- Drop all the UI dependencies and re-create the whole UI from the original controls, in order for the app to be scaled properly by Windows on high DPI screens.
 - Remove most icon resource files and store them as ImageList objects.
 - Add `MessageBoxForm` dialog for displaying errors and info messages.
 - Move hardcoded messages to Resources.
