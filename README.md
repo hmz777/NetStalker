@@ -28,6 +28,14 @@ A network tool to control the bandwidth over your local network, it can block in
 
 # Changelog
 
+### v4.0
+- Drop all the UI dependencies and re-create the whole UI from the original controls.
+- Remove most icon resource files and store them as ImageList objects.
+- Add `MessageBoxForm` dialog for displaying errors and info messages.
+- Move hardcoded messages to Resources.
+
+Note: Dark mode isn't fully working yet, due to the UI change.
+
 ### v3.0.2
 - DPI awareness added (Beta).
 - Small visual updates.
