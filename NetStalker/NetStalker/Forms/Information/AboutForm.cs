@@ -4,21 +4,17 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using MaterialSkin;
-using MaterialSkin.Controls;
 
 namespace NetStalker
 {
-    public partial class AboutForm : MaterialForm
+    public partial class AboutForm : Form
     {
         public AboutForm()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
         }
 
-        private void MaterialFlatButton1_Click(object sender, EventArgs e)
+        private void OkBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -34,8 +30,8 @@ namespace NetStalker
                 groupBox1.ForeColor = Color.Black;
             }
 
-            materialLabel10.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            materialLabel11.Text = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
+            VerLabel.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            BuildLabel.Text = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
         }
 
         private void LinkLabel1_Click(object sender, EventArgs e)
@@ -58,19 +54,19 @@ namespace NetStalker
             Process.Start(linkLabel4.Text);
         }
 
-        private void MaterialLabel7_Click(object sender, EventArgs e)
+        private void Email_Click(object sender, EventArgs e)
         {
-            Process.Start(materialLabel7.Text);
+            Process.Start($"Mailto:{EmailLabel.Text}");
         }
 
-        private void MaterialLabel5_Click(object sender, EventArgs e)
+        private void Site_Click(object sender, EventArgs e)
         {
-            Process.Start(materialLabel5.Text);
+            Process.Start(SiteLabel.Text);
         }
 
-        private void MaterialLabel3_Click(object sender, EventArgs e)
+        private void Git_Click(object sender, EventArgs e)
         {
-            Process.Start($"Mailto:{materialLabel3.Text}");
+            Process.Start(GitLabel.Text);
         }
     }
 }

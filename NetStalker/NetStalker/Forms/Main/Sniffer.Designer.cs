@@ -32,11 +32,30 @@
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle1 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle2 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle3 = new BrightIdeasSoftware.HeaderStateStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sniffer));
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle4 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sniffer));
+            this.DarkHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
+            this.DarkHot = new BrightIdeasSoftware.HotItemStyle();
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.LightHot = new BrightIdeasSoftware.HotItemStyle();
+            this.LightHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.BottomPanel = new System.Windows.Forms.Panel();
+            this.ClearPacketBtn = new System.Windows.Forms.Button();
+            this.FontBtn = new System.Windows.Forms.Button();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.ExtendBtn = new System.Windows.Forms.Button();
+            this.StatusBox = new System.Windows.Forms.TextBox();
+            this.PacketBox = new System.Windows.Forms.TextBox();
+            this.ButtonsPanel = new System.Windows.Forms.Panel();
+            this.StopButton = new System.Windows.Forms.Button();
+            this.FormHelpButton = new System.Windows.Forms.Button();
+            this.OptionsButton = new System.Windows.Forms.Button();
+            this.ExportButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
             this.PacketListView = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -45,182 +64,12 @@
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.DarkHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
-            this.DarkHot = new BrightIdeasSoftware.HotItemStyle();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.OptionsButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.FormHelpButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.ExportButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.ClearButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.StartButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.StopButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.FontButton = new MetroFramework.Controls.MetroButton();
-            this.ClearViewerButton = new MetroFramework.Controls.MetroButton();
-            this.SaveButton = new MetroFramework.Controls.MetroButton();
-            this.ExpandButton = new MetroFramework.Controls.MetroButton();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
-            this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
-            this.LightHot = new BrightIdeasSoftware.HotItemStyle();
-            this.LightHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
-            this.panel1.SuspendLayout();
+            this.MainFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.BottomPanel.SuspendLayout();
+            this.ButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PacketListView)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.MainFlowPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.PacketListView);
-            this.panel1.Location = new System.Drawing.Point(1, 64);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(748, 328);
-            this.panel1.TabIndex = 1;
-            // 
-            // PacketListView
-            // 
-            this.PacketListView.AllColumns.Add(this.olvColumn1);
-            this.PacketListView.AllColumns.Add(this.olvColumn2);
-            this.PacketListView.AllColumns.Add(this.olvColumn3);
-            this.PacketListView.AllColumns.Add(this.olvColumn7);
-            this.PacketListView.AllColumns.Add(this.olvColumn4);
-            this.PacketListView.AllColumns.Add(this.olvColumn6);
-            this.PacketListView.AllColumns.Add(this.olvColumn8);
-            this.PacketListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PacketListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.PacketListView.CellEditUseWholeCell = false;
-            this.PacketListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvColumn1,
-            this.olvColumn2,
-            this.olvColumn3,
-            this.olvColumn7,
-            this.olvColumn4,
-            this.olvColumn6,
-            this.olvColumn8});
-            this.PacketListView.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PacketListView.EmptyListMsg = "Packet list is empty";
-            this.PacketListView.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PacketListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PacketListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PacketListView.FullRowSelect = true;
-            this.PacketListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PacketListView.HeaderFormatStyle = this.DarkHeaders;
-            this.PacketListView.HideSelection = false;
-            this.PacketListView.HotItemStyle = this.DarkHot;
-            this.PacketListView.Location = new System.Drawing.Point(0, 0);
-            this.PacketListView.MultiSelect = false;
-            this.PacketListView.Name = "PacketListView";
-            this.PacketListView.SelectAllOnControlA = false;
-            this.PacketListView.SelectColumnsMenuStaysOpen = false;
-            this.PacketListView.SelectColumnsOnRightClick = false;
-            this.PacketListView.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
-            this.PacketListView.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.PacketListView.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PacketListView.ShowFilterMenuOnRightClick = false;
-            this.PacketListView.ShowGroups = false;
-            this.PacketListView.ShowSortIndicators = false;
-            this.PacketListView.Size = new System.Drawing.Size(748, 328);
-            this.PacketListView.SmallImageList = this.imageList1;
-            this.PacketListView.TabIndex = 0;
-            this.PacketListView.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PacketListView.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.PacketListView.UseCompatibleStateImageBehavior = false;
-            this.PacketListView.UseHotItem = true;
-            this.PacketListView.View = System.Windows.Forms.View.Details;
-            this.PacketListView.VirtualMode = true;
-            this.PacketListView.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.PacketListView_ButtonClick);
-            this.PacketListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PacketListView_MouseDown);
-            // 
-            // olvColumn1
-            // 
-            this.olvColumn1.AspectName = "Source";
-            this.olvColumn1.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.olvColumn1.IsEditable = false;
-            this.olvColumn1.MaximumWidth = 135;
-            this.olvColumn1.MinimumWidth = 135;
-            this.olvColumn1.Text = "Source";
-            this.olvColumn1.Width = 135;
-            // 
-            // olvColumn2
-            // 
-            this.olvColumn2.AspectName = "Destination";
-            this.olvColumn2.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn2.IsEditable = false;
-            this.olvColumn2.MaximumWidth = 125;
-            this.olvColumn2.MinimumWidth = 125;
-            this.olvColumn2.Text = "Destination";
-            this.olvColumn2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn2.Width = 125;
-            // 
-            // olvColumn3
-            // 
-            this.olvColumn3.AspectName = "Host";
-            this.olvColumn3.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.olvColumn3.IsEditable = false;
-            this.olvColumn3.MaximumWidth = 245;
-            this.olvColumn3.MinimumWidth = 245;
-            this.olvColumn3.Text = "Host";
-            this.olvColumn3.Width = 245;
-            // 
-            // olvColumn7
-            // 
-            this.olvColumn7.AspectName = "Resolve";
-            this.olvColumn7.ButtonSizing = BrightIdeasSoftware.OLVColumn.ButtonSizingMode.CellBounds;
-            this.olvColumn7.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn7.IsButton = true;
-            this.olvColumn7.IsEditable = false;
-            this.olvColumn7.MaximumWidth = 80;
-            this.olvColumn7.MinimumWidth = 80;
-            this.olvColumn7.Text = "Resolve";
-            this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn7.Width = 80;
-            // 
-            // olvColumn4
-            // 
-            this.olvColumn4.AspectName = "Type";
-            this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn4.IsEditable = false;
-            this.olvColumn4.MaximumWidth = 77;
-            this.olvColumn4.MinimumWidth = 77;
-            this.olvColumn4.Text = "Type";
-            this.olvColumn4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn4.Width = 77;
-            // 
-            // olvColumn6
-            // 
-            this.olvColumn6.AspectName = "ID";
-            this.olvColumn6.IsEditable = false;
-            this.olvColumn6.MaximumWidth = 0;
-            this.olvColumn6.MinimumWidth = 0;
-            this.olvColumn6.Text = "ID";
-            this.olvColumn6.Width = 0;
-            // 
-            // olvColumn8
-            // 
-            this.olvColumn8.AspectName = "Protocol";
-            this.olvColumn8.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn8.IsEditable = false;
-            this.olvColumn8.MaximumWidth = 82;
-            this.olvColumn8.MinimumWidth = 82;
-            this.olvColumn8.Text = "Protocol";
-            this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn8.Width = 82;
             // 
             // DarkHeaders
             // 
@@ -243,13 +92,6 @@
             this.DarkHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DarkHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "response");
-            this.imageList1.Images.SetKeyName(1, "request");
-            // 
             // olvColumn5
             // 
             this.olvColumn5.AspectName = "ID";
@@ -257,358 +99,6 @@
             this.olvColumn5.IsVisible = false;
             this.olvColumn5.Text = "ID";
             this.olvColumn5.Width = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.OptionsButton);
-            this.panel2.Controls.Add(this.materialLabel2);
-            this.panel2.Controls.Add(this.materialLabel1);
-            this.panel2.Controls.Add(this.FormHelpButton);
-            this.panel2.Controls.Add(this.ExportButton);
-            this.panel2.Controls.Add(this.ClearButton);
-            this.panel2.Controls.Add(this.materialLabel3);
-            this.panel2.Controls.Add(this.StartButton);
-            this.panel2.Controls.Add(this.StopButton);
-            this.panel2.Location = new System.Drawing.Point(755, 64);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(119, 328);
-            this.panel2.TabIndex = 1;
-            // 
-            // OptionsButton
-            // 
-            this.OptionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OptionsButton.AutoSize = true;
-            this.OptionsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OptionsButton.Depth = 0;
-            this.OptionsButton.Icon = global::NetStalker.Properties.Resources.color_gear;
-            this.OptionsButton.Location = new System.Drawing.Point(6, 175);
-            this.OptionsButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.OptionsButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.OptionsButton.Name = "OptionsButton";
-            this.OptionsButton.Primary = false;
-            this.OptionsButton.Size = new System.Drawing.Size(107, 36);
-            this.OptionsButton.TabIndex = 42;
-            this.OptionsButton.Text = "Options";
-            this.OptionsButton.UseVisualStyleBackColor = true;
-            this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.BackColor = System.Drawing.Color.Black;
-            this.materialLabel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(1, 327);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(118, 1);
-            this.materialLabel2.TabIndex = 41;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.BackColor = System.Drawing.Color.Black;
-            this.materialLabel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(1, 0);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(118, 1);
-            this.materialLabel1.TabIndex = 40;
-            // 
-            // FormHelpButton
-            // 
-            this.FormHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FormHelpButton.AutoSize = true;
-            this.FormHelpButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.FormHelpButton.Depth = 0;
-            this.FormHelpButton.Icon = global::NetStalker.Properties.Resources.color_help;
-            this.FormHelpButton.Location = new System.Drawing.Point(18, 227);
-            this.FormHelpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.FormHelpButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.FormHelpButton.Name = "FormHelpButton";
-            this.FormHelpButton.Primary = false;
-            this.FormHelpButton.Size = new System.Drawing.Size(83, 36);
-            this.FormHelpButton.TabIndex = 39;
-            this.FormHelpButton.Text = "Help";
-            this.FormHelpButton.UseVisualStyleBackColor = true;
-            this.FormHelpButton.Click += new System.EventHandler(this.HelpButton_Click);
-            // 
-            // ExportButton
-            // 
-            this.ExportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExportButton.AutoSize = true;
-            this.ExportButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ExportButton.Depth = 0;
-            this.ExportButton.Icon = global::NetStalker.Properties.Resources.color_external;
-            this.ExportButton.Location = new System.Drawing.Point(9, 123);
-            this.ExportButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ExportButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Primary = false;
-            this.ExportButton.Size = new System.Drawing.Size(101, 36);
-            this.ExportButton.TabIndex = 2;
-            this.ExportButton.Text = "Export";
-            this.ExportButton.UseVisualStyleBackColor = true;
-            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
-            // 
-            // ClearButton
-            // 
-            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearButton.AutoSize = true;
-            this.ClearButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClearButton.Depth = 0;
-            this.ClearButton.Icon = global::NetStalker.Properties.Resources.color_clear_symbol;
-            this.ClearButton.Location = new System.Drawing.Point(14, 71);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ClearButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Primary = false;
-            this.ClearButton.Size = new System.Drawing.Size(91, 36);
-            this.ClearButton.TabIndex = 38;
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.BackColor = System.Drawing.Color.Black;
-            this.materialLabel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(0, 0);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(1, 328);
-            this.materialLabel3.TabIndex = 23;
-            // 
-            // StartButton
-            // 
-            this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StartButton.AutoSize = true;
-            this.StartButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.StartButton.Depth = 0;
-            this.StartButton.Icon = global::NetStalker.Properties.Resources.color_start;
-            this.StartButton.Location = new System.Drawing.Point(13, 19);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.StartButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Primary = false;
-            this.StartButton.Size = new System.Drawing.Size(92, 36);
-            this.StartButton.TabIndex = 2;
-            this.StartButton.Text = "Start";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
-            // 
-            // StopButton
-            // 
-            this.StopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StopButton.AutoSize = true;
-            this.StopButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.StopButton.Depth = 0;
-            this.StopButton.Icon = global::NetStalker.Properties.Resources.color_stop_squared;
-            this.StopButton.Location = new System.Drawing.Point(17, 279);
-            this.StopButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.StopButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Primary = false;
-            this.StopButton.Size = new System.Drawing.Size(84, 36);
-            this.StopButton.TabIndex = 2;
-            this.StopButton.Text = "Stop";
-            this.StopButton.UseVisualStyleBackColor = true;
-            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.metroTextBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(648, 103);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.FontButton);
-            this.panel6.Controls.Add(this.ClearViewerButton);
-            this.panel6.Controls.Add(this.SaveButton);
-            this.panel6.Controls.Add(this.ExpandButton);
-            this.panel6.Location = new System.Drawing.Point(622, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(26, 103);
-            this.panel6.TabIndex = 1;
-            // 
-            // FontButton
-            // 
-            this.FontButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FontButton.BackgroundImage")));
-            this.FontButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FontButton.Location = new System.Drawing.Point(3, 53);
-            this.FontButton.Name = "FontButton";
-            this.FontButton.Size = new System.Drawing.Size(20, 20);
-            this.FontButton.TabIndex = 43;
-            this.metroToolTip1.SetToolTip(this.FontButton, "Change font size");
-            this.FontButton.UseSelectable = true;
-            this.FontButton.Click += new System.EventHandler(this.FontButton_Click);
-            // 
-            // ClearViewerButton
-            // 
-            this.ClearViewerButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClearViewerButton.BackgroundImage")));
-            this.ClearViewerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClearViewerButton.Location = new System.Drawing.Point(3, 78);
-            this.ClearViewerButton.Name = "ClearViewerButton";
-            this.ClearViewerButton.Size = new System.Drawing.Size(20, 20);
-            this.ClearViewerButton.TabIndex = 1;
-            this.metroToolTip1.SetToolTip(this.ClearViewerButton, "Clear the packet viewer");
-            this.ClearViewerButton.UseSelectable = true;
-            this.ClearViewerButton.Click += new System.EventHandler(this.ClearViewerButton_Click);
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveButton.BackgroundImage")));
-            this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SaveButton.Location = new System.Drawing.Point(3, 28);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(20, 20);
-            this.SaveButton.TabIndex = 41;
-            this.metroToolTip1.SetToolTip(this.SaveButton, "Save packet");
-            this.SaveButton.UseSelectable = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // ExpandButton
-            // 
-            this.ExpandButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExpandButton.BackgroundImage")));
-            this.ExpandButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ExpandButton.Location = new System.Drawing.Point(3, 3);
-            this.ExpandButton.Name = "ExpandButton";
-            this.ExpandButton.Size = new System.Drawing.Size(20, 20);
-            this.ExpandButton.TabIndex = 42;
-            this.metroToolTip1.SetToolTip(this.ExpandButton, "Extend the packet viewer");
-            this.ExpandButton.UseSelectable = true;
-            this.ExpandButton.Click += new System.EventHandler(this.ExpandButton_Click);
-            // 
-            // metroTextBox1
-            // 
-            this.metroTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            // 
-            // 
-            // 
-            this.metroTextBox1.CustomButton.AutoSize = true;
-            this.metroTextBox1.CustomButton.BackColor = System.Drawing.Color.DarkRed;
-            this.metroTextBox1.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroTextBox1.CustomButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroTextBox1.CustomButton.ForeColor = System.Drawing.Color.White;
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(514, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(101, 101);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Text = "Button";
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.UseVisualStyleBackColor = false;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Multiline = true;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "Packet Viewer";
-            this.metroTextBox1.ReadOnly = true;
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(616, 103);
-            this.metroTextBox1.Style = MetroFramework.MetroColorStyle.Black;
-            this.metroTextBox1.TabIndex = 40;
-            this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "Packet Viewer";
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Location = new System.Drawing.Point(1, 398);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(873, 103);
-            this.panel4.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.metroTextBox2);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(654, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(219, 103);
-            this.panel5.TabIndex = 3;
-            // 
-            // metroTextBox2
-            // 
-            this.metroTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            // 
-            // 
-            // 
-            this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(101, 101);
-            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.CustomButton.TabIndex = 1;
-            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.CustomButton.UseSelectable = true;
-            this.metroTextBox2.CustomButton.Visible = false;
-            this.metroTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(0, 0);
-            this.metroTextBox2.MaxLength = 32767;
-            this.metroTextBox2.Multiline = true;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.PromptText = "Status";
-            this.metroTextBox2.ReadOnly = true;
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.SelectionLength = 0;
-            this.metroTextBox2.SelectionStart = 0;
-            this.metroTextBox2.ShortcutsEnabled = true;
-            this.metroTextBox2.ShowClearButton = true;
-            this.metroTextBox2.Size = new System.Drawing.Size(219, 103);
-            this.metroTextBox2.Style = MetroFramework.MetroColorStyle.Black;
-            this.metroTextBox2.TabIndex = 41;
-            this.metroTextBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox2.UseSelectable = true;
-            this.metroTextBox2.WaterMark = "Status";
-            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroToolTip1
-            // 
-            this.metroToolTip1.Style = MetroFramework.MetroColorStyle.Black;
-            this.metroToolTip1.StyleManager = null;
-            this.metroToolTip1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // LightHot
             // 
@@ -630,73 +120,510 @@
             headerStateStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LightHeaders.Pressed = headerStateStyle6;
             // 
+            // ButtonIcons
+            // 
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_about.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(2, "color_clear-symbol.PNG");
+            this.ButtonIcons.Images.SetKeyName(3, "color_define-location.PNG");
+            this.ButtonIcons.Images.SetKeyName(4, "color_error.PNG");
+            this.ButtonIcons.Images.SetKeyName(5, "color_external.PNG");
+            this.ButtonIcons.Images.SetKeyName(6, "color_gear.PNG");
+            this.ButtonIcons.Images.SetKeyName(7, "color_help.PNG");
+            this.ButtonIcons.Images.SetKeyName(8, "color_info.PNG");
+            this.ButtonIcons.Images.SetKeyName(9, "color_keyhole-shield.PNG");
+            this.ButtonIcons.Images.SetKeyName(10, "color_network-card.PNG");
+            this.ButtonIcons.Images.SetKeyName(11, "color_ok.PNG");
+            this.ButtonIcons.Images.SetKeyName(12, "color_restart.PNG");
+            this.ButtonIcons.Images.SetKeyName(13, "color_start.PNG");
+            this.ButtonIcons.Images.SetKeyName(14, "color_stop-squared.PNG");
+            this.ButtonIcons.Images.SetKeyName(15, "icons8-info-35.png");
+            this.ButtonIcons.Images.SetKeyName(16, "icons8-ok-red.png");
+            this.ButtonIcons.Images.SetKeyName(17, "spinB.gif");
+            this.ButtonIcons.Images.SetKeyName(18, "spinW.gif");
+            this.ButtonIcons.Images.SetKeyName(19, "icons8-speed-96.png");
+            this.ButtonIcons.Images.SetKeyName(20, "icons8-target-100.png");
+            this.ButtonIcons.Images.SetKeyName(21, "icons8-gps-signal-96.png");
+            this.ButtonIcons.Images.SetKeyName(22, "response");
+            this.ButtonIcons.Images.SetKeyName(23, "request");
+            this.ButtonIcons.Images.SetKeyName(24, "icons8-enlarge-100.png");
+            this.ButtonIcons.Images.SetKeyName(25, "icons8-increase-font-100.png");
+            this.ButtonIcons.Images.SetKeyName(26, "icons8-save-100.png");
+            this.ButtonIcons.Images.SetKeyName(27, "icons8-x-100.png");
+            // 
+            // BottomPanel
+            // 
+            this.BottomPanel.Controls.Add(this.ClearPacketBtn);
+            this.BottomPanel.Controls.Add(this.FontBtn);
+            this.BottomPanel.Controls.Add(this.SaveBtn);
+            this.BottomPanel.Controls.Add(this.ExtendBtn);
+            this.BottomPanel.Controls.Add(this.StatusBox);
+            this.BottomPanel.Controls.Add(this.PacketBox);
+            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomPanel.Location = new System.Drawing.Point(3, 494);
+            this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(1232, 199);
+            this.BottomPanel.TabIndex = 3;
+            // 
+            // ClearPacketBtn
+            // 
+            this.ClearPacketBtn.BackColor = System.Drawing.Color.White;
+            this.ClearPacketBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClearPacketBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ClearPacketBtn.FlatAppearance.BorderSize = 0;
+            this.ClearPacketBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearPacketBtn.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearPacketBtn.ImageKey = "icons8-x-100.png";
+            this.ClearPacketBtn.ImageList = this.ButtonIcons;
+            this.ClearPacketBtn.Location = new System.Drawing.Point(802, 151);
+            this.ClearPacketBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClearPacketBtn.Name = "ClearPacketBtn";
+            this.ClearPacketBtn.Size = new System.Drawing.Size(46, 42);
+            this.ClearPacketBtn.TabIndex = 73;
+            this.ClearPacketBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ClearPacketBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ClearPacketBtn.UseVisualStyleBackColor = false;
+            this.ClearPacketBtn.Click += new System.EventHandler(this.ClearViewerButton_Click);
+            // 
+            // FontBtn
+            // 
+            this.FontBtn.BackColor = System.Drawing.Color.White;
+            this.FontBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FontBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.FontBtn.FlatAppearance.BorderSize = 0;
+            this.FontBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FontBtn.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FontBtn.ImageKey = "icons8-increase-font-100.png";
+            this.FontBtn.ImageList = this.ButtonIcons;
+            this.FontBtn.Location = new System.Drawing.Point(802, 103);
+            this.FontBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FontBtn.Name = "FontBtn";
+            this.FontBtn.Size = new System.Drawing.Size(46, 42);
+            this.FontBtn.TabIndex = 72;
+            this.FontBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FontBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FontBtn.UseVisualStyleBackColor = false;
+            this.FontBtn.Click += new System.EventHandler(this.FontButton_Click);
+            // 
+            // SaveBtn
+            // 
+            this.SaveBtn.BackColor = System.Drawing.Color.White;
+            this.SaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SaveBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SaveBtn.FlatAppearance.BorderSize = 0;
+            this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveBtn.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBtn.ImageKey = "icons8-save-100.png";
+            this.SaveBtn.ImageList = this.ButtonIcons;
+            this.SaveBtn.Location = new System.Drawing.Point(802, 55);
+            this.SaveBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(46, 42);
+            this.SaveBtn.TabIndex = 71;
+            this.SaveBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SaveBtn.UseVisualStyleBackColor = false;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // ExtendBtn
+            // 
+            this.ExtendBtn.BackColor = System.Drawing.Color.White;
+            this.ExtendBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ExtendBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ExtendBtn.FlatAppearance.BorderSize = 0;
+            this.ExtendBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExtendBtn.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtendBtn.ImageKey = "icons8-enlarge-100.png";
+            this.ExtendBtn.ImageList = this.ButtonIcons;
+            this.ExtendBtn.Location = new System.Drawing.Point(802, 7);
+            this.ExtendBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ExtendBtn.Name = "ExtendBtn";
+            this.ExtendBtn.Size = new System.Drawing.Size(46, 42);
+            this.ExtendBtn.TabIndex = 70;
+            this.ExtendBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ExtendBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ExtendBtn.UseVisualStyleBackColor = false;
+            this.ExtendBtn.Click += new System.EventHandler(this.ExpandButton_Click);
+            // 
+            // StatusBox
+            // 
+            this.StatusBox.BackColor = System.Drawing.Color.White;
+            this.StatusBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.StatusBox.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusBox.Location = new System.Drawing.Point(854, 0);
+            this.StatusBox.Multiline = true;
+            this.StatusBox.Name = "StatusBox";
+            this.StatusBox.ReadOnly = true;
+            this.StatusBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.StatusBox.Size = new System.Drawing.Size(378, 199);
+            this.StatusBox.TabIndex = 5;
+            // 
+            // PacketBox
+            // 
+            this.PacketBox.BackColor = System.Drawing.Color.White;
+            this.PacketBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PacketBox.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketBox.Location = new System.Drawing.Point(0, 0);
+            this.PacketBox.Multiline = true;
+            this.PacketBox.Name = "PacketBox";
+            this.PacketBox.ReadOnly = true;
+            this.PacketBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.PacketBox.Size = new System.Drawing.Size(796, 199);
+            this.PacketBox.TabIndex = 4;
+            // 
+            // ButtonsPanel
+            // 
+            this.ButtonsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonsPanel.Controls.Add(this.StopButton);
+            this.ButtonsPanel.Controls.Add(this.FormHelpButton);
+            this.ButtonsPanel.Controls.Add(this.OptionsButton);
+            this.ButtonsPanel.Controls.Add(this.ExportButton);
+            this.ButtonsPanel.Controls.Add(this.ClearButton);
+            this.ButtonsPanel.Controls.Add(this.StartButton);
+            this.ButtonsPanel.Location = new System.Drawing.Point(1063, 3);
+            this.ButtonsPanel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.ButtonsPanel.Name = "ButtonsPanel";
+            this.ButtonsPanel.Size = new System.Drawing.Size(172, 488);
+            this.ButtonsPanel.TabIndex = 1;
+            // 
+            // StopButton
+            // 
+            this.StopButton.BackColor = System.Drawing.Color.White;
+            this.StopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.StopButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.StopButton.FlatAppearance.BorderSize = 0;
+            this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StopButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StopButton.ImageKey = "color_stop-squared.PNG";
+            this.StopButton.ImageList = this.ButtonIcons;
+            this.StopButton.Location = new System.Drawing.Point(26, 409);
+            this.StopButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(106, 61);
+            this.StopButton.TabIndex = 69;
+            this.StopButton.Text = "STOP";
+            this.StopButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StopButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.StopButton.UseVisualStyleBackColor = false;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
+            // 
+            // FormHelpButton
+            // 
+            this.FormHelpButton.BackColor = System.Drawing.Color.White;
+            this.FormHelpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FormHelpButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.FormHelpButton.FlatAppearance.BorderSize = 0;
+            this.FormHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FormHelpButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormHelpButton.ImageKey = "color_help.PNG";
+            this.FormHelpButton.ImageList = this.ButtonIcons;
+            this.FormHelpButton.Location = new System.Drawing.Point(26, 331);
+            this.FormHelpButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FormHelpButton.Name = "FormHelpButton";
+            this.FormHelpButton.Size = new System.Drawing.Size(106, 61);
+            this.FormHelpButton.TabIndex = 68;
+            this.FormHelpButton.Text = "HELP";
+            this.FormHelpButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FormHelpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FormHelpButton.UseVisualStyleBackColor = false;
+            this.FormHelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            // 
+            // OptionsButton
+            // 
+            this.OptionsButton.BackColor = System.Drawing.Color.White;
+            this.OptionsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OptionsButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.OptionsButton.FlatAppearance.BorderSize = 0;
+            this.OptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OptionsButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptionsButton.ImageKey = "color_gear.PNG";
+            this.OptionsButton.ImageList = this.ButtonIcons;
+            this.OptionsButton.Location = new System.Drawing.Point(26, 253);
+            this.OptionsButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OptionsButton.Name = "OptionsButton";
+            this.OptionsButton.Size = new System.Drawing.Size(106, 61);
+            this.OptionsButton.TabIndex = 67;
+            this.OptionsButton.Text = "OPTIONS";
+            this.OptionsButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.OptionsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.OptionsButton.UseVisualStyleBackColor = false;
+            this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
+            // 
+            // ExportButton
+            // 
+            this.ExportButton.BackColor = System.Drawing.Color.White;
+            this.ExportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ExportButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ExportButton.FlatAppearance.BorderSize = 0;
+            this.ExportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportButton.ImageKey = "color_external.PNG";
+            this.ExportButton.ImageList = this.ButtonIcons;
+            this.ExportButton.Location = new System.Drawing.Point(26, 175);
+            this.ExportButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.Size = new System.Drawing.Size(106, 61);
+            this.ExportButton.TabIndex = 66;
+            this.ExportButton.Text = "EXPORT";
+            this.ExportButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ExportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ExportButton.UseVisualStyleBackColor = false;
+            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.BackColor = System.Drawing.Color.White;
+            this.ClearButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClearButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ClearButton.FlatAppearance.BorderSize = 0;
+            this.ClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearButton.ImageKey = "color_clear-symbol.PNG";
+            this.ClearButton.ImageList = this.ButtonIcons;
+            this.ClearButton.Location = new System.Drawing.Point(26, 97);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(106, 61);
+            this.ClearButton.TabIndex = 65;
+            this.ClearButton.Text = "CLEAR";
+            this.ClearButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ClearButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // StartButton
+            // 
+            this.StartButton.BackColor = System.Drawing.Color.White;
+            this.StartButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.StartButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.StartButton.FlatAppearance.BorderSize = 0;
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartButton.ImageKey = "color_start.PNG";
+            this.StartButton.ImageList = this.ButtonIcons;
+            this.StartButton.Location = new System.Drawing.Point(26, 19);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(106, 61);
+            this.StartButton.TabIndex = 64;
+            this.StartButton.Text = "START";
+            this.StartButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StartButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.StartButton.UseVisualStyleBackColor = false;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            // 
+            // PacketListView
+            // 
+            this.PacketListView.AllColumns.Add(this.olvColumn1);
+            this.PacketListView.AllColumns.Add(this.olvColumn2);
+            this.PacketListView.AllColumns.Add(this.olvColumn3);
+            this.PacketListView.AllColumns.Add(this.olvColumn7);
+            this.PacketListView.AllColumns.Add(this.olvColumn4);
+            this.PacketListView.AllColumns.Add(this.olvColumn6);
+            this.PacketListView.AllColumns.Add(this.olvColumn8);
+            this.PacketListView.BackColor = System.Drawing.Color.White;
+            this.PacketListView.CellEditUseWholeCell = false;
+            this.PacketListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvColumn1,
+            this.olvColumn2,
+            this.olvColumn3,
+            this.olvColumn7,
+            this.olvColumn4,
+            this.olvColumn6,
+            this.olvColumn8});
+            this.PacketListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PacketListView.EmptyListMsg = "Packet list is empty";
+            this.PacketListView.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketListView.FullRowSelect = true;
+            this.PacketListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.HeaderFormatStyle = this.DarkHeaders;
+            this.PacketListView.HideSelection = false;
+            this.PacketListView.HotItemStyle = this.DarkHot;
+            this.PacketListView.Location = new System.Drawing.Point(3, 3);
+            this.PacketListView.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.PacketListView.MultiSelect = false;
+            this.PacketListView.Name = "PacketListView";
+            this.PacketListView.SelectAllOnControlA = false;
+            this.PacketListView.SelectColumnsMenuStaysOpen = false;
+            this.PacketListView.SelectColumnsOnRightClick = false;
+            this.PacketListView.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
+            this.PacketListView.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.PacketListView.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketListView.ShowFilterMenuOnRightClick = false;
+            this.PacketListView.ShowGroups = false;
+            this.PacketListView.ShowSortIndicators = false;
+            this.PacketListView.Size = new System.Drawing.Size(1060, 488);
+            this.PacketListView.SmallImageList = this.ButtonIcons;
+            this.PacketListView.TabIndex = 0;
+            this.PacketListView.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketListView.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.PacketListView.UseCompatibleStateImageBehavior = false;
+            this.PacketListView.UseHotItem = true;
+            this.PacketListView.View = System.Windows.Forms.View.Details;
+            this.PacketListView.VirtualMode = true;
+            this.PacketListView.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.PacketListView_ButtonClick);
+            this.PacketListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PacketListView_MouseDown);
+            // 
+            // olvColumn1
+            // 
+            this.olvColumn1.AspectName = "Source";
+            this.olvColumn1.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn1.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.olvColumn1.IsEditable = false;
+            this.olvColumn1.MaximumWidth = 220;
+            this.olvColumn1.MinimumWidth = 220;
+            this.olvColumn1.Text = "Source";
+            this.olvColumn1.Width = 220;
+            // 
+            // olvColumn2
+            // 
+            this.olvColumn2.AspectName = "Destination";
+            this.olvColumn2.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn2.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn2.IsEditable = false;
+            this.olvColumn2.MaximumWidth = 220;
+            this.olvColumn2.MinimumWidth = 220;
+            this.olvColumn2.Text = "Destination";
+            this.olvColumn2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn2.Width = 220;
+            // 
+            // olvColumn3
+            // 
+            this.olvColumn3.AspectName = "Host";
+            this.olvColumn3.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn3.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.olvColumn3.IsEditable = false;
+            this.olvColumn3.MaximumWidth = 300;
+            this.olvColumn3.MinimumWidth = 300;
+            this.olvColumn3.Text = "Host";
+            this.olvColumn3.Width = 320;
+            // 
+            // olvColumn7
+            // 
+            this.olvColumn7.AspectName = "Resolve";
+            this.olvColumn7.ButtonSizing = BrightIdeasSoftware.OLVColumn.ButtonSizingMode.CellBounds;
+            this.olvColumn7.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn7.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn7.IsButton = true;
+            this.olvColumn7.IsEditable = false;
+            this.olvColumn7.MaximumWidth = 95;
+            this.olvColumn7.MinimumWidth = 95;
+            this.olvColumn7.Text = "Resolve";
+            this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn7.Width = 95;
+            // 
+            // olvColumn4
+            // 
+            this.olvColumn4.AspectName = "Type";
+            this.olvColumn4.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn4.IsEditable = false;
+            this.olvColumn4.MaximumWidth = 95;
+            this.olvColumn4.MinimumWidth = 95;
+            this.olvColumn4.Text = "Type";
+            this.olvColumn4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn4.Width = 95;
+            // 
+            // olvColumn6
+            // 
+            this.olvColumn6.AspectName = "ID";
+            this.olvColumn6.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn6.IsEditable = false;
+            this.olvColumn6.MaximumWidth = 0;
+            this.olvColumn6.MinimumWidth = 0;
+            this.olvColumn6.Text = "ID";
+            this.olvColumn6.Width = 0;
+            // 
+            // olvColumn8
+            // 
+            this.olvColumn8.AspectName = "Protocol";
+            this.olvColumn8.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn8.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn8.IsEditable = false;
+            this.olvColumn8.MaximumWidth = 95;
+            this.olvColumn8.MinimumWidth = 95;
+            this.olvColumn8.Text = "Protocol";
+            this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn8.Width = 95;
+            // 
+            // MainFlowPanel
+            // 
+            this.MainFlowPanel.Controls.Add(this.PacketListView);
+            this.MainFlowPanel.Controls.Add(this.ButtonsPanel);
+            this.MainFlowPanel.Controls.Add(this.BottomPanel);
+            this.MainFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainFlowPanel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainFlowPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainFlowPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MainFlowPanel.Name = "MainFlowPanel";
+            this.MainFlowPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.MainFlowPanel.Size = new System.Drawing.Size(1238, 696);
+            this.MainFlowPanel.TabIndex = 4;
+            // 
             // Sniffer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 504);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1238, 696);
+            this.Controls.Add(this.MainFlowPanel);
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Sniffer";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Packet Sniffer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sniffer_FormClosing);
             this.Load += new System.EventHandler(this.Sniffer_Load);
-            this.panel1.ResumeLayout(false);
+            this.BottomPanel.ResumeLayout(false);
+            this.BottomPanel.PerformLayout();
+            this.ButtonsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PacketListView)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
+            this.MainFlowPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private MaterialSkin.Controls.MaterialFlatButton ExportButton;
-        private MaterialSkin.Controls.MaterialFlatButton StopButton;
-        private MaterialSkin.Controls.MaterialFlatButton StartButton;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private System.Windows.Forms.Panel panel3;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MaterialSkin.Controls.MaterialFlatButton ClearButton;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
         private BrightIdeasSoftware.HeaderFormatStyle DarkHeaders;
         public BrightIdeasSoftware.HotItemStyle DarkHot;
         private BrightIdeasSoftware.OLVColumn olvColumn5;
+        public BrightIdeasSoftware.HotItemStyle LightHot;
+        public BrightIdeasSoftware.HeaderFormatStyle LightHeaders;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Panel BottomPanel;
+        private System.Windows.Forms.TextBox StatusBox;
+        private System.Windows.Forms.TextBox PacketBox;
+        private System.Windows.Forms.Panel ButtonsPanel;
+        private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.Button FormHelpButton;
+        private System.Windows.Forms.Button OptionsButton;
+        private System.Windows.Forms.Button ExportButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button StartButton;
         private BrightIdeasSoftware.FastObjectListView PacketListView;
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
+        private BrightIdeasSoftware.OLVColumn olvColumn7;
         private BrightIdeasSoftware.OLVColumn olvColumn4;
         private BrightIdeasSoftware.OLVColumn olvColumn6;
-        private MaterialSkin.Controls.MaterialFlatButton FormHelpButton;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private BrightIdeasSoftware.OLVColumn olvColumn7;
-        private MetroFramework.Controls.MetroButton ClearViewerButton;
-        private MetroFramework.Controls.MetroButton SaveButton;
-        private MetroFramework.Components.MetroToolTip metroToolTip1;
-        private MetroFramework.Controls.MetroButton ExpandButton;
-        private System.Windows.Forms.Panel panel6;
-        private MetroFramework.Controls.MetroButton FontButton;
-        private System.Windows.Forms.ImageList imageList1;
-        private MaterialSkin.Controls.MaterialFlatButton OptionsButton;
         private BrightIdeasSoftware.OLVColumn olvColumn8;
-        public BrightIdeasSoftware.HotItemStyle LightHot;
-        public BrightIdeasSoftware.HeaderFormatStyle LightHeaders;
+        private System.Windows.Forms.FlowLayoutPanel MainFlowPanel;
+        private System.Windows.Forms.Button ExtendBtn;
+        private System.Windows.Forms.Button FontBtn;
+        private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button ClearPacketBtn;
     }
 }

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BrightIdeasSoftware;
 using System.Windows.Forms;
-using BrightIdeasSoftware;
-using MaterialSkin.Controls;
-using MetroFramework.Controls;
 
 namespace NetStalker
 {
@@ -14,12 +7,12 @@ namespace NetStalker
     {
         FastObjectListView ListView1 { get; }
         Form MainForm { get; }
-        MaterialLabel StatusLabel { get; }
+        Label StatusLabel { get; }
         PictureBox PictureBox { get; }
         PictureBox LoadingBar { get; }
-        MaterialLabel StatusLabel2 { get; }
+        Label StatusLabel2 { get; }
         ToolTip TTip { get; }
-        MetroTile Tile { get; }
-        MetroTile Tile2 { get; }
+        Button Tile { get; }
+        Button Tile2 { get; }
     }
 }

@@ -1,19 +1,16 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using NetStalker.MainLogic;
+﻿using NetStalker.MainLogic;
 using System;
+using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class SnifferOptions : MaterialForm
+    public partial class SnifferOptions : Form
     {
         #region Constructor
 
         public SnifferOptions()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
         }
 
         #endregion

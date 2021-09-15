@@ -28,158 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LicenseAgreement));
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.AgreementBox = new System.Windows.Forms.TextBox();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.RejectButton = new System.Windows.Forms.Button();
+            this.AcceptAGButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // metroTextBox1
-            // 
-            this.metroTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            // 
-            // 
-            // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(298, 2);
-            this.metroTextBox1.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(335, 335);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(16, 134);
-            this.metroTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Multiline = true;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ReadOnly = true;
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(636, 340);
-            this.metroTextBox1.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroTextBox1.TabIndex = 0;
-            this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox1.UseCustomBackColor = true;
-            this.metroTextBox1.UseCustomForeColor = true;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(16, 94);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(409, 24);
-            this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "Please read the Disclaimer before you proceed:";
-            // 
-            // materialFlatButton2
-            // 
-            this.materialFlatButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.materialFlatButton2.Icon = global::NetStalker.Properties.Resources.color_cancel;
-            this.materialFlatButton2.Location = new System.Drawing.Point(407, 530);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(118, 36);
-            this.materialFlatButton2.TabIndex = 3;
-            this.materialFlatButton2.Text = "Decline";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.MaterialFlatButton2_Click);
-            // 
-            // materialFlatButton1
-            // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.materialFlatButton1.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.materialFlatButton1.Location = new System.Drawing.Point(554, 530);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(115, 36);
-            this.materialFlatButton1.TabIndex = 2;
-            this.materialFlatButton1.Text = "Accept";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.MaterialFlatButton1_Click);
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(16, 532);
-            this.materialLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(0, 24);
-            this.materialLabel2.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(17, 486);
+            this.label1.Location = new System.Drawing.Point(8, 439);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(538, 17);
+            this.label1.Size = new System.Drawing.Size(555, 42);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Please take sometime to read the help section in order to use this software prope" +
-    "rly.";
+            this.label1.Text = "Please take sometime to read the help section in order to use this\r\nsoftware prop" +
+    "erly.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(407, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Please read the Disclaimer before you proceed:";
+            // 
+            // AgreementBox
+            // 
+            this.AgreementBox.BackColor = System.Drawing.Color.White;
+            this.AgreementBox.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AgreementBox.Location = new System.Drawing.Point(12, 64);
+            this.AgreementBox.Multiline = true;
+            this.AgreementBox.Name = "AgreementBox";
+            this.AgreementBox.ReadOnly = true;
+            this.AgreementBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.AgreementBox.Size = new System.Drawing.Size(644, 362);
+            this.AgreementBox.TabIndex = 7;
+            this.AgreementBox.TabStop = false;
+            // 
+            // ButtonIcons
+            // 
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_ok.PNG");
+            // 
+            // RejectButton
+            // 
+            this.RejectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RejectButton.BackColor = System.Drawing.Color.White;
+            this.RejectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.RejectButton.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.RejectButton.FlatAppearance.BorderSize = 0;
+            this.RejectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RejectButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RejectButton.ImageKey = "color_cancel.PNG";
+            this.RejectButton.ImageList = this.ButtonIcons;
+            this.RejectButton.Location = new System.Drawing.Point(407, 552);
+            this.RejectButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RejectButton.Name = "RejectButton";
+            this.RejectButton.Size = new System.Drawing.Size(106, 57);
+            this.RejectButton.TabIndex = 66;
+            this.RejectButton.Text = "REJECT";
+            this.RejectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RejectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RejectButton.UseVisualStyleBackColor = false;
+            this.RejectButton.Click += new System.EventHandler(this.Reject_Click);
+            // 
+            // AcceptAGButton
+            // 
+            this.AcceptAGButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AcceptAGButton.BackColor = System.Drawing.Color.White;
+            this.AcceptAGButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AcceptAGButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.AcceptAGButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AcceptAGButton.FlatAppearance.BorderSize = 0;
+            this.AcceptAGButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AcceptAGButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AcceptAGButton.ImageKey = "color_ok.PNG";
+            this.AcceptAGButton.ImageList = this.ButtonIcons;
+            this.AcceptAGButton.Location = new System.Drawing.Point(550, 552);
+            this.AcceptAGButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AcceptAGButton.Name = "AcceptAGButton";
+            this.AcceptAGButton.Size = new System.Drawing.Size(106, 57);
+            this.AcceptAGButton.TabIndex = 65;
+            this.AcceptAGButton.Text = "ACCEPT";
+            this.AcceptAGButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AcceptAGButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AcceptAGButton.UseVisualStyleBackColor = false;
+            this.AcceptAGButton.Click += new System.EventHandler(this.Accept_Click);
             // 
             // LicenseAgreement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.AcceptAGButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 585);
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.RejectButton;
+            this.ClientSize = new System.Drawing.Size(668, 622);
             this.ControlBox = false;
+            this.Controls.Add(this.RejectButton);
+            this.Controls.Add(this.AcceptAGButton);
+            this.Controls.Add(this.AgreementBox);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialFlatButton2);
-            this.Controls.Add(this.materialFlatButton1);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.metroTextBox1);
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LicenseAgreement";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Disclaimer";
             this.Load += new System.EventHandler(this.LicenseAgreement_Load);
@@ -189,12 +159,11 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox AgreementBox;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Button RejectButton;
+        private System.Windows.Forms.Button AcceptAGButton;
     }
 }

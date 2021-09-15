@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
+using NetStalker.Forms.Information;
 using System;
 using System.Windows.Forms;
 
@@ -78,20 +79,18 @@ namespace NetStalker.ToastNotifications
                 {
                     MainForm.BeginInvoke(new Action(() =>
                     {
-                        MetroFramework.MetroMessageBox.Show(MainForm,
-                            "Process has been activated by toast notification trigger.",
-                            "Information",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        using (var message = new MessageBoxForm("Info", "Process has been activated by toast notification trigger.", MessageBoxIcon.Information, MessageBoxButtons.OK))
+                        {
+                            message.ShowDialog();
+                        }
                     }));
                 }
                 else
                 {
-                    MetroFramework.MetroMessageBox.Show(MainForm,
-                            "Process has been activated by toast notification trigger.",
-                            "Information",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                    using (var message = new MessageBoxForm("Info", "Process has been activated by toast notification trigger.", MessageBoxIcon.Information, MessageBoxButtons.OK))
+                    {
+                        message.ShowDialog();
+                    }
                 }
 
                 return;

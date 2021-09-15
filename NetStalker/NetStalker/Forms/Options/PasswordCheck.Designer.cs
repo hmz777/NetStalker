@@ -28,111 +28,119 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordCheck));
-            this.PasswordField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.QuitButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.OkButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.StatusLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PasswordField = new System.Windows.Forms.TextBox();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.OkButton = new System.Windows.Forms.Button();
+            this.QuitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 21);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "ENTER PASSWORD";
             // 
             // PasswordField
             // 
-            this.PasswordField.Depth = 0;
-            this.PasswordField.Hint = "Password";
-            this.PasswordField.Location = new System.Drawing.Point(12, 105);
-            this.PasswordField.MaxLength = 32767;
-            this.PasswordField.MouseState = MaterialSkin.MouseState.HOVER;
+            this.PasswordField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordField.Location = new System.Drawing.Point(12, 75);
             this.PasswordField.Name = "PasswordField";
             this.PasswordField.PasswordChar = '*';
-            this.PasswordField.SelectedText = "";
-            this.PasswordField.SelectionLength = 0;
-            this.PasswordField.SelectionStart = 0;
-            this.PasswordField.Size = new System.Drawing.Size(281, 23);
-            this.PasswordField.TabIndex = 13;
-            this.PasswordField.TabStop = false;
-            this.PasswordField.UseSystemPasswordChar = true;
-            // 
-            // QuitButton
-            // 
-            this.QuitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.QuitButton.AutoSize = true;
-            this.QuitButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.QuitButton.Depth = 0;
-            this.QuitButton.Icon = global::NetStalker.Properties.Resources.color_cancel;
-            this.QuitButton.Location = new System.Drawing.Point(135, 176);
-            this.QuitButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.QuitButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.QuitButton.Name = "QuitButton";
-            this.QuitButton.Primary = false;
-            this.QuitButton.Size = new System.Drawing.Size(80, 36);
-            this.QuitButton.TabIndex = 16;
-            this.QuitButton.Text = "Quit";
-            this.QuitButton.UseVisualStyleBackColor = true;
-            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
-            // 
-            // OkButton
-            // 
-            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.AutoSize = true;
-            this.OkButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OkButton.Depth = 0;
-            this.OkButton.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.OkButton.Location = new System.Drawing.Point(223, 176);
-            this.OkButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.OkButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Primary = false;
-            this.OkButton.Size = new System.Drawing.Size(67, 36);
-            this.OkButton.TabIndex = 15;
-            this.OkButton.Text = "Ok";
-            this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(8, 83);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(114, 19);
-            this.materialLabel2.TabIndex = 41;
-            this.materialLabel2.Text = "Enter Password";
+            this.PasswordField.Size = new System.Drawing.Size(380, 28);
+            this.PasswordField.TabIndex = 44;
             // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Depth = 0;
-            this.StatusLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.StatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.StatusLabel.Location = new System.Drawing.Point(8, 131);
-            this.StatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Location = new System.Drawing.Point(8, 106);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(0, 19);
-            this.StatusLabel.TabIndex = 42;
+            this.StatusLabel.Size = new System.Drawing.Size(0, 21);
+            this.StatusLabel.TabIndex = 45;
+            // 
+            // ButtonIcons
+            // 
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_ok.PNG");
+            // 
+            // OkButton
+            // 
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.BackColor = System.Drawing.Color.White;
+            this.OkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.OkButton.FlatAppearance.BorderSize = 0;
+            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OkButton.ImageKey = "color_ok.PNG";
+            this.OkButton.ImageList = this.ButtonIcons;
+            this.OkButton.Location = new System.Drawing.Point(286, 169);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(106, 57);
+            this.OkButton.TabIndex = 64;
+            this.OkButton.Text = "OK";
+            this.OkButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.OkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.OkButton.UseVisualStyleBackColor = false;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            // 
+            // QuitButton
+            // 
+            this.QuitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuitButton.BackColor = System.Drawing.Color.White;
+            this.QuitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.QuitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.QuitButton.FlatAppearance.BorderSize = 0;
+            this.QuitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.QuitButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuitButton.ImageKey = "color_cancel.PNG";
+            this.QuitButton.ImageList = this.ButtonIcons;
+            this.QuitButton.Location = new System.Drawing.Point(163, 169);
+            this.QuitButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.Size = new System.Drawing.Size(106, 57);
+            this.QuitButton.TabIndex = 65;
+            this.QuitButton.Text = "QUIT";
+            this.QuitButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.QuitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.QuitButton.UseVisualStyleBackColor = false;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
             // PasswordCheck
             // 
             this.AcceptButton = this.OkButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 227);
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.QuitButton;
+            this.ClientSize = new System.Drawing.Size(404, 239);
             this.ControlBox = false;
-            this.Controls.Add(this.StatusLabel);
-            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.PasswordField);
+            this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PasswordCheck";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Password Check";
             this.Click += new System.EventHandler(this.PasswordCheck_Click);
@@ -142,10 +150,11 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialSingleLineTextField PasswordField;
-        private MaterialSkin.Controls.MaterialFlatButton QuitButton;
-        private MaterialSkin.Controls.MaterialFlatButton OkButton;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel StatusLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox PasswordField;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.Button QuitButton;
     }
 }

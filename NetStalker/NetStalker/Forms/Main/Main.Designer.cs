@@ -36,7 +36,29 @@
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle4 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
             BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.DeviceMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SetName = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearName = new System.Windows.Forms.ToolStripMenuItem();
+            this.IconList = new System.Windows.Forms.ImageList(this.components);
+            this.DarkHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
+            this.DarkHot = new BrightIdeasSoftware.HotItemStyle();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sHOWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eXITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LightHot = new BrightIdeasSoftware.HotItemStyle();
+            this.LightHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
+            this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.LoadingIndicator = new System.Windows.Forms.PictureBox();
+            this.ScanButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.OptionsButton = new System.Windows.Forms.Button();
+            this.FormHelpButton = new System.Windows.Forms.Button();
+            this.AboutButton = new System.Windows.Forms.Button();
+            this.SnifferButton = new System.Windows.Forms.Button();
+            this.LimiterButton = new System.Windows.Forms.Button();
             this.DeviceList = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -47,241 +69,46 @@
             this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.IconList = new System.Windows.Forms.ImageList(this.components);
-            this.DarkHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
-            this.DarkHot = new BrightIdeasSoftware.HotItemStyle();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.DeviceCountLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.CurrentOperationStatusLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.OptionsButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ScanButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.SnifferButton = new MetroFramework.Controls.MetroTile();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.LimiterButton = new MetroFramework.Controls.MetroTile();
-            this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.TrayMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.RefreshButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.AboutButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.FormHelpButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.LightHot = new BrightIdeasSoftware.HotItemStyle();
-            this.LightHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
-            this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.BottomPanel = new System.Windows.Forms.Panel();
+            this.Divider1 = new System.Windows.Forms.Label();
+            this.CurrentOperationStatusLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.DeviceCountLabel = new System.Windows.Forms.Label();
+            this.OpIndicator = new System.Windows.Forms.PictureBox();
+            this.Divider2 = new System.Windows.Forms.Label();
+            this.MainPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.Separator = new System.Windows.Forms.Label();
+            this.DeviceMenu.SuspendLayout();
             this.TrayMenu.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingIndicator)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).BeginInit();
+            this.BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OpIndicator)).BeginInit();
+            this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // DeviceMenu
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.DeviceList);
-            this.panel1.Location = new System.Drawing.Point(3, 64);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1057, 375);
-            this.panel1.TabIndex = 0;
+            this.DeviceMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.DeviceMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SetName,
+            this.ClearName});
+            this.DeviceMenu.Name = "DeviceMenu";
+            this.DeviceMenu.Size = new System.Drawing.Size(208, 52);
             // 
-            // DeviceList
+            // SetName
             // 
-            this.DeviceList.AllColumns.Add(this.olvColumn1);
-            this.DeviceList.AllColumns.Add(this.olvColumn2);
-            this.DeviceList.AllColumns.Add(this.olvColumn3);
-            this.DeviceList.AllColumns.Add(this.olvColumn9);
-            this.DeviceList.AllColumns.Add(this.olvColumn4);
-            this.DeviceList.AllColumns.Add(this.olvColumn5);
-            this.DeviceList.AllColumns.Add(this.olvColumn6);
-            this.DeviceList.AllColumns.Add(this.olvColumn8);
-            this.DeviceList.AllColumns.Add(this.olvColumn7);
-            this.DeviceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.DeviceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DeviceList.CellEditUseWholeCell = false;
-            this.DeviceList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvColumn1,
-            this.olvColumn2,
-            this.olvColumn3,
-            this.olvColumn9,
-            this.olvColumn4,
-            this.olvColumn5,
-            this.olvColumn6,
-            this.olvColumn8,
-            this.olvColumn7});
-            this.DeviceList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DeviceList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DeviceList.EmptyListMsg = "Device list is empty";
-            this.DeviceList.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeviceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeviceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DeviceList.FullRowSelect = true;
-            this.DeviceList.GroupImageList = this.IconList;
-            this.DeviceList.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeviceList.HeaderFormatStyle = this.DarkHeaders;
-            this.DeviceList.HideSelection = false;
-            this.DeviceList.HotItemStyle = this.DarkHot;
-            this.DeviceList.Location = new System.Drawing.Point(0, 0);
-            this.DeviceList.MultiSelect = false;
-            this.DeviceList.Name = "DeviceList";
-            this.DeviceList.OverlayImage.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DeviceList.RowHeight = 30;
-            this.DeviceList.SelectAllOnControlA = false;
-            this.DeviceList.SelectColumnsMenuStaysOpen = false;
-            this.DeviceList.SelectColumnsOnRightClick = false;
-            this.DeviceList.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
-            this.DeviceList.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.DeviceList.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DeviceList.ShowFilterMenuOnRightClick = false;
-            this.DeviceList.ShowGroups = false;
-            this.DeviceList.ShowImagesOnSubItems = true;
-            this.DeviceList.ShowSortIndicators = false;
-            this.DeviceList.Size = new System.Drawing.Size(1057, 375);
-            this.DeviceList.SmallImageList = this.IconList;
-            this.DeviceList.SpaceBetweenGroups = 1;
-            this.DeviceList.TabIndex = 0;
-            this.DeviceList.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DeviceList.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.DeviceList.UseCompatibleStateImageBehavior = false;
-            this.DeviceList.UseHotItem = true;
-            this.DeviceList.UseNotifyPropertyChanged = true;
-            this.DeviceList.UseSubItemCheckBoxes = true;
-            this.DeviceList.View = System.Windows.Forms.View.Details;
-            this.DeviceList.VirtualMode = true;
-            this.DeviceList.SubItemChecking += new System.EventHandler<BrightIdeasSoftware.SubItemCheckingEventArgs>(this.DeviceList_SubItemChecking);
-            this.DeviceList.ItemsAdding += new System.EventHandler<BrightIdeasSoftware.ItemsAddingEventArgs>(this.DeviceList_ItemsAdding);
-            this.DeviceList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DeviceList_MouseDown);
+            this.SetName.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetName.Name = "SetName";
+            this.SetName.Size = new System.Drawing.Size(207, 24);
+            this.SetName.Text = "Set Friendly Name";
             // 
-            // olvColumn1
+            // ClearName
             // 
-            this.olvColumn1.AspectName = "IP";
-            this.olvColumn1.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.olvColumn1.Hideable = false;
-            this.olvColumn1.ImageAspectName = "Image";
-            this.olvColumn1.IsEditable = false;
-            this.olvColumn1.MaximumWidth = 145;
-            this.olvColumn1.MinimumWidth = 145;
-            this.olvColumn1.Text = "IP";
-            this.olvColumn1.Width = 145;
-            // 
-            // olvColumn2
-            // 
-            this.olvColumn2.AspectName = "MAC";
-            this.olvColumn2.Groupable = false;
-            this.olvColumn2.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn2.Hideable = false;
-            this.olvColumn2.IsEditable = false;
-            this.olvColumn2.MaximumWidth = 130;
-            this.olvColumn2.MinimumWidth = 130;
-            this.olvColumn2.Searchable = false;
-            this.olvColumn2.Text = "MAC";
-            this.olvColumn2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn2.Width = 130;
-            // 
-            // olvColumn3
-            // 
-            this.olvColumn3.AspectName = "DeviceName";
-            this.olvColumn3.Groupable = false;
-            this.olvColumn3.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn3.Hideable = false;
-            this.olvColumn3.IsEditable = false;
-            this.olvColumn3.MaximumWidth = 180;
-            this.olvColumn3.MinimumWidth = 180;
-            this.olvColumn3.Searchable = false;
-            this.olvColumn3.Text = "DeviceName";
-            this.olvColumn3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn3.Width = 180;
-            // 
-            // olvColumn9
-            // 
-            this.olvColumn9.AspectName = "ManName";
-            this.olvColumn9.Groupable = false;
-            this.olvColumn9.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn9.Hideable = false;
-            this.olvColumn9.IsEditable = false;
-            this.olvColumn9.MaximumWidth = 180;
-            this.olvColumn9.MinimumWidth = 180;
-            this.olvColumn9.Searchable = false;
-            this.olvColumn9.Text = "Vendor";
-            this.olvColumn9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn9.Width = 180;
-            // 
-            // olvColumn4
-            // 
-            this.olvColumn4.AspectName = "DeviceStatus";
-            this.olvColumn4.Groupable = false;
-            this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn4.Hideable = false;
-            this.olvColumn4.IsEditable = false;
-            this.olvColumn4.MaximumWidth = 110;
-            this.olvColumn4.MinimumWidth = 110;
-            this.olvColumn4.Searchable = false;
-            this.olvColumn4.Text = "DeviceStatus";
-            this.olvColumn4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn4.Width = 110;
-            // 
-            // olvColumn5
-            // 
-            this.olvColumn5.AspectName = "Redirected";
-            this.olvColumn5.CheckBoxes = true;
-            this.olvColumn5.Groupable = false;
-            this.olvColumn5.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn5.Hideable = false;
-            this.olvColumn5.MaximumWidth = 60;
-            this.olvColumn5.MinimumWidth = 60;
-            this.olvColumn5.Searchable = false;
-            this.olvColumn5.Text = "Redirect";
-            this.olvColumn5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // olvColumn6
-            // 
-            this.olvColumn6.AspectName = "Blocked";
-            this.olvColumn6.CheckBoxes = true;
-            this.olvColumn6.Groupable = false;
-            this.olvColumn6.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn6.Hideable = false;
-            this.olvColumn6.MaximumWidth = 50;
-            this.olvColumn6.MinimumWidth = 50;
-            this.olvColumn6.Searchable = false;
-            this.olvColumn6.Text = "Block";
-            this.olvColumn6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn6.Width = 50;
-            // 
-            // olvColumn8
-            // 
-            this.olvColumn8.AspectName = "DownloadSpeed";
-            this.olvColumn8.Groupable = false;
-            this.olvColumn8.Hideable = false;
-            this.olvColumn8.IsEditable = false;
-            this.olvColumn8.MaximumWidth = 102;
-            this.olvColumn8.MinimumWidth = 102;
-            this.olvColumn8.Searchable = false;
-            this.olvColumn8.Text = "DownloadCap";
-            this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn8.Width = 102;
-            // 
-            // olvColumn7
-            // 
-            this.olvColumn7.AspectName = "UploadSpeed";
-            this.olvColumn7.Groupable = false;
-            this.olvColumn7.Hideable = false;
-            this.olvColumn7.IsEditable = false;
-            this.olvColumn7.MaximumWidth = 100;
-            this.olvColumn7.MinimumWidth = 100;
-            this.olvColumn7.Searchable = false;
-            this.olvColumn7.Text = "UploadCap";
-            this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn7.Width = 100;
+            this.ClearName.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearName.Name = "ClearName";
+            this.ClearName.Size = new System.Drawing.Size(207, 24);
+            this.ClearName.Text = "Clear Name";
             // 
             // IconList
             // 
@@ -311,167 +138,32 @@
             this.DarkHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DarkHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             // 
-            // materialLabel1
+            // ButtonIcons
             // 
-            this.materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(681, 17);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(68, 24);
-            this.materialLabel1.TabIndex = 4;
-            this.materialLabel1.Text = "Status:";
-            // 
-            // DeviceCountLabel
-            // 
-            this.DeviceCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeviceCountLabel.AutoSize = true;
-            this.DeviceCountLabel.Depth = 0;
-            this.DeviceCountLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.DeviceCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.DeviceCountLabel.Location = new System.Drawing.Point(743, 17);
-            this.DeviceCountLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.DeviceCountLabel.Name = "DeviceCountLabel";
-            this.DeviceCountLabel.Size = new System.Drawing.Size(41, 24);
-            this.DeviceCountLabel.TabIndex = 5;
-            this.DeviceCountLabel.Text = "Idle";
-            // 
-            // CurrentOperationStatusLabel
-            // 
-            this.CurrentOperationStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentOperationStatusLabel.AutoSize = true;
-            this.CurrentOperationStatusLabel.Depth = 0;
-            this.CurrentOperationStatusLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.CurrentOperationStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(973, 17);
-            this.CurrentOperationStatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CurrentOperationStatusLabel.Name = "CurrentOperationStatusLabel";
-            this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(62, 24);
-            this.CurrentOperationStatusLabel.TabIndex = 6;
-            this.CurrentOperationStatusLabel.Text = "Ready";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(942, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 46);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "|";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(650, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 46);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "|";
-            // 
-            // OptionsButton
-            // 
-            this.OptionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OptionsButton.AutoSize = true;
-            this.OptionsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OptionsButton.Depth = 0;
-            this.OptionsButton.Icon = global::NetStalker.Properties.Resources.color_gear;
-            this.OptionsButton.Location = new System.Drawing.Point(195, 9);
-            this.OptionsButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.OptionsButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.OptionsButton.Name = "OptionsButton";
-            this.OptionsButton.Primary = false;
-            this.OptionsButton.Size = new System.Drawing.Size(123, 36);
-            this.OptionsButton.TabIndex = 10;
-            this.OptionsButton.Text = "Options";
-            this.Tooltip.SetToolTip(this.OptionsButton, "Change NetStalker settings");
-            this.OptionsButton.UseVisualStyleBackColor = true;
-            this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::NetStalker.Properties.Resources.color_ok;
-            this.pictureBox1.Location = new System.Drawing.Point(1052, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // ScanButton
-            // 
-            this.ScanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ScanButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ScanButton.Depth = 0;
-            this.ScanButton.Icon = global::NetStalker.Properties.Resources.color_gps_receiving;
-            this.ScanButton.Location = new System.Drawing.Point(10, 9);
-            this.ScanButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ScanButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ScanButton.Name = "ScanButton";
-            this.ScanButton.Primary = false;
-            this.ScanButton.Size = new System.Drawing.Size(95, 36);
-            this.ScanButton.TabIndex = 1;
-            this.ScanButton.Text = "Scan";
-            this.Tooltip.SetToolTip(this.ScanButton, "Initiate a new device scan");
-            this.ScanButton.UseVisualStyleBackColor = true;
-            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
-            // 
-            // SnifferButton
-            // 
-            this.SnifferButton.ActiveControl = null;
-            this.SnifferButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.SnifferButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SnifferButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SnifferButton.Location = new System.Drawing.Point(0, 0);
-            this.SnifferButton.Name = "SnifferButton";
-            this.SnifferButton.Size = new System.Drawing.Size(29, 187);
-            this.SnifferButton.TabIndex = 0;
-            this.SnifferButton.Text = "S\r\nN\r\nI\r\nF\r\nF\r\nE\r\nR";
-            this.SnifferButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.SnifferButton.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.SnifferButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.Tooltip.SetToolTip(this.SnifferButton, "Start the Packet Sniffer");
-            this.SnifferButton.UseCustomBackColor = true;
-            this.SnifferButton.UseSelectable = true;
-            this.SnifferButton.Click += new System.EventHandler(this.SnifferButton_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.LimiterButton);
-            this.panel2.Controls.Add(this.SnifferButton);
-            this.panel2.Location = new System.Drawing.Point(1063, 65);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(29, 375);
-            this.panel2.TabIndex = 1;
-            // 
-            // LimiterButton
-            // 
-            this.LimiterButton.ActiveControl = null;
-            this.LimiterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.LimiterButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LimiterButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.LimiterButton.Location = new System.Drawing.Point(0, 188);
-            this.LimiterButton.Name = "LimiterButton";
-            this.LimiterButton.Size = new System.Drawing.Size(29, 187);
-            this.LimiterButton.TabIndex = 0;
-            this.LimiterButton.Text = "L\r\nI\r\nM\r\nI\r\nT\r\nE\r\nR";
-            this.LimiterButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.LimiterButton.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.LimiterButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.Tooltip.SetToolTip(this.LimiterButton, "Start the Speed Limiter");
-            this.LimiterButton.UseCustomBackColor = true;
-            this.LimiterButton.UseSelectable = true;
-            this.LimiterButton.Click += new System.EventHandler(this.LimiterButton_Click);
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_about.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(2, "color_clear-symbol.PNG");
+            this.ButtonIcons.Images.SetKeyName(3, "color_define-location.PNG");
+            this.ButtonIcons.Images.SetKeyName(4, "color_error.PNG");
+            this.ButtonIcons.Images.SetKeyName(5, "color_external.PNG");
+            this.ButtonIcons.Images.SetKeyName(6, "color_gear.PNG");
+            this.ButtonIcons.Images.SetKeyName(7, "color_help.PNG");
+            this.ButtonIcons.Images.SetKeyName(8, "color_info.PNG");
+            this.ButtonIcons.Images.SetKeyName(9, "color_keyhole-shield.PNG");
+            this.ButtonIcons.Images.SetKeyName(10, "color_network-card.PNG");
+            this.ButtonIcons.Images.SetKeyName(11, "color_ok.PNG");
+            this.ButtonIcons.Images.SetKeyName(12, "color_restart.PNG");
+            this.ButtonIcons.Images.SetKeyName(13, "color_start.PNG");
+            this.ButtonIcons.Images.SetKeyName(14, "color_stop-squared.PNG");
+            this.ButtonIcons.Images.SetKeyName(15, "icons8-info-35.png");
+            this.ButtonIcons.Images.SetKeyName(16, "icons8-ok-red.png");
+            this.ButtonIcons.Images.SetKeyName(17, "spinB.gif");
+            this.ButtonIcons.Images.SetKeyName(18, "spinW.gif");
+            this.ButtonIcons.Images.SetKeyName(19, "icons8-speed-96.png");
+            this.ButtonIcons.Images.SetKeyName(20, "icons8-target-100.png");
+            this.ButtonIcons.Images.SetKeyName(21, "icons8-gps-signal-96.png");
             // 
             // TrayIcon
             // 
@@ -484,132 +176,27 @@
             // 
             // TrayMenu
             // 
-            this.TrayMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TrayMenu.Depth = 0;
+            this.TrayMenu.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TrayMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.TrayMenu.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TrayMenu.Name = "materialContextMenuStrip1";
-            this.TrayMenu.Size = new System.Drawing.Size(115, 52);
+            this.sHOWToolStripMenuItem,
+            this.eXITToolStripMenuItem});
+            this.TrayMenu.Name = "TrayMenu";
+            this.TrayMenu.Size = new System.Drawing.Size(124, 52);
             // 
-            // showToolStripMenuItem
+            // sHOWToolStripMenuItem
             // 
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
-            this.showToolStripMenuItem.Text = "Show";
-            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            this.sHOWToolStripMenuItem.Name = "sHOWToolStripMenuItem";
+            this.sHOWToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.sHOWToolStripMenuItem.Text = "SHOW";
+            this.sHOWToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem
+            // eXITToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.RefreshButton);
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.AboutButton);
-            this.panel3.Controls.Add(this.FormHelpButton);
-            this.panel3.Controls.Add(this.materialLabel4);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.CurrentOperationStatusLabel);
-            this.panel3.Controls.Add(this.materialLabel1);
-            this.panel3.Controls.Add(this.OptionsButton);
-            this.panel3.Controls.Add(this.DeviceCountLabel);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.ScanButton);
-            this.panel3.Location = new System.Drawing.Point(3, 442);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1086, 56);
-            this.panel3.TabIndex = 0;
-            // 
-            // RefreshButton
-            // 
-            this.RefreshButton.AutoSize = true;
-            this.RefreshButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.RefreshButton.Depth = 0;
-            this.RefreshButton.Icon = global::NetStalker.Properties.Resources.color_restart;
-            this.RefreshButton.Location = new System.Drawing.Point(128, 9);
-            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.RefreshButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Primary = false;
-            this.RefreshButton.Size = new System.Drawing.Size(44, 36);
-            this.RefreshButton.TabIndex = 27;
-            this.Tooltip.SetToolTip(this.RefreshButton, resources.GetString("RefreshButton.ToolTip"));
-            this.RefreshButton.UseVisualStyleBackColor = true;
-            this.RefreshButton.Click += new System.EventHandler(this.Refresh_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(609, 10);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 26;
-            this.pictureBox2.TabStop = false;
-            this.Tooltip.SetToolTip(this.pictureBox2, "Background scanning is active");
-            this.pictureBox2.Visible = false;
-            // 
-            // AboutButton
-            // 
-            this.AboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AboutButton.AutoSize = true;
-            this.AboutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AboutButton.Depth = 0;
-            this.AboutButton.Icon = global::NetStalker.Properties.Resources.color_about;
-            this.AboutButton.Location = new System.Drawing.Point(456, 9);
-            this.AboutButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.AboutButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.AboutButton.Name = "AboutButton";
-            this.AboutButton.Primary = false;
-            this.AboutButton.Size = new System.Drawing.Size(106, 36);
-            this.AboutButton.TabIndex = 25;
-            this.AboutButton.Text = "About";
-            this.Tooltip.SetToolTip(this.AboutButton, "About the developer");
-            this.AboutButton.UseVisualStyleBackColor = true;
-            this.AboutButton.Click += new System.EventHandler(this.AboutButton_Click);
-            // 
-            // FormHelpButton
-            // 
-            this.FormHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.FormHelpButton.AutoSize = true;
-            this.FormHelpButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.FormHelpButton.Depth = 0;
-            this.FormHelpButton.Icon = global::NetStalker.Properties.Resources.color_help;
-            this.FormHelpButton.Location = new System.Drawing.Point(341, 9);
-            this.FormHelpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.FormHelpButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.FormHelpButton.Name = "FormHelpButton";
-            this.FormHelpButton.Primary = false;
-            this.FormHelpButton.Size = new System.Drawing.Size(92, 36);
-            this.FormHelpButton.TabIndex = 24;
-            this.FormHelpButton.Text = "Help";
-            this.Tooltip.SetToolTip(this.FormHelpButton, "A simple guide on how to use this software properly");
-            this.FormHelpButton.UseVisualStyleBackColor = true;
-            this.FormHelpButton.Click += new System.EventHandler(this.HelpButton_Click);
-            // 
-            // materialLabel4
-            // 
-            this.materialLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.materialLabel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(0, 0);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(1086, 1);
-            this.materialLabel4.TabIndex = 23;
+            this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.eXITToolStripMenuItem.Text = "EXIT";
+            this.eXITToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // LightHot
             // 
@@ -645,79 +232,562 @@
             this.Tooltip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.ToolTip_Draw);
             this.Tooltip.Popup += new System.Windows.Forms.PopupEventHandler(this.ToolTip_Popup);
             // 
+            // LoadingIndicator
+            // 
+            this.LoadingIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadingIndicator.Location = new System.Drawing.Point(854, 16);
+            this.LoadingIndicator.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadingIndicator.Name = "LoadingIndicator";
+            this.LoadingIndicator.Size = new System.Drawing.Size(30, 29);
+            this.LoadingIndicator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LoadingIndicator.TabIndex = 26;
+            this.LoadingIndicator.TabStop = false;
+            this.Tooltip.SetToolTip(this.LoadingIndicator, "Background scanning is active");
+            this.LoadingIndicator.Visible = false;
+            // 
+            // ScanButton
+            // 
+            this.ScanButton.BackColor = System.Drawing.Color.White;
+            this.ScanButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ScanButton.FlatAppearance.BorderSize = 0;
+            this.ScanButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ScanButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScanButton.ImageKey = "icons8-gps-signal-96.png";
+            this.ScanButton.ImageList = this.ButtonIcons;
+            this.ScanButton.Location = new System.Drawing.Point(14, 3);
+            this.ScanButton.Name = "ScanButton";
+            this.ScanButton.Size = new System.Drawing.Size(106, 51);
+            this.ScanButton.TabIndex = 2;
+            this.ScanButton.Text = "SCAN";
+            this.ScanButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ScanButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.ScanButton, "Initiate a new device scan");
+            this.ScanButton.UseVisualStyleBackColor = false;
+            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ImageKey = "color_gps-receiving.PNG";
+            this.button1.ImageList = this.ButtonIcons;
+            this.button1.Location = new System.Drawing.Point(3, 487);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 51);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "SCAN";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.button1, "Initiate a new device scan");
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.BackColor = System.Drawing.Color.White;
+            this.RefreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.RefreshButton.FlatAppearance.BorderSize = 0;
+            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RefreshButton.ImageKey = "color_restart.PNG";
+            this.RefreshButton.ImageList = this.ButtonIcons;
+            this.RefreshButton.Location = new System.Drawing.Point(126, 3);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(106, 51);
+            this.RefreshButton.TabIndex = 29;
+            this.RefreshButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RefreshButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.RefreshButton, resources.GetString("RefreshButton.ToolTip"));
+            this.RefreshButton.UseVisualStyleBackColor = false;
+            this.RefreshButton.Click += new System.EventHandler(this.Refresh_Click);
+            // 
+            // OptionsButton
+            // 
+            this.OptionsButton.BackColor = System.Drawing.Color.White;
+            this.OptionsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OptionsButton.FlatAppearance.BorderSize = 0;
+            this.OptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OptionsButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptionsButton.ImageKey = "color_gear.PNG";
+            this.OptionsButton.ImageList = this.ButtonIcons;
+            this.OptionsButton.Location = new System.Drawing.Point(474, 3);
+            this.OptionsButton.Name = "OptionsButton";
+            this.OptionsButton.Size = new System.Drawing.Size(106, 51);
+            this.OptionsButton.TabIndex = 30;
+            this.OptionsButton.Text = "OPTIONS";
+            this.OptionsButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.OptionsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.OptionsButton, "Change NetStalker settings");
+            this.OptionsButton.UseVisualStyleBackColor = false;
+            this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
+            // 
+            // FormHelpButton
+            // 
+            this.FormHelpButton.BackColor = System.Drawing.Color.White;
+            this.FormHelpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FormHelpButton.FlatAppearance.BorderSize = 0;
+            this.FormHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FormHelpButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormHelpButton.ImageKey = "color_help.PNG";
+            this.FormHelpButton.ImageList = this.ButtonIcons;
+            this.FormHelpButton.Location = new System.Drawing.Point(590, 3);
+            this.FormHelpButton.Name = "FormHelpButton";
+            this.FormHelpButton.Size = new System.Drawing.Size(106, 51);
+            this.FormHelpButton.TabIndex = 31;
+            this.FormHelpButton.Text = "HELP";
+            this.FormHelpButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FormHelpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.FormHelpButton, "A simple guide on how to use this software properly\r\n");
+            this.FormHelpButton.UseVisualStyleBackColor = false;
+            this.FormHelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            // 
+            // AboutButton
+            // 
+            this.AboutButton.BackColor = System.Drawing.Color.White;
+            this.AboutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AboutButton.FlatAppearance.BorderSize = 0;
+            this.AboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AboutButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutButton.ImageKey = "color_about.PNG";
+            this.AboutButton.ImageList = this.ButtonIcons;
+            this.AboutButton.Location = new System.Drawing.Point(706, 3);
+            this.AboutButton.Name = "AboutButton";
+            this.AboutButton.Size = new System.Drawing.Size(106, 51);
+            this.AboutButton.TabIndex = 32;
+            this.AboutButton.Text = "ABOUT";
+            this.AboutButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.AboutButton, "About the developer");
+            this.AboutButton.UseVisualStyleBackColor = false;
+            this.AboutButton.Click += new System.EventHandler(this.AboutButton_Click);
+            // 
+            // SnifferButton
+            // 
+            this.SnifferButton.BackColor = System.Drawing.Color.White;
+            this.SnifferButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SnifferButton.FlatAppearance.BorderSize = 0;
+            this.SnifferButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SnifferButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SnifferButton.ImageKey = "icons8-target-100.png";
+            this.SnifferButton.ImageList = this.ButtonIcons;
+            this.SnifferButton.Location = new System.Drawing.Point(358, 3);
+            this.SnifferButton.Name = "SnifferButton";
+            this.SnifferButton.Size = new System.Drawing.Size(106, 51);
+            this.SnifferButton.TabIndex = 36;
+            this.SnifferButton.Text = "SNIFFER";
+            this.SnifferButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SnifferButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.SnifferButton, "Start the Packet Sniffer");
+            this.SnifferButton.UseVisualStyleBackColor = false;
+            this.SnifferButton.Click += new System.EventHandler(this.SnifferButton_Click);
+            // 
+            // LimiterButton
+            // 
+            this.LimiterButton.BackColor = System.Drawing.Color.White;
+            this.LimiterButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.LimiterButton.FlatAppearance.BorderSize = 0;
+            this.LimiterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LimiterButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LimiterButton.ImageKey = "icons8-speed-96.png";
+            this.LimiterButton.ImageList = this.ButtonIcons;
+            this.LimiterButton.Location = new System.Drawing.Point(242, 3);
+            this.LimiterButton.Name = "LimiterButton";
+            this.LimiterButton.Size = new System.Drawing.Size(106, 51);
+            this.LimiterButton.TabIndex = 37;
+            this.LimiterButton.Text = "LIMITER";
+            this.LimiterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LimiterButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Tooltip.SetToolTip(this.LimiterButton, "Start the Speed Limiter\r\n");
+            this.LimiterButton.UseVisualStyleBackColor = false;
+            this.LimiterButton.Click += new System.EventHandler(this.LimiterButton_Click);
+            // 
+            // DeviceList
+            // 
+            this.DeviceList.AllColumns.Add(this.olvColumn1);
+            this.DeviceList.AllColumns.Add(this.olvColumn2);
+            this.DeviceList.AllColumns.Add(this.olvColumn3);
+            this.DeviceList.AllColumns.Add(this.olvColumn9);
+            this.DeviceList.AllColumns.Add(this.olvColumn4);
+            this.DeviceList.AllColumns.Add(this.olvColumn5);
+            this.DeviceList.AllColumns.Add(this.olvColumn6);
+            this.DeviceList.AllColumns.Add(this.olvColumn8);
+            this.DeviceList.AllColumns.Add(this.olvColumn7);
+            this.DeviceList.BackColor = System.Drawing.Color.White;
+            this.DeviceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DeviceList.CellEditUseWholeCell = false;
+            this.DeviceList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvColumn1,
+            this.olvColumn2,
+            this.olvColumn3,
+            this.olvColumn9,
+            this.olvColumn4,
+            this.olvColumn5,
+            this.olvColumn6,
+            this.olvColumn8,
+            this.olvColumn7});
+            this.DeviceList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeviceList.EmptyListMsg = "Device list is empty";
+            this.DeviceList.EmptyListMsgFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DeviceList.FullRowSelect = true;
+            this.DeviceList.GroupImageList = this.IconList;
+            this.DeviceList.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.HeaderFormatStyle = this.DarkHeaders;
+            this.DeviceList.HideSelection = false;
+            this.DeviceList.HotItemStyle = this.DarkHot;
+            this.DeviceList.Location = new System.Drawing.Point(2, 2);
+            this.DeviceList.Margin = new System.Windows.Forms.Padding(2);
+            this.DeviceList.MultiSelect = false;
+            this.DeviceList.Name = "DeviceList";
+            this.DeviceList.OverlayImage.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DeviceList.RowHeight = 30;
+            this.DeviceList.SelectAllOnControlA = false;
+            this.DeviceList.SelectColumnsMenuStaysOpen = false;
+            this.DeviceList.SelectColumnsOnRightClick = false;
+            this.DeviceList.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
+            this.DeviceList.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.DeviceList.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DeviceList.ShowFilterMenuOnRightClick = false;
+            this.DeviceList.ShowGroups = false;
+            this.DeviceList.ShowImagesOnSubItems = true;
+            this.DeviceList.ShowSortIndicators = false;
+            this.DeviceList.Size = new System.Drawing.Size(1268, 461);
+            this.DeviceList.SmallImageList = this.IconList;
+            this.DeviceList.SpaceBetweenGroups = 1;
+            this.DeviceList.TabIndex = 0;
+            this.DeviceList.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DeviceList.UnfocusedSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.DeviceList.UseCompatibleStateImageBehavior = false;
+            this.DeviceList.UseHotItem = true;
+            this.DeviceList.UseNotifyPropertyChanged = true;
+            this.DeviceList.UseSubItemCheckBoxes = true;
+            this.DeviceList.UseTranslucentSelection = true;
+            this.DeviceList.View = System.Windows.Forms.View.Details;
+            this.DeviceList.VirtualMode = true;
+            this.DeviceList.CellRightClick += new System.EventHandler<BrightIdeasSoftware.CellRightClickEventArgs>(this.DeviceList_CellRightClick);
+            this.DeviceList.SubItemChecking += new System.EventHandler<BrightIdeasSoftware.SubItemCheckingEventArgs>(this.DeviceList_SubItemChecking);
+            this.DeviceList.ItemsAdding += new System.EventHandler<BrightIdeasSoftware.ItemsAddingEventArgs>(this.DeviceList_ItemsAdding);
+            this.DeviceList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DeviceList_MouseDown);
+            // 
+            // olvColumn1
+            // 
+            this.olvColumn1.AspectName = "IP";
+            this.olvColumn1.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn1.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.olvColumn1.Hideable = false;
+            this.olvColumn1.ImageAspectName = "Image";
+            this.olvColumn1.IsEditable = false;
+            this.olvColumn1.MaximumWidth = 165;
+            this.olvColumn1.MinimumWidth = 165;
+            this.olvColumn1.Text = "IP";
+            this.olvColumn1.Width = 165;
+            // 
+            // olvColumn2
+            // 
+            this.olvColumn2.AspectName = "MAC";
+            this.olvColumn2.Groupable = false;
+            this.olvColumn2.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn2.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn2.Hideable = false;
+            this.olvColumn2.IsEditable = false;
+            this.olvColumn2.MaximumWidth = 145;
+            this.olvColumn2.MinimumWidth = 145;
+            this.olvColumn2.Searchable = false;
+            this.olvColumn2.Text = "MAC";
+            this.olvColumn2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn2.Width = 145;
+            // 
+            // olvColumn3
+            // 
+            this.olvColumn3.AspectName = "DeviceName";
+            this.olvColumn3.Groupable = false;
+            this.olvColumn3.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn3.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn3.Hideable = false;
+            this.olvColumn3.IsEditable = false;
+            this.olvColumn3.MaximumWidth = 250;
+            this.olvColumn3.MinimumWidth = 250;
+            this.olvColumn3.Searchable = false;
+            this.olvColumn3.Text = "Device Name";
+            this.olvColumn3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn3.Width = 250;
+            // 
+            // olvColumn9
+            // 
+            this.olvColumn9.AspectName = "ManName";
+            this.olvColumn9.Groupable = false;
+            this.olvColumn9.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn9.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn9.Hideable = false;
+            this.olvColumn9.IsEditable = false;
+            this.olvColumn9.MaximumWidth = 200;
+            this.olvColumn9.MinimumWidth = 200;
+            this.olvColumn9.Searchable = false;
+            this.olvColumn9.Text = "Vendor";
+            this.olvColumn9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn9.Width = 200;
+            // 
+            // olvColumn4
+            // 
+            this.olvColumn4.AspectName = "DeviceStatus";
+            this.olvColumn4.Groupable = false;
+            this.olvColumn4.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn4.Hideable = false;
+            this.olvColumn4.IsEditable = false;
+            this.olvColumn4.MaximumWidth = 115;
+            this.olvColumn4.MinimumWidth = 115;
+            this.olvColumn4.Searchable = false;
+            this.olvColumn4.Text = "Device Status";
+            this.olvColumn4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn4.Width = 115;
+            // 
+            // olvColumn5
+            // 
+            this.olvColumn5.AspectName = "Redirected";
+            this.olvColumn5.CheckBoxes = true;
+            this.olvColumn5.Groupable = false;
+            this.olvColumn5.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn5.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn5.Hideable = false;
+            this.olvColumn5.MaximumWidth = 73;
+            this.olvColumn5.MinimumWidth = 73;
+            this.olvColumn5.Searchable = false;
+            this.olvColumn5.Text = "Redirect";
+            this.olvColumn5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn5.Width = 73;
+            // 
+            // olvColumn6
+            // 
+            this.olvColumn6.AspectName = "Blocked";
+            this.olvColumn6.CheckBoxes = true;
+            this.olvColumn6.Groupable = false;
+            this.olvColumn6.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn6.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn6.Hideable = false;
+            this.olvColumn6.MaximumWidth = 70;
+            this.olvColumn6.MinimumWidth = 70;
+            this.olvColumn6.Searchable = false;
+            this.olvColumn6.Text = "Block";
+            this.olvColumn6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn6.Width = 70;
+            // 
+            // olvColumn8
+            // 
+            this.olvColumn8.AspectName = "DownloadSpeed";
+            this.olvColumn8.Groupable = false;
+            this.olvColumn8.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn8.Hideable = false;
+            this.olvColumn8.IsEditable = false;
+            this.olvColumn8.MaximumWidth = 125;
+            this.olvColumn8.MinimumWidth = 125;
+            this.olvColumn8.Searchable = false;
+            this.olvColumn8.Text = "Download Cap";
+            this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn8.Width = 125;
+            // 
+            // olvColumn7
+            // 
+            this.olvColumn7.AspectName = "UploadSpeed";
+            this.olvColumn7.Groupable = false;
+            this.olvColumn7.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvColumn7.Hideable = false;
+            this.olvColumn7.IsEditable = false;
+            this.olvColumn7.MaximumWidth = 125;
+            this.olvColumn7.MinimumWidth = 125;
+            this.olvColumn7.Searchable = false;
+            this.olvColumn7.Text = "Upload Cap";
+            this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumn7.Width = 125;
+            // 
+            // BottomPanel
+            // 
+            this.BottomPanel.Controls.Add(this.Divider1);
+            this.BottomPanel.Controls.Add(this.LimiterButton);
+            this.BottomPanel.Controls.Add(this.SnifferButton);
+            this.BottomPanel.Controls.Add(this.CurrentOperationStatusLabel);
+            this.BottomPanel.Controls.Add(this.label4);
+            this.BottomPanel.Controls.Add(this.DeviceCountLabel);
+            this.BottomPanel.Controls.Add(this.AboutButton);
+            this.BottomPanel.Controls.Add(this.FormHelpButton);
+            this.BottomPanel.Controls.Add(this.OptionsButton);
+            this.BottomPanel.Controls.Add(this.RefreshButton);
+            this.BottomPanel.Controls.Add(this.button1);
+            this.BottomPanel.Controls.Add(this.ScanButton);
+            this.BottomPanel.Controls.Add(this.LoadingIndicator);
+            this.BottomPanel.Controls.Add(this.OpIndicator);
+            this.BottomPanel.Controls.Add(this.Divider2);
+            this.BottomPanel.Location = new System.Drawing.Point(2, 469);
+            this.BottomPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(1268, 59);
+            this.BottomPanel.TabIndex = 0;
+            // 
+            // Divider1
+            // 
+            this.Divider1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Divider1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Divider1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Divider1.Location = new System.Drawing.Point(888, 9);
+            this.Divider1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Divider1.Name = "Divider1";
+            this.Divider1.Size = new System.Drawing.Size(24, 39);
+            this.Divider1.TabIndex = 38;
+            this.Divider1.Text = "|";
+            this.Divider1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // CurrentOperationStatusLabel
+            // 
+            this.CurrentOperationStatusLabel.AutoSize = true;
+            this.CurrentOperationStatusLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(1161, 20);
+            this.CurrentOperationStatusLabel.Name = "CurrentOperationStatusLabel";
+            this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(55, 20);
+            this.CurrentOperationStatusLabel.TabIndex = 35;
+            this.CurrentOperationStatusLabel.Text = "READY";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(917, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 20);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "STATUS:";
+            // 
+            // DeviceCountLabel
+            // 
+            this.DeviceCountLabel.AutoSize = true;
+            this.DeviceCountLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceCountLabel.Location = new System.Drawing.Point(982, 20);
+            this.DeviceCountLabel.Name = "DeviceCountLabel";
+            this.DeviceCountLabel.Size = new System.Drawing.Size(40, 20);
+            this.DeviceCountLabel.TabIndex = 33;
+            this.DeviceCountLabel.Text = "IDLE";
+            // 
+            // OpIndicator
+            // 
+            this.OpIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OpIndicator.Image = global::NetStalker.Properties.Resources.color_ok;
+            this.OpIndicator.Location = new System.Drawing.Point(1230, 17);
+            this.OpIndicator.Margin = new System.Windows.Forms.Padding(2);
+            this.OpIndicator.Name = "OpIndicator";
+            this.OpIndicator.Size = new System.Drawing.Size(30, 30);
+            this.OpIndicator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.OpIndicator.TabIndex = 7;
+            this.OpIndicator.TabStop = false;
+            // 
+            // Divider2
+            // 
+            this.Divider2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Divider2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Divider2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Divider2.Location = new System.Drawing.Point(1142, 9);
+            this.Divider2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Divider2.Name = "Divider2";
+            this.Divider2.Size = new System.Drawing.Size(24, 39);
+            this.Divider2.TabIndex = 8;
+            this.Divider2.Text = "|";
+            this.Divider2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.Controls.Add(this.DeviceList);
+            this.MainPanel.Controls.Add(this.Separator);
+            this.MainPanel.Controls.Add(this.BottomPanel);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(1273, 531);
+            this.MainPanel.TabIndex = 2;
+            // 
+            // Separator
+            // 
+            this.Separator.BackColor = System.Drawing.Color.DimGray;
+            this.Separator.Location = new System.Drawing.Point(3, 465);
+            this.Separator.Name = "Separator";
+            this.Separator.Size = new System.Drawing.Size(1267, 2);
+            this.Separator.TabIndex = 1;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1092, 500);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel3);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1273, 531);
+            this.Controls.Add(this.MainPanel);
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NetStalker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
             this.Resize += new System.EventHandler(this.Main_Resize);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
+            this.DeviceMenu.ResumeLayout(false);
             this.TrayMenu.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingIndicator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).EndInit();
+            this.BottomPanel.ResumeLayout(false);
+            this.BottomPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OpIndicator)).EndInit();
+            this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private MaterialSkin.Controls.MaterialFlatButton ScanButton;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel DeviceCountLabel;
-        private MaterialSkin.Controls.MaterialLabel CurrentOperationStatusLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private MaterialSkin.Controls.MaterialFlatButton OptionsButton;
-        private MetroFramework.Controls.MetroTile SnifferButton;
-        private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.NotifyIcon TrayIcon;
-        private MetroFramework.Controls.MetroTile LimiterButton;
-        private System.Windows.Forms.Panel panel3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private BrightIdeasSoftware.OLVColumn olvColumn1;
-        private BrightIdeasSoftware.OLVColumn olvColumn2;
-        private BrightIdeasSoftware.OLVColumn olvColumn3;
-        private BrightIdeasSoftware.OLVColumn olvColumn4;
-        private BrightIdeasSoftware.OLVColumn olvColumn5;
-        private BrightIdeasSoftware.OLVColumn olvColumn6;
         public BrightIdeasSoftware.HotItemStyle DarkHot;
-        public BrightIdeasSoftware.FastObjectListView DeviceList;
         public BrightIdeasSoftware.HeaderFormatStyle DarkHeaders;
         public System.Windows.Forms.ImageList IconList;
-        private BrightIdeasSoftware.OLVColumn olvColumn7;
-        private BrightIdeasSoftware.OLVColumn olvColumn8;
-        private MaterialSkin.Controls.MaterialFlatButton FormHelpButton;
-        private MaterialSkin.Controls.MaterialFlatButton AboutButton;
         public BrightIdeasSoftware.HotItemStyle LightHot;
         public BrightIdeasSoftware.HeaderFormatStyle LightHeaders;
         public System.Windows.Forms.ToolTip Tooltip;
+        private System.Windows.Forms.ContextMenuStrip DeviceMenu;
+        private System.Windows.Forms.ToolStripMenuItem SetName;
+        private System.Windows.Forms.ToolStripMenuItem ClearName;
+        public BrightIdeasSoftware.FastObjectListView DeviceList;
+        private BrightIdeasSoftware.OLVColumn olvColumn1;
+        private BrightIdeasSoftware.OLVColumn olvColumn2;
+        private BrightIdeasSoftware.OLVColumn olvColumn3;
         private BrightIdeasSoftware.OLVColumn olvColumn9;
-        public System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialContextMenuStrip TrayMenu;
-        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialFlatButton RefreshButton;
+        private BrightIdeasSoftware.OLVColumn olvColumn4;
+        private BrightIdeasSoftware.OLVColumn olvColumn5;
+        private BrightIdeasSoftware.OLVColumn olvColumn6;
+        private BrightIdeasSoftware.OLVColumn olvColumn8;
+        private BrightIdeasSoftware.OLVColumn olvColumn7;
+        private System.Windows.Forms.Panel BottomPanel;
+        private System.Windows.Forms.Button ScanButton;
+        public System.Windows.Forms.PictureBox LoadingIndicator;
+        public System.Windows.Forms.PictureBox OpIndicator;
+        private System.Windows.Forms.Label Divider2;
+        private System.Windows.Forms.FlowLayoutPanel MainPanel;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OptionsButton;
+        private System.Windows.Forms.Button FormHelpButton;
+        private System.Windows.Forms.Button AboutButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label DeviceCountLabel;
+        private System.Windows.Forms.Label CurrentOperationStatusLabel;
+        private System.Windows.Forms.Button SnifferButton;
+        private System.Windows.Forms.Button LimiterButton;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Label Divider1;
+        private System.Windows.Forms.ContextMenuStrip TrayMenu;
+        private System.Windows.Forms.ToolStripMenuItem sHOWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
+        private System.Windows.Forms.Label Separator;
     }
 }
 

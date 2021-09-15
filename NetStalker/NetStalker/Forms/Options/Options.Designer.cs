@@ -30,427 +30,122 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
-            this.PasswordField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.ConfirmPasswordField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.SetPasswordButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.SaveButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.RemovePasswordButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.LightCheck = new MaterialSkin.Controls.MaterialRadioButton();
-            this.DarkCheck = new MaterialSkin.Controls.MaterialRadioButton();
-            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.StatusLabel = new MaterialSkin.Controls.MaterialLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            this.DarkCheck = new System.Windows.Forms.RadioButton();
+            this.LightCheck = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.TaskbarCheck = new MaterialSkin.Controls.MaterialRadioButton();
-            this.TrayCheck = new MaterialSkin.Controls.MaterialRadioButton();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.SpoofProtectionCheck = new MaterialSkin.Controls.MaterialCheckBox();
+            this.TaskbarCheck = new System.Windows.Forms.RadioButton();
+            this.TrayCheck = new System.Windows.Forms.RadioButton();
             this.HelpBubble = new System.Windows.Forms.PictureBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.SuppressNotificationsCheck = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.TokenField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            this.MacVendorsLinkLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.TokenField = new System.Windows.Forms.TextBox();
+            this.MacVendorsLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.PasswordField = new System.Windows.Forms.TextBox();
+            this.ConfirmPasswordField = new System.Windows.Forms.TextBox();
+            this.SpoofProtectionCheck = new System.Windows.Forms.CheckBox();
+            this.SuppressNotificationsCheck = new System.Windows.Forms.CheckBox();
+            this.SetPasswordButton = new System.Windows.Forms.Button();
+            this.RemovePasswordButton = new System.Windows.Forms.Button();
+            this.PassStatus = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelpBubble)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PasswordField
-            // 
-            this.PasswordField.Depth = 0;
-            this.PasswordField.Hint = "Set Password";
-            this.PasswordField.Location = new System.Drawing.Point(129, 156);
-            this.PasswordField.Margin = new System.Windows.Forms.Padding(4);
-            this.PasswordField.MaxLength = 32767;
-            this.PasswordField.MouseState = MaterialSkin.MouseState.HOVER;
-            this.PasswordField.Name = "PasswordField";
-            this.PasswordField.PasswordChar = '*';
-            this.PasswordField.SelectedText = "";
-            this.PasswordField.SelectionLength = 0;
-            this.PasswordField.SelectionStart = 0;
-            this.PasswordField.Size = new System.Drawing.Size(299, 28);
-            this.PasswordField.TabIndex = 8;
-            this.PasswordField.TabStop = false;
-            this.PasswordField.UseSystemPasswordChar = true;
-            this.PasswordField.TextChanged += new System.EventHandler(this.PasswordField_TextChanged);
-            // 
-            // ConfirmPasswordField
-            // 
-            this.ConfirmPasswordField.Depth = 0;
-            this.ConfirmPasswordField.Hint = "Confirm Password";
-            this.ConfirmPasswordField.Location = new System.Drawing.Point(129, 191);
-            this.ConfirmPasswordField.Margin = new System.Windows.Forms.Padding(4);
-            this.ConfirmPasswordField.MaxLength = 32767;
-            this.ConfirmPasswordField.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ConfirmPasswordField.Name = "ConfirmPasswordField";
-            this.ConfirmPasswordField.PasswordChar = '*';
-            this.ConfirmPasswordField.SelectedText = "";
-            this.ConfirmPasswordField.SelectionLength = 0;
-            this.ConfirmPasswordField.SelectionStart = 0;
-            this.ConfirmPasswordField.Size = new System.Drawing.Size(299, 28);
-            this.ConfirmPasswordField.TabIndex = 9;
-            this.ConfirmPasswordField.TabStop = false;
-            this.ConfirmPasswordField.UseSystemPasswordChar = true;
-            this.ConfirmPasswordField.TextChanged += new System.EventHandler(this.ConfirmPasswordField_TextChanged);
-            // 
-            // SetPasswordButton
-            // 
-            this.SetPasswordButton.AutoSize = true;
-            this.SetPasswordButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SetPasswordButton.Depth = 0;
-            this.SetPasswordButton.Icon = global::NetStalker.Properties.Resources.color_keyhole_shield;
-            this.SetPasswordButton.Location = new System.Drawing.Point(331, 254);
-            this.SetPasswordButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.SetPasswordButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SetPasswordButton.Name = "SetPasswordButton";
-            this.SetPasswordButton.Primary = false;
-            this.SetPasswordButton.Size = new System.Drawing.Size(81, 36);
-            this.SetPasswordButton.TabIndex = 18;
-            this.SetPasswordButton.Text = "Set";
-            this.SetPasswordButton.UseVisualStyleBackColor = true;
-            this.SetPasswordButton.Click += new System.EventHandler(this.SetPasswordButton_Click);
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.AutoSize = true;
-            this.SaveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SaveButton.Depth = 0;
-            this.SaveButton.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.SaveButton.Location = new System.Drawing.Point(815, 553);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.SaveButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Primary = false;
-            this.SaveButton.Size = new System.Drawing.Size(93, 36);
-            this.SaveButton.TabIndex = 7;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // RemovePasswordButton
-            // 
-            this.RemovePasswordButton.AutoSize = true;
-            this.RemovePasswordButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.RemovePasswordButton.Depth = 0;
-            this.RemovePasswordButton.Icon = global::NetStalker.Properties.Resources.color_clear_symbol;
-            this.RemovePasswordButton.Location = new System.Drawing.Point(183, 254);
-            this.RemovePasswordButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.RemovePasswordButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RemovePasswordButton.Name = "RemovePasswordButton";
-            this.RemovePasswordButton.Primary = false;
-            this.RemovePasswordButton.Size = new System.Drawing.Size(118, 36);
-            this.RemovePasswordButton.TabIndex = 19;
-            this.RemovePasswordButton.Text = "Remove";
-            this.RemovePasswordButton.UseVisualStyleBackColor = true;
-            this.RemovePasswordButton.Click += new System.EventHandler(this.RemovePasswordButton_Click);
-            // 
-            // materialLabel6
-            // 
-            this.materialLabel6.BackColor = System.Drawing.Color.White;
-            this.materialLabel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(16, 126);
-            this.materialLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(413, 2);
-            this.materialLabel6.TabIndex = 20;
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel3.BackColor = System.Drawing.Color.White;
-            this.materialLabel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(483, 126);
-            this.materialLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(413, 2);
-            this.materialLabel3.TabIndex = 22;
-            // 
-            // LightCheck
-            // 
-            this.LightCheck.AutoSize = true;
-            this.LightCheck.Depth = 0;
-            this.LightCheck.Font = new System.Drawing.Font("Roboto", 10F);
-            this.LightCheck.Location = new System.Drawing.Point(5, 20);
-            this.LightCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.LightCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.LightCheck.MouseState = MaterialSkin.MouseState.HOVER;
-            this.LightCheck.Name = "LightCheck";
-            this.LightCheck.Ripple = true;
-            this.LightCheck.Size = new System.Drawing.Size(69, 30);
-            this.LightCheck.TabIndex = 23;
-            this.LightCheck.TabStop = true;
-            this.LightCheck.Text = "Light";
-            this.LightCheck.UseVisualStyleBackColor = true;
-            this.LightCheck.Click += new System.EventHandler(this.LightCheck_Click);
-            // 
-            // DarkCheck
-            // 
-            this.DarkCheck.AutoSize = true;
-            this.DarkCheck.Depth = 0;
-            this.DarkCheck.Font = new System.Drawing.Font("Roboto", 10F);
-            this.DarkCheck.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DarkCheck.Location = new System.Drawing.Point(117, 20);
-            this.DarkCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.DarkCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.DarkCheck.MouseState = MaterialSkin.MouseState.HOVER;
-            this.DarkCheck.Name = "DarkCheck";
-            this.DarkCheck.Ripple = true;
-            this.DarkCheck.Size = new System.Drawing.Size(66, 30);
-            this.DarkCheck.TabIndex = 24;
-            this.DarkCheck.TabStop = true;
-            this.DarkCheck.Text = "Dark";
-            this.DarkCheck.UseVisualStyleBackColor = true;
-            this.DarkCheck.Click += new System.EventHandler(this.DarkCheck_Click);
-            // 
-            // materialLabel11
-            // 
-            this.materialLabel11.AutoSize = true;
-            this.materialLabel11.Depth = 0;
-            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(295, 95);
-            this.materialLabel11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(126, 24);
-            this.materialLabel11.TabIndex = 31;
-            this.materialLabel11.Text = "Set Password";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(764, 95);
-            this.materialLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(120, 24);
-            this.materialLabel2.TabIndex = 32;
-            this.materialLabel2.Text = "Choose Style";
-            // 
-            // materialLabel10
-            // 
-            this.materialLabel10.AutoSize = true;
-            this.materialLabel10.Depth = 0;
-            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(21, 158);
-            this.materialLabel10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(99, 24);
-            this.materialLabel10.TabIndex = 34;
-            this.materialLabel10.Text = "Password:";
-            // 
-            // materialLabel12
-            // 
-            this.materialLabel12.AutoSize = true;
-            this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(21, 193);
-            this.materialLabel12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(83, 24);
-            this.materialLabel12.TabIndex = 35;
-            this.materialLabel12.Text = "Confirm:";
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(124, 225);
-            this.materialLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(0, 24);
-            this.materialLabel5.TabIndex = 36;
-            // 
-            // StatusLabel
-            // 
-            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Depth = 0;
-            this.StatusLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.StatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.StatusLabel.Location = new System.Drawing.Point(21, 555);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.StatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(0, 24);
-            this.StatusLabel.TabIndex = 37;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.DarkCheck);
             this.panel1.Controls.Add(this.LightCheck);
-            this.panel1.Location = new System.Drawing.Point(483, 132);
+            this.panel1.Location = new System.Drawing.Point(483, 62);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(412, 74);
+            this.panel1.Size = new System.Drawing.Size(412, 79);
             this.panel1.TabIndex = 38;
             // 
-            // materialLabel1
+            // DarkCheck
             // 
-            this.materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(696, 225);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(189, 24);
-            this.materialLabel1.TabIndex = 41;
-            this.materialLabel1.Text = "Minimize Application";
+            this.DarkCheck.AutoSize = true;
+            this.DarkCheck.Location = new System.Drawing.Point(117, 26);
+            this.DarkCheck.Name = "DarkCheck";
+            this.DarkCheck.Size = new System.Drawing.Size(55, 20);
+            this.DarkCheck.TabIndex = 26;
+            this.DarkCheck.TabStop = true;
+            this.DarkCheck.Text = "DARK";
+            this.DarkCheck.UseVisualStyleBackColor = true;
+            this.DarkCheck.Click += new System.EventHandler(this.DarkCheck_Click);
             // 
-            // materialLabel9
+            // LightCheck
             // 
-            this.materialLabel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel9.BackColor = System.Drawing.Color.White;
-            this.materialLabel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel9.Depth = 0;
-            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(483, 256);
-            this.materialLabel9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(413, 2);
-            this.materialLabel9.TabIndex = 40;
+            this.LightCheck.AutoSize = true;
+            this.LightCheck.Location = new System.Drawing.Point(5, 26);
+            this.LightCheck.Name = "LightCheck";
+            this.LightCheck.Size = new System.Drawing.Size(57, 20);
+            this.LightCheck.TabIndex = 25;
+            this.LightCheck.TabStop = true;
+            this.LightCheck.Text = "LIGHT";
+            this.LightCheck.UseVisualStyleBackColor = true;
+            this.LightCheck.Click += new System.EventHandler(this.LightCheck_Click);
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.TaskbarCheck);
             this.panel3.Controls.Add(this.TrayCheck);
-            this.panel3.Location = new System.Drawing.Point(483, 262);
+            this.panel3.Location = new System.Drawing.Point(483, 200);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(412, 62);
+            this.panel3.Size = new System.Drawing.Size(412, 66);
             this.panel3.TabIndex = 42;
             // 
             // TaskbarCheck
             // 
             this.TaskbarCheck.AutoSize = true;
-            this.TaskbarCheck.Depth = 0;
-            this.TaskbarCheck.Font = new System.Drawing.Font("Roboto", 10F);
-            this.TaskbarCheck.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TaskbarCheck.Location = new System.Drawing.Point(117, 18);
-            this.TaskbarCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.TaskbarCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.TaskbarCheck.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaskbarCheck.Location = new System.Drawing.Point(117, 23);
             this.TaskbarCheck.Name = "TaskbarCheck";
-            this.TaskbarCheck.Ripple = true;
-            this.TaskbarCheck.Size = new System.Drawing.Size(93, 30);
-            this.TaskbarCheck.TabIndex = 24;
+            this.TaskbarCheck.Size = new System.Drawing.Size(71, 20);
+            this.TaskbarCheck.TabIndex = 28;
             this.TaskbarCheck.TabStop = true;
-            this.TaskbarCheck.Text = "Taskbar";
+            this.TaskbarCheck.Text = "TASKBAR";
             this.TaskbarCheck.UseVisualStyleBackColor = true;
             this.TaskbarCheck.Click += new System.EventHandler(this.TaskbarCheck_Click);
             // 
             // TrayCheck
             // 
             this.TrayCheck.AutoSize = true;
-            this.TrayCheck.Depth = 0;
-            this.TrayCheck.Font = new System.Drawing.Font("Roboto", 10F);
-            this.TrayCheck.Location = new System.Drawing.Point(5, 18);
-            this.TrayCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.TrayCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.TrayCheck.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TrayCheck.Location = new System.Drawing.Point(5, 23);
             this.TrayCheck.Name = "TrayCheck";
-            this.TrayCheck.Ripple = true;
-            this.TrayCheck.Size = new System.Drawing.Size(64, 30);
-            this.TrayCheck.TabIndex = 23;
+            this.TrayCheck.Size = new System.Drawing.Size(52, 20);
+            this.TrayCheck.TabIndex = 27;
             this.TrayCheck.TabStop = true;
-            this.TrayCheck.Text = "Tray";
+            this.TrayCheck.Text = "TRAY";
             this.TrayCheck.UseVisualStyleBackColor = true;
             this.TrayCheck.Click += new System.EventHandler(this.TrayCheck_Click);
-            // 
-            // materialLabel7
-            // 
-            this.materialLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(293, 318);
-            this.materialLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(126, 24);
-            this.materialLabel7.TabIndex = 44;
-            this.materialLabel7.Text = "Other Options";
-            // 
-            // materialLabel8
-            // 
-            this.materialLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel8.BackColor = System.Drawing.Color.White;
-            this.materialLabel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel8.Depth = 0;
-            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(16, 348);
-            this.materialLabel8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(413, 2);
-            this.materialLabel8.TabIndex = 43;
-            // 
-            // SpoofProtectionCheck
-            // 
-            this.SpoofProtectionCheck.AutoSize = true;
-            this.SpoofProtectionCheck.Depth = 0;
-            this.SpoofProtectionCheck.Font = new System.Drawing.Font("Roboto", 10F);
-            this.SpoofProtectionCheck.Location = new System.Drawing.Point(27, 370);
-            this.SpoofProtectionCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.SpoofProtectionCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.SpoofProtectionCheck.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SpoofProtectionCheck.Name = "SpoofProtectionCheck";
-            this.SpoofProtectionCheck.Ripple = true;
-            this.SpoofProtectionCheck.Size = new System.Drawing.Size(161, 30);
-            this.SpoofProtectionCheck.TabIndex = 45;
-            this.SpoofProtectionCheck.Text = "Spoof Protection";
-            this.SpoofProtectionCheck.UseVisualStyleBackColor = true;
-            this.SpoofProtectionCheck.CheckedChanged += new System.EventHandler(this.SpoofProtectionCheck_CheckedChanged);
             // 
             // HelpBubble
             // 
             this.HelpBubble.Image = global::NetStalker.Properties.Resources.color_help;
-            this.HelpBubble.Location = new System.Drawing.Point(265, 370);
+            this.HelpBubble.Location = new System.Drawing.Point(265, 312);
             this.HelpBubble.Margin = new System.Windows.Forms.Padding(4);
             this.HelpBubble.Name = "HelpBubble";
-            this.HelpBubble.Size = new System.Drawing.Size(40, 37);
+            this.HelpBubble.Size = new System.Drawing.Size(40, 39);
             this.HelpBubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.HelpBubble.TabIndex = 46;
             this.HelpBubble.TabStop = false;
@@ -470,156 +165,357 @@
             this.ToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.ToolTip_Draw);
             this.ToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.ToolTip_Popup);
             // 
-            // SuppressNotificationsCheck
+            // label1
             // 
-            this.SuppressNotificationsCheck.AutoSize = true;
-            this.SuppressNotificationsCheck.Depth = 0;
-            this.SuppressNotificationsCheck.Font = new System.Drawing.Font("Roboto", 10F);
-            this.SuppressNotificationsCheck.Location = new System.Drawing.Point(27, 420);
-            this.SuppressNotificationsCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.SuppressNotificationsCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.SuppressNotificationsCheck.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SuppressNotificationsCheck.Name = "SuppressNotificationsCheck";
-            this.SuppressNotificationsCheck.Ripple = true;
-            this.SuppressNotificationsCheck.Size = new System.Drawing.Size(207, 30);
-            this.SuppressNotificationsCheck.TabIndex = 47;
-            this.SuppressNotificationsCheck.Text = "Suppress Notifications";
-            this.SuppressNotificationsCheck.UseVisualStyleBackColor = true;
-            this.SuppressNotificationsCheck.CheckedChanged += new System.EventHandler(this.SuppressNotificationsCheck_CheckedChanged);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(297, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 17);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "SET PASSWORD";
             // 
-            // materialLabel4
+            // label2
             // 
-            this.materialLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(719, 339);
-            this.materialLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(160, 24);
-            this.materialLabel4.TabIndex = 49;
-            this.materialLabel4.Text = "MAC Vendors API";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(766, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "CHOOSE STYLE";
             // 
-            // materialLabel13
+            // label3
             // 
-            this.materialLabel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialLabel13.BackColor = System.Drawing.Color.White;
-            this.materialLabel13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.materialLabel13.Depth = 0;
-            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel13.Location = new System.Drawing.Point(483, 370);
-            this.materialLabel13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(413, 2);
-            this.materialLabel13.TabIndex = 48;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(290, 272);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 17);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "OTHER OPTIONS";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(694, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(163, 17);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "MINIMIZE APPLICATION";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(727, 292);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 17);
+            this.label5.TabIndex = 62;
+            this.label5.Text = "MAC VENDORS API";
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.DimGray;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Location = new System.Drawing.Point(26, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(402, 1);
+            this.label6.TabIndex = 63;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.DimGray;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Location = new System.Drawing.Point(483, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(413, 1);
+            this.label7.TabIndex = 64;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.DimGray;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Location = new System.Drawing.Point(483, 195);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(413, 1);
+            this.label8.TabIndex = 65;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.DimGray;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label9.Location = new System.Drawing.Point(483, 315);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(413, 1);
+            this.label9.TabIndex = 66;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.DimGray;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label10.Location = new System.Drawing.Point(26, 296);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(402, 1);
+            this.label10.TabIndex = 67;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(483, 322);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(321, 48);
+            this.label11.TabIndex = 68;
+            this.label11.Text = "If you can\'t see the device\'s manufacturer, acquire a new\r\ntoken from the link be" +
+    "low and enter it in the API\r\nToken field.\r\n";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(479, 395);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 19);
+            this.label12.TabIndex = 69;
+            this.label12.Text = "API TOKEN:";
             // 
             // TokenField
             // 
-            this.TokenField.Depth = 0;
-            this.TokenField.Hint = "Token";
-            this.TokenField.Location = new System.Drawing.Point(587, 441);
-            this.TokenField.MaxLength = 32767;
-            this.TokenField.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TokenField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TokenField.Location = new System.Drawing.Point(588, 391);
             this.TokenField.Name = "TokenField";
-            this.TokenField.PasswordChar = '\0';
-            this.TokenField.SelectedText = "";
-            this.TokenField.SelectionLength = 0;
-            this.TokenField.SelectionStart = 0;
-            this.TokenField.Size = new System.Drawing.Size(308, 28);
-            this.TokenField.TabIndex = 50;
-            this.TokenField.TabStop = false;
-            this.TokenField.UseSystemPasswordChar = false;
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(479, 443);
-            this.materialLabel14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(101, 24);
-            this.materialLabel14.TabIndex = 51;
-            this.materialLabel14.Text = "API Token:";
-            // 
-            // materialLabel15
-            // 
-            this.materialLabel15.AutoSize = true;
-            this.materialLabel15.Depth = 0;
-            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(480, 378);
-            this.materialLabel15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(482, 72);
-            this.materialLabel15.TabIndex = 55;
-            this.materialLabel15.Text = "If you can\'t see the device\'s manufacturer, acquire a new\r\ntoken from the link be" +
-    "low and enter it in the API\r\nToken field.";
+            this.TokenField.Size = new System.Drawing.Size(306, 24);
+            this.TokenField.TabIndex = 70;
             // 
             // MacVendorsLinkLabel
             // 
             this.MacVendorsLinkLabel.AutoSize = true;
-            this.MacVendorsLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MacVendorsLinkLabel.Depth = 0;
-            this.MacVendorsLinkLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.MacVendorsLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.MacVendorsLinkLabel.Location = new System.Drawing.Point(584, 485);
-            this.MacVendorsLinkLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MacVendorsLinkLabel.Location = new System.Drawing.Point(584, 420);
             this.MacVendorsLinkLabel.Name = "MacVendorsLinkLabel";
-            this.MacVendorsLinkLabel.Size = new System.Drawing.Size(255, 24);
-            this.MacVendorsLinkLabel.TabIndex = 57;
+            this.MacVendorsLinkLabel.Size = new System.Drawing.Size(167, 16);
+            this.MacVendorsLinkLabel.TabIndex = 71;
+            this.MacVendorsLinkLabel.TabStop = true;
             this.MacVendorsLinkLabel.Text = "https://macvendors.com/api";
-            this.MacVendorsLinkLabel.Click += new System.EventHandler(this.MacVendorsLinkLabel_Click);
+            this.MacVendorsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MacVendorsLinkLabel_LinkClicked);
+            // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Location = new System.Drawing.Point(12, 499);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(0, 19);
+            this.StatusLabel.TabIndex = 72;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.BackColor = System.Drawing.Color.White;
+            this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SaveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.ImageKey = "color_ok.PNG";
+            this.SaveButton.ImageList = this.ButtonIcons;
+            this.SaveButton.Location = new System.Drawing.Point(794, 459);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(106, 57);
+            this.SaveButton.TabIndex = 73;
+            this.SaveButton.Text = "SAVE";
+            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // ButtonIcons
+            // 
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_about.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(2, "color_clear-symbol.PNG");
+            this.ButtonIcons.Images.SetKeyName(3, "color_define-location.PNG");
+            this.ButtonIcons.Images.SetKeyName(4, "color_error.PNG");
+            this.ButtonIcons.Images.SetKeyName(5, "color_external.PNG");
+            this.ButtonIcons.Images.SetKeyName(6, "color_gear.PNG");
+            this.ButtonIcons.Images.SetKeyName(7, "color_help.PNG");
+            this.ButtonIcons.Images.SetKeyName(8, "color_info.PNG");
+            this.ButtonIcons.Images.SetKeyName(9, "color_keyhole-shield.PNG");
+            this.ButtonIcons.Images.SetKeyName(10, "color_network-card.PNG");
+            this.ButtonIcons.Images.SetKeyName(11, "color_ok.PNG");
+            this.ButtonIcons.Images.SetKeyName(12, "color_restart.PNG");
+            this.ButtonIcons.Images.SetKeyName(13, "color_start.PNG");
+            this.ButtonIcons.Images.SetKeyName(14, "color_stop-squared.PNG");
+            this.ButtonIcons.Images.SetKeyName(15, "icons8-info-35.png");
+            this.ButtonIcons.Images.SetKeyName(16, "icons8-ok-red.png");
+            this.ButtonIcons.Images.SetKeyName(17, "spinB.gif");
+            this.ButtonIcons.Images.SetKeyName(18, "spinW.gif");
+            this.ButtonIcons.Images.SetKeyName(19, "icons8-speed-96.png");
+            this.ButtonIcons.Images.SetKeyName(20, "icons8-target-100.png");
+            this.ButtonIcons.Images.SetKeyName(21, "icons8-gps-signal-96.png");
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(23, 90);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 19);
+            this.label13.TabIndex = 74;
+            this.label13.Text = "PASSWORD:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(23, 132);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 19);
+            this.label14.TabIndex = 75;
+            this.label14.Text = "CONFIRM:";
+            // 
+            // PasswordField
+            // 
+            this.PasswordField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordField.Location = new System.Drawing.Point(138, 86);
+            this.PasswordField.Name = "PasswordField";
+            this.PasswordField.Size = new System.Drawing.Size(290, 24);
+            this.PasswordField.TabIndex = 76;
+            this.PasswordField.TextChanged += new System.EventHandler(this.PasswordField_TextChanged);
+            // 
+            // ConfirmPasswordField
+            // 
+            this.ConfirmPasswordField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmPasswordField.Location = new System.Drawing.Point(138, 128);
+            this.ConfirmPasswordField.Name = "ConfirmPasswordField";
+            this.ConfirmPasswordField.Size = new System.Drawing.Size(290, 24);
+            this.ConfirmPasswordField.TabIndex = 77;
+            this.ConfirmPasswordField.TextChanged += new System.EventHandler(this.ConfirmPasswordField_TextChanged);
+            // 
+            // SpoofProtectionCheck
+            // 
+            this.SpoofProtectionCheck.AutoSize = true;
+            this.SpoofProtectionCheck.Location = new System.Drawing.Point(27, 320);
+            this.SpoofProtectionCheck.Name = "SpoofProtectionCheck";
+            this.SpoofProtectionCheck.Size = new System.Drawing.Size(138, 20);
+            this.SpoofProtectionCheck.TabIndex = 78;
+            this.SpoofProtectionCheck.Text = "SPOOF PROTECTION";
+            this.SpoofProtectionCheck.UseVisualStyleBackColor = true;
+            this.SpoofProtectionCheck.CheckedChanged += new System.EventHandler(this.SpoofProtectionCheck_CheckedChanged);
+            // 
+            // SuppressNotificationsCheck
+            // 
+            this.SuppressNotificationsCheck.AutoSize = true;
+            this.SuppressNotificationsCheck.Location = new System.Drawing.Point(27, 356);
+            this.SuppressNotificationsCheck.Name = "SuppressNotificationsCheck";
+            this.SuppressNotificationsCheck.Size = new System.Drawing.Size(165, 20);
+            this.SuppressNotificationsCheck.TabIndex = 79;
+            this.SuppressNotificationsCheck.Text = "SUPPRESS NOTIFICATIONS";
+            this.SuppressNotificationsCheck.UseVisualStyleBackColor = true;
+            this.SuppressNotificationsCheck.CheckedChanged += new System.EventHandler(this.SuppressNotificationsCheck_CheckedChanged);
+            // 
+            // SetPasswordButton
+            // 
+            this.SetPasswordButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetPasswordButton.BackColor = System.Drawing.Color.White;
+            this.SetPasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SetPasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SetPasswordButton.FlatAppearance.BorderSize = 0;
+            this.SetPasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SetPasswordButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetPasswordButton.ImageKey = "color_keyhole-shield.PNG";
+            this.SetPasswordButton.ImageList = this.ButtonIcons;
+            this.SetPasswordButton.Location = new System.Drawing.Point(322, 189);
+            this.SetPasswordButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SetPasswordButton.Name = "SetPasswordButton";
+            this.SetPasswordButton.Size = new System.Drawing.Size(106, 57);
+            this.SetPasswordButton.TabIndex = 80;
+            this.SetPasswordButton.Text = "SET";
+            this.SetPasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SetPasswordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SetPasswordButton.UseVisualStyleBackColor = false;
+            this.SetPasswordButton.Click += new System.EventHandler(this.SetPasswordButton_Click);
+            // 
+            // RemovePasswordButton
+            // 
+            this.RemovePasswordButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemovePasswordButton.BackColor = System.Drawing.Color.White;
+            this.RemovePasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.RemovePasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.RemovePasswordButton.FlatAppearance.BorderSize = 0;
+            this.RemovePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemovePasswordButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemovePasswordButton.ImageKey = "color_clear-symbol.PNG";
+            this.RemovePasswordButton.ImageList = this.ButtonIcons;
+            this.RemovePasswordButton.Location = new System.Drawing.Point(190, 189);
+            this.RemovePasswordButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RemovePasswordButton.Name = "RemovePasswordButton";
+            this.RemovePasswordButton.Size = new System.Drawing.Size(106, 57);
+            this.RemovePasswordButton.TabIndex = 81;
+            this.RemovePasswordButton.Text = "REMOVE";
+            this.RemovePasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RemovePasswordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RemovePasswordButton.UseVisualStyleBackColor = false;
+            this.RemovePasswordButton.Click += new System.EventHandler(this.RemovePasswordButton_Click);
+            // 
+            // PassStatus
+            // 
+            this.PassStatus.AutoSize = true;
+            this.PassStatus.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PassStatus.Location = new System.Drawing.Point(134, 158);
+            this.PassStatus.Name = "PassStatus";
+            this.PassStatus.Size = new System.Drawing.Size(0, 17);
+            this.PassStatus.TabIndex = 82;
             // 
             // Options
             // 
             this.AcceptButton = this.SaveButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 608);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(912, 529);
             this.ControlBox = false;
-            this.Controls.Add(this.MacVendorsLinkLabel);
-            this.Controls.Add(this.materialLabel15);
-            this.Controls.Add(this.materialLabel14);
-            this.Controls.Add(this.TokenField);
-            this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.materialLabel13);
-            this.Controls.Add(this.SuppressNotificationsCheck);
-            this.Controls.Add(this.HelpBubble);
-            this.Controls.Add(this.SpoofProtectionCheck);
-            this.Controls.Add(this.materialLabel7);
-            this.Controls.Add(this.materialLabel8);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.materialLabel9);
-            this.Controls.Add(this.StatusLabel);
-            this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.materialLabel12);
-            this.Controls.Add(this.materialLabel10);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel11);
-            this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialLabel6);
+            this.Controls.Add(this.PassStatus);
             this.Controls.Add(this.RemovePasswordButton);
             this.Controls.Add(this.SetPasswordButton);
+            this.Controls.Add(this.SuppressNotificationsCheck);
+            this.Controls.Add(this.SpoofProtectionCheck);
             this.Controls.Add(this.ConfirmPasswordField);
             this.Controls.Add(this.PasswordField);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.StatusLabel);
+            this.Controls.Add(this.MacVendorsLinkLabel);
+            this.Controls.Add(this.TokenField);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.HelpBubble);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Options";
             this.ShowInTaskbar = false;
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.Options_Load);
@@ -635,39 +531,39 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialFlatButton SaveButton;
-        private MaterialSkin.Controls.MaterialSingleLineTextField PasswordField;
-        private MaterialSkin.Controls.MaterialSingleLineTextField ConfirmPasswordField;
-        private MaterialSkin.Controls.MaterialFlatButton SetPasswordButton;
-        private MaterialSkin.Controls.MaterialFlatButton RemovePasswordButton;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialRadioButton LightCheck;
-        private MaterialSkin.Controls.MaterialRadioButton DarkCheck;
-        private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialLabel StatusLabel;
         private System.Windows.Forms.Panel panel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private System.Windows.Forms.Panel panel3;
-        private MaterialSkin.Controls.MaterialRadioButton TaskbarCheck;
-        private MaterialSkin.Controls.MaterialRadioButton TrayCheck;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private MaterialSkin.Controls.MaterialCheckBox SpoofProtectionCheck;
         private System.Windows.Forms.PictureBox HelpBubble;
         public System.Windows.Forms.ToolTip ToolTip;
-        private MaterialSkin.Controls.MaterialCheckBox SuppressNotificationsCheck;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TokenField;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialLabel MacVendorsLinkLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox TokenField;
+        private System.Windows.Forms.LinkLabel MacVendorsLinkLabel;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.RadioButton DarkCheck;
+        private System.Windows.Forms.RadioButton LightCheck;
+        private System.Windows.Forms.RadioButton TaskbarCheck;
+        private System.Windows.Forms.RadioButton TrayCheck;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox PasswordField;
+        private System.Windows.Forms.TextBox ConfirmPasswordField;
+        private System.Windows.Forms.CheckBox SpoofProtectionCheck;
+        private System.Windows.Forms.CheckBox SuppressNotificationsCheck;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Button SetPasswordButton;
+        private System.Windows.Forms.Button RemovePasswordButton;
+        private System.Windows.Forms.Label PassStatus;
     }
 }

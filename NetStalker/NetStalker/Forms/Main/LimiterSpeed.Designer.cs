@@ -28,131 +28,142 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LimiterSpeed));
-            this.SetButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.SetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
-            // SetButton
-            // 
-            this.SetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetButton.AutoSize = true;
-            this.SetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SetButton.Depth = 0;
-            this.SetButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.SetButton.Icon = global::NetStalker.Properties.Resources.color_define_location;
-            this.SetButton.Location = new System.Drawing.Point(290, 91);
-            this.SetButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.SetButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SetButton.Name = "SetButton";
-            this.SetButton.Primary = false;
-            this.SetButton.Size = new System.Drawing.Size(73, 36);
-            this.SetButton.TabIndex = 44;
-            this.SetButton.Text = "Set";
-            this.SetButton.UseVisualStyleBackColor = true;
-            this.SetButton.Click += new System.EventHandler(this.SetButton_Click);
-            // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(142, 99);
+            this.numericUpDown1.Location = new System.Drawing.Point(207, 75);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(180, 26);
             this.numericUpDown1.TabIndex = 49;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(16, 99);
+            this.numericUpDown2.Location = new System.Drawing.Point(18, 75);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(180, 26);
             this.numericUpDown2.TabIndex = 50;
             // 
-            // materialLabel3
+            // label1
             // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(12, 74);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(76, 19);
-            this.materialLabel3.TabIndex = 51;
-            this.materialLabel3.Text = "Download";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(202, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "UPLOAD";
             // 
-            // materialLabel4
+            // label2
             // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(138, 74);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(56, 19);
-            this.materialLabel4.TabIndex = 52;
-            this.materialLabel4.Text = "Upload";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 49);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 20);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "DOWNLOAD";
             // 
-            // materialLabel1
+            // label3
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 135);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(56, 19);
-            this.materialLabel1.TabIndex = 53;
-            this.materialLabel1.Text = "Status:";
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 142);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 20);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "STATUS:";
             // 
-            // materialLabel2
+            // StatusLabel
             // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(74, 135);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel2.TabIndex = 54;
+            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Location = new System.Drawing.Point(85, 143);
+            this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(0, 18);
+            this.StatusLabel.TabIndex = 58;
+            // 
+            // ButtonIcons
+            // 
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_ok.PNG");
+            this.ButtonIcons.Images.SetKeyName(2, "color_define-location.PNG");
+            // 
+            // SetButton
+            // 
+            this.SetButton.BackColor = System.Drawing.Color.White;
+            this.SetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SetButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.SetButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SetButton.FlatAppearance.BorderSize = 0;
+            this.SetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SetButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetButton.ImageKey = "color_define-location.PNG";
+            this.SetButton.ImageList = this.ButtonIcons;
+            this.SetButton.Location = new System.Drawing.Point(416, 53);
+            this.SetButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SetButton.Name = "SetButton";
+            this.SetButton.Size = new System.Drawing.Size(119, 67);
+            this.SetButton.TabIndex = 64;
+            this.SetButton.Text = "SET";
+            this.SetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SetButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SetButton.UseVisualStyleBackColor = false;
+            this.SetButton.Click += new System.EventHandler(this.SetButton_Click);
             // 
             // LimiterSpeed
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.SetButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 163);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.materialLabel3);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(563, 175);
+            this.Controls.Add(this.SetButton);
+            this.Controls.Add(this.StatusLabel);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.SetButton);
+            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LimiterSpeed";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Sizable = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Speed Limit";
             this.Load += new System.EventHandler(this.LimiterSpeed_Load);
@@ -164,12 +175,13 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialFlatButton SetButton;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Button SetButton;
     }
 }

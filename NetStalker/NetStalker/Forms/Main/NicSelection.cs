@@ -1,6 +1,4 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Net;
 using NetStalker.MainLogic;
 using SharpPcap;
@@ -18,13 +16,12 @@ using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class NicSelection : MaterialForm
+    public partial class NicSelection : Form
     {
         #region Instance Fields
 
         private NetworkInterface SelectedInterface;
         private string FriendlyName;
-        private MaterialSkinManager materialSkinManager;
 
         #endregion
 
@@ -39,10 +36,9 @@ namespace NetStalker
         public NicSelection()
         {
             InitializeComponent();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey800, Primary.Grey700, Primary.Grey900, Accent.Teal700, TextShade.WHITE);
             OkButton.Enabled = false;
+            AdapterComboBox.Items.Add("Select an adapter");
+            AdapterComboBox.SelectedIndex = 0;
         }
 
         #endregion
@@ -116,17 +112,15 @@ namespace NetStalker
 
             if (Properties.Settings.Default.Color == "Dark")
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 m.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
                 m.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
                 m.ListOverlay.BorderColor = Color.Teal;
-                m.pictureBox2.Image = NetStalker.Properties.Resources.spinW;
+                m.LoadingIndicator.Image = NetStalker.Properties.Resources.spinW;
 
             }
             else
             {
                 m.ListOverlay.BorderColor = Color.Teal;
-                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
                 m.DeviceList.HeaderFormatStyle = m.LightHeaders;
                 m.DeviceList.HotItemStyle = m.LightHot;
                 m.ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
@@ -137,7 +131,7 @@ namespace NetStalker
                 m.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
                 m.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
                 m.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-                m.pictureBox2.Image = NetStalker.Properties.Resources.spinB;
+                m.LoadingIndicator.Image = NetStalker.Properties.Resources.spinB;
             }
 
             #endregion
@@ -281,54 +275,66 @@ namespace NetStalker
             FriendlyName = AdapterComboBox.SelectedItem.ToString();
             SelectedInterface = Nics.FirstOrDefault(x => x.Name == FriendlyName);
 
-            NICValue.Text = SelectedInterface?.NetworkInterfaceType.ToString() ?? "Error";
-
-            //Show local IP
-            foreach (var IP in SelectedInterface.GetIPProperties().UnicastAddresses)
+            if (SelectedInterface != null)
             {
-                if (IP.Address.AddressFamily == AddressFamily.InterNetwork) //Grab the IPV4 address of the selected NIC
+                NICValue.Text = SelectedInterface?.NetworkInterfaceType.ToString() ?? "Error";
+
+                //Show local IP
+                foreach (var IP in SelectedInterface.GetIPProperties().UnicastAddresses)
                 {
-                    IPValue.Text = IP?.Address?.ToString() ?? "";
-                    Properties.Settings.Default.NetMask = IP.IPv4Mask.ToString();
-                    Properties.Settings.Default.NetSize = IP.IPv4Mask.ToString().Count(c => c == '0');
-                    break;
-                }
-            }
-
-            //Show local MAC
-            MACValue.Text = SelectedInterface?
-                .GetPhysicalAddress()?
-                .ToString().Insert(2, "-").Insert(5, "-").Insert(8, "-").Insert(11, "-").Insert(14, "-") ?? "";
-
-            //Show gateway IP
-            GatewayIPAddressInformationCollection addresses = null;
-
-            if ((addresses = SelectedInterface.GetIPProperties().GatewayAddresses).Count == 0)
-            {
-                GatewayValue.Text = "";
-                OkButton.Enabled = false;
-            }
-            else
-            {
-                foreach (var gateway in addresses)
-                {
-                    if (gateway.Address.AddressFamily == AddressFamily.InterNetwork)
+                    if (IP.Address.AddressFamily == AddressFamily.InterNetwork) //Grab the IPV4 address of the selected NIC
                     {
-                        GatewayValue.Text = gateway?.Address?.ToString() ?? "";
-                        OkButton.Enabled = true;
+                        IPValue.Text = IP?.Address?.ToString() ?? "";
+                        Properties.Settings.Default.NetMask = IP.IPv4Mask.ToString();
+                        Properties.Settings.Default.NetSize = IP.IPv4Mask.ToString().Count(c => c == '0');
                         break;
                     }
                 }
-            }
 
-            //Show connected wireless network (if there is one)
-            if (SelectedInterface.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
-            {
-                SSIDValue.Text = GetConnectedNetworks(SelectedInterface) ?? "";
+                //Show local MAC
+                MACValue.Text = SelectedInterface
+                    .GetPhysicalAddress()?
+                    .ToString().Insert(2, "-").Insert(5, "-").Insert(8, "-").Insert(11, "-").Insert(14, "-") ?? "";
+
+                //Show gateway IP
+                GatewayIPAddressInformationCollection addresses = null;
+
+                if ((addresses = SelectedInterface.GetIPProperties().GatewayAddresses).Count == 0)
+                {
+                    GatewayValue.Text = "";
+                    OkButton.Enabled = false;
+                }
+                else
+                {
+                    foreach (var gateway in addresses)
+                    {
+                        if (gateway.Address.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            GatewayValue.Text = gateway?.Address?.ToString() ?? "";
+                            OkButton.Enabled = true;
+                            break;
+                        }
+                    }
+                }
+
+                //Show connected wireless network (if there is one)
+                if (SelectedInterface.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
+                {
+                    SSIDValue.Text = GetConnectedNetworks(SelectedInterface) ?? "";
+                }
+                else
+                {
+                    SSIDValue.Text = "";
+                }
             }
             else
             {
+                NICValue.Text = "";
+                IPValue.Text = "";
+                MACValue.Text = "";
+                GatewayValue.Text = "";
                 SSIDValue.Text = "";
+                OkButton.Enabled = false;
             }
         }
 

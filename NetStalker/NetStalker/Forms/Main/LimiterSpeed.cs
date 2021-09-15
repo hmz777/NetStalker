@@ -1,18 +1,16 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class LimiterSpeed : MaterialForm
+    public partial class LimiterSpeed : Form
     {
         #region Instance Fields
 
-        private MaterialSkinManager materialSkinManager;
         private Device device;
 
         #endregion
@@ -22,11 +20,7 @@ namespace NetStalker
         public LimiterSpeed(Device device)
         {
             InitializeComponent();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-
             this.device = device;
-
         }
 
         #endregion
@@ -39,13 +33,13 @@ namespace NetStalker
             numericUpDown2.Value = device.DownloadCap / 1024;
             if (device.Limited)
             {
-                materialLabel2.ForeColor = Color.Green;
-                materialLabel2.Text = "Active";
+                StatusLabel.ForeColor = Color.Green;
+                StatusLabel.Text = "Active";
             }
             else
             {
-                materialLabel2.ForeColor = Color.Red;
-                materialLabel2.Text = "Inactive";
+                StatusLabel.ForeColor = Color.Red;
+                StatusLabel.Text = "Inactive";
             }
         }
 

@@ -2,28 +2,20 @@
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using MaterialSkin;
-using MaterialSkin.Controls;
+using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class LicenseAgreement : MaterialForm
+    public partial class LicenseAgreement : Form
     {
         public LicenseAgreement()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
         }
 
         private void LicenseAgreement_Load(object sender, EventArgs e)
         {
-            materialLabel2.Select();
-            using (var reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("NetStalker.Resources.D.txt")))
-            {
-                string line = reader.ReadToEnd();
-                metroTextBox1.Text = line;
-            }
+            AgreementBox.Text = Properties.Resources.Agreement;
 
             if (Properties.Settings.Default.Color == "Dark")
             {
@@ -31,12 +23,12 @@ namespace NetStalker
             }
         }
 
-        private void MaterialFlatButton2_Click(object sender, EventArgs e)
+        private void Accept_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void MaterialFlatButton1_Click(object sender, EventArgs e)
+        private void Reject_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -1,22 +1,18 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class ErrorForm : MaterialForm
+    public partial class ErrorForm : Form
     {
         public ErrorForm()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
         }
 
-        private void MaterialFlatButton1_Click(object sender, EventArgs e)
+        private void OkBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

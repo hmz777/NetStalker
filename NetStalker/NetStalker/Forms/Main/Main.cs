@@ -1,8 +1,5 @@
 ﻿using BrightIdeasSoftware;
-using MaterialSkin;
-using MaterialSkin.Controls;
-using MetroFramework;
-using MetroFramework.Controls;
+using NetStalker.Forms.Information;
 using NetStalker.MainLogic;
 using NetStalker.ToastNotifications;
 using System;
@@ -18,7 +15,7 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace NetStalker
 {
-    public partial class Main : MaterialForm, IView
+    public partial class Main : Form, IView
     {
         #region Static Fields
 
@@ -66,8 +63,8 @@ namespace NetStalker
 
             #region MaterialSkin Configuration
 
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
+            //var materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
 
             #endregion
 
@@ -122,7 +119,7 @@ namespace NetStalker
             };
 
             ListOverlay = this.DeviceList.EmptyListMsgOverlay as TextOverlay;
-            ListOverlay.Font = new Font("Roboto", 25);
+            ListOverlay.Font = new Font("Century Gothic", 25);
 
             #endregion
 
@@ -143,11 +140,6 @@ namespace NetStalker
             AliveTimer.Tick += AliveTimerOnTick;
 
             #endregion
-
-            //if (DeviceDpi >= 120)
-            //{
-            //    PerformDPIChanges();
-            //}
         }
 
         #endregion
@@ -266,11 +258,6 @@ namespace NetStalker
             }
         }
 
-        public void PerformDPIChanges()
-        {
-          //React to DPI changes...
-        }
-
         #endregion
 
         #region IView Members
@@ -282,14 +269,14 @@ namespace NetStalker
                 return DeviceList;
             }
         }
-        public MaterialLabel StatusLabel
+        public Label StatusLabel
         {
             get
             {
                 return DeviceCountLabel;
             }
         }
-        public MaterialLabel StatusLabel2
+        public Label StatusLabel2
         {
             get
             {
@@ -307,22 +294,22 @@ namespace NetStalker
         {
             get
             {
-                return pictureBox2;
+                return LoadingIndicator;
             }
         }
         public PictureBox PictureBox
         {
-            get { return pictureBox1; }
+            get { return OpIndicator; }
         }
         public ToolTip TTip
         {
             get { return Tooltip; }
         }
-        public MetroTile Tile
+        public Button Tile
         {
             get { return SnifferButton; }
         }
-        public MetroTile Tile2
+        public Button Tile2
         {
             get { return LimiterButton; }
         }
@@ -379,9 +366,12 @@ namespace NetStalker
 
                 if (e.CloseReason == CloseReason.UserClosing && !TrayExitFlag)
                 {
-                    if (MetroMessageBox.Show(this, "Quit the application ?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                    using (var message = new MessageBoxForm("Quit", "Quit the application ?", MessageBoxIcon.Question, MessageBoxButtons.OKCancel))
                     {
-                        e.Cancel = true;
+                        if (message.ShowDialog() == DialogResult.Cancel)
+                        {
+                            e.Cancel = true;
+                        }
                     }
                 }
             }
@@ -403,14 +393,11 @@ namespace NetStalker
                 SnifferButton.Enabled = false;
                 LimiterButton.Enabled = false;
                 OperationIsInProgress = true;
-                olvColumn7.MaximumWidth = 100;
-                olvColumn7.MinimumWidth = 100;
-                olvColumn7.Width = 100;
                 ResizeDone = false;
                 StatusLabel.Text = "Working";
                 DeviceList.EmptyListMsg = "Scanning...";
                 StatusLabel.Text = "Please wait...";
-                pictureBox1.Image = Properties.Resources.color_error;
+                OpIndicator.Image = Properties.Resources.color_error;
 
                 AliveTimer.Enabled = true;
 
@@ -421,8 +408,10 @@ namespace NetStalker
             }
             else
             {
-                MetroMessageBox.Show(this, "A scan is still in progress, please wait until its finished.", "Info",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (var message = new MessageBoxForm("Info", "A scan is still in progress, please wait until its finished.", MessageBoxIcon.Information, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
         }
 
@@ -433,8 +422,10 @@ namespace NetStalker
         /// <param name="e"></param>
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(this, Properties.Resources.HelpText, "Help", MessageBoxButtons.OK,
-                MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 375);
+            using (var message = new MessageBoxForm("Help", Properties.Resources.HelpText, MessageBoxIcon.Information, MessageBoxButtons.OK))
+            {
+                message.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -479,7 +470,10 @@ namespace NetStalker
             }
             catch (Exception ex)
             {
-                MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                using (var message = new MessageBoxForm("Error", ex.Message, MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
         }
 
@@ -517,20 +511,25 @@ namespace NetStalker
             }
             catch (ArgumentNullException)
             {
-                MetroMessageBox.Show(this, "Select a device first!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "Select a device first!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
             catch (CustomExceptions.OperationInProgressException)
             {
-                MetroMessageBox.Show(this, "The Packet Sniffer can't be used while the limiter is active!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "The Packet Sniffer can't be used while the limiter is active!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
             catch (CustomExceptions.RedirectionNotActiveException)
             {
-                MetroMessageBox.Show(this, "Redirection must be active for this device!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "Redirection must be active for this device!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
-
         }
 
         /// <summary>
@@ -573,25 +572,45 @@ namespace NetStalker
             }
             catch (ArgumentNullException)
             {
-                MetroMessageBox.Show(this, "Choose a device first and activate redirection for it!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "Choose a device first and activate redirection for it!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
             catch (CustomExceptions.LocalHostTargeted)
             {
-                MetroMessageBox.Show(this, "This operation can not target the gateway or your own ip address!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "This operation can not target the gateway or your own ip address!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
             catch (CustomExceptions.RedirectionNotActiveException)
             {
-                MetroMessageBox.Show(this, "Redirection must be active for this device!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "Redirection must be active for this device!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
-
         }
 
         #endregion
 
         #region List Event Handlers
+
+        private void DeviceList_CellRightClick(object sender, CellRightClickEventArgs e)
+        {
+            if (e.Item == null)
+            {
+                DeviceList.ContextMenuStrip = null;
+
+            }
+            else
+            {
+                DeviceList.ContextMenuStrip = DeviceMenu;
+            }
+
+            e.Handled = true;
+        }
 
         private void DeviceList_MouseDown(object sender, MouseEventArgs e)
         {
@@ -607,9 +626,9 @@ namespace NetStalker
         {
             if (DeviceList.Items.Count >= 8 && !ResizeDone)
             {
-                olvColumn7.MaximumWidth = 83;
-                olvColumn7.MinimumWidth = 83;
-                olvColumn7.Width = 83;
+                //olvColumn7.MaximumWidth = 83;
+                //olvColumn7.MinimumWidth = 83;
+                //olvColumn7.Width = 83;
                 ResizeDone = true;
             }
 
@@ -645,8 +664,10 @@ namespace NetStalker
                 //Don't allow blocking / redirection while the sniffer is active or any other operation.
                 if (OperationIsInProgress)
                 {
-                    MetroMessageBox.Show(this, "The Speed Limiter can't be used while the sniffer is active!", "Error", MessageBoxButtons.OK,
-                                         MessageBoxIcon.Error);
+                    using (var message = new MessageBoxForm("Error", "The Speed Limiter can't be used while the sniffer is active!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                    {
+                        message.ShowDialog();
+                    }
 
                     return false;
                 }
@@ -657,8 +678,10 @@ namespace NetStalker
 
                 if (device.IsGateway || device.IsLocalDevice)
                 {
-                    MetroMessageBox.Show(this, "This operation can not target the gateway or your own ip address!", "Error", MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
+                    using (var message = new MessageBoxForm("Error", "This operation can not target the gateway or your own ip address!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                    {
+                        message.ShowDialog();
+                    }
 
                     return false;
                 }
@@ -676,7 +699,7 @@ namespace NetStalker
                     device.Blocked = true;
                     device.DeviceStatus = "Offline";
                     DeviceList.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
+                    OpIndicator.Image = NetStalker.Properties.Resources.icons8_ok_red;
 
                     //Activate the BR if it's not already active
                     if (!Blocker_Redirector.BRMainSwitch)
@@ -704,7 +727,7 @@ namespace NetStalker
                     device.DownloadCap = 0;
                     device.UploadCap = 0;
                     DeviceList.UpdateObject(device);
-                    pictureBox1.Image = NetStalker.Properties.Resources.icons8_ok_red;
+                    OpIndicator.Image = NetStalker.Properties.Resources.icons8_ok_red;
 
                     //Activate the BR if it's not already active
                     if (!Blocker_Redirector.BRMainSwitch)
@@ -741,7 +764,7 @@ namespace NetStalker
                     //Checks if there are any devices left with active targeting
                     if (!Devices.Any(D => D.Value.Blocked == true))
                     {
-                        pictureBox1.Image = NetStalker.Properties.Resources.color_ok;
+                        OpIndicator.Image = NetStalker.Properties.Resources.color_ok;
                         Blocker_Redirector.BRMainSwitch = false;
                     }
                 }
@@ -772,7 +795,7 @@ namespace NetStalker
                     //Checks if there are any devices left with the Redirected switch
                     if (!Devices.Any(D => D.Value.Redirected == true))
                     {
-                        pictureBox1.Image = NetStalker.Properties.Resources.color_ok;
+                        OpIndicator.Image = NetStalker.Properties.Resources.color_ok;
                         Blocker_Redirector.BRMainSwitch = false;
                         ValuesTimer.Enabled = false;
                         ValuesTimer.Stop();
@@ -787,8 +810,10 @@ namespace NetStalker
             }
             catch (CustomExceptions.DeviceNotInListException)
             {
-                MetroMessageBox.Show(this, "The selected device was not found in the list or targets", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "The selected device was not found in the list or targets", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
 
                 return false;
             }
@@ -807,7 +832,7 @@ namespace NetStalker
             e.Graphics.DrawRectangle(new Pen(Color.FromArgb(204, 204, 204), 1), new Rectangle(e.Bounds.X, e.Bounds.Y,
                 e.Bounds.Width - 1, e.Bounds.Height - 1));//The white bounds
 
-            e.Graphics.DrawString(e.ToolTipText, new Font("Roboto", 9), new SolidBrush(Color.FromArgb(204, 204, 204)), e.Bounds.X + 8, e.Bounds.Y + 7); //Text with image location
+            e.Graphics.DrawString(e.ToolTipText, new Font("Century Gothic", 9), new SolidBrush(Color.FromArgb(204, 204, 204)), e.Bounds.X + 8, e.Bounds.Y + 7); //Text with image location
         }
 
         private void ToolTip_Popup(object sender, PopupEventArgs e)
@@ -852,7 +877,10 @@ namespace NetStalker
             }
             catch
             {
-                MetroMessageBox.Show(this, "Operation failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "Operation failed!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
         }
 

@@ -28,80 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SnifferOptions));
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.SaveButton = new MaterialSkin.Controls.MaterialFlatButton();
-            this.PacketDirectionComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.PacketDirectionComboBox = new System.Windows.Forms.ComboBox();
+            this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(12, 92);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(74, 19);
-            this.materialLabel2.TabIndex = 3;
-            this.materialLabel2.Text = "Direction:";
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.AutoSize = true;
-            this.SaveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SaveButton.Depth = 0;
-            this.SaveButton.Icon = global::NetStalker.Properties.Resources.color_ok;
-            this.SaveButton.Location = new System.Drawing.Point(283, 83);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.SaveButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Primary = false;
-            this.SaveButton.Size = new System.Drawing.Size(83, 36);
-            this.SaveButton.TabIndex = 0;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // PacketDirectionComboBox
             // 
-            this.PacketDirectionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.PacketDirectionComboBox.BackColor = System.Drawing.Color.Silver;
+            this.PacketDirectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PacketDirectionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PacketDirectionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PacketDirectionComboBox.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketDirectionComboBox.ForeColor = System.Drawing.Color.Black;
             this.PacketDirectionComboBox.FormattingEnabled = true;
-            this.PacketDirectionComboBox.ItemHeight = 23;
             this.PacketDirectionComboBox.Items.AddRange(new object[] {
             "Outbound",
             "Inbound/Outbound"});
-            this.PacketDirectionComboBox.Location = new System.Drawing.Point(92, 87);
+            this.PacketDirectionComboBox.Location = new System.Drawing.Point(110, 63);
+            this.PacketDirectionComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.PacketDirectionComboBox.Name = "PacketDirectionComboBox";
-            this.PacketDirectionComboBox.PromptText = "Packet Direction";
-            this.PacketDirectionComboBox.Size = new System.Drawing.Size(162, 29);
-            this.PacketDirectionComboBox.Style = MetroFramework.MetroColorStyle.Teal;
-            this.PacketDirectionComboBox.TabIndex = 47;
-            this.PacketDirectionComboBox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.PacketDirectionComboBox.UseCustomBackColor = true;
-            this.PacketDirectionComboBox.UseCustomForeColor = true;
-            this.PacketDirectionComboBox.UseSelectable = true;
+            this.PacketDirectionComboBox.Size = new System.Drawing.Size(346, 29);
+            this.PacketDirectionComboBox.TabIndex = 63;
+            // 
+            // ButtonIcons
+            // 
+            this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
+            this.ButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ButtonIcons.Images.SetKeyName(0, "color_cancel.PNG");
+            this.ButtonIcons.Images.SetKeyName(1, "color_ok.PNG");
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SaveButton.BackColor = System.Drawing.Color.White;
+            this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SaveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.ImageKey = "color_ok.PNG";
+            this.SaveButton.ImageList = this.ButtonIcons;
+            this.SaveButton.Location = new System.Drawing.Point(498, 45);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(119, 67);
+            this.SaveButton.TabIndex = 64;
+            this.SaveButton.Text = "OK";
+            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 67);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 21);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "Direction:";
             // 
             // SnifferOptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.SaveButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 134);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(630, 156);
             this.ControlBox = false;
-            this.Controls.Add(this.PacketDirectionComboBox);
-            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.PacketDirectionComboBox);
+            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SnifferOptions";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sniffer Options";
             this.Load += new System.EventHandler(this.SnifferOptions_Load);
@@ -111,9 +123,9 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialFlatButton SaveButton;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MetroFramework.Controls.MetroComboBox PacketDirectionComboBox;
+        private System.Windows.Forms.ComboBox PacketDirectionComboBox;
+        private System.Windows.Forms.ImageList ButtonIcons;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Label label1;
     }
 }

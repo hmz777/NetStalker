@@ -1,6 +1,4 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using NetStalker.MainLogic;
 using System;
 using System.Diagnostics;
@@ -10,11 +8,10 @@ using Timer = System.Timers.Timer;
 
 namespace NetStalker
 {
-    public partial class Options : MaterialForm
+    public partial class Options : Form
     {
         #region Instance Fields
 
-        private MaterialSkinManager materialSkinManager;
         private Main main;
 
         #endregion
@@ -24,8 +21,6 @@ namespace NetStalker
         public Options()
         {
             InitializeComponent();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
             SetPasswordButton.Enabled = false;
             main = Application.OpenForms["Main"] as Main;
         }
@@ -36,15 +31,6 @@ namespace NetStalker
 
         private void Options_Load(object sender, EventArgs e)
         {
-            if (materialSkinManager.Theme == MaterialSkinManager.Themes.LIGHT)
-            {
-                LightCheck.Checked = true;
-            }
-            else if (materialSkinManager.Theme == MaterialSkinManager.Themes.DARK)
-            {
-                DarkCheck.Checked = true;
-            }
-
             if (IsPassSet())
             {
                 PasswordField.Enabled = false;
@@ -93,7 +79,6 @@ namespace NetStalker
 
         private void PasswordField_TextChanged(object sender, EventArgs e)
         {
-
             if (PasswordField.Text.Length > 0)
             {
                 StatusLabel.Text = "";
@@ -105,30 +90,30 @@ namespace NetStalker
                 if (ConfirmPasswordField.Enabled &&
                     !string.IsNullOrWhiteSpace(ConfirmPasswordField.Text))
                 {
-                    materialLabel5.ForeColor = Color.Red;
-                    materialLabel5.Text = "Password mismatch!";
+                    PassStatus.ForeColor = Color.Red;
+                    PassStatus.Text = "Password mismatch!";
                     SetPasswordButton.Enabled = false;
                 }
                 else
                 {
                     ConfirmPasswordField.Enabled = true;
-                    materialLabel5.Text = "";
+                    PassStatus.Text = "";
                     SetPasswordButton.Enabled = false;
                 }
 
             }
             else if (PasswordField.Text.Length < 6 && PasswordField.Text.Length >= 1)
             {
-                materialLabel5.ForeColor = Color.Red;
-                materialLabel5.Text = "At least 6 characters required!";
+                PassStatus.ForeColor = Color.Red;
+                PassStatus.Text = "At least 6 characters required!";
                 ConfirmPasswordField.Text = "";
                 ConfirmPasswordField.Enabled = false;
                 SetPasswordButton.Enabled = false;
             }
             else
             {
-                materialLabel5.ForeColor = Color.Red;
-                materialLabel5.Text = "";
+                PassStatus.ForeColor = Color.Red;
+                PassStatus.Text = "";
                 ConfirmPasswordField.Text = "";
                 ConfirmPasswordField.Enabled = false;
                 SetPasswordButton.Enabled = false;
@@ -140,16 +125,16 @@ namespace NetStalker
             if (ConfirmPasswordField.Text.Length >= 6 &&
                 PasswordField.Text == ConfirmPasswordField.Text)
             {
-                materialLabel5.ForeColor = Color.Green;
-                materialLabel5.Text = "Sounds Good!";
+                PassStatus.ForeColor = Color.Green;
+                PassStatus.Text = "Sounds Good!";
                 SetPasswordButton.Enabled = true;
             }
             else
             {
                 if (!string.IsNullOrWhiteSpace(ConfirmPasswordField.Text))
                 {
-                    materialLabel5.ForeColor = Color.Red;
-                    materialLabel5.Text = "Password mismatch!";
+                    PassStatus.ForeColor = Color.Red;
+                    PassStatus.Text = "Password mismatch!";
                     SetPasswordButton.Enabled = false;
                 }
             }
@@ -178,7 +163,7 @@ namespace NetStalker
                 SetPasswordButton.Enabled = false;
                 PasswordField.Text = "";
                 ConfirmPasswordField.Text = "";
-                materialLabel5.Text = "";
+                PassStatus.Text = "";
                 PasswordField.Enabled = false;
                 ConfirmPasswordField.Enabled = false;
                 Timer t1 = new Timer(3500);
@@ -262,25 +247,22 @@ namespace NetStalker
 
         private void LightCheck_Click(object sender, EventArgs e)
         {
-            if (materialLabel5.ForeColor == Color.Red)
+            if (PassStatus.ForeColor == Color.Red)
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-                materialLabel5.ForeColor = Color.Red;
+                PassStatus.ForeColor = Color.Red;
                 StatusLabel.ForeColor = Color.Green;
                 StatusLabel.Text = "";
                 Properties.Settings.Default.Color = "Light";
             }
-            else if (materialLabel5.ForeColor == Color.Green)
+            else if (PassStatus.ForeColor == Color.Green)
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-                materialLabel5.ForeColor = Color.Green;
+                PassStatus.ForeColor = Color.Green;
                 StatusLabel.ForeColor = Color.Green;
                 StatusLabel.Text = "";
                 Properties.Settings.Default.Color = "Light";
             }
             else
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
                 StatusLabel.ForeColor = Color.Green;
                 StatusLabel.Text = "";
                 Properties.Settings.Default.Color = "Light";
@@ -296,31 +278,28 @@ namespace NetStalker
             main.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
             main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
             main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            main.pictureBox2.Image = NetStalker.Properties.Resources.spinB;
+            main.LoadingIndicator.Image = NetStalker.Properties.Resources.spinB;
 
         }
 
         private void DarkCheck_Click(object sender, EventArgs e)
         {
-            if (materialLabel5.ForeColor == Color.Red)
+            if (PassStatus.ForeColor == Color.Red)
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-                materialLabel5.ForeColor = Color.Red;
+                PassStatus.ForeColor = Color.Red;
                 StatusLabel.ForeColor = Color.Green;
                 StatusLabel.Text = "";
                 Properties.Settings.Default.Color = "Dark";
             }
-            else if (materialLabel5.ForeColor == Color.Green)
+            else if (PassStatus.ForeColor == Color.Green)
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-                materialLabel5.ForeColor = Color.Green;
+                PassStatus.ForeColor = Color.Green;
                 Properties.Settings.Default.Color = "Dark";
                 StatusLabel.ForeColor = Color.Green;
                 StatusLabel.Text = "";
             }
             else
             {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 Properties.Settings.Default.Color = "Dark";
                 StatusLabel.ForeColor = Color.Green;
                 StatusLabel.Text = "";
@@ -336,7 +315,7 @@ namespace NetStalker
             main.DeviceList.SelectedForeColor = Color.FromArgb(204, 204, 204);
             main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(204, 204, 204);
             main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(88, 88, 88);
-            main.pictureBox2.Image = NetStalker.Properties.Resources.spinW;
+            main.LoadingIndicator.Image = NetStalker.Properties.Resources.spinW;
         }
 
         #endregion
@@ -371,12 +350,8 @@ namespace NetStalker
             e.Graphics.DrawRectangle(new Pen(Color.FromArgb(204, 204, 204), 1), new Rectangle(e.Bounds.X, e.Bounds.Y,
                 e.Bounds.Width - 1, e.Bounds.Height - 1));//the white bounds
 
-            e.Graphics.DrawString(e.ToolTipText, new Font("Roboto", 9), new SolidBrush(Color.FromArgb(204, 204, 204)),
-                new Point(Properties.Resources.icons8_info_35.Width + 10,
-                    e.Bounds.Y + 8)); //text with image location
-
-            e.Graphics.DrawImage(Properties.Resources.icons8_info_35, //image
-                new Point(e.Bounds.X - 3 + Properties.Resources.icons8_info_35.Width / 3, e.Bounds.Y + 10));
+            e.Graphics.DrawString(e.ToolTipText, new Font("Century Gothic", 9), new SolidBrush(Color.FromArgb(204, 204, 204)),
+                new Point(10, 10)); //text with image location
         }
 
         private void ToolTip_Popup(object sender, PopupEventArgs e)
@@ -393,7 +368,7 @@ namespace NetStalker
             this.Close();
         }
 
-        private void MacVendorsLinkLabel_Click(object sender, EventArgs e)
+        private void MacVendorsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(MacVendorsLinkLabel.Text);
         }

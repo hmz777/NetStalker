@@ -1,6 +1,4 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using NetStalker.MainLogic;
 using System;
 using System.Drawing;
@@ -8,11 +6,10 @@ using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class PasswordCheck : MaterialForm
+    public partial class PasswordCheck : Form
     {
         #region Instance Fields
 
-        private MaterialSkinManager materialSkinManager;
         string key = "h777m777z777@netstalker.app";
 
         #endregion
@@ -22,8 +19,6 @@ namespace NetStalker
         public PasswordCheck()
         {
             InitializeComponent();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
         }
 
         #endregion

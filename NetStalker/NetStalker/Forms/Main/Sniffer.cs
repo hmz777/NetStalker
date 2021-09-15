@@ -1,8 +1,6 @@
 ﻿using BrightIdeasSoftware;
-using MaterialSkin;
-using MaterialSkin.Controls;
-using MetroFramework;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using NetStalker.Forms.Information;
 using NetStalker.MainLogic;
 using PacketDotNet;
 using SharpPcap;
@@ -18,7 +16,7 @@ using System.Windows.Forms;
 
 namespace NetStalker
 {
-    public partial class Sniffer : MaterialForm
+    public partial class Sniffer : Form
     {
         #region Instance Fields
 
@@ -66,9 +64,6 @@ namespace NetStalker
         public Sniffer(Device device)
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
 
             this.Device = device;
 
@@ -143,95 +138,95 @@ namespace NetStalker
             //TCP packet sent or received over HTTP
             if (packet.TCPPacket != null && packet.Type == "HTTP")
             {
-                metroTextBox1.Clear();
+                PacketBox.Clear();
 
                 //Packet header data
                 if (packet.TCPPacket.HeaderData != null)
                 {
-                    metroTextBox1.Text += "-----------------HTTPHeader-----------------" + Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine + "UTF8:" + Environment.NewLine;
-                    metroTextBox1.Text += Encoding.UTF8.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine + "ASCII:" + Environment.NewLine;
-                    metroTextBox1.Text += Encoding.ASCII.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine;
+                    PacketBox.Text += "-----------------HTTPHeader-----------------" + Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine + "UTF8:" + Environment.NewLine;
+                    PacketBox.Text += Encoding.UTF8.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine + "ASCII:" + Environment.NewLine;
+                    PacketBox.Text += Encoding.ASCII.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine;
                 }
 
                 //Separator
-                metroTextBox1.Text += Environment.NewLine + "==================================================" + Environment.NewLine;
+                PacketBox.Text += Environment.NewLine + "==================================================" + Environment.NewLine;
 
                 //Packet payload data
                 if (packet.TCPPacket.PayloadData != null)
                 {
-                    metroTextBox1.Text += "-----------------TCPPayload-----------------" + Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine + "UTF8:" + Environment.NewLine;
-                    metroTextBox1.Text += Encoding.UTF8.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine + "ASCII:" + Environment.NewLine;
-                    metroTextBox1.Text += Encoding.ASCII.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine;
-                    metroTextBox1.Text += Environment.NewLine;
+                    PacketBox.Text += "-----------------TCPPayload-----------------" + Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine + "UTF8:" + Environment.NewLine;
+                    PacketBox.Text += Encoding.UTF8.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine + "ASCII:" + Environment.NewLine;
+                    PacketBox.Text += Encoding.ASCII.GetString(packet.TCPPacket.PayloadData) + Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine;
+                    PacketBox.Text += Environment.NewLine;
                 }
 
                 //TCP packet properties
-                metroTextBox1.Text += Environment.NewLine + "==================================================" + Environment.NewLine;
-                metroTextBox1.Text += "-----------------TCP-PacketProperties-----------------" + Environment.NewLine;
-                metroTextBox1.Text += $"Packet Length: {packet.Packet.Bytes.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"Packet TimeStamp: {packet.Time}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Packet Identification: {packet.ID}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Protocol: {packet.Protocol}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Source IP: {packet.Source}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Destination IP: {packet.Destination}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Window Size: {packet.TCPPacket.WindowSize}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Acknowledgment Number: {packet.TCPPacket.AcknowledgmentNumber}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Sequence Number: {packet.TCPPacket.SequenceNumber}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Header Length: {packet.TCPPacket.HeaderData.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Payload Length: {packet.TCPPacket.PayloadData.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Source Port: {packet.TCPPacket.SourcePort}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Destination Port: {packet.TCPPacket.DestinationPort}" + Environment.NewLine;
+                PacketBox.Text += Environment.NewLine + "==================================================" + Environment.NewLine;
+                PacketBox.Text += "-----------------TCP-PacketProperties-----------------" + Environment.NewLine;
+                PacketBox.Text += $"Packet Length: {packet.Packet.Bytes.Length}" + Environment.NewLine;
+                PacketBox.Text += $"Packet TimeStamp: {packet.Time}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Packet Identification: {packet.ID}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Protocol: {packet.Protocol}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Source IP: {packet.Source}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Destination IP: {packet.Destination}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Window Size: {packet.TCPPacket.WindowSize}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Acknowledgment Number: {packet.TCPPacket.AcknowledgmentNumber}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Sequence Number: {packet.TCPPacket.SequenceNumber}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Header Length: {packet.TCPPacket.HeaderData.Length}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Payload Length: {packet.TCPPacket.PayloadData.Length}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Source Port: {packet.TCPPacket.SourcePort}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Destination Port: {packet.TCPPacket.DestinationPort}" + Environment.NewLine;
 
             }
             //TCP packet sent or received over HTTPS
             else if (packet.TCPPacket != null && packet.Type == "HTTPS")
             {
-                metroTextBox1.Clear();
-                metroTextBox1.Text += "-----------------TCP-PacketProperties-----------------" + Environment.NewLine;
-                metroTextBox1.Text += $"Packet Length: {packet.Packet.Bytes.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"Packet TimeStamp: {packet.Time}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Packet Identification: {packet.ID}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Protocol: {packet.Protocol}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Source IP: {packet.Source}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Destination IP: {packet.Destination}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Window Size: {packet.TCPPacket.WindowSize}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Acknowledgment Number: {packet.TCPPacket.AcknowledgmentNumber}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Sequence Number: {packet.TCPPacket.SequenceNumber}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Header Length: {packet.TCPPacket.HeaderData.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Payload Length: {packet.TCPPacket.PayloadData.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Source Port: {packet.TCPPacket.SourcePort}" + Environment.NewLine;
-                metroTextBox1.Text += $"TCP Packet Destination Port: {packet.TCPPacket.DestinationPort}" + Environment.NewLine;
-                metroTextBox1.Text += Environment.NewLine;
-                metroTextBox1.Text += Environment.NewLine;
+                PacketBox.Clear();
+                PacketBox.Text += "-----------------TCP-PacketProperties-----------------" + Environment.NewLine;
+                PacketBox.Text += $"Packet Length: {packet.Packet.Bytes.Length}" + Environment.NewLine;
+                PacketBox.Text += $"Packet TimeStamp: {packet.Time}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Packet Identification: {packet.ID}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Protocol: {packet.Protocol}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Source IP: {packet.Source}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Destination IP: {packet.Destination}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Window Size: {packet.TCPPacket.WindowSize}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Acknowledgment Number: {packet.TCPPacket.AcknowledgmentNumber}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Sequence Number: {packet.TCPPacket.SequenceNumber}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Header Length: {packet.TCPPacket.HeaderData.Length}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Payload Length: {packet.TCPPacket.PayloadData.Length}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Source Port: {packet.TCPPacket.SourcePort}" + Environment.NewLine;
+                PacketBox.Text += $"TCP Packet Destination Port: {packet.TCPPacket.DestinationPort}" + Environment.NewLine;
+                PacketBox.Text += Environment.NewLine;
+                PacketBox.Text += Environment.NewLine;
 
             }
             //UDP packet
             else if (packet.UDPPacket != null)
             {
                 //UDP packet properties
-                metroTextBox1.Clear();
-                metroTextBox1.Text += "-----------------UDP-PacketProperties-----------------" + Environment.NewLine;
-                metroTextBox1.Text += $"Packet Length: {packet.Packet.Bytes.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"Packet TimeStamp: {packet.Time}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Packet Identification: {packet.ID}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Protocol: {packet.Protocol}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Source IP: {packet.Source}" + Environment.NewLine;
-                metroTextBox1.Text += $"IPV4 Destination IP: {packet.Destination}" + Environment.NewLine;
-                metroTextBox1.Text += $"UDP Packet Header Length: {packet.UDPPacket.HeaderData.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"UDP Packet Payload Length: {packet.UDPPacket.PayloadData.Length}" + Environment.NewLine;
-                metroTextBox1.Text += $"UDP Packet Source Port: {packet.UDPPacket.SourcePort}" + Environment.NewLine;
-                metroTextBox1.Text += $"UDP Packet Destination Port: {packet.UDPPacket.DestinationPort}" + Environment.NewLine;
-                metroTextBox1.Text += Environment.NewLine;
-                metroTextBox1.Text += Environment.NewLine;
+                PacketBox.Clear();
+                PacketBox.Text += "-----------------UDP-PacketProperties-----------------" + Environment.NewLine;
+                PacketBox.Text += $"Packet Length: {packet.Packet.Bytes.Length}" + Environment.NewLine;
+                PacketBox.Text += $"Packet TimeStamp: {packet.Time}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Packet Identification: {packet.ID}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Protocol: {packet.Protocol}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Source IP: {packet.Source}" + Environment.NewLine;
+                PacketBox.Text += $"IPV4 Destination IP: {packet.Destination}" + Environment.NewLine;
+                PacketBox.Text += $"UDP Packet Header Length: {packet.UDPPacket.HeaderData.Length}" + Environment.NewLine;
+                PacketBox.Text += $"UDP Packet Payload Length: {packet.UDPPacket.PayloadData.Length}" + Environment.NewLine;
+                PacketBox.Text += $"UDP Packet Source Port: {packet.UDPPacket.SourcePort}" + Environment.NewLine;
+                PacketBox.Text += $"UDP Packet Destination Port: {packet.UDPPacket.DestinationPort}" + Environment.NewLine;
+                PacketBox.Text += Environment.NewLine;
+                PacketBox.Text += Environment.NewLine;
 
             }
         }
@@ -243,9 +238,9 @@ namespace NetStalker
         {
             if (!CaptureDeviceConfigured)
             {
-                metroTextBox2.BeginInvoke(new Action(() =>
+                StatusBox.BeginInvoke(new Action(() =>
                 {
-                    metroTextBox2.Text += "Preparing network adapter..." + Environment.NewLine;
+                    StatusBox.Text += "Preparing network adapter..." + Environment.NewLine;
                 }));
 
                 CaptureDeviceList capturedevicelist = CaptureDeviceList.Instance;
@@ -254,9 +249,9 @@ namespace NetStalker
                 CaptureDevice = (LibPcapLiveDevice)CaptureDeviceList.New()[AppConfiguration.AdapterName];
                 CaptureDeviceConfigured = true;
 
-                metroTextBox2.BeginInvoke(new Action(() =>
+                StatusBox.BeginInvoke(new Action(() =>
                 {
-                    metroTextBox2.Text += "Ready" + Environment.NewLine;
+                    StatusBox.Text += "Ready" + Environment.NewLine;
                 }));
             }
         }
@@ -340,23 +335,16 @@ namespace NetStalker
         /// <param name="e"></param>
         private void Sniffer_Load(object sender, EventArgs e)
         {
-            metroTextBox2.Text += "Targeting: " + Device.IP.ToString() + Environment.NewLine;
+            StatusBox.Text += "Targeting: " + Device.IP.ToString() + Environment.NewLine;
 
             #region Visual Garbage
 
-            metroTextBox1.UseCustomBackColor = true;
-            metroTextBox1.UseCustomForeColor = true;
-            metroTextBox1.Style = MetroColorStyle.Default;
-            metroTextBox2.UseCustomForeColor = true;
-            metroTextBox2.UseCustomBackColor = true;
-            metroTextBox2.Style = MetroColorStyle.Default;
-
             if (Properties.Settings.Default.Color == "Light")
             {
-                metroTextBox1.BackColor = Color.WhiteSmoke;
-                metroTextBox2.BackColor = Color.WhiteSmoke;
-                metroTextBox1.ForeColor = Color.Black;
-                metroTextBox2.ForeColor = Color.Black;
+                PacketBox.BackColor = Color.WhiteSmoke;
+                StatusBox.BackColor = Color.WhiteSmoke;
+                PacketBox.ForeColor = Color.Black;
+                StatusBox.ForeColor = Color.Black;
                 ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
                 ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
                 PacketListView.BackColor = Color.WhiteSmoke;
@@ -368,7 +356,6 @@ namespace NetStalker
                 PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
                 PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
                 ListOverlay.BorderColor = Color.Teal;
-                metroToolTip1.Theme = MetroThemeStyle.Light;
 
 
             }
@@ -377,15 +364,13 @@ namespace NetStalker
                 ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
                 ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
                 ListOverlay.BorderColor = Color.Teal;
-                metroToolTip1.Theme = MetroThemeStyle.Dark;
-
             }
             else
             {
-                metroTextBox1.BackColor = Color.WhiteSmoke;
-                metroTextBox2.BackColor = Color.WhiteSmoke;
-                metroTextBox1.ForeColor = Color.Black;
-                metroTextBox2.ForeColor = Color.Black;
+                PacketBox.BackColor = Color.WhiteSmoke;
+                StatusBox.BackColor = Color.WhiteSmoke;
+                PacketBox.ForeColor = Color.Black;
+                StatusBox.ForeColor = Color.Black;
                 ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
                 ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
                 PacketListView.BackColor = Color.WhiteSmoke;
@@ -397,10 +382,9 @@ namespace NetStalker
                 PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
                 PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
                 ListOverlay.BorderColor = Color.Teal;
-                metroToolTip1.Theme = MetroThemeStyle.Light;
             }
 
-            ListOverlay.Font = new Font("Roboto", 25);
+            ListOverlay.Font = new Font("Century Gothic", 25);
 
             #endregion
 
@@ -417,24 +401,27 @@ namespace NetStalker
             {
                 if (SnifferActive)
                 {
-                    if (MetroMessageBox.Show(this, "The sniffer is still working, continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    using (var message = new MessageBoxForm("Warning", "The sniffer is still working, continue?", MessageBoxIcon.Warning, MessageBoxButtons.OKCancel))
                     {
-                        SnifferActive = false;
-
-                        if (PacketMenu != null)
-                            PacketMenu.Dispose();
-
-                        if (SnifferTask != null)
+                        if (message.ShowDialog() == DialogResult.OK)
                         {
-                            if (SnifferTask.Status == TaskStatus.Running)
-                                SnifferTask.Wait();
+                            SnifferActive = false;
 
-                            SnifferTask.Dispose();
+                            if (PacketMenu != null)
+                                PacketMenu.Dispose();
+
+                            if (SnifferTask != null)
+                            {
+                                if (SnifferTask.Status == TaskStatus.Running)
+                                    SnifferTask.Wait();
+
+                                SnifferTask.Dispose();
+                            }
                         }
-                    }
-                    else
-                    {
-                        e.Cancel = true;
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                     }
                 }
 
@@ -455,9 +442,12 @@ namespace NetStalker
         private void StartButton_Click(object sender, EventArgs e)
         {
             if (SnifferActive)
-                MetroMessageBox.Show(this, "Sniffer already started!", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
+            {
+                using (var message = new MessageBoxForm("Error", "Sniffer already started!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
+            }
             else if (CaptureDeviceConfigured)
             {
                 PacketListView.EmptyListMsg = "Working...";
@@ -476,14 +466,16 @@ namespace NetStalker
                 }
                 catch (Exception exception)
                 {
-                    MetroMessageBox.Show(this, exception.Message, "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    using (var message = new MessageBoxForm("Error", exception.Message, MessageBoxIcon.Error, MessageBoxButtons.OK))
+                    {
+                        message.ShowDialog();
+                    }
                 }
 
-                metroTextBox2.Text += "Started..." + Environment.NewLine;
+                StatusBox.Text += "Started..." + Environment.NewLine;
             }
             else
-                metroTextBox2.Text += "Device is not ready yet!" + Environment.NewLine;
+                StatusBox.Text += "Device is not ready yet!" + Environment.NewLine;
         }
 
         /// <summary>
@@ -503,7 +495,7 @@ namespace NetStalker
                     {
                         if (SnifferTask.Status == TaskStatus.Running)
                         {
-                            metroTextBox2.Text += "Stopping capture, please wait..." + Environment.NewLine;
+                            StatusBox.Text += "Stopping capture, please wait..." + Environment.NewLine;
                             SnifferTask.Wait();
                         }
 
@@ -513,7 +505,7 @@ namespace NetStalker
                     CaptureDevice.Close();
 
                     PacketListView.EmptyListMsg = "Stopped";
-                    metroTextBox2.Text += "Stopped" + Environment.NewLine;
+                    StatusBox.Text += "Stopped" + Environment.NewLine;
                 }
             }
         }
@@ -545,10 +537,10 @@ namespace NetStalker
         /// <param name="e"></param>
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(this,
-                "1- In order to begin capturing packets click on START.\n2- You can clear the list from items by pressing CLEAR.\n3- You can save the captured packets in a form of a log file by stopping the ongoing operation, pressing EXPORT and choosing a location for the file to be saved.\n4- In order to open a chosen packet do a right click on the selected packet and click \"Show Packet\" and it will be displayed in the packet viewer on the bottom left of the window.\n5- To resolve the destination ip in HTTPS Packets just click the Resolve button for the requested row.\n6- Hint: its useful to resolve the destination IPs before exporting the content of the list in order to include more information in the log file.",
-                "Help", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 290);
-
+            using (var message = new MessageBoxForm("Help", Properties.Resources.SnifferHelp, MessageBoxIcon.Information, MessageBoxButtons.OK))
+            {
+                message.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -560,11 +552,17 @@ namespace NetStalker
         {
             if (SnifferActive)
             {
-                MetroMessageBox.Show(this, "The Creation of a log file requires stopping any on going sniffing operation!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "The Creation of a log file requires stopping any on going sniffing operation!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
             else if (PacketListView.Items.Count == 0)
             {
-                MetroMessageBox.Show(this, "The list is empty you have to start a sniffing operation first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "The list is empty you have to start a sniffing operation first!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
             else
             {
@@ -585,7 +583,10 @@ namespace NetStalker
                         File.AppendAllText(Path.Combine(cfd.FileName, filename + ".log"), $"Source: {packet.Source} // Destination: {packet.Destination} // Host: {packet.Host} // Type: {packet.Type} // Date: {packet.Time.ToString("dd/MM/yyyy h:mm:ss tt")}\n");
                     }
 
-                    MetroMessageBox.Show(this, "Log saved successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (var message = new MessageBoxForm("Info", "Log saved successfully!", MessageBoxIcon.Information, MessageBoxButtons.OK))
+                    {
+                        message.ShowDialog();
+                    }
                 }
 
                 cfd.Dispose();
@@ -599,7 +600,7 @@ namespace NetStalker
         /// <param name="e"></param>
         private void ClearViewerButton_Click(object sender, EventArgs e)
         {
-            metroTextBox1.Clear();
+            PacketBox.Clear();
         }
 
         /// <summary>
@@ -609,7 +610,7 @@ namespace NetStalker
         /// <param name="e"></param>
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (metroTextBox1.Text.Length > 0)
+            if (PacketBox.Text.Length > 0)
             {
                 CommonFileDialog cfd = new CommonOpenFileDialog()
                 {
@@ -622,16 +623,22 @@ namespace NetStalker
                 var filename = DateTime.Now.ToString("MM-dd-yyyy_hh-mm-ss-tt");
                 if (cfd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    File.AppendAllText(Path.Combine(cfd.FileName, filename + "-Packet.log"), metroTextBox1.Text);
-                    MetroMessageBox.Show(this, "Packet saved successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    File.AppendAllText(Path.Combine(cfd.FileName, filename + "-Packet.log"), PacketBox.Text);
 
+                    using (var message = new MessageBoxForm("Info", "Packet saved successfully!", MessageBoxIcon.Information, MessageBoxButtons.OK))
+                    {
+                        message.ShowDialog();
+                    }
                 }
 
                 cfd.Dispose();
             }
             else
             {
-                MetroMessageBox.Show(this, "Open a packet first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (var message = new MessageBoxForm("Error", "Open a packet first!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                {
+                    message.ShowDialog();
+                }
             }
         }
 
@@ -644,16 +651,16 @@ namespace NetStalker
         {
             if (ViewerExtended)
             {
-                panel3.Parent = panel4;
-                panel3.Dock = DockStyle.Left;
-                panel3.SendToBack();
+                PacketBox.Parent = BottomPanel;
+                PacketBox.Dock = DockStyle.Left;
+                PacketBox.SendToBack();
                 ViewerExtended = false;
             }
             else
             {
-                panel3.Parent = this;
-                panel3.Dock = DockStyle.Fill;
-                panel3.BringToFront();
+                PacketBox.Parent = this;
+                PacketBox.Dock = DockStyle.Fill;
+                PacketBox.BringToFront();
                 ViewerExtended = true;
             }
         }
@@ -665,18 +672,22 @@ namespace NetStalker
         /// <param name="e"></param>
         private void FontButton_Click(object sender, EventArgs e)
         {
-            if (metroTextBox1.FontSize == MetroTextBoxSize.Tall)
+            int fontSize = 10; //Default font size
+
+            if (PacketBox.Font.Size >= 20)
             {
-                metroTextBox1.FontSize = MetroTextBoxSize.Small;
+                fontSize = 10;
             }
-            else if (metroTextBox1.FontSize == MetroTextBoxSize.Medium)
+            else if (PacketBox.Font.Size >= 15)
             {
-                metroTextBox1.FontSize = MetroTextBoxSize.Tall;
+                fontSize = 20;
             }
-            else if (metroTextBox1.FontSize == MetroTextBoxSize.Small)
+            else if (PacketBox.Font.Size >= 10)
             {
-                metroTextBox1.FontSize = MetroTextBoxSize.Medium;
+                fontSize = 15;
             }
+
+            PacketBox.Font = new Font("Century Gothic", fontSize);
         }
 
         /// <summary>
