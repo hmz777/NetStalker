@@ -117,30 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="color_about" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_about.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Agreement" xml:space="preserve">
+    <value>The information contained on NetStalker Desktop app (the "Service") is for general information purposes only.
+
+I (The developer) assumes no responsibility for errors or omissions in the contents on the Service.
+
+In no event I shall be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action of contract, negligence or other sort, arising out of or in connection with the use of the Service or the contents of the Service.
+
+I can not warrant that the application is free of harmful components.
+
+This software is working and tested on my machine, I can not guarantee that it will work on your machine.
+
+In case you decided to use this software, I recommend taking some of your time to read the help section in order to use this software properly.</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="color_cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_cancel.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="color_clear_symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_clear-symbol.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_define_location" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_define-location.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="color_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_error.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_external" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_external.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_gear.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_gps_receiving" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_gps-receiving.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="color_help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_help.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,26 +143,8 @@
   <data name="color_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_info.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="color_keyhole_shield" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_keyhole-shield.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_network_card" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_network-card.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="color_ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_ok.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_restart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_restart.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_start.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color_stop_squared" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color_stop-squared.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\D.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="HelpBubble" xml:space="preserve">
     <value>Spoof Protection occurs whenever a blocking or a redirection operation is active.
@@ -186,9 +163,6 @@ or any other spoofing software.</value>
 7- NetStalker has an option for spoof protection, if activated it can prevent your pc from being redirected or blocked by the same tool or any other spoofing software.
 8- Background scanning is always active so you don't have to consistently press scan to discover newly connected devices.</value>
   </data>
-  <data name="icons8_info_35" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-info-35.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_ok_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-ok-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -198,6 +172,14 @@ or any other spoofing software.</value>
   <data name="NotificationsPrompt" xml:space="preserve">
     <value>Do you want me to inform you of newly connected devices?
 (This option can be changed back in the options menu)</value>
+  </data>
+  <data name="SnifferHelp" xml:space="preserve">
+    <value>1- In order to begin capturing packets click on START.
+2- You can clear the list from items by pressing CLEAR.
+3- You can save the captured packets in a form of a log file by stopping the ongoing operation, pressing EXPORT and choosing a location for the file to be saved.
+4- In order to open a chosen packet do a right click on the selected packet and click \"Show Packet\" and it will be displayed in the packet viewer on the bottom left of the window.
+5- To resolve the destination ip in HTTPS Packets just click the Resolve button for the requested row.
+6- Hint: its useful to resolve the destination IPs before exporting the content of the list in order to include more information in the log file.</value>
   </data>
   <data name="spinB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\spinB.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

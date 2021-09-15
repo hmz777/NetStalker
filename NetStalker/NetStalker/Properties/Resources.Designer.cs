@@ -61,12 +61,17 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to The information contained on NetStalker Desktop app (the &quot;Service&quot;) is for general information purposes only.
+        ///
+        ///I (The developer) assumes no responsibility for errors or omissions in the contents on the Service.
+        ///
+        ///In no event I shall be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action of contract, negligence or other sort, arising out of or in connection with the use of the Service or the contents of the Service.
+        ///
+        ///I can not wa [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static System.Drawing.Bitmap color_about {
+        internal static string Agreement {
             get {
-                object obj = ResourceManager.GetObject("color_about", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("Agreement", resourceCulture);
             }
         }
         
@@ -83,59 +88,9 @@ namespace NetStalker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap color_clear_symbol {
-            get {
-                object obj = ResourceManager.GetObject("color_clear_symbol", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_define_location {
-            get {
-                object obj = ResourceManager.GetObject("color_define_location", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap color_error {
             get {
                 object obj = ResourceManager.GetObject("color_error", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_external {
-            get {
-                object obj = ResourceManager.GetObject("color_external", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_gear {
-            get {
-                object obj = ResourceManager.GetObject("color_gear", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_gps_receiving {
-            get {
-                object obj = ResourceManager.GetObject("color_gps_receiving", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,75 +118,10 @@ namespace NetStalker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap color_keyhole_shield {
-            get {
-                object obj = ResourceManager.GetObject("color_keyhole_shield", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_network_card {
-            get {
-                object obj = ResourceManager.GetObject("color_network_card", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap color_ok {
             get {
                 object obj = ResourceManager.GetObject("color_ok", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_restart {
-            get {
-                object obj = ResourceManager.GetObject("color_restart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_start {
-            get {
-                object obj = ResourceManager.GetObject("color_start", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap color_stop_squared {
-            get {
-                object obj = ResourceManager.GetObject("color_stop_squared", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The information contained on NetStalker Desktop app (the &quot;Service&quot;) is for general information purposes only.
-        ///
-        ///I (The developer) assumes no responsibility for errors or omissions in the contents on the Service.
-        ///
-        ///In no event I shall be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service.
-        ///
-        ///I can not wa [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string D {
-            get {
-                return ResourceManager.GetString("D", resourceCulture);
             }
         }
         
@@ -261,16 +151,6 @@ namespace NetStalker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_info_35 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_info_35", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_ok_red {
             get {
                 object obj = ResourceManager.GetObject("icons8_ok_red", resourceCulture);
@@ -294,6 +174,19 @@ namespace NetStalker.Properties {
         internal static string NotificationsPrompt {
             get {
                 return ResourceManager.GetString("NotificationsPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1- In order to begin capturing packets click on START.
+        ///2- You can clear the list from items by pressing CLEAR.
+        ///3- You can save the captured packets in a form of a log file by stopping the ongoing operation, pressing EXPORT and choosing a location for the file to be saved.
+        ///4- In order to open a chosen packet do a right click on the selected packet and click \&quot;Show Packet\&quot; and it will be displayed in the packet viewer on the bottom left of the window.
+        ///5- To resolve the destination ip in HTTPS Packets jus [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SnifferHelp {
+            get {
+                return ResourceManager.GetString("SnifferHelp", resourceCulture);
             }
         }
         
