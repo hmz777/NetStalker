@@ -11,11 +11,8 @@
     <Setting Name="LocalIp" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Color" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Accent" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="DarkMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Tile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

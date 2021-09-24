@@ -96,6 +96,6 @@ namespace NetStalker.MainLogic
         /// <summary>
         /// Returns the main accent
         /// </summary>
-        public static string Accent => NetStalker.Properties.Settings.Default.Accent;
+        public static string Accent => NetStalker.Properties.Settings.Default.DarkMode;
     }
 }

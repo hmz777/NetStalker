@@ -61,25 +61,13 @@ namespace NetStalker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Color {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DarkMode {
             get {
-                return ((string)(this["Color"]));
+                return ((bool)(this["DarkMode"]));
             }
             set {
-                this["Color"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Accent {
-            get {
-                return ((string)(this["Accent"]));
-            }
-            set {
-                this["Accent"] = value;
+                this["DarkMode"] = value;
             }
         }
         
