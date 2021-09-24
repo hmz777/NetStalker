@@ -130,6 +130,9 @@ This software is working and tested on my machine, I can not guarantee that it w
 
 In case you decided to use this software, I recommend taking some of your time to read the help section in order to use this software properly.</value>
   </data>
+  <data name="AppQuit" xml:space="preserve">
+    <value>Quit the application ?</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="color_cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_cancel.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,6 +148,15 @@ In case you decided to use this software, I recommend taking some of your time t
   </data>
   <data name="color_ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_ok.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>The selected device was not found in the list or targets</value>
+  </data>
+  <data name="FriendlyNameCharLimit" xml:space="preserve">
+    <value>Name cannot be longer than 20 characters!</value>
+  </data>
+  <data name="FriendlyNameEmpty" xml:space="preserve">
+    <value>"Name cannot be empty!</value>
   </data>
   <data name="HelpBubble" xml:space="preserve">
     <value>Spoof Protection occurs whenever a blocking or a redirection operation is active.
@@ -166,12 +178,36 @@ or any other spoofing software.</value>
   <data name="icons8_ok_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-ok-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LimiterDeviceNotReady" xml:space="preserve">
+    <value>Choose a device first and activate redirection for it!</value>
+  </data>
+  <data name="MustRedirectFirst" xml:space="preserve">
+    <value>Redirection must be active for this device!</value>
+  </data>
   <data name="NewTargetNotificationPrompt" xml:space="preserve">
     <value>A new device detected!</value>
+  </data>
+  <data name="NoGatewayOrOwnDevice" xml:space="preserve">
+    <value>This operation can not target the gateway or your own ip address!</value>
+  </data>
+  <data name="NoLimiterWhileSniffer" xml:space="preserve">
+    <value>The Speed Limiter can't be used while the sniffer is active!</value>
   </data>
   <data name="NotificationsPrompt" xml:space="preserve">
     <value>Do you want me to inform you of newly connected devices?
 (This option can be changed back in the options menu)</value>
+  </data>
+  <data name="OpFailed" xml:space="preserve">
+    <value>Operation failed!</value>
+  </data>
+  <data name="RefreshScanNotActive" xml:space="preserve">
+    <value>In order to do a refresh, the scanner must be active and no other operations are in progress.</value>
+  </data>
+  <data name="ScanStillInProgress" xml:space="preserve">
+    <value>A scan is still in progress, please wait until its finished.</value>
+  </data>
+  <data name="SelectDevice" xml:space="preserve">
+    <value>Select a device first!</value>
   </data>
   <data name="SnifferHelp" xml:space="preserve">
     <value>1- In order to begin capturing packets click on START.
@@ -180,6 +216,9 @@ or any other spoofing software.</value>
 4- In order to open a chosen packet do a right click on the selected packet and click \"Show Packet\" and it will be displayed in the packet viewer on the bottom left of the window.
 5- To resolve the destination ip in HTTPS Packets just click the Resolve button for the requested row.
 6- Hint: its useful to resolve the destination IPs before exporting the content of the list in order to include more information in the log file.</value>
+  </data>
+  <data name="SnifferLimiterStillActive" xml:space="preserve">
+    <value>The Packet Sniffer can't be used while the limiter is active!</value>
   </data>
   <data name="spinB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\spinB.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

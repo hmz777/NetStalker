@@ -102,6 +102,7 @@
             this.SetName.Name = "SetName";
             this.SetName.Size = new System.Drawing.Size(207, 24);
             this.SetName.Text = "Set Friendly Name";
+            this.SetName.Click += new System.EventHandler(this.SetName_Click);
             // 
             // ClearName
             // 
@@ -109,6 +110,7 @@
             this.ClearName.Name = "ClearName";
             this.ClearName.Size = new System.Drawing.Size(207, 24);
             this.ClearName.Text = "Clear Name";
+            this.ClearName.Click += new System.EventHandler(this.ClearName_Click);
             // 
             // IconList
             // 

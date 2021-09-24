@@ -76,6 +76,15 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quit the application ?.
+        /// </summary>
+        internal static string AppQuit {
+            get {
+                return ResourceManager.GetString("AppQuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap color_cancel {
@@ -126,6 +135,33 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The selected device was not found in the list or targets.
+        /// </summary>
+        internal static string DeviceNotFound {
+            get {
+                return ResourceManager.GetString("DeviceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name cannot be longer than 20 characters!.
+        /// </summary>
+        internal static string FriendlyNameCharLimit {
+            get {
+                return ResourceManager.GetString("FriendlyNameCharLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Name cannot be empty!.
+        /// </summary>
+        internal static string FriendlyNameEmpty {
+            get {
+                return ResourceManager.GetString("FriendlyNameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Spoof Protection occurs whenever a blocking or a redirection operation is active.
         ///It protects you pc from being blocked or redirected by the same tool
         ///or any other spoofing software..
@@ -159,11 +195,47 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose a device first and activate redirection for it!.
+        /// </summary>
+        internal static string LimiterDeviceNotReady {
+            get {
+                return ResourceManager.GetString("LimiterDeviceNotReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redirection must be active for this device!.
+        /// </summary>
+        internal static string MustRedirectFirst {
+            get {
+                return ResourceManager.GetString("MustRedirectFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A new device detected!.
         /// </summary>
         internal static string NewTargetNotificationPrompt {
             get {
                 return ResourceManager.GetString("NewTargetNotificationPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation can not target the gateway or your own ip address!.
+        /// </summary>
+        internal static string NoGatewayOrOwnDevice {
+            get {
+                return ResourceManager.GetString("NoGatewayOrOwnDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Speed Limiter can&apos;t be used while the sniffer is active!.
+        /// </summary>
+        internal static string NoLimiterWhileSniffer {
+            get {
+                return ResourceManager.GetString("NoLimiterWhileSniffer", resourceCulture);
             }
         }
         
@@ -178,6 +250,42 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation failed!.
+        /// </summary>
+        internal static string OpFailed {
+            get {
+                return ResourceManager.GetString("OpFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In order to do a refresh, the scanner must be active and no other operations are in progress..
+        /// </summary>
+        internal static string RefreshScanNotActive {
+            get {
+                return ResourceManager.GetString("RefreshScanNotActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A scan is still in progress, please wait until its finished..
+        /// </summary>
+        internal static string ScanStillInProgress {
+            get {
+                return ResourceManager.GetString("ScanStillInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a device first!.
+        /// </summary>
+        internal static string SelectDevice {
+            get {
+                return ResourceManager.GetString("SelectDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1- In order to begin capturing packets click on START.
         ///2- You can clear the list from items by pressing CLEAR.
         ///3- You can save the captured packets in a form of a log file by stopping the ongoing operation, pressing EXPORT and choosing a location for the file to be saved.
@@ -187,6 +295,15 @@ namespace NetStalker.Properties {
         internal static string SnifferHelp {
             get {
                 return ResourceManager.GetString("SnifferHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Packet Sniffer can&apos;t be used while the limiter is active!.
+        /// </summary>
+        internal static string SnifferLimiterStillActive {
+            get {
+                return ResourceManager.GetString("SnifferLimiterStillActive", resourceCulture);
             }
         }
         

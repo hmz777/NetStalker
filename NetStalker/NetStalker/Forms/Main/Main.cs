@@ -6,9 +6,11 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
@@ -18,7 +20,6 @@ namespace NetStalker
     public partial class Main : Form, IView
     {
         #region Static Fields
-
         /// <summary>
         /// Inication that an operation is in progress.
         /// </summary>
@@ -31,7 +32,6 @@ namespace NetStalker
         #endregion
 
         #region Instance Fields
-
         /// <summary>
         /// The list overlay that represents the status of the list when its empty.
         /// </summary>
@@ -329,6 +329,7 @@ namespace NetStalker
         {
             Controller.AttachOnExitEventHandler(this);
             ToastAPI.AttachHandler();
+            LoadSavedDeviceInfo();
         }
 
         public void Main_Resize(object sender, EventArgs e)
@@ -366,7 +367,7 @@ namespace NetStalker
 
                 if (e.CloseReason == CloseReason.UserClosing && !TrayExitFlag)
                 {
-                    using (var message = new MessageBoxForm("Quit", "Quit the application ?", MessageBoxIcon.Question, MessageBoxButtons.OKCancel))
+                    using (var message = new MessageBoxForm("Quit", Properties.Resources.AppQuit, MessageBoxIcon.Question, MessageBoxButtons.OKCancel))
                     {
                         if (message.ShowDialog() == DialogResult.Cancel)
                         {
@@ -408,7 +409,7 @@ namespace NetStalker
             }
             else
             {
-                using (var message = new MessageBoxForm("Info", "A scan is still in progress, please wait until its finished.", MessageBoxIcon.Information, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Info", Properties.Resources.ScanStillInProgress, MessageBoxIcon.Information, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
@@ -460,7 +461,7 @@ namespace NetStalker
             try
             {
                 if (Scanner.ScannerTask == null || OperationIsInProgress)
-                    throw new Exception("In order to do a refresh, the scanner must be active and no other operations are in progress.");
+                    throw new Exception(Properties.Resources.RefreshScanNotActive);
 
                 RefreshButton.Enabled = false;
 
@@ -511,21 +512,21 @@ namespace NetStalker
             }
             catch (ArgumentNullException)
             {
-                using (var message = new MessageBoxForm("Error", "Select a device first!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.SelectDevice, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
             }
             catch (CustomExceptions.OperationInProgressException)
             {
-                using (var message = new MessageBoxForm("Error", "The Packet Sniffer can't be used while the limiter is active!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.SnifferLimiterStillActive, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
             }
             catch (CustomExceptions.RedirectionNotActiveException)
             {
-                using (var message = new MessageBoxForm("Error", "Redirection must be active for this device!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.MustRedirectFirst, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
@@ -572,21 +573,21 @@ namespace NetStalker
             }
             catch (ArgumentNullException)
             {
-                using (var message = new MessageBoxForm("Error", "Choose a device first and activate redirection for it!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.LimiterDeviceNotReady, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
             }
             catch (CustomExceptions.LocalHostTargeted)
             {
-                using (var message = new MessageBoxForm("Error", "This operation can not target the gateway or your own ip address!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.NoGatewayOrOwnDevice, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
             }
             catch (CustomExceptions.RedirectionNotActiveException)
             {
-                using (var message = new MessageBoxForm("Error", "Redirection must be active for this device!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.LimiterDeviceNotReady, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
@@ -664,7 +665,7 @@ namespace NetStalker
                 //Don't allow blocking / redirection while the sniffer is active or any other operation.
                 if (OperationIsInProgress)
                 {
-                    using (var message = new MessageBoxForm("Error", "The Speed Limiter can't be used while the sniffer is active!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                    using (var message = new MessageBoxForm("Error", Properties.Resources.NoLimiterWhileSniffer, MessageBoxIcon.Error, MessageBoxButtons.OK))
                     {
                         message.ShowDialog();
                     }
@@ -678,7 +679,7 @@ namespace NetStalker
 
                 if (device.IsGateway || device.IsLocalDevice)
                 {
-                    using (var message = new MessageBoxForm("Error", "This operation can not target the gateway or your own ip address!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                    using (var message = new MessageBoxForm("Error", Properties.Resources.NoGatewayOrOwnDevice, MessageBoxIcon.Error, MessageBoxButtons.OK))
                     {
                         message.ShowDialog();
                     }
@@ -691,7 +692,7 @@ namespace NetStalker
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
                     if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
-                        throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
+                        throw new CustomExceptions.DeviceNotInListException(Properties.Resources.DeviceNotFound);
 
                     listDevice.Value.Blocked = true;
 
@@ -716,7 +717,7 @@ namespace NetStalker
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
                     if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
-                        throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
+                        throw new CustomExceptions.DeviceNotInListException(Properties.Resources.DeviceNotFound);
 
                     listDevice.Value.Blocked = true;
                     listDevice.Value.Redirected = true;
@@ -750,7 +751,7 @@ namespace NetStalker
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
                     if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
-                        throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
+                        throw new CustomExceptions.DeviceNotInListException(Properties.Resources.DeviceNotFound);
 
                     listDevice.Value.Blocked = false;
 
@@ -773,7 +774,7 @@ namespace NetStalker
                     //Update device state in list
                     var listDevice = Devices.FirstOrDefault(D => D.Value.MAC == device.MAC);
                     if (listDevice.Equals(default(KeyValuePair<IPAddress, Device>)))
-                        throw new CustomExceptions.DeviceNotInListException("Device was not found in the list of targeted devices.");
+                        throw new CustomExceptions.DeviceNotInListException(Properties.Resources.DeviceNotFound);
 
                     listDevice.Value.Blocked = false;
                     listDevice.Value.Redirected = false;
@@ -810,7 +811,7 @@ namespace NetStalker
             }
             catch (CustomExceptions.DeviceNotInListException)
             {
-                using (var message = new MessageBoxForm("Error", "The selected device was not found in the list or targets", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.DeviceNotFound, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
@@ -877,7 +878,7 @@ namespace NetStalker
             }
             catch
             {
-                using (var message = new MessageBoxForm("Error", "Operation failed!", MessageBoxIcon.Error, MessageBoxButtons.OK))
+                using (var message = new MessageBoxForm("Error", Properties.Resources.OpFailed, MessageBoxIcon.Error, MessageBoxButtons.OK))
                 {
                     message.ShowDialog();
                 }
