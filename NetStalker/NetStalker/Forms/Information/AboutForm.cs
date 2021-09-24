@@ -34,16 +34,6 @@ namespace NetStalker
             BuildLabel.Text = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
         }
 
-        private void LinkLabel1_Click(object sender, EventArgs e)
-        {
-            Process.Start(linkLabel1.Text);
-        }
-
-        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(linkLabel2.Text);
-        }
-
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(linkLabel3.Text);
@@ -54,17 +44,17 @@ namespace NetStalker
             Process.Start(linkLabel4.Text);
         }
 
-        private void Email_Click(object sender, EventArgs e)
+        private void Email_Click(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start($"Mailto:{EmailLabel.Text}");
         }
 
-        private void Site_Click(object sender, EventArgs e)
+        private void Site_Click(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(SiteLabel.Text);
         }
 
-        private void Git_Click(object sender, EventArgs e)
+        private void Git_Click(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(GitLabel.Text);
         }
