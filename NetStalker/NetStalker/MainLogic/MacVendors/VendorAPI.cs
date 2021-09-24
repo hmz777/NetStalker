@@ -70,7 +70,6 @@ namespace NetStalker
             }
             catch
             {
-                throw;
             }
 
             return default;
