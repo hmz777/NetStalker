@@ -64,6 +64,7 @@
             this.SetPasswordButton = new System.Windows.Forms.Button();
             this.RemovePasswordButton = new System.Windows.Forms.Button();
             this.PassStatus = new System.Windows.Forms.Label();
+            this.ClearInfo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelpBubble)).BeginInit();
@@ -85,7 +86,7 @@
             this.DarkCheck.AutoSize = true;
             this.DarkCheck.Location = new System.Drawing.Point(117, 26);
             this.DarkCheck.Name = "DarkCheck";
-            this.DarkCheck.Size = new System.Drawing.Size(55, 20);
+            this.DarkCheck.Size = new System.Drawing.Size(66, 23);
             this.DarkCheck.TabIndex = 26;
             this.DarkCheck.TabStop = true;
             this.DarkCheck.Text = "DARK";
@@ -97,7 +98,7 @@
             this.LightCheck.AutoSize = true;
             this.LightCheck.Location = new System.Drawing.Point(5, 26);
             this.LightCheck.Name = "LightCheck";
-            this.LightCheck.Size = new System.Drawing.Size(57, 20);
+            this.LightCheck.Size = new System.Drawing.Size(66, 23);
             this.LightCheck.TabIndex = 25;
             this.LightCheck.TabStop = true;
             this.LightCheck.Text = "LIGHT";
@@ -120,7 +121,7 @@
             this.TaskbarCheck.AutoSize = true;
             this.TaskbarCheck.Location = new System.Drawing.Point(117, 23);
             this.TaskbarCheck.Name = "TaskbarCheck";
-            this.TaskbarCheck.Size = new System.Drawing.Size(71, 20);
+            this.TaskbarCheck.Size = new System.Drawing.Size(85, 23);
             this.TaskbarCheck.TabIndex = 28;
             this.TaskbarCheck.TabStop = true;
             this.TaskbarCheck.Text = "TASKBAR";
@@ -132,7 +133,7 @@
             this.TrayCheck.AutoSize = true;
             this.TrayCheck.Location = new System.Drawing.Point(5, 23);
             this.TrayCheck.Name = "TrayCheck";
-            this.TrayCheck.Size = new System.Drawing.Size(52, 20);
+            this.TrayCheck.Size = new System.Drawing.Size(60, 23);
             this.TrayCheck.TabIndex = 27;
             this.TrayCheck.TabStop = true;
             this.TrayCheck.Text = "TRAY";
@@ -171,7 +172,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(297, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
+            this.label1.Size = new System.Drawing.Size(131, 19);
             this.label1.TabIndex = 58;
             this.label1.Text = "SET PASSWORD";
             // 
@@ -181,7 +182,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(766, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.Size = new System.Drawing.Size(128, 19);
             this.label2.TabIndex = 59;
             this.label2.Text = "CHOOSE STYLE";
             // 
@@ -191,7 +192,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(290, 272);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 17);
+            this.label3.Size = new System.Drawing.Size(138, 19);
             this.label3.TabIndex = 60;
             this.label3.Text = "OTHER OPTIONS";
             // 
@@ -201,7 +202,7 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(694, 171);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 17);
+            this.label4.Size = new System.Drawing.Size(200, 19);
             this.label4.TabIndex = 61;
             this.label4.Text = "MINIMIZE APPLICATION";
             // 
@@ -211,7 +212,7 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(727, 292);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 17);
+            this.label5.Size = new System.Drawing.Size(167, 19);
             this.label5.TabIndex = 62;
             this.label5.Text = "MAC VENDORS API";
             // 
@@ -265,7 +266,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(483, 322);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(321, 48);
+            this.label11.Size = new System.Drawing.Size(409, 57);
             this.label11.TabIndex = 68;
             this.label11.Text = "If you can\'t see the device\'s manufacturer, acquire a new\r\ntoken from the link be" +
     "low and enter it in the API\r\nToken field.\r\n";
@@ -276,7 +277,7 @@
             this.label12.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(479, 395);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 19);
+            this.label12.Size = new System.Drawing.Size(103, 21);
             this.label12.TabIndex = 69;
             this.label12.Text = "API TOKEN:";
             // 
@@ -285,7 +286,7 @@
             this.TokenField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TokenField.Location = new System.Drawing.Point(588, 391);
             this.TokenField.Name = "TokenField";
-            this.TokenField.Size = new System.Drawing.Size(306, 24);
+            this.TokenField.Size = new System.Drawing.Size(306, 28);
             this.TokenField.TabIndex = 70;
             // 
             // MacVendorsLinkLabel
@@ -293,7 +294,7 @@
             this.MacVendorsLinkLabel.AutoSize = true;
             this.MacVendorsLinkLabel.Location = new System.Drawing.Point(584, 420);
             this.MacVendorsLinkLabel.Name = "MacVendorsLinkLabel";
-            this.MacVendorsLinkLabel.Size = new System.Drawing.Size(167, 16);
+            this.MacVendorsLinkLabel.Size = new System.Drawing.Size(209, 19);
             this.MacVendorsLinkLabel.TabIndex = 71;
             this.MacVendorsLinkLabel.TabStop = true;
             this.MacVendorsLinkLabel.Text = "https://macvendors.com/api";
@@ -306,7 +307,7 @@
             this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLabel.Location = new System.Drawing.Point(12, 499);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(0, 19);
+            this.StatusLabel.Size = new System.Drawing.Size(0, 21);
             this.StatusLabel.TabIndex = 72;
             // 
             // SaveButton
@@ -365,7 +366,7 @@
             this.label13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(23, 90);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 19);
+            this.label13.Size = new System.Drawing.Size(109, 21);
             this.label13.TabIndex = 74;
             this.label13.Text = "PASSWORD:";
             // 
@@ -375,7 +376,7 @@
             this.label14.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(23, 132);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 19);
+            this.label14.Size = new System.Drawing.Size(97, 21);
             this.label14.TabIndex = 75;
             this.label14.Text = "CONFIRM:";
             // 
@@ -384,7 +385,7 @@
             this.PasswordField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordField.Location = new System.Drawing.Point(138, 86);
             this.PasswordField.Name = "PasswordField";
-            this.PasswordField.Size = new System.Drawing.Size(290, 24);
+            this.PasswordField.Size = new System.Drawing.Size(290, 28);
             this.PasswordField.TabIndex = 76;
             this.PasswordField.TextChanged += new System.EventHandler(this.PasswordField_TextChanged);
             // 
@@ -393,7 +394,7 @@
             this.ConfirmPasswordField.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordField.Location = new System.Drawing.Point(138, 128);
             this.ConfirmPasswordField.Name = "ConfirmPasswordField";
-            this.ConfirmPasswordField.Size = new System.Drawing.Size(290, 24);
+            this.ConfirmPasswordField.Size = new System.Drawing.Size(290, 28);
             this.ConfirmPasswordField.TabIndex = 77;
             this.ConfirmPasswordField.TextChanged += new System.EventHandler(this.ConfirmPasswordField_TextChanged);
             // 
@@ -402,7 +403,7 @@
             this.SpoofProtectionCheck.AutoSize = true;
             this.SpoofProtectionCheck.Location = new System.Drawing.Point(27, 320);
             this.SpoofProtectionCheck.Name = "SpoofProtectionCheck";
-            this.SpoofProtectionCheck.Size = new System.Drawing.Size(138, 20);
+            this.SpoofProtectionCheck.Size = new System.Drawing.Size(164, 23);
             this.SpoofProtectionCheck.TabIndex = 78;
             this.SpoofProtectionCheck.Text = "SPOOF PROTECTION";
             this.SpoofProtectionCheck.UseVisualStyleBackColor = true;
@@ -413,7 +414,7 @@
             this.SuppressNotificationsCheck.AutoSize = true;
             this.SuppressNotificationsCheck.Location = new System.Drawing.Point(27, 356);
             this.SuppressNotificationsCheck.Name = "SuppressNotificationsCheck";
-            this.SuppressNotificationsCheck.Size = new System.Drawing.Size(165, 20);
+            this.SuppressNotificationsCheck.Size = new System.Drawing.Size(195, 23);
             this.SuppressNotificationsCheck.TabIndex = 79;
             this.SuppressNotificationsCheck.Text = "SUPPRESS NOTIFICATIONS";
             this.SuppressNotificationsCheck.UseVisualStyleBackColor = true;
@@ -469,17 +470,40 @@
             this.PassStatus.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassStatus.Location = new System.Drawing.Point(134, 158);
             this.PassStatus.Name = "PassStatus";
-            this.PassStatus.Size = new System.Drawing.Size(0, 17);
+            this.PassStatus.Size = new System.Drawing.Size(0, 20);
             this.PassStatus.TabIndex = 82;
+            // 
+            // ClearInfo
+            // 
+            this.ClearInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearInfo.BackColor = System.Drawing.Color.White;
+            this.ClearInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClearInfo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ClearInfo.FlatAppearance.BorderSize = 0;
+            this.ClearInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearInfo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearInfo.ImageKey = "color_clear-symbol.PNG";
+            this.ClearInfo.ImageList = this.ButtonIcons;
+            this.ClearInfo.Location = new System.Drawing.Point(27, 391);
+            this.ClearInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClearInfo.Name = "ClearInfo";
+            this.ClearInfo.Size = new System.Drawing.Size(195, 57);
+            this.ClearInfo.TabIndex = 83;
+            this.ClearInfo.Text = "CLEAR DEVICE INFO";
+            this.ClearInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ClearInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ClearInfo.UseVisualStyleBackColor = false;
+            this.ClearInfo.Click += new System.EventHandler(this.ClearInfo_Click);
             // 
             // Options
             // 
             this.AcceptButton = this.SaveButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(912, 529);
             this.ControlBox = false;
+            this.Controls.Add(this.ClearInfo);
             this.Controls.Add(this.PassStatus);
             this.Controls.Add(this.RemovePasswordButton);
             this.Controls.Add(this.SetPasswordButton);
@@ -565,5 +589,6 @@
         private System.Windows.Forms.Button SetPasswordButton;
         private System.Windows.Forms.Button RemovePasswordButton;
         private System.Windows.Forms.Label PassStatus;
+        private System.Windows.Forms.Button ClearInfo;
     }
 }

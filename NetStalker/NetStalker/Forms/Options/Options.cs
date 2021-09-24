@@ -3,6 +3,7 @@ using NetStalker.MainLogic;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
 
@@ -247,26 +248,7 @@ namespace NetStalker
 
         private void LightCheck_Click(object sender, EventArgs e)
         {
-            if (PassStatus.ForeColor == Color.Red)
-            {
-                PassStatus.ForeColor = Color.Red;
-                StatusLabel.ForeColor = Color.Green;
-                StatusLabel.Text = "";
-                Properties.Settings.Default.Color = "Light";
-            }
-            else if (PassStatus.ForeColor == Color.Green)
-            {
-                PassStatus.ForeColor = Color.Green;
-                StatusLabel.ForeColor = Color.Green;
-                StatusLabel.Text = "";
-                Properties.Settings.Default.Color = "Light";
-            }
-            else
-            {
-                StatusLabel.ForeColor = Color.Green;
-                StatusLabel.Text = "";
-                Properties.Settings.Default.Color = "Light";
-            }
+            Properties.Settings.Default.DarkMode = false;
 
             main.ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
             main.ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
@@ -278,32 +260,12 @@ namespace NetStalker
             main.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
             main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
             main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            main.LoadingIndicator.Image = NetStalker.Properties.Resources.spinB;
-
+            main.LoadingIndicator.Image = Properties.Resources.spinB;
         }
 
         private void DarkCheck_Click(object sender, EventArgs e)
         {
-            if (PassStatus.ForeColor == Color.Red)
-            {
-                PassStatus.ForeColor = Color.Red;
-                StatusLabel.ForeColor = Color.Green;
-                StatusLabel.Text = "";
-                Properties.Settings.Default.Color = "Dark";
-            }
-            else if (PassStatus.ForeColor == Color.Green)
-            {
-                PassStatus.ForeColor = Color.Green;
-                Properties.Settings.Default.Color = "Dark";
-                StatusLabel.ForeColor = Color.Green;
-                StatusLabel.Text = "";
-            }
-            else
-            {
-                Properties.Settings.Default.Color = "Dark";
-                StatusLabel.ForeColor = Color.Green;
-                StatusLabel.Text = "";
-            }
+            Properties.Settings.Default.DarkMode = true;
 
             main.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
             main.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
@@ -371,6 +333,11 @@ namespace NetStalker
         private void MacVendorsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(MacVendorsLinkLabel.Text);
+        }
+
+        private void ClearInfo_Click(object sender, EventArgs e)
+        {
+            File.Delete("DeviceInfo.json");
         }
     }
 }
