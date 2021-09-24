@@ -28,7 +28,10 @@ namespace NetStalker
         /// The list of targets of type <see cref="Device"/>
         /// </summary>
         public static ConcurrentDictionary<IPAddress, Device> Devices;
-
+        /// <summary>
+        /// A dictionary containing targets' user defined friendly names.
+        /// </summary>
+        public static Dictionary<string, string> DeviceFriendlyNames = new Dictionary<string, string>();
         #endregion
 
         #region Instance Fields
@@ -255,6 +258,19 @@ namespace NetStalker
             {
                 device.Value.PacketsSentSinceLastReset = 0;
                 device.Value.PacketsReceivedSinceLastReset = 0;
+            }
+        }
+        /// <summary>
+        /// Check if there is a device info file and read it.
+        /// </summary>
+        public void LoadSavedDeviceInfo()
+        {
+            var InfoFile = "DeviceInfo.json";
+
+            if (File.Exists(InfoFile))
+            {
+                var json = File.ReadAllText(InfoFile);
+                DeviceFriendlyNames = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             }
         }
 
@@ -883,6 +899,56 @@ namespace NetStalker
                     message.ShowDialog();
                 }
             }
+        }
+
+        #endregion
+
+        #region Device Menu Event Handlers
+
+        private void SetName_Click(object sender, EventArgs e)
+        {
+            var selectedDevice = DeviceList.SelectedObject as Device;
+            string deviceName;
+
+            using (var set = new SetNameDialog(selectedDevice.DeviceName))
+            {
+                set.ShowDialog();
+
+                if (!string.IsNullOrWhiteSpace(set.NameBox.Text))
+                {
+                    deviceName = set.NameBox.Text;
+                    string MacString = selectedDevice.MAC.ToString();
+
+                    if (!DeviceFriendlyNames.Any(d => d.Key == MacString))
+                    {
+                        DeviceFriendlyNames.Add(MacString, deviceName);
+                    }
+                    else
+                    {
+                        DeviceFriendlyNames[MacString] = deviceName;
+                    }
+
+                    var json = JsonSerializer.Serialize(DeviceFriendlyNames);
+
+                    File.WriteAllText("DeviceInfo.json", json);
+
+                    selectedDevice.DeviceName = deviceName;
+                    DeviceList.UpdateObject(selectedDevice);
+                }
+            }
+        }
+
+        private void ClearName_Click(object sender, EventArgs e)
+        {
+            var selectedDevice = DeviceList.SelectedObject as Device;
+            DeviceFriendlyNames.Remove(selectedDevice.MAC.ToString());
+
+            var json = JsonSerializer.Serialize(DeviceFriendlyNames);
+
+            File.WriteAllText("DeviceInfo.json", json);
+
+            selectedDevice.DeviceName = selectedDevice.IP.ToString();
+            DeviceList.UpdateObject(selectedDevice);
         }
 
         #endregion
