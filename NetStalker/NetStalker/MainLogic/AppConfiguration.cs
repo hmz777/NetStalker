@@ -89,13 +89,8 @@ namespace NetStalker.MainLogic
         public const string Guid = "79A80A63-EFA4-4E1E-B749-E4D4DDCB5B49";
 
         /// <summary>
-        /// Returns the main color mode
-        /// </summary>
-        public static string Color => NetStalker.Properties.Settings.Default.Color;
-
-        /// <summary>
         /// Returns the main accent
         /// </summary>
-        public static string Accent => NetStalker.Properties.Settings.Default.DarkMode;
+        public static bool DarkMode => Properties.Settings.Default.DarkMode;
     }
 }
