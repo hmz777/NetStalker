@@ -32,6 +32,14 @@ namespace NetStalker
         /// A dictionary containing targets' user defined friendly names.
         /// </summary>
         public static Dictionary<string, string> DeviceFriendlyNames = new Dictionary<string, string>();
+        /// <summary>
+        /// A switch indicating that the user has checked the block all checkbox (used for deciding whether to block future discovered devices)
+        /// </summary>
+        public static bool BlockAll { get; set; }
+        /// <summary>
+        /// A switch indicating that the user has checked the redirect all checkbox  (used for deciding whether to redirect future discovered devices)
+        /// </summary>
+        public static bool RedirectAll { get; set; }
         #endregion
 
         #region Instance Fields
@@ -124,6 +132,9 @@ namespace NetStalker
             ListOverlay = this.DeviceList.EmptyListMsgOverlay as TextOverlay;
             ListOverlay.Font = new Font("Century Gothic", 25);
 
+
+            DeviceList.UseNotifyPropertyChanged = true;
+
             #endregion
 
             #region Update Timers
@@ -157,7 +168,7 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 600000000L) //60 seconds
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 900000000L) //90 seconds
                     {
                         if (Devices.TryRemove(Device.Key, out Device Target))
                         {
@@ -176,7 +187,7 @@ namespace NetStalker
             {
                 foreach (var Device in Devices)
                 {
-                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 900000000L) //1.5 minutes
+                    if (!Device.Value.IsGateway && !Device.Value.IsLocalDevice && (DateTime.Now.Ticks - Device.Value.TimeSinceLastArp.Ticks) > 1200000000L) //120 seconds
                     {
                         if (Devices.TryRemove(Device.Key, out Device Target))
                         {
@@ -252,7 +263,7 @@ namespace NetStalker
         /// <summary>
         /// Reset recieved and sent packets for all devices in order for the value counter to compute the next value
         /// </summary>
-        public void ResetPacketCount()
+        private void ResetPacketCount()
         {
             foreach (var device in Devices)
             {
@@ -263,7 +274,7 @@ namespace NetStalker
         /// <summary>
         /// Check if there is a device info file and read it.
         /// </summary>
-        public void LoadSavedDeviceInfo()
+        private void LoadSavedDeviceInfo()
         {
             var InfoFile = "DeviceInfo.json";
 
@@ -272,6 +283,36 @@ namespace NetStalker
                 var json = File.ReadAllText(InfoFile);
                 DeviceFriendlyNames = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             }
+        }
+
+        private void ToggleDarkMode()
+        {
+            ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
+            ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
+            DeviceList.BackColor = Color.FromArgb(51, 51, 51);
+            DeviceList.HeaderFormatStyle = DarkHeaders;
+            DeviceList.HotItemStyle = DarkHot;
+            DeviceList.ForeColor = Color.FromArgb(204, 204, 204);
+            DeviceList.SelectedBackColor = Color.FromArgb(88, 88, 88);
+            DeviceList.SelectedForeColor = Color.FromArgb(204, 204, 204);
+            DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(204, 204, 204);
+            DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(88, 88, 88);
+            LoadingIndicator.Image = Properties.Resources.spinW;
+        }
+
+        private void ToggleLightMode()
+        {
+            ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
+            ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
+            DeviceList.BackColor = Color.White;
+            DeviceList.HeaderFormatStyle = LightHeaders;
+            DeviceList.HotItemStyle = LightHot;
+            DeviceList.ForeColor = Color.FromArgb(54, 54, 54);
+            DeviceList.SelectedBackColor = Color.FromArgb(214, 214, 214);
+            DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
+            DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
+            DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
+            LoadingIndicator.Image = Properties.Resources.spinB;
         }
 
         #endregion
@@ -343,6 +384,15 @@ namespace NetStalker
 
         private void Main_Load(object sender, EventArgs e)
         {
+            if (AppConfiguration.DarkMode)
+            {
+                ToggleDarkMode();
+            }
+            else
+            {
+                ToggleLightMode();
+            }
+
             Controller.AttachOnExitEventHandler(this);
             ToastAPI.AttachHandler();
             LoadSavedDeviceInfo();
@@ -639,28 +689,62 @@ namespace NetStalker
             }
         }
 
-        private void DeviceList_ItemsAdding(object sender, ItemsAddingEventArgs e)
+        private async void DeviceList_ItemsAdding(object sender, ItemsAddingEventArgs e)
         {
-            if (DeviceList.Items.Count >= 8 && !ResizeDone)
-            {
-                //olvColumn7.MaximumWidth = 83;
-                //olvColumn7.MinimumWidth = 83;
-                //olvColumn7.Width = 83;
-                ResizeDone = true;
-            }
+            var objectsToAdd = e.ObjectsToAdd.Cast<Device>();
 
-            //Notifications are not suppressed
-            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
+            if (objectsToAdd.Count() > 0)
             {
-                var Ad = e.ObjectsToAdd.Cast<Device>().ToList();
-                if (Ad.Count > 0)
+                Device device = objectsToAdd.First();
+
+                if (BlockAll)
                 {
-                    Device Device = Ad[0];
+                    if (!device.IsGateway && !device.IsLocalDevice && !device.Blocked)
+                    {
+                        var res = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 6, device);
+                        DeviceList.CheckSubItem(device, olvColumn6);
 
-                    ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}",
-                        Properties.Resources.NewTargetNotificationPrompt,
-                        Device.IP,
-                        Device.MAC), NotificationPurpose.TargetDiscovery, Device.IP.ToString(), Device.MAC.ToString());
+                        if (res)
+                        {
+                            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
+                            {
+                                ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}\nDevice has been automatically blocked.",
+                                    Properties.Resources.NewTargetNotificationPrompt,
+                                    device.IP,
+                                    device.MAC), NotificationPurpose.Message, device.IP.ToString(), device.MAC.ToString());
+                            }
+                        }
+                    }
+                }
+                else if (RedirectAll)
+                {
+                    if (!device.IsGateway && !device.IsLocalDevice && !device.Redirected)
+                    {
+                        var res = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 5, device);
+                        DeviceList.CheckSubItem(device, olvColumn5);
+
+                        if (res)
+                        {
+                            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
+                            {
+                                ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}\nDevice has been automatically redirected.",
+                                    Properties.Resources.NewTargetNotificationPrompt,
+                                    device.IP,
+                                    device.MAC), NotificationPurpose.Message, device.IP.ToString(), device.MAC.ToString());
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //If no previous action were taken
+                    if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
+                    {
+                        ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}",
+                            Properties.Resources.NewTargetNotificationPrompt,
+                            device.IP,
+                            device.MAC), NotificationPurpose.TargetDiscovery, device.IP.ToString(), device.MAC.ToString());
+                    }
                 }
             }
         }
@@ -949,6 +1033,80 @@ namespace NetStalker
 
             selectedDevice.DeviceName = selectedDevice.IP.ToString();
             DeviceList.UpdateObject(selectedDevice);
+        }
+
+        #endregion
+
+        #region Block All/Redirect All Event Handlers
+
+        private async void BlockAllCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!RedirectAll)
+            {
+                if (!BlockAllCheck.Checked)
+                {
+                    foreach (Device device in DeviceList.Objects.Cast<Device>().ToList())
+                    {
+                        if (!device.IsGateway && !device.IsLocalDevice && !device.Blocked)
+                        {
+                            _ = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 6, device);
+                            DeviceList.CheckSubItem(device, olvColumn6);
+                        }
+                    }
+
+                    BlockAllCheck.Checked = true;
+                    BlockAll = true;
+                }
+                else
+                {
+                    foreach (Device device in DeviceList.Objects.Cast<Device>().ToList())
+                    {
+                        if (!device.IsGateway && !device.IsLocalDevice && device.Blocked)
+                        {
+                            _ = await SubItemCheckingHandler(CheckState.Checked, CheckState.Unchecked, 6, device);
+                            DeviceList.UncheckSubItem(device, olvColumn6);
+                        }
+                    }
+
+                    BlockAllCheck.Checked = false;
+                    BlockAll = false;
+                }
+            }
+        }
+
+        private async void RedirectAllCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!BlockAll)
+            {
+                if (!RedirectAllCheck.Checked)
+                {
+                    foreach (Device device in DeviceList.Objects.Cast<Device>().ToList())
+                    {
+                        if (!device.IsGateway && !device.IsLocalDevice && !device.Redirected)
+                        {
+                            _ = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 5, device);
+                            DeviceList.CheckSubItem(device, olvColumn5);
+                        }
+                    }
+
+                    RedirectAllCheck.Checked = true;
+                    RedirectAll = true;
+                }
+                else
+                {
+                    foreach (Device device in DeviceList.Objects.Cast<Device>().ToList())
+                    {
+                        if (!device.IsGateway && !device.IsLocalDevice && device.Redirected)
+                        {
+                            _ = await SubItemCheckingHandler(CheckState.Checked, CheckState.Unchecked, 5, device);
+                            DeviceList.UncheckSubItem(device, olvColumn5);
+                        }
+                    }
+
+                    RedirectAllCheck.Checked = false;
+                    RedirectAll = false;
+                }
+            }
         }
 
         #endregion

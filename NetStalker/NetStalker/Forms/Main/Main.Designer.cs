@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle1 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle2 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle3 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle4 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle13 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle14 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle15 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle16 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle17 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle18 = new BrightIdeasSoftware.HeaderStateStyle();
             this.DeviceMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SetName = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearName = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +52,6 @@
             this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.LoadingIndicator = new System.Windows.Forms.PictureBox();
             this.ScanButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.OptionsButton = new System.Windows.Forms.Button();
             this.FormHelpButton = new System.Windows.Forms.Button();
@@ -70,6 +69,8 @@
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.BottomPanel = new System.Windows.Forms.Panel();
+            this.RedirectAllCheck = new System.Windows.Forms.CheckBox();
+            this.BlockAllCheck = new System.Windows.Forms.CheckBox();
             this.Divider1 = new System.Windows.Forms.Label();
             this.CurrentOperationStatusLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -121,18 +122,18 @@
             // 
             // DarkHeaders
             // 
-            headerStateStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            headerStateStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Hot = headerStateStyle1;
-            headerStateStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            headerStateStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Normal = headerStateStyle2;
-            headerStateStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            headerStateStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Pressed = headerStateStyle3;
+            headerStateStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
+            headerStateStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Hot = headerStateStyle13;
+            headerStateStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            headerStateStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Normal = headerStateStyle14;
+            headerStateStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            headerStateStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Pressed = headerStateStyle15;
             // 
             // DarkHot
             // 
@@ -208,17 +209,17 @@
             // 
             // LightHeaders
             // 
-            headerStateStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            headerStateStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.LightHeaders.Hot = headerStateStyle4;
-            headerStateStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            headerStateStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.LightHeaders.Normal = headerStateStyle5;
-            headerStateStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            headerStateStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LightHeaders.Pressed = headerStateStyle6;
+            headerStateStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            headerStateStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.LightHeaders.Hot = headerStateStyle16;
+            headerStateStyle17.BackColor = System.Drawing.Color.WhiteSmoke;
+            headerStateStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.LightHeaders.Normal = headerStateStyle17;
+            headerStateStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            headerStateStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LightHeaders.Pressed = headerStateStyle18;
             // 
             // Tooltip
             // 
@@ -237,7 +238,7 @@
             // LoadingIndicator
             // 
             this.LoadingIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadingIndicator.Location = new System.Drawing.Point(854, 16);
+            this.LoadingIndicator.Location = new System.Drawing.Point(898, 16);
             this.LoadingIndicator.Margin = new System.Windows.Forms.Padding(2);
             this.LoadingIndicator.Name = "LoadingIndicator";
             this.LoadingIndicator.Size = new System.Drawing.Size(30, 29);
@@ -256,9 +257,9 @@
             this.ScanButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScanButton.ImageKey = "icons8-gps-signal-96.png";
             this.ScanButton.ImageList = this.ButtonIcons;
-            this.ScanButton.Location = new System.Drawing.Point(14, 3);
+            this.ScanButton.Location = new System.Drawing.Point(5, 5);
             this.ScanButton.Name = "ScanButton";
-            this.ScanButton.Size = new System.Drawing.Size(106, 51);
+            this.ScanButton.Size = new System.Drawing.Size(104, 50);
             this.ScanButton.TabIndex = 2;
             this.ScanButton.Text = "SCAN";
             this.ScanButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -266,25 +267,6 @@
             this.Tooltip.SetToolTip(this.ScanButton, "Initiate a new device scan");
             this.ScanButton.UseVisualStyleBackColor = false;
             this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ImageKey = "color_gps-receiving.PNG";
-            this.button1.ImageList = this.ButtonIcons;
-            this.button1.Location = new System.Drawing.Point(3, 487);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 51);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "SCAN";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Tooltip.SetToolTip(this.button1, "Initiate a new device scan");
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // RefreshButton
             // 
@@ -295,9 +277,9 @@
             this.RefreshButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RefreshButton.ImageKey = "color_restart.PNG";
             this.RefreshButton.ImageList = this.ButtonIcons;
-            this.RefreshButton.Location = new System.Drawing.Point(126, 3);
+            this.RefreshButton.Location = new System.Drawing.Point(109, 5);
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(106, 51);
+            this.RefreshButton.Size = new System.Drawing.Size(59, 50);
             this.RefreshButton.TabIndex = 29;
             this.RefreshButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.RefreshButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -314,9 +296,9 @@
             this.OptionsButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OptionsButton.ImageKey = "color_gear.PNG";
             this.OptionsButton.ImageList = this.ButtonIcons;
-            this.OptionsButton.Location = new System.Drawing.Point(474, 3);
+            this.OptionsButton.Location = new System.Drawing.Point(376, 5);
             this.OptionsButton.Name = "OptionsButton";
-            this.OptionsButton.Size = new System.Drawing.Size(106, 51);
+            this.OptionsButton.Size = new System.Drawing.Size(104, 50);
             this.OptionsButton.TabIndex = 30;
             this.OptionsButton.Text = "OPTIONS";
             this.OptionsButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -334,9 +316,9 @@
             this.FormHelpButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormHelpButton.ImageKey = "color_help.PNG";
             this.FormHelpButton.ImageList = this.ButtonIcons;
-            this.FormHelpButton.Location = new System.Drawing.Point(590, 3);
+            this.FormHelpButton.Location = new System.Drawing.Point(480, 5);
             this.FormHelpButton.Name = "FormHelpButton";
-            this.FormHelpButton.Size = new System.Drawing.Size(106, 51);
+            this.FormHelpButton.Size = new System.Drawing.Size(104, 50);
             this.FormHelpButton.TabIndex = 31;
             this.FormHelpButton.Text = "HELP";
             this.FormHelpButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -354,9 +336,9 @@
             this.AboutButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutButton.ImageKey = "color_about.PNG";
             this.AboutButton.ImageList = this.ButtonIcons;
-            this.AboutButton.Location = new System.Drawing.Point(706, 3);
+            this.AboutButton.Location = new System.Drawing.Point(584, 5);
             this.AboutButton.Name = "AboutButton";
-            this.AboutButton.Size = new System.Drawing.Size(106, 51);
+            this.AboutButton.Size = new System.Drawing.Size(104, 50);
             this.AboutButton.TabIndex = 32;
             this.AboutButton.Text = "ABOUT";
             this.AboutButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -374,9 +356,9 @@
             this.SnifferButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SnifferButton.ImageKey = "icons8-target-100.png";
             this.SnifferButton.ImageList = this.ButtonIcons;
-            this.SnifferButton.Location = new System.Drawing.Point(358, 3);
+            this.SnifferButton.Location = new System.Drawing.Point(272, 5);
             this.SnifferButton.Name = "SnifferButton";
-            this.SnifferButton.Size = new System.Drawing.Size(106, 51);
+            this.SnifferButton.Size = new System.Drawing.Size(104, 50);
             this.SnifferButton.TabIndex = 36;
             this.SnifferButton.Text = "SNIFFER";
             this.SnifferButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -394,9 +376,9 @@
             this.LimiterButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LimiterButton.ImageKey = "icons8-speed-96.png";
             this.LimiterButton.ImageList = this.ButtonIcons;
-            this.LimiterButton.Location = new System.Drawing.Point(242, 3);
+            this.LimiterButton.Location = new System.Drawing.Point(168, 5);
             this.LimiterButton.Name = "LimiterButton";
-            this.LimiterButton.Size = new System.Drawing.Size(106, 51);
+            this.LimiterButton.Size = new System.Drawing.Size(104, 50);
             this.LimiterButton.TabIndex = 37;
             this.LimiterButton.Text = "LIMITER";
             this.LimiterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -456,7 +438,7 @@
             this.DeviceList.ShowGroups = false;
             this.DeviceList.ShowImagesOnSubItems = true;
             this.DeviceList.ShowSortIndicators = false;
-            this.DeviceList.Size = new System.Drawing.Size(1268, 461);
+            this.DeviceList.Size = new System.Drawing.Size(1312, 461);
             this.DeviceList.SmallImageList = this.IconList;
             this.DeviceList.SpaceBetweenGroups = 1;
             this.DeviceList.TabIndex = 0;
@@ -540,12 +522,12 @@
             this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn4.Hideable = false;
             this.olvColumn4.IsEditable = false;
-            this.olvColumn4.MaximumWidth = 115;
-            this.olvColumn4.MinimumWidth = 115;
+            this.olvColumn4.MaximumWidth = 118;
+            this.olvColumn4.MinimumWidth = 118;
             this.olvColumn4.Searchable = false;
             this.olvColumn4.Text = "Device Status";
             this.olvColumn4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn4.Width = 115;
+            this.olvColumn4.Width = 118;
             // 
             // olvColumn5
             // 
@@ -555,12 +537,12 @@
             this.olvColumn5.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn5.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn5.Hideable = false;
-            this.olvColumn5.MaximumWidth = 73;
-            this.olvColumn5.MinimumWidth = 73;
+            this.olvColumn5.MaximumWidth = 75;
+            this.olvColumn5.MinimumWidth = 75;
             this.olvColumn5.Searchable = false;
             this.olvColumn5.Text = "Redirect";
             this.olvColumn5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn5.Width = 73;
+            this.olvColumn5.Width = 75;
             // 
             // olvColumn6
             // 
@@ -570,12 +552,12 @@
             this.olvColumn6.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn6.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn6.Hideable = false;
-            this.olvColumn6.MaximumWidth = 70;
-            this.olvColumn6.MinimumWidth = 70;
+            this.olvColumn6.MaximumWidth = 75;
+            this.olvColumn6.MinimumWidth = 75;
             this.olvColumn6.Searchable = false;
             this.olvColumn6.Text = "Block";
             this.olvColumn6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn6.Width = 70;
+            this.olvColumn6.Width = 75;
             // 
             // olvColumn8
             // 
@@ -584,12 +566,12 @@
             this.olvColumn8.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn8.Hideable = false;
             this.olvColumn8.IsEditable = false;
-            this.olvColumn8.MaximumWidth = 125;
-            this.olvColumn8.MinimumWidth = 125;
+            this.olvColumn8.MaximumWidth = 135;
+            this.olvColumn8.MinimumWidth = 135;
             this.olvColumn8.Searchable = false;
             this.olvColumn8.Text = "Download Cap";
             this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn8.Width = 125;
+            this.olvColumn8.Width = 135;
             // 
             // olvColumn7
             // 
@@ -598,15 +580,19 @@
             this.olvColumn7.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn7.Hideable = false;
             this.olvColumn7.IsEditable = false;
-            this.olvColumn7.MaximumWidth = 125;
-            this.olvColumn7.MinimumWidth = 125;
+            this.olvColumn7.MaximumWidth = 135;
+            this.olvColumn7.MinimumWidth = 135;
             this.olvColumn7.Searchable = false;
             this.olvColumn7.Text = "Upload Cap";
             this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn7.Width = 125;
+            this.olvColumn7.Width = 135;
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BottomPanel.Controls.Add(this.RedirectAllCheck);
+            this.BottomPanel.Controls.Add(this.BlockAllCheck);
             this.BottomPanel.Controls.Add(this.Divider1);
             this.BottomPanel.Controls.Add(this.LimiterButton);
             this.BottomPanel.Controls.Add(this.SnifferButton);
@@ -617,7 +603,6 @@
             this.BottomPanel.Controls.Add(this.FormHelpButton);
             this.BottomPanel.Controls.Add(this.OptionsButton);
             this.BottomPanel.Controls.Add(this.RefreshButton);
-            this.BottomPanel.Controls.Add(this.button1);
             this.BottomPanel.Controls.Add(this.ScanButton);
             this.BottomPanel.Controls.Add(this.LoadingIndicator);
             this.BottomPanel.Controls.Add(this.OpIndicator);
@@ -625,15 +610,39 @@
             this.BottomPanel.Location = new System.Drawing.Point(2, 469);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(2);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(1268, 59);
+            this.BottomPanel.Size = new System.Drawing.Size(1312, 59);
             this.BottomPanel.TabIndex = 0;
+            // 
+            // RedirectAllCheck
+            // 
+            this.RedirectAllCheck.AutoCheck = false;
+            this.RedirectAllCheck.AutoSize = true;
+            this.RedirectAllCheck.Location = new System.Drawing.Point(734, 32);
+            this.RedirectAllCheck.Name = "RedirectAllCheck";
+            this.RedirectAllCheck.Size = new System.Drawing.Size(119, 23);
+            this.RedirectAllCheck.TabIndex = 40;
+            this.RedirectAllCheck.Text = "REDIRECT ALL";
+            this.RedirectAllCheck.UseVisualStyleBackColor = true;
+            this.RedirectAllCheck.Click += new System.EventHandler(this.RedirectAllCheck_CheckedChanged);
+            // 
+            // BlockAllCheck
+            // 
+            this.BlockAllCheck.AutoCheck = false;
+            this.BlockAllCheck.AutoSize = true;
+            this.BlockAllCheck.Location = new System.Drawing.Point(734, 4);
+            this.BlockAllCheck.Name = "BlockAllCheck";
+            this.BlockAllCheck.Size = new System.Drawing.Size(101, 23);
+            this.BlockAllCheck.TabIndex = 39;
+            this.BlockAllCheck.Text = "BLOCK ALL";
+            this.BlockAllCheck.UseVisualStyleBackColor = true;
+            this.BlockAllCheck.Click += new System.EventHandler(this.BlockAllCheck_CheckedChanged);
             // 
             // Divider1
             // 
             this.Divider1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Divider1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Divider1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.Divider1.Location = new System.Drawing.Point(888, 9);
+            this.Divider1.Location = new System.Drawing.Point(932, 9);
             this.Divider1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Divider1.Name = "Divider1";
             this.Divider1.Size = new System.Drawing.Size(24, 39);
@@ -645,7 +654,7 @@
             // 
             this.CurrentOperationStatusLabel.AutoSize = true;
             this.CurrentOperationStatusLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(1161, 20);
+            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(1214, 20);
             this.CurrentOperationStatusLabel.Name = "CurrentOperationStatusLabel";
             this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(55, 20);
             this.CurrentOperationStatusLabel.TabIndex = 35;
@@ -655,7 +664,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(917, 20);
+            this.label4.Location = new System.Drawing.Point(961, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 20);
             this.label4.TabIndex = 34;
@@ -665,7 +674,7 @@
             // 
             this.DeviceCountLabel.AutoSize = true;
             this.DeviceCountLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeviceCountLabel.Location = new System.Drawing.Point(982, 20);
+            this.DeviceCountLabel.Location = new System.Drawing.Point(1026, 20);
             this.DeviceCountLabel.Name = "DeviceCountLabel";
             this.DeviceCountLabel.Size = new System.Drawing.Size(40, 20);
             this.DeviceCountLabel.TabIndex = 33;
@@ -675,7 +684,7 @@
             // 
             this.OpIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OpIndicator.Image = global::NetStalker.Properties.Resources.color_ok;
-            this.OpIndicator.Location = new System.Drawing.Point(1230, 17);
+            this.OpIndicator.Location = new System.Drawing.Point(1274, 17);
             this.OpIndicator.Margin = new System.Windows.Forms.Padding(2);
             this.OpIndicator.Name = "OpIndicator";
             this.OpIndicator.Size = new System.Drawing.Size(30, 30);
@@ -688,7 +697,7 @@
             this.Divider2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Divider2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Divider2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.Divider2.Location = new System.Drawing.Point(1142, 9);
+            this.Divider2.Location = new System.Drawing.Point(1186, 9);
             this.Divider2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Divider2.Name = "Divider2";
             this.Divider2.Size = new System.Drawing.Size(24, 39);
@@ -698,14 +707,15 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPanel.Controls.Add(this.DeviceList);
             this.MainPanel.Controls.Add(this.Separator);
             this.MainPanel.Controls.Add(this.BottomPanel);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1273, 531);
+            this.MainPanel.Size = new System.Drawing.Size(1314, 531);
             this.MainPanel.TabIndex = 2;
             // 
             // Separator
@@ -713,7 +723,7 @@
             this.Separator.BackColor = System.Drawing.Color.DimGray;
             this.Separator.Location = new System.Drawing.Point(3, 465);
             this.Separator.Name = "Separator";
-            this.Separator.Size = new System.Drawing.Size(1267, 2);
+            this.Separator.Size = new System.Drawing.Size(1309, 2);
             this.Separator.TabIndex = 1;
             // 
             // Main
@@ -721,7 +731,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1273, 531);
+            this.ClientSize = new System.Drawing.Size(1314, 531);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -775,7 +785,6 @@
         private System.Windows.Forms.Label Divider2;
         private System.Windows.Forms.FlowLayoutPanel MainPanel;
         private System.Windows.Forms.Button RefreshButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button OptionsButton;
         private System.Windows.Forms.Button FormHelpButton;
         private System.Windows.Forms.Button AboutButton;
@@ -790,6 +799,8 @@
         private System.Windows.Forms.ToolStripMenuItem sHOWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
         private System.Windows.Forms.Label Separator;
+        private System.Windows.Forms.CheckBox RedirectAllCheck;
+        private System.Windows.Forms.CheckBox BlockAllCheck;
     }
 }
 
