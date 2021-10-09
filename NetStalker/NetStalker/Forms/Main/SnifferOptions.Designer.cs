@@ -52,6 +52,7 @@
             this.PacketDirectionComboBox.Name = "PacketDirectionComboBox";
             this.PacketDirectionComboBox.Size = new System.Drawing.Size(346, 29);
             this.PacketDirectionComboBox.TabIndex = 63;
+            this.PacketDirectionComboBox.TabStop = false;
             // 
             // ButtonIcons
             // 
@@ -72,11 +73,12 @@
             this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ImageKey = "color_ok.PNG";
             this.SaveButton.ImageList = this.ButtonIcons;
-            this.SaveButton.Location = new System.Drawing.Point(498, 45);
+            this.SaveButton.Location = new System.Drawing.Point(480, 55);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(119, 67);
+            this.SaveButton.Size = new System.Drawing.Size(98, 49);
             this.SaveButton.TabIndex = 64;
+            this.SaveButton.TabStop = false;
             this.SaveButton.Text = "OK";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -100,7 +102,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(630, 156);
+            this.ClientSize = new System.Drawing.Size(604, 156);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveButton);

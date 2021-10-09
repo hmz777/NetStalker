@@ -45,8 +45,18 @@ namespace NetStalker
 
                 foreach (Control control in Controls)
                 {
-                    control.BackColor = Color.FromArgb(51, 51, 51);
-                    control.ForeColor = Color.White;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        var btn = control as Button;
+                        btn.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+                        btn.BackColor = Color.FromArgb(51, 51, 51);
+                        btn.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.FromArgb(51, 51, 51);
+                        control.ForeColor = Color.White;
+                    }
                 }
             }
 

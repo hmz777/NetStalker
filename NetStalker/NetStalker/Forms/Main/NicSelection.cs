@@ -134,7 +134,7 @@ namespace NetStalker
                     if (control.GetType() == typeof(Button))
                     {
                         var btn = control as Button;
-                        btn.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+                        btn.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                         btn.BackColor = Color.FromArgb(51, 51, 51);
                         btn.ForeColor = Color.White;
                     }
@@ -145,6 +145,11 @@ namespace NetStalker
                     }
                 }
             }
+            else
+            {
+                OkButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            }
+
 
             Main m = Application.OpenForms["Main"] as Main;
 
