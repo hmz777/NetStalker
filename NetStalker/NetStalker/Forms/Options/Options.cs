@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using NetStalker.Forms.Information;
 using NetStalker.MainLogic;
 using System;
 using System.Diagnostics;
@@ -25,6 +26,12 @@ namespace NetStalker
                     NativeMethods.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
             }
         }
+
+        #endregion
+
+        #region Instance Members
+
+        bool RestartRequired = false;
 
         #endregion
 
@@ -275,7 +282,10 @@ namespace NetStalker
         private void LightCheck_Click(object sender, EventArgs e)
         {
             if (!LightCheck.Checked)
+            {
                 StatusLabel.Text = "Restart application to apply changes";
+                RestartRequired = true;
+            }
 
             Properties.Settings.Default.DarkMode = false;
             LightCheck.Checked = true;
@@ -285,7 +295,10 @@ namespace NetStalker
         private void DarkCheck_Click(object sender, EventArgs e)
         {
             if (!DarkCheck.Checked)
+            {
                 StatusLabel.Text = "Restart application to apply changes";
+                RestartRequired = true;
+            }
 
             Properties.Settings.Default.DarkMode = true;
             DarkCheck.Checked = true;
@@ -316,13 +329,15 @@ namespace NetStalker
 
         private void ToolTip_Draw(object sender, DrawToolTipEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51, 51, 51)), e.Bounds);//background color e.bounds
+            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51, 51, 51)), e.Bounds);//Background color
 
             e.Graphics.DrawRectangle(new Pen(Color.FromArgb(204, 204, 204), 1), new Rectangle(e.Bounds.X, e.Bounds.Y,
-                e.Bounds.Width - 1, e.Bounds.Height - 1));//the white bounds
+               e.Bounds.Width - 1, e.Bounds.Height - 1));//The white bounds
 
-            e.Graphics.DrawString(e.ToolTipText, new Font("Century Gothic", 9), new SolidBrush(Color.FromArgb(204, 204, 204)),
-                new Point(10, 10)); //text with image location
+            using (var font = new Font("Century Gothic", 10.5f))
+            {
+                e.Graphics.DrawString(e.ToolTipText, font, new SolidBrush(Color.FromArgb(204, 204, 204)), e.Bounds.X + 8, e.Bounds.Y + 7);
+            }
         }
 
         private void ToolTip_Popup(object sender, PopupEventArgs e)
@@ -336,7 +351,21 @@ namespace NetStalker
         {
             Properties.Settings.Default.APIToken = TokenField.Text;
             Properties.Settings.Default.Save();
-            this.Close();
+
+            if (RestartRequired)
+            {
+                using (var message = new MessageBoxForm("Warning", Properties.Resources.AppWillQuit, MessageBoxIcon.Warning, MessageBoxButtons.OKCancel))
+                {
+                    if (message.ShowDialog() == DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void MacVendorsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
