@@ -441,7 +441,6 @@
             this.PacketListView.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PacketListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.PacketListView.FullRowSelect = true;
-            this.PacketListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PacketListView.HeaderFormatStyle = this.DarkHeaders;
             this.PacketListView.HideSelection = false;
             this.PacketListView.HotItemStyle = this.DarkHot;

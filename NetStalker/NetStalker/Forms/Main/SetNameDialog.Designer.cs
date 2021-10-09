@@ -32,9 +32,9 @@ namespace NetStalker
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetNameDialog));
             this.NameBox = new System.Windows.Forms.TextBox();
-            this.OkButton = new System.Windows.Forms.Button();
             this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.OkButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameBox
@@ -44,27 +44,6 @@ namespace NetStalker
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(326, 26);
             this.NameBox.TabIndex = 0;
-            // 
-            // OkButton
-            // 
-            this.OkButton.BackColor = System.Drawing.Color.White;
-            this.OkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.OkButton.FlatAppearance.BorderSize = 0;
-            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OkButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OkButton.ImageKey = "color_ok.PNG";
-            this.OkButton.ImageList = this.ButtonIcons;
-            this.OkButton.Location = new System.Drawing.Point(485, 27);
-            this.OkButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(119, 67);
-            this.OkButton.TabIndex = 64;
-            this.OkButton.Text = "SET";
-            this.OkButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.OkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.OkButton.UseVisualStyleBackColor = false;
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // ButtonIcons
             // 
@@ -82,15 +61,37 @@ namespace NetStalker
             this.label1.TabIndex = 65;
             this.label1.Text = "Name";
             // 
+            // OkButton
+            // 
+            this.OkButton.BackColor = System.Drawing.Color.White;
+            this.OkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.OkButton.FlatAppearance.BorderSize = 0;
+            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OkButton.ImageKey = "color_ok.PNG";
+            this.OkButton.ImageList = this.ButtonIcons;
+            this.OkButton.Location = new System.Drawing.Point(435, 35);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(94, 51);
+            this.OkButton.TabIndex = 66;
+            this.OkButton.TabStop = false;
+            this.OkButton.Text = "SET";
+            this.OkButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.OkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.OkButton.UseVisualStyleBackColor = false;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            // 
             // SetNameDialog
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(616, 112);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(554, 112);
             this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.NameBox);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -107,9 +108,9 @@ namespace NetStalker
         }
 
         #endregion
-        private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.ImageList ButtonIcons;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox NameBox;
+        private System.Windows.Forms.Button OkButton;
     }
 }

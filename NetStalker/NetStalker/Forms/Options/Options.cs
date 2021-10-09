@@ -10,12 +10,31 @@ namespace NetStalker
 {
     public partial class Options : Form
     {
+        #region Window Config
+
+        /// <summary>
+        /// Apply the Windows dark mode settings to the window.
+        /// See <see href="https://stackoverflow.com/questions/57124243/winforms-dark-title-bar-on-windows-10">Stackoverflow</see>, <see href="https://docs.microsoft.com/en-us/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute">MS Docs</see> and <see href="https://docs.microsoft.com/en-us/windows/win32/com/structure-of-com-error-codes">MS Docs 2</see>
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                if (NativeMethods.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) //0 means S_OK 
+                    NativeMethods.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            }
+        }
+
+        #endregion
+
         #region Constructor
 
         public Options()
         {
             InitializeComponent();
             SetPasswordButton.Enabled = false;
+            MacVendorsLinkLabel.TabStop = false;
         }
 
         #endregion
@@ -24,6 +43,34 @@ namespace NetStalker
 
         private void Options_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                this.BackColor = Color.FromArgb(51, 51, 51);
+                this.ForeColor = Color.White;
+
+                foreach (Control control in Controls)
+                {
+                    if (control.Tag?.ToString() == "Separator")
+                    {
+                        control.BackColor = Color.LightGray;
+                    }
+                    else if (control.GetType() == typeof(Button))
+                    {
+                        var btn = control as Button;
+                        btn.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+                        btn.BackColor = Color.FromArgb(51, 51, 51);
+                        btn.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.FromArgb(51, 51, 51);
+                        control.ForeColor = Color.White;
+                    }
+                }
+            }
+
+            this.Focus();
+
             if (IsPassSet())
             {
                 PasswordField.Enabled = false;
@@ -35,6 +82,15 @@ namespace NetStalker
             {
                 ConfirmPasswordField.Enabled = false;
                 RemovePasswordButton.Enabled = false;
+            }
+
+            if (Properties.Settings.Default.DarkMode)
+            {
+                DarkCheck.Checked = true;
+            }
+            else
+            {
+                LightCheck.Checked = true;
             }
 
             if (Properties.Settings.Default.Minimize == "Tray")
@@ -56,12 +112,7 @@ namespace NetStalker
                 SuppressNotificationsCheck.Checked = true;
             }
 
-            TokenField.Text = Properties.Settings.Default.APIToken;
-        }
-
-        private void Options_Click(object sender, EventArgs e)
-        {
-            StatusLabel.Focus();
+            TokenField.Text = Properties.Settings.Default.APIToken ?? "";
         }
 
         #endregion
@@ -223,14 +274,22 @@ namespace NetStalker
 
         private void LightCheck_Click(object sender, EventArgs e)
         {
+            if (!LightCheck.Checked)
+                StatusLabel.Text = "Restart application to apply changes";
+
             Properties.Settings.Default.DarkMode = false;
-            StatusLabel.Text = "Restart application to apply changes";
+            LightCheck.Checked = true;
+            DarkCheck.Checked = false;
         }
 
         private void DarkCheck_Click(object sender, EventArgs e)
         {
+            if (!DarkCheck.Checked)
+                StatusLabel.Text = "Restart application to apply changes";
+
             Properties.Settings.Default.DarkMode = true;
-            StatusLabel.Text = "Restart application to apply changes";
+            DarkCheck.Checked = true;
+            LightCheck.Checked = false;
         }
 
         #endregion
@@ -239,18 +298,16 @@ namespace NetStalker
 
         private void TrayCheck_Click(object sender, EventArgs e)
         {
-            TaskbarCheck.Enabled = false;
             Properties.Settings.Default.Minimize = "Tray";
-            StatusLabel.Text = "";
-            TaskbarCheck.Enabled = true;
+            TrayCheck.Checked = true;
+            TaskbarCheck.Checked = false;
         }
 
         private void TaskbarCheck_Click(object sender, EventArgs e)
         {
-            TrayCheck.Enabled = false;
             Properties.Settings.Default.Minimize = "Taskbar";
-            StatusLabel.Text = "";
-            TrayCheck.Enabled = true;
+            TaskbarCheck.Checked = true;
+            TrayCheck.Checked = false;
         }
 
         #endregion
@@ -290,6 +347,7 @@ namespace NetStalker
         private void ClearInfo_Click(object sender, EventArgs e)
         {
             File.Delete("DeviceInfo.json");
+            StatusLabel.Text = "Done!";
         }
     }
 }

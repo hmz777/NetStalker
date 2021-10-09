@@ -143,6 +143,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Password Check";
+            this.Load += new System.EventHandler(this.PasswordCheck_Load);
             this.Click += new System.EventHandler(this.PasswordCheck_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

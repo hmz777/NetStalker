@@ -59,6 +59,24 @@ namespace NetStalker
 
         #endregion
 
+        #region Window Config
+
+        /// <summary>
+        /// Apply the Windows dark mode settings to the window.
+        /// See <see href="https://stackoverflow.com/questions/57124243/winforms-dark-title-bar-on-windows-10">Stackoverflow</see>, <see href="https://docs.microsoft.com/en-us/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute">MS Docs</see> and <see href="https://docs.microsoft.com/en-us/windows/win32/com/structure-of-com-error-codes">MS Docs 2</see>
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                if (NativeMethods.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) //0 means S_OK 
+                    NativeMethods.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            }
+        }
+
+        #endregion
+
         #region Constructor
 
         public Sniffer(Device device)
@@ -335,58 +353,32 @@ namespace NetStalker
         /// <param name="e"></param>
         private void Sniffer_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                this.BackColor = Color.FromArgb(51, 51, 51);
+                this.ForeColor = Color.White;
+
+                foreach (Control control in Controls)
+                {
+                    if (control.GetType() == typeof(Panel))
+                    {
+                        foreach (Control innerControl in control.Controls)
+                        {
+                            innerControl.BackColor = Color.FromArgb(51, 51, 51);
+                            innerControl.ForeColor = Color.White;
+                        }
+                    }
+                    else
+                    {
+                        control.BackColor = Color.FromArgb(51, 51, 51);
+                        control.ForeColor = Color.White;
+                    }
+                }
+            }
+
             StatusBox.Text += "Targeting: " + Device.IP.ToString() + Environment.NewLine;
 
-            #region Visual Garbage
-
-            //if (Properties.Settings.Default.Color == "Light")
-            //{
-            //    PacketBox.BackColor = Color.WhiteSmoke;
-            //    StatusBox.BackColor = Color.WhiteSmoke;
-            //    PacketBox.ForeColor = Color.Black;
-            //    StatusBox.ForeColor = Color.Black;
-            //    ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
-            //    ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
-            //    PacketListView.BackColor = Color.WhiteSmoke;
-            //    PacketListView.HeaderFormatStyle = LightHeaders;
-            //    PacketListView.HotItemStyle = LightHot;
-            //    PacketListView.ForeColor = Color.FromArgb(54, 54, 54);
-            //    PacketListView.SelectedBackColor = Color.FromArgb(214, 214, 214);
-            //    PacketListView.SelectedForeColor = Color.FromArgb(51, 51, 51);
-            //    PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
-            //    PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            //    ListOverlay.BorderColor = Color.Teal;
-
-
-            //}
-            //else if (Properties.Settings.Default.Color == "Dark")
-            //{
-            //    ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
-            //    ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
-            //    ListOverlay.BorderColor = Color.Teal;
-            //}
-            //else
-            //{
-            //    PacketBox.BackColor = Color.WhiteSmoke;
-            //    StatusBox.BackColor = Color.WhiteSmoke;
-            //    PacketBox.ForeColor = Color.Black;
-            //    StatusBox.ForeColor = Color.Black;
-            //    ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
-            //    ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
-            //    PacketListView.BackColor = Color.WhiteSmoke;
-            //    PacketListView.HeaderFormatStyle = LightHeaders;
-            //    PacketListView.HotItemStyle = LightHot;
-            //    PacketListView.ForeColor = Color.FromArgb(54, 54, 54);
-            //    PacketListView.SelectedBackColor = Color.FromArgb(214, 214, 214);
-            //    PacketListView.SelectedForeColor = Color.FromArgb(51, 51, 51);
-            //    PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
-            //    PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            //    ListOverlay.BorderColor = Color.Teal;
-            //}
-
             ListOverlay.Font = new Font("Century Gothic", 25);
-
-            #endregion
 
             //Prepare capture device
             _ = Task.Run(ConfigureCaptureDevice);

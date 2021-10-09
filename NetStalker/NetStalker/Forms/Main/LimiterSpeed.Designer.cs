@@ -122,18 +122,18 @@
             // 
             this.SetButton.BackColor = System.Drawing.Color.White;
             this.SetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.SetButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.SetButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SetButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.SetButton.FlatAppearance.BorderSize = 0;
             this.SetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SetButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetButton.ImageKey = "color_define-location.PNG";
             this.SetButton.ImageList = this.ButtonIcons;
-            this.SetButton.Location = new System.Drawing.Point(416, 53);
-            this.SetButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SetButton.Location = new System.Drawing.Point(421, 63);
+            this.SetButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SetButton.Name = "SetButton";
-            this.SetButton.Size = new System.Drawing.Size(119, 67);
-            this.SetButton.TabIndex = 64;
+            this.SetButton.Size = new System.Drawing.Size(94, 51);
+            this.SetButton.TabIndex = 67;
+            this.SetButton.TabStop = false;
             this.SetButton.Text = "SET";
             this.SetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SetButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -146,7 +146,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(563, 175);
+            this.ClientSize = new System.Drawing.Size(539, 175);
             this.Controls.Add(this.SetButton);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.label3);

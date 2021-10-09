@@ -5,14 +5,13 @@ namespace NetStalker
 {
     public interface IView
     {
-        FastObjectListView ListView1 { get; }
-        Form MainForm { get; }
-        Label StatusLabel { get; }
+        FastObjectListView DeviceListView { get; }
+        Main MainForm { get; }
         PictureBox PictureBox { get; }
         PictureBox LoadingBar { get; }
-        Label StatusLabel2 { get; }
-        ToolTip TTip { get; }
-        Button Tile { get; }
-        Button Tile2 { get; }
+        Label DeviceCountIndicator { get; }
+        Label CurrentOperationStatusIndicator { get; }
+        Button SnifferToggle { get; }
+        Button LimiterToggle { get; }
     }
 }

@@ -31,6 +31,24 @@ namespace NetStalker
 
         #endregion
 
+        #region Window Config
+
+        /// <summary>
+        /// Apply the Windows dark mode settings to the window.
+        /// See <see href="https://stackoverflow.com/questions/57124243/winforms-dark-title-bar-on-windows-10">Stackoverflow</see>, <see href="https://docs.microsoft.com/en-us/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute">MS Docs</see> and <see href="https://docs.microsoft.com/en-us/windows/win32/com/structure-of-com-error-codes">MS Docs 2</see>
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                if (NativeMethods.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) //0 means S_OK 
+                    NativeMethods.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            }
+        }
+
+        #endregion
+
         #region Constructor
 
         public NicSelection()
@@ -106,35 +124,29 @@ namespace NetStalker
 
         private void NicSelection_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                this.BackColor = Color.FromArgb(51, 51, 51);
+                this.ForeColor = Color.White;
+
+                foreach (Control control in Controls)
+                {
+                    if (control.GetType() == typeof(Button))
+                    {
+                        var btn = control as Button;
+                        btn.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+                        btn.BackColor = Color.FromArgb(51, 51, 51);
+                        btn.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.FromArgb(51, 51, 51);
+                        control.ForeColor = Color.White;
+                    }
+                }
+            }
+
             Main m = Application.OpenForms["Main"] as Main;
-
-            #region Some tedious visual garbage
-
-            //if (Properties.Settings.Default.Color == "Dark")
-            //{
-            //    m.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
-            //    m.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
-            //    m.ListOverlay.BorderColor = Color.Teal;
-            //    m.LoadingIndicator.Image = NetStalker.Properties.Resources.spinW;
-
-            //}
-            //else
-            //{
-            //    m.ListOverlay.BorderColor = Color.Teal;
-            //    m.DeviceList.HeaderFormatStyle = m.LightHeaders;
-            //    m.DeviceList.HotItemStyle = m.LightHot;
-            //    m.ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
-            //    m.ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
-            //    m.DeviceList.BackColor = Color.White;
-            //    m.DeviceList.ForeColor = Color.FromArgb(54, 54, 54);
-            //    m.DeviceList.SelectedBackColor = Color.FromArgb(214, 214, 214);
-            //    m.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
-            //    m.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
-            //    m.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            //    m.LoadingIndicator.Image = NetStalker.Properties.Resources.spinB;
-            //}
-
-            #endregion
 
             //Open the registry, show the License Agreement dialog if it's not accepted,
             //then check for the Npcap driver and display an error dialog if it's not installed,

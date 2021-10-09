@@ -44,9 +44,9 @@
             this.DriverLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AdapterComboBox = new System.Windows.Forms.ComboBox();
-            this.OkButton = new System.Windows.Forms.Button();
             this.ButtonIcons = new System.Windows.Forms.ImageList(this.components);
             this.QuitButton = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NICLabel
@@ -199,28 +199,6 @@
             this.AdapterComboBox.TabIndex = 62;
             this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.AdapterComboBox_SelectedIndexChanged);
             // 
-            // OkButton
-            // 
-            this.OkButton.BackColor = System.Drawing.Color.White;
-            this.OkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.OkButton.FlatAppearance.BorderSize = 0;
-            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OkButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OkButton.ImageKey = "color_ok.PNG";
-            this.OkButton.ImageList = this.ButtonIcons;
-            this.OkButton.Location = new System.Drawing.Point(507, 413);
-            this.OkButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(106, 57);
-            this.OkButton.TabIndex = 63;
-            this.OkButton.Text = "OK";
-            this.OkButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.OkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.OkButton.UseVisualStyleBackColor = false;
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
-            // 
             // ButtonIcons
             // 
             this.ButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ButtonIcons.ImageStream")));
@@ -238,16 +216,39 @@
             this.QuitButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuitButton.ImageKey = "color_cancel.PNG";
             this.QuitButton.ImageList = this.ButtonIcons;
-            this.QuitButton.Location = new System.Drawing.Point(367, 413);
+            this.QuitButton.Location = new System.Drawing.Point(379, 413);
             this.QuitButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(106, 57);
             this.QuitButton.TabIndex = 64;
+            this.QuitButton.TabStop = false;
             this.QuitButton.Text = "QUIT";
             this.QuitButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.QuitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.QuitButton.UseVisualStyleBackColor = false;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
+            // 
+            // OkButton
+            // 
+            this.OkButton.BackColor = System.Drawing.Color.White;
+            this.OkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.FlatAppearance.BorderSize = 0;
+            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OkButton.ImageKey = "color_ok.PNG";
+            this.OkButton.ImageList = this.ButtonIcons;
+            this.OkButton.Location = new System.Drawing.Point(505, 413);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(106, 57);
+            this.OkButton.TabIndex = 65;
+            this.OkButton.TabStop = false;
+            this.OkButton.Text = "OK";
+            this.OkButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.OkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.OkButton.UseVisualStyleBackColor = false;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // NicSelection
             // 
@@ -258,8 +259,8 @@
             this.CancelButton = this.QuitButton;
             this.ClientSize = new System.Drawing.Size(625, 483);
             this.ControlBox = false;
-            this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.AdapterComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DriverValue);
@@ -275,6 +276,7 @@
             this.Controls.Add(this.NICValue);
             this.Controls.Add(this.NICLabel);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -306,8 +308,8 @@
         private System.Windows.Forms.Label DriverLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox AdapterComboBox;
-        private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.ImageList ButtonIcons;
         private System.Windows.Forms.Button QuitButton;
+        private System.Windows.Forms.Button OkButton;
     }
 }

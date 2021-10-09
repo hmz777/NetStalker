@@ -83,24 +83,24 @@
             // 
             // DarkCheck
             // 
+            this.DarkCheck.AutoCheck = false;
             this.DarkCheck.AutoSize = true;
             this.DarkCheck.Location = new System.Drawing.Point(117, 26);
             this.DarkCheck.Name = "DarkCheck";
             this.DarkCheck.Size = new System.Drawing.Size(66, 23);
             this.DarkCheck.TabIndex = 26;
-            this.DarkCheck.TabStop = true;
             this.DarkCheck.Text = "DARK";
             this.DarkCheck.UseVisualStyleBackColor = true;
             this.DarkCheck.Click += new System.EventHandler(this.DarkCheck_Click);
             // 
             // LightCheck
             // 
+            this.LightCheck.AutoCheck = false;
             this.LightCheck.AutoSize = true;
             this.LightCheck.Location = new System.Drawing.Point(5, 26);
             this.LightCheck.Name = "LightCheck";
             this.LightCheck.Size = new System.Drawing.Size(66, 23);
             this.LightCheck.TabIndex = 25;
-            this.LightCheck.TabStop = true;
             this.LightCheck.Text = "LIGHT";
             this.LightCheck.UseVisualStyleBackColor = true;
             this.LightCheck.Click += new System.EventHandler(this.LightCheck_Click);
@@ -118,24 +118,24 @@
             // 
             // TaskbarCheck
             // 
+            this.TaskbarCheck.AutoCheck = false;
             this.TaskbarCheck.AutoSize = true;
             this.TaskbarCheck.Location = new System.Drawing.Point(117, 23);
             this.TaskbarCheck.Name = "TaskbarCheck";
             this.TaskbarCheck.Size = new System.Drawing.Size(85, 23);
             this.TaskbarCheck.TabIndex = 28;
-            this.TaskbarCheck.TabStop = true;
             this.TaskbarCheck.Text = "TASKBAR";
             this.TaskbarCheck.UseVisualStyleBackColor = true;
             this.TaskbarCheck.Click += new System.EventHandler(this.TaskbarCheck_Click);
             // 
             // TrayCheck
             // 
+            this.TrayCheck.AutoCheck = false;
             this.TrayCheck.AutoSize = true;
             this.TrayCheck.Location = new System.Drawing.Point(5, 23);
             this.TrayCheck.Name = "TrayCheck";
             this.TrayCheck.Size = new System.Drawing.Size(60, 23);
             this.TrayCheck.TabIndex = 27;
-            this.TrayCheck.TabStop = true;
             this.TrayCheck.Text = "TRAY";
             this.TrayCheck.UseVisualStyleBackColor = true;
             this.TrayCheck.Click += new System.EventHandler(this.TrayCheck_Click);
@@ -224,6 +224,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(402, 1);
             this.label6.TabIndex = 63;
+            this.label6.Tag = "Separator";
             // 
             // label7
             // 
@@ -233,6 +234,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(413, 1);
             this.label7.TabIndex = 64;
+            this.label7.Tag = "Separator";
             // 
             // label8
             // 
@@ -242,6 +244,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(413, 1);
             this.label8.TabIndex = 65;
+            this.label8.Tag = "Separator";
             // 
             // label9
             // 
@@ -251,6 +254,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(413, 1);
             this.label9.TabIndex = 66;
+            this.label9.Tag = "Separator";
             // 
             // label10
             // 
@@ -260,6 +264,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(402, 1);
             this.label10.TabIndex = 67;
+            this.label10.Tag = "Separator";
             // 
             // label11
             // 
@@ -288,15 +293,16 @@
             this.TokenField.Name = "TokenField";
             this.TokenField.Size = new System.Drawing.Size(306, 28);
             this.TokenField.TabIndex = 70;
+            this.TokenField.TabStop = false;
             // 
             // MacVendorsLinkLabel
             // 
             this.MacVendorsLinkLabel.AutoSize = true;
+            this.MacVendorsLinkLabel.LinkColor = System.Drawing.Color.DodgerBlue;
             this.MacVendorsLinkLabel.Location = new System.Drawing.Point(584, 420);
             this.MacVendorsLinkLabel.Name = "MacVendorsLinkLabel";
             this.MacVendorsLinkLabel.Size = new System.Drawing.Size(209, 19);
             this.MacVendorsLinkLabel.TabIndex = 71;
-            this.MacVendorsLinkLabel.TabStop = true;
             this.MacVendorsLinkLabel.Text = "https://macvendors.com/api";
             this.MacVendorsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MacVendorsLinkLabel_LinkClicked);
             // 
@@ -308,7 +314,7 @@
             this.StatusLabel.Location = new System.Drawing.Point(12, 499);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(0, 21);
-            this.StatusLabel.TabIndex = 72;
+            this.StatusLabel.TabIndex = 1;
             // 
             // SaveButton
             // 
@@ -316,7 +322,7 @@
             this.SaveButton.BackColor = System.Drawing.Color.White;
             this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.SaveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.SaveButton.FlatAppearance.BorderSize = 0;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -327,6 +333,7 @@
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(106, 57);
             this.SaveButton.TabIndex = 73;
+            this.SaveButton.TabStop = false;
             this.SaveButton.Text = "SAVE";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -387,6 +394,7 @@
             this.PasswordField.Name = "PasswordField";
             this.PasswordField.Size = new System.Drawing.Size(290, 28);
             this.PasswordField.TabIndex = 76;
+            this.PasswordField.TabStop = false;
             this.PasswordField.TextChanged += new System.EventHandler(this.PasswordField_TextChanged);
             // 
             // ConfirmPasswordField
@@ -396,6 +404,7 @@
             this.ConfirmPasswordField.Name = "ConfirmPasswordField";
             this.ConfirmPasswordField.Size = new System.Drawing.Size(290, 28);
             this.ConfirmPasswordField.TabIndex = 77;
+            this.ConfirmPasswordField.TabStop = false;
             this.ConfirmPasswordField.TextChanged += new System.EventHandler(this.ConfirmPasswordField_TextChanged);
             // 
             // SpoofProtectionCheck
@@ -405,6 +414,7 @@
             this.SpoofProtectionCheck.Name = "SpoofProtectionCheck";
             this.SpoofProtectionCheck.Size = new System.Drawing.Size(164, 23);
             this.SpoofProtectionCheck.TabIndex = 78;
+            this.SpoofProtectionCheck.TabStop = false;
             this.SpoofProtectionCheck.Text = "SPOOF PROTECTION";
             this.SpoofProtectionCheck.UseVisualStyleBackColor = true;
             this.SpoofProtectionCheck.CheckedChanged += new System.EventHandler(this.SpoofProtectionCheck_CheckedChanged);
@@ -416,6 +426,7 @@
             this.SuppressNotificationsCheck.Name = "SuppressNotificationsCheck";
             this.SuppressNotificationsCheck.Size = new System.Drawing.Size(195, 23);
             this.SuppressNotificationsCheck.TabIndex = 79;
+            this.SuppressNotificationsCheck.TabStop = false;
             this.SuppressNotificationsCheck.Text = "SUPPRESS NOTIFICATIONS";
             this.SuppressNotificationsCheck.UseVisualStyleBackColor = true;
             this.SuppressNotificationsCheck.CheckedChanged += new System.EventHandler(this.SuppressNotificationsCheck_CheckedChanged);
@@ -436,6 +447,7 @@
             this.SetPasswordButton.Name = "SetPasswordButton";
             this.SetPasswordButton.Size = new System.Drawing.Size(106, 57);
             this.SetPasswordButton.TabIndex = 80;
+            this.SetPasswordButton.TabStop = false;
             this.SetPasswordButton.Text = "SET";
             this.SetPasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SetPasswordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -458,6 +470,7 @@
             this.RemovePasswordButton.Name = "RemovePasswordButton";
             this.RemovePasswordButton.Size = new System.Drawing.Size(106, 57);
             this.RemovePasswordButton.TabIndex = 81;
+            this.RemovePasswordButton.TabStop = false;
             this.RemovePasswordButton.Text = "REMOVE";
             this.RemovePasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RemovePasswordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -484,11 +497,12 @@
             this.ClearInfo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearInfo.ImageKey = "color_clear-symbol.PNG";
             this.ClearInfo.ImageList = this.ButtonIcons;
-            this.ClearInfo.Location = new System.Drawing.Point(27, 391);
+            this.ClearInfo.Location = new System.Drawing.Point(27, 392);
             this.ClearInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ClearInfo.Name = "ClearInfo";
             this.ClearInfo.Size = new System.Drawing.Size(195, 57);
             this.ClearInfo.TabIndex = 83;
+            this.ClearInfo.TabStop = false;
             this.ClearInfo.Text = "CLEAR DEVICE INFO";
             this.ClearInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ClearInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -543,7 +557,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.Options_Load);
-            this.Click += new System.EventHandler(this.Options_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);

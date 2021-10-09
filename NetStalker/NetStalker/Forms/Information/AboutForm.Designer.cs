@@ -68,7 +68,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(508, 183);
-            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "External libraries";
             // 
@@ -95,13 +95,12 @@
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.LinkColor = System.Drawing.Color.Blue;
+            this.linkLabel4.LinkColor = System.Drawing.Color.DodgerBlue;
             this.linkLabel4.Location = new System.Drawing.Point(156, 67);
             this.linkLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(315, 21);
             this.linkLabel4.TabIndex = 16;
-            this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "http://objectlistview.sourceforge.net";
             this.linkLabel4.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel4_LinkClicked);
@@ -109,13 +108,12 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.LinkColor = System.Drawing.Color.Blue;
+            this.linkLabel3.LinkColor = System.Drawing.Color.DodgerBlue;
             this.linkLabel3.Location = new System.Drawing.Point(235, 34);
             this.linkLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(259, 21);
             this.linkLabel3.TabIndex = 14;
-            this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "https://github.com/chmorgan";
             this.linkLabel3.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
@@ -165,7 +163,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(28, 232);
+            this.label5.Location = new System.Drawing.Point(21, 229);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 21);
             this.label5.TabIndex = 65;
@@ -175,7 +173,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 269);
+            this.label6.Location = new System.Drawing.Point(21, 266);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 21);
             this.label6.TabIndex = 66;
@@ -185,7 +183,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(28, 306);
+            this.label7.Location = new System.Drawing.Point(21, 303);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 21);
             this.label7.TabIndex = 67;
@@ -195,7 +193,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(28, 343);
+            this.label8.Location = new System.Drawing.Point(21, 340);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 21);
             this.label8.TabIndex = 68;
@@ -205,7 +203,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(28, 380);
+            this.label9.Location = new System.Drawing.Point(21, 377);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(81, 21);
             this.label9.TabIndex = 69;
@@ -215,7 +213,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(28, 417);
+            this.label10.Location = new System.Drawing.Point(21, 414);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 21);
             this.label10.TabIndex = 70;
@@ -225,7 +223,7 @@
             // 
             this.BuildLabel.AutoSize = true;
             this.BuildLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuildLabel.Location = new System.Drawing.Point(153, 269);
+            this.BuildLabel.Location = new System.Drawing.Point(146, 266);
             this.BuildLabel.Name = "BuildLabel";
             this.BuildLabel.Size = new System.Drawing.Size(0, 21);
             this.BuildLabel.TabIndex = 71;
@@ -234,7 +232,7 @@
             // 
             this.VerLabel.AutoSize = true;
             this.VerLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VerLabel.Location = new System.Drawing.Point(153, 232);
+            this.VerLabel.Location = new System.Drawing.Point(146, 229);
             this.VerLabel.Name = "VerLabel";
             this.VerLabel.Size = new System.Drawing.Size(0, 21);
             this.VerLabel.TabIndex = 72;
@@ -243,7 +241,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(153, 306);
+            this.label11.Location = new System.Drawing.Point(146, 303);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(130, 21);
             this.label11.TabIndex = 73;
@@ -253,11 +251,11 @@
             // 
             this.EmailLabel.AutoSize = true;
             this.EmailLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailLabel.Location = new System.Drawing.Point(153, 343);
+            this.EmailLabel.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.EmailLabel.Location = new System.Drawing.Point(146, 340);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(249, 21);
             this.EmailLabel.TabIndex = 74;
-            this.EmailLabel.TabStop = true;
             this.EmailLabel.Text = "hamzi_alsheikh@hotmail.com";
             this.EmailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Email_Click);
             // 
@@ -265,11 +263,11 @@
             // 
             this.SiteLabel.AutoSize = true;
             this.SiteLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SiteLabel.Location = new System.Drawing.Point(153, 380);
+            this.SiteLabel.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.SiteLabel.Location = new System.Drawing.Point(146, 377);
             this.SiteLabel.Name = "SiteLabel";
             this.SiteLabel.Size = new System.Drawing.Size(252, 21);
             this.SiteLabel.TabIndex = 75;
-            this.SiteLabel.TabStop = true;
             this.SiteLabel.Text = "https://www.hamzialsheikh.tk";
             this.SiteLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Site_Click);
             // 
@@ -277,11 +275,11 @@
             // 
             this.GitLabel.AutoSize = true;
             this.GitLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GitLabel.Location = new System.Drawing.Point(153, 417);
+            this.GitLabel.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.GitLabel.Location = new System.Drawing.Point(146, 414);
             this.GitLabel.Name = "GitLabel";
             this.GitLabel.Size = new System.Drawing.Size(233, 21);
             this.GitLabel.TabIndex = 76;
-            this.GitLabel.TabStop = true;
             this.GitLabel.Text = "https://github.com/hmz777";
             this.GitLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Git_Click);
             // 

@@ -5,6 +5,9 @@ namespace NetStalker.MainLogic
 {
     public class NativeMethods
     {
+        [DllImport("DwmApi")] //System.Runtime.InteropServices
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+
         [DllImport("user32.dll")]
         internal static extern int GetScrollPos(IntPtr hWnd, int nBar);
 

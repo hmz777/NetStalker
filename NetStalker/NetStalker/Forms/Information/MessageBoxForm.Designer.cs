@@ -128,6 +128,7 @@ namespace NetStalker.Forms.Information
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MessageBoxForm";
+            this.Load += new System.EventHandler(this.MessageBoxForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.IconControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
