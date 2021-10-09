@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle13 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle14 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle15 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle16 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle17 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle18 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle25 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle26 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle27 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle28 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle29 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle30 = new BrightIdeasSoftware.HeaderStateStyle();
             this.DeviceMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SetName = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearName = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +58,8 @@
             this.AboutButton = new System.Windows.Forms.Button();
             this.SnifferButton = new System.Windows.Forms.Button();
             this.LimiterButton = new System.Windows.Forms.Button();
+            this.RedirectAllCheck = new System.Windows.Forms.CheckBox();
+            this.BlockAllCheck = new System.Windows.Forms.CheckBox();
             this.DeviceList = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -69,8 +71,6 @@
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.BottomPanel = new System.Windows.Forms.Panel();
-            this.RedirectAllCheck = new System.Windows.Forms.CheckBox();
-            this.BlockAllCheck = new System.Windows.Forms.CheckBox();
             this.Divider1 = new System.Windows.Forms.Label();
             this.CurrentOperationStatusLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -122,23 +122,23 @@
             // 
             // DarkHeaders
             // 
-            headerStateStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            headerStateStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Hot = headerStateStyle13;
-            headerStateStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            headerStateStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Normal = headerStateStyle14;
-            headerStateStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            headerStateStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Pressed = headerStateStyle15;
+            headerStateStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
+            headerStateStyle25.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Hot = headerStateStyle25;
+            headerStateStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            headerStateStyle26.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Normal = headerStateStyle26;
+            headerStateStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            headerStateStyle27.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Pressed = headerStateStyle27;
             // 
             // DarkHot
             // 
             this.DarkHot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            this.DarkHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DarkHot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DarkHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             // 
             // ButtonIcons
@@ -204,22 +204,22 @@
             // LightHot
             // 
             this.LightHot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.LightHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LightHot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LightHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             // 
             // LightHeaders
             // 
-            headerStateStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            headerStateStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.LightHeaders.Hot = headerStateStyle16;
-            headerStateStyle17.BackColor = System.Drawing.Color.WhiteSmoke;
-            headerStateStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.LightHeaders.Normal = headerStateStyle17;
-            headerStateStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            headerStateStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LightHeaders.Pressed = headerStateStyle18;
+            headerStateStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            headerStateStyle28.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.LightHeaders.Hot = headerStateStyle28;
+            headerStateStyle29.BackColor = System.Drawing.Color.WhiteSmoke;
+            headerStateStyle29.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.LightHeaders.Normal = headerStateStyle29;
+            headerStateStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            headerStateStyle30.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LightHeaders.Pressed = headerStateStyle30;
             // 
             // Tooltip
             // 
@@ -387,6 +387,32 @@
             this.LimiterButton.UseVisualStyleBackColor = false;
             this.LimiterButton.Click += new System.EventHandler(this.LimiterButton_Click);
             // 
+            // RedirectAllCheck
+            // 
+            this.RedirectAllCheck.AutoCheck = false;
+            this.RedirectAllCheck.AutoSize = true;
+            this.RedirectAllCheck.Location = new System.Drawing.Point(734, 32);
+            this.RedirectAllCheck.Name = "RedirectAllCheck";
+            this.RedirectAllCheck.Size = new System.Drawing.Size(119, 23);
+            this.RedirectAllCheck.TabIndex = 40;
+            this.RedirectAllCheck.Text = "REDIRECT ALL";
+            this.Tooltip.SetToolTip(this.RedirectAllCheck, "Redirects all present devices \r\nincluding future detected devices.");
+            this.RedirectAllCheck.UseVisualStyleBackColor = true;
+            this.RedirectAllCheck.Click += new System.EventHandler(this.RedirectAllCheck_CheckedChanged);
+            // 
+            // BlockAllCheck
+            // 
+            this.BlockAllCheck.AutoCheck = false;
+            this.BlockAllCheck.AutoSize = true;
+            this.BlockAllCheck.Location = new System.Drawing.Point(734, 4);
+            this.BlockAllCheck.Name = "BlockAllCheck";
+            this.BlockAllCheck.Size = new System.Drawing.Size(101, 23);
+            this.BlockAllCheck.TabIndex = 39;
+            this.BlockAllCheck.Text = "BLOCK ALL";
+            this.Tooltip.SetToolTip(this.BlockAllCheck, "Blocks all present devices \r\nincluding future detected devices.");
+            this.BlockAllCheck.UseVisualStyleBackColor = true;
+            this.BlockAllCheck.Click += new System.EventHandler(this.BlockAllCheck_CheckedChanged);
+            // 
             // DeviceList
             // 
             this.DeviceList.AllColumns.Add(this.olvColumn1);
@@ -418,10 +444,9 @@
             this.DeviceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.DeviceList.FullRowSelect = true;
             this.DeviceList.GroupImageList = this.IconList;
-            this.DeviceList.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeviceList.HeaderFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeviceList.HeaderFormatStyle = this.DarkHeaders;
             this.DeviceList.HideSelection = false;
-            this.DeviceList.HotItemStyle = this.DarkHot;
             this.DeviceList.Location = new System.Drawing.Point(2, 2);
             this.DeviceList.Margin = new System.Windows.Forms.Padding(2);
             this.DeviceList.MultiSelect = false;
@@ -459,7 +484,6 @@
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "IP";
-            this.olvColumn1.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn1.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.olvColumn1.Hideable = false;
             this.olvColumn1.ImageAspectName = "Image";
@@ -473,7 +497,6 @@
             // 
             this.olvColumn2.AspectName = "MAC";
             this.olvColumn2.Groupable = false;
-            this.olvColumn2.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn2.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn2.Hideable = false;
             this.olvColumn2.IsEditable = false;
@@ -488,7 +511,6 @@
             // 
             this.olvColumn3.AspectName = "DeviceName";
             this.olvColumn3.Groupable = false;
-            this.olvColumn3.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn3.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn3.Hideable = false;
             this.olvColumn3.IsEditable = false;
@@ -503,7 +525,6 @@
             // 
             this.olvColumn9.AspectName = "ManName";
             this.olvColumn9.Groupable = false;
-            this.olvColumn9.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn9.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn9.Hideable = false;
             this.olvColumn9.IsEditable = false;
@@ -518,7 +539,6 @@
             // 
             this.olvColumn4.AspectName = "DeviceStatus";
             this.olvColumn4.Groupable = false;
-            this.olvColumn4.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn4.Hideable = false;
             this.olvColumn4.IsEditable = false;
@@ -534,22 +554,20 @@
             this.olvColumn5.AspectName = "Redirected";
             this.olvColumn5.CheckBoxes = true;
             this.olvColumn5.Groupable = false;
-            this.olvColumn5.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn5.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn5.Hideable = false;
-            this.olvColumn5.MaximumWidth = 75;
-            this.olvColumn5.MinimumWidth = 75;
+            this.olvColumn5.MaximumWidth = 80;
+            this.olvColumn5.MinimumWidth = 80;
             this.olvColumn5.Searchable = false;
             this.olvColumn5.Text = "Redirect";
             this.olvColumn5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn5.Width = 75;
+            this.olvColumn5.Width = 80;
             // 
             // olvColumn6
             // 
             this.olvColumn6.AspectName = "Blocked";
             this.olvColumn6.CheckBoxes = true;
             this.olvColumn6.Groupable = false;
-            this.olvColumn6.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn6.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn6.Hideable = false;
             this.olvColumn6.MaximumWidth = 75;
@@ -563,29 +581,27 @@
             // 
             this.olvColumn8.AspectName = "DownloadSpeed";
             this.olvColumn8.Groupable = false;
-            this.olvColumn8.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn8.Hideable = false;
             this.olvColumn8.IsEditable = false;
-            this.olvColumn8.MaximumWidth = 135;
-            this.olvColumn8.MinimumWidth = 135;
+            this.olvColumn8.MaximumWidth = 140;
+            this.olvColumn8.MinimumWidth = 140;
             this.olvColumn8.Searchable = false;
             this.olvColumn8.Text = "Download Cap";
             this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn8.Width = 135;
+            this.olvColumn8.Width = 140;
             // 
             // olvColumn7
             // 
             this.olvColumn7.AspectName = "UploadSpeed";
             this.olvColumn7.Groupable = false;
-            this.olvColumn7.HeaderFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn7.Hideable = false;
             this.olvColumn7.IsEditable = false;
-            this.olvColumn7.MaximumWidth = 135;
-            this.olvColumn7.MinimumWidth = 135;
+            this.olvColumn7.MaximumWidth = 139;
+            this.olvColumn7.MinimumWidth = 139;
             this.olvColumn7.Searchable = false;
             this.olvColumn7.Text = "Upload Cap";
             this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn7.Width = 135;
+            this.olvColumn7.Width = 139;
             // 
             // BottomPanel
             // 
@@ -613,30 +629,6 @@
             this.BottomPanel.Size = new System.Drawing.Size(1312, 59);
             this.BottomPanel.TabIndex = 0;
             // 
-            // RedirectAllCheck
-            // 
-            this.RedirectAllCheck.AutoCheck = false;
-            this.RedirectAllCheck.AutoSize = true;
-            this.RedirectAllCheck.Location = new System.Drawing.Point(734, 32);
-            this.RedirectAllCheck.Name = "RedirectAllCheck";
-            this.RedirectAllCheck.Size = new System.Drawing.Size(119, 23);
-            this.RedirectAllCheck.TabIndex = 40;
-            this.RedirectAllCheck.Text = "REDIRECT ALL";
-            this.RedirectAllCheck.UseVisualStyleBackColor = true;
-            this.RedirectAllCheck.Click += new System.EventHandler(this.RedirectAllCheck_CheckedChanged);
-            // 
-            // BlockAllCheck
-            // 
-            this.BlockAllCheck.AutoCheck = false;
-            this.BlockAllCheck.AutoSize = true;
-            this.BlockAllCheck.Location = new System.Drawing.Point(734, 4);
-            this.BlockAllCheck.Name = "BlockAllCheck";
-            this.BlockAllCheck.Size = new System.Drawing.Size(101, 23);
-            this.BlockAllCheck.TabIndex = 39;
-            this.BlockAllCheck.Text = "BLOCK ALL";
-            this.BlockAllCheck.UseVisualStyleBackColor = true;
-            this.BlockAllCheck.Click += new System.EventHandler(this.BlockAllCheck_CheckedChanged);
-            // 
             // Divider1
             // 
             this.Divider1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -654,7 +646,7 @@
             // 
             this.CurrentOperationStatusLabel.AutoSize = true;
             this.CurrentOperationStatusLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(1214, 20);
+            this.CurrentOperationStatusLabel.Location = new System.Drawing.Point(1205, 20);
             this.CurrentOperationStatusLabel.Name = "CurrentOperationStatusLabel";
             this.CurrentOperationStatusLabel.Size = new System.Drawing.Size(55, 20);
             this.CurrentOperationStatusLabel.TabIndex = 35;
@@ -684,7 +676,7 @@
             // 
             this.OpIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OpIndicator.Image = global::NetStalker.Properties.Resources.color_ok;
-            this.OpIndicator.Location = new System.Drawing.Point(1274, 17);
+            this.OpIndicator.Location = new System.Drawing.Point(1274, 15);
             this.OpIndicator.Margin = new System.Windows.Forms.Padding(2);
             this.OpIndicator.Name = "OpIndicator";
             this.OpIndicator.Size = new System.Drawing.Size(30, 30);

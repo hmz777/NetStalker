@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,18 +67,29 @@ namespace NetStalker
 
         #endregion
 
+        #region Window Config
+
+        /// <summary>
+        /// Apply the Windows dark mode settings to the window.
+        /// See <see href="https://stackoverflow.com/questions/57124243/winforms-dark-title-bar-on-windows-10">Stackoverflow</see>, <see href="https://docs.microsoft.com/en-us/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute">MS Docs</see> and <see href="https://docs.microsoft.com/en-us/windows/win32/com/structure-of-com-error-codes">MS Docs 2</see>
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            if (Properties.Settings.Default.DarkMode)
+            {
+                if (NativeMethods.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) //0 means S_OK 
+                    NativeMethods.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            }
+        }
+
+        #endregion
+
         #region Constructor
 
         public Main(string[] args = null)
         {
             InitializeComponent();
-
-            #region MaterialSkin Configuration
-
-            //var materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-
-            #endregion
 
             #region Object ListView Initial Configuration
 
@@ -133,7 +145,7 @@ namespace NetStalker
             ListOverlay.Font = new Font("Century Gothic", 25);
 
 
-            DeviceList.UseNotifyPropertyChanged = true;
+            //DeviceList.UseNotifyPropertyChanged = true;
 
             #endregion
 
@@ -178,6 +190,7 @@ namespace NetStalker
                             Target.Redirected = false;
                             Target.Limited = false;
                             DeviceList.RemoveObject(Target);
+                            DeviceCountLabel.Text = Scanner.ClientList.Count + " device(s) found";
                         }
                     }
                 }
@@ -197,6 +210,7 @@ namespace NetStalker
                             Target.Redirected = false;
                             Target.Limited = false;
                             DeviceList.RemoveObject(Target);
+                            DeviceCountLabel.Text = Scanner.ClientList.Count + " device(s) found";
                         }
                     }
                 }
@@ -216,6 +230,7 @@ namespace NetStalker
                             Target.Redirected = false;
                             Target.Limited = false;
                             DeviceList.RemoveObject(Target);
+                            DeviceCountLabel.Text = Scanner.ClientList.Count + " device(s) found";
                         }
                     }
                 }
@@ -287,6 +302,8 @@ namespace NetStalker
 
         private void ToggleDarkMode()
         {
+            this.BackColor = Color.FromArgb(51, 51, 51);
+            this.ForeColor = Color.White;
             ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
             ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
             DeviceList.BackColor = Color.FromArgb(51, 51, 51);
@@ -298,6 +315,31 @@ namespace NetStalker
             DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(204, 204, 204);
             DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(88, 88, 88);
             LoadingIndicator.Image = Properties.Resources.spinW;
+            Tooltip.BackColor = Color.FromArgb(51, 51, 51);
+
+            foreach (Control control in MainPanel.Controls)
+            {
+                if (control.GetType() == typeof(Panel))
+                {
+                    foreach (Control innerControl in control.Controls)
+                    {
+                        innerControl.BackColor = Color.FromArgb(51, 51, 51);
+                        innerControl.ForeColor = Color.White;
+                    }
+                }
+                else if (control.GetType() == typeof(Button))
+                {
+                    var btn = control as Button;
+                    btn.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+                    btn.BackColor = Color.FromArgb(51, 51, 51);
+                    btn.ForeColor = Color.White;
+                }
+                else if (control.Name != "Separator")
+                {
+                    control.BackColor = Color.FromArgb(51, 51, 51);
+                    control.ForeColor = Color.White;
+                }
+            }
         }
 
         private void ToggleLightMode()
@@ -315,32 +357,84 @@ namespace NetStalker
             LoadingIndicator.Image = Properties.Resources.spinB;
         }
 
+        /// <summary>
+        /// This method reacts to global toggles of Block All/Redirect All. (if one of them is activated)
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
+        public async Task OnItemAdded(Device device)
+        {
+            if (!DeviceList.Objects.Cast<Device>().Any(d => d.MAC.Equals(device.MAC)))
+            {
+                return;
+            }
+
+            if (BlockAll)
+            {
+                if (!device.IsGateway && !device.IsLocalDevice && !device.Blocked)
+                {
+                    var res = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 6, device);
+                    DeviceList.CheckSubItem(device, olvColumn6);
+
+                    if (res)
+                    {
+                        if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
+                        {
+                            ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}\nDevice has been automatically blocked.",
+                                Properties.Resources.NewTargetNotificationPrompt,
+                                device.IP,
+                                device.MAC), NotificationPurpose.Message, device.IP.ToString(), device.MAC.ToString());
+                        }
+                    }
+                }
+            }
+            else if (RedirectAll)
+            {
+                if (!device.IsGateway && !device.IsLocalDevice && !device.Redirected)
+                {
+                    var res = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 5, device);
+                    DeviceList.CheckSubItem(device, olvColumn5);
+
+                    if (res)
+                    {
+                        if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
+                        {
+                            ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}\nDevice has been automatically redirected.",
+                                Properties.Resources.NewTargetNotificationPrompt,
+                                device.IP,
+                                device.MAC), NotificationPurpose.Message, device.IP.ToString(), device.MAC.ToString());
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region IView Members
 
-        public FastObjectListView ListView1
+        public FastObjectListView DeviceListView
         {
             get
             {
                 return DeviceList;
             }
         }
-        public Label StatusLabel
+        public Label DeviceCountIndicator
         {
             get
             {
                 return DeviceCountLabel;
             }
         }
-        public Label StatusLabel2
+        public Label CurrentOperationStatusIndicator
         {
             get
             {
                 return CurrentOperationStatusLabel;
             }
         }
-        public Form MainForm
+        public Main MainForm
         {
             get
             {
@@ -358,22 +452,18 @@ namespace NetStalker
         {
             get { return OpIndicator; }
         }
-        public ToolTip TTip
-        {
-            get { return Tooltip; }
-        }
-        public Button Tile
+        public Button SnifferToggle
         {
             get { return SnifferButton; }
         }
-        public Button Tile2
+        public Button LimiterToggle
         {
             get { return LimiterButton; }
         }
 
         #endregion
 
-        #region From Event Handlers
+        #region Form Event Handlers
 
         private void Main_Shown(object sender, EventArgs e)
         {
@@ -461,9 +551,9 @@ namespace NetStalker
                 LimiterButton.Enabled = false;
                 OperationIsInProgress = true;
                 ResizeDone = false;
-                StatusLabel.Text = "Working";
+                DeviceCountIndicator.Text = "Working";
                 DeviceList.EmptyListMsg = "Scanning...";
-                StatusLabel.Text = "Please wait...";
+                DeviceCountIndicator.Text = "Please wait...";
                 OpIndicator.Image = Properties.Resources.color_error;
 
                 AliveTimer.Enabled = true;
@@ -513,8 +603,10 @@ namespace NetStalker
         /// <param name="e"></param>
         private void OptionsButton_Click(object sender, EventArgs e)
         {
-            Options options = new Options();
-            options.ShowDialog();
+            using (Options options = new Options())
+            {
+                options.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -689,7 +781,7 @@ namespace NetStalker
             }
         }
 
-        private async void DeviceList_ItemsAdding(object sender, ItemsAddingEventArgs e)
+        private void DeviceList_ItemsAdding(object sender, ItemsAddingEventArgs e)
         {
             var objectsToAdd = e.ObjectsToAdd.Cast<Device>();
 
@@ -697,54 +789,13 @@ namespace NetStalker
             {
                 Device device = objectsToAdd.First();
 
-                if (BlockAll)
+                //If no previous action were taken
+                if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
                 {
-                    if (!device.IsGateway && !device.IsLocalDevice && !device.Blocked)
-                    {
-                        var res = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 6, device);
-                        DeviceList.CheckSubItem(device, olvColumn6);
-
-                        if (res)
-                        {
-                            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
-                            {
-                                ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}\nDevice has been automatically blocked.",
-                                    Properties.Resources.NewTargetNotificationPrompt,
-                                    device.IP,
-                                    device.MAC), NotificationPurpose.Message, device.IP.ToString(), device.MAC.ToString());
-                            }
-                        }
-                    }
-                }
-                else if (RedirectAll)
-                {
-                    if (!device.IsGateway && !device.IsLocalDevice && !device.Redirected)
-                    {
-                        var res = await SubItemCheckingHandler(CheckState.Unchecked, CheckState.Checked, 5, device);
-                        DeviceList.CheckSubItem(device, olvColumn5);
-
-                        if (res)
-                        {
-                            if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
-                            {
-                                ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}\nDevice has been automatically redirected.",
-                                    Properties.Resources.NewTargetNotificationPrompt,
-                                    device.IP,
-                                    device.MAC), NotificationPurpose.Message, device.IP.ToString(), device.MAC.ToString());
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    //If no previous action were taken
-                    if (WindowState == FormWindowState.Minimized && Properties.Settings.Default.SuppressNotifications == 2)
-                    {
-                        ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}",
-                            Properties.Resources.NewTargetNotificationPrompt,
-                            device.IP,
-                            device.MAC), NotificationPurpose.TargetDiscovery, device.IP.ToString(), device.MAC.ToString());
-                    }
+                    ToastAPI.ShowPrompt(string.Format("{0}\nIP:{1}\nMAC:{2}",
+                        Properties.Resources.NewTargetNotificationPrompt,
+                        device.IP,
+                        device.MAC), NotificationPurpose.TargetDiscovery, device.IP.ToString(), device.MAC.ToString());
                 }
             }
         }
@@ -931,9 +982,12 @@ namespace NetStalker
             e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51, 51, 51)), e.Bounds);//Background color
 
             e.Graphics.DrawRectangle(new Pen(Color.FromArgb(204, 204, 204), 1), new Rectangle(e.Bounds.X, e.Bounds.Y,
-                e.Bounds.Width - 1, e.Bounds.Height - 1));//The white bounds
+               e.Bounds.Width - 1, e.Bounds.Height - 1));//The white bounds
 
-            e.Graphics.DrawString(e.ToolTipText, new Font("Century Gothic", 9), new SolidBrush(Color.FromArgb(204, 204, 204)), e.Bounds.X + 8, e.Bounds.Y + 7); //Text with image location
+            using (var font = new Font("Century Gothic", 10.5f))
+            {
+                e.Graphics.DrawString(e.ToolTipText, font, new SolidBrush(Color.FromArgb(204, 204, 204)), e.Bounds.X + 8, e.Bounds.Y + 7);
+            }
         }
 
         private void ToolTip_Popup(object sender, PopupEventArgs e)

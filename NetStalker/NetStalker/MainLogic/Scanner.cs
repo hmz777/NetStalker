@@ -94,11 +94,11 @@ namespace NetStalker
                         ProcessPacket(packetCapture, view);
 
                         int percentageprogress = (int)((float)stopwatch.ElapsedMilliseconds / scanduration * 100);
-                        view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning " + percentageprogress + "%"));
+                        view.MainForm.BeginInvoke(new Action(() => view.DeviceCountIndicator.Text = "Scanning " + percentageprogress + "%"));
                     }
 
                     stopwatch.Stop();
-                    view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = ClientList.Count.ToString() + " device(s) found"));
+                    view.MainForm.BeginInvoke(new Action(() => view.DeviceCountIndicator.Text = ClientList.Count.ToString() + " device(s) found"));
 
                     //Initial scanning is over now we start the background scan.
                     Main.OperationIsInProgress = false;
@@ -113,7 +113,7 @@ namespace NetStalker
                     {
                         view.MainForm.BeginInvoke(new Action(() =>
                         {
-                            view.StatusLabel.Text = "Error occurred";
+                            view.DeviceCountIndicator.Text = "Error occurred";
                             view.PictureBox.Image = Properties.Resources.color_error;
                         }));
                     }
@@ -130,7 +130,6 @@ namespace NetStalker
         /// <param name="view">UI controls</param>
         public static void BackgroundScanStart(IView view)
         {
-            view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Starting background scan..."));
             BackgroundScanDisabled = false;
 
             IPAddress myipaddress = AppConfiguration.LocalIp;
@@ -151,18 +150,15 @@ namespace NetStalker
             view.MainForm.BeginInvoke(new Action(() =>
             {
                 view.PictureBox.Image = Properties.Resources.color_ok;
-                view.StatusLabel2.Text = "Ready";
-                view.Tile.Enabled = true;
-                view.Tile2.Enabled = true;
+                view.CurrentOperationStatusIndicator.Text = "Ready";
+                view.SnifferToggle.Enabled = true;
+                view.LimiterToggle.Enabled = true;
             }));
 
             if (!LoadingBarCalled)
             {
                 CallTheLoadingBar(view);
-                view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = "Scanning..."));
             }
-
-            view.MainForm.BeginInvoke(new Action(() => view.StatusLabel.Text = ClientList.Count + " device(s) found"));
 
             #endregion
         }
@@ -496,7 +492,12 @@ namespace NetStalker
                 };
 
                 //Add device to UI list
-                view.ListView1.BeginInvoke(new Action(() => { view.ListView1.AddObject(device); }));
+                view.DeviceListView.BeginInvoke(new Action(async() =>
+                {
+                    view.DeviceListView.AddObject(device);
+                    await view.MainForm.OnItemAdded(device);
+                    view.DeviceCountIndicator.Text = ClientList.Count + " device(s) found";
+                }));
 
                 //Add device to main device list
                 _ = Main.Devices.TryAdd(ArpPacket.SenderProtocolAddress, device);
@@ -517,7 +518,10 @@ namespace NetStalker
                     var vendor = await GetVendorInfo(mac);
                     device.ManName = vendor;
 
-                    view.ListView1.BeginInvoke(new Action(() => { view.ListView1.UpdateObject(device); }));
+                    view.DeviceListView.BeginInvoke(new Action(() =>
+                    {
+                        view.DeviceListView.UpdateObject(device);
+                    }));
                 });
             }
             else if (ClientList.ContainsKey(ArpPacket.SenderProtocolAddress))
