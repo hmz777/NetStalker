@@ -5,25 +5,17 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Timer = System.Timers.Timer;
 
 namespace NetStalker
 {
     public partial class Options : Form
     {
-        #region Instance Fields
-
-        private Main main;
-
-        #endregion
-
         #region Constructor
 
         public Options()
         {
             InitializeComponent();
             SetPasswordButton.Enabled = false;
-            main = Application.OpenForms["Main"] as Main;
         }
 
         #endregion
@@ -44,8 +36,6 @@ namespace NetStalker
                 ConfirmPasswordField.Enabled = false;
                 RemovePasswordButton.Enabled = false;
             }
-
-            main = Application.OpenForms["Main"] as Main;
 
             if (Properties.Settings.Default.Minimize == "Tray")
             {
@@ -167,13 +157,6 @@ namespace NetStalker
                 PassStatus.Text = "";
                 PasswordField.Enabled = false;
                 ConfirmPasswordField.Enabled = false;
-                Timer t1 = new Timer(3500);
-                t1.Start();
-                t1.Elapsed += (o, args) =>
-                {
-                    StatusLabel.Invoke(new Action(() => { StatusLabel.Text = ""; }));
-                    t1.Stop();
-                };
             }
         }
 
@@ -189,14 +172,6 @@ namespace NetStalker
             StatusLabel.ForeColor = Color.Green;
             StatusLabel.Text = "Password has been removed!";
             PasswordField.Enabled = true;
-            Timer t1 = new Timer(3500);
-            t1.Start();
-            t1.Elapsed += (o, args) =>
-            {
-                StatusLabel.Invoke(new Action(() => { StatusLabel.Text = ""; }));
-
-                t1.Stop();
-            };
         }
 
         public bool IsPassSet()
@@ -249,35 +224,13 @@ namespace NetStalker
         private void LightCheck_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.DarkMode = false;
-
-            main.ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
-            main.ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
-            main.DeviceList.BackColor = Color.White;
-            main.DeviceList.HeaderFormatStyle = main.LightHeaders;
-            main.DeviceList.HotItemStyle = main.LightHot;
-            main.DeviceList.ForeColor = Color.FromArgb(54, 54, 54);
-            main.DeviceList.SelectedBackColor = Color.FromArgb(214, 214, 214);
-            main.DeviceList.SelectedForeColor = Color.FromArgb(51, 51, 51);
-            main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
-            main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-            main.LoadingIndicator.Image = Properties.Resources.spinB;
+            StatusLabel.Text = "Restart application to apply changes";
         }
 
         private void DarkCheck_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.DarkMode = true;
-
-            main.ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
-            main.ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
-            main.DeviceList.BackColor = Color.FromArgb(51, 51, 51);
-            main.DeviceList.HeaderFormatStyle = main.DarkHeaders;
-            main.DeviceList.HotItemStyle = main.DarkHot;
-            main.DeviceList.ForeColor = Color.FromArgb(204, 204, 204);
-            main.DeviceList.SelectedBackColor = Color.FromArgb(88, 88, 88);
-            main.DeviceList.SelectedForeColor = Color.FromArgb(204, 204, 204);
-            main.DeviceList.UnfocusedSelectedBackColor = Color.FromArgb(204, 204, 204);
-            main.DeviceList.UnfocusedSelectedForeColor = Color.FromArgb(88, 88, 88);
-            main.LoadingIndicator.Image = NetStalker.Properties.Resources.spinW;
+            StatusLabel.Text = "Restart application to apply changes";
         }
 
         #endregion
@@ -306,7 +259,6 @@ namespace NetStalker
 
         private void ToolTip_Draw(object sender, DrawToolTipEventArgs e)
         {
-
             e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51, 51, 51)), e.Bounds);//background color e.bounds
 
             e.Graphics.DrawRectangle(new Pen(Color.FromArgb(204, 204, 204), 1), new Rectangle(e.Bounds.X, e.Bounds.Y,

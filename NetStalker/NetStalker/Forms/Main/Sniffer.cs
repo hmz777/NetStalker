@@ -339,50 +339,50 @@ namespace NetStalker
 
             #region Visual Garbage
 
-            if (Properties.Settings.Default.Color == "Light")
-            {
-                PacketBox.BackColor = Color.WhiteSmoke;
-                StatusBox.BackColor = Color.WhiteSmoke;
-                PacketBox.ForeColor = Color.Black;
-                StatusBox.ForeColor = Color.Black;
-                ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
-                ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
-                PacketListView.BackColor = Color.WhiteSmoke;
-                PacketListView.HeaderFormatStyle = LightHeaders;
-                PacketListView.HotItemStyle = LightHot;
-                PacketListView.ForeColor = Color.FromArgb(54, 54, 54);
-                PacketListView.SelectedBackColor = Color.FromArgb(214, 214, 214);
-                PacketListView.SelectedForeColor = Color.FromArgb(51, 51, 51);
-                PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
-                PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-                ListOverlay.BorderColor = Color.Teal;
+            //if (Properties.Settings.Default.Color == "Light")
+            //{
+            //    PacketBox.BackColor = Color.WhiteSmoke;
+            //    StatusBox.BackColor = Color.WhiteSmoke;
+            //    PacketBox.ForeColor = Color.Black;
+            //    StatusBox.ForeColor = Color.Black;
+            //    ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
+            //    ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
+            //    PacketListView.BackColor = Color.WhiteSmoke;
+            //    PacketListView.HeaderFormatStyle = LightHeaders;
+            //    PacketListView.HotItemStyle = LightHot;
+            //    PacketListView.ForeColor = Color.FromArgb(54, 54, 54);
+            //    PacketListView.SelectedBackColor = Color.FromArgb(214, 214, 214);
+            //    PacketListView.SelectedForeColor = Color.FromArgb(51, 51, 51);
+            //    PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
+            //    PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
+            //    ListOverlay.BorderColor = Color.Teal;
 
 
-            }
-            else if (Properties.Settings.Default.Color == "Dark")
-            {
-                ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
-                ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
-                ListOverlay.BorderColor = Color.Teal;
-            }
-            else
-            {
-                PacketBox.BackColor = Color.WhiteSmoke;
-                StatusBox.BackColor = Color.WhiteSmoke;
-                PacketBox.ForeColor = Color.Black;
-                StatusBox.ForeColor = Color.Black;
-                ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
-                ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
-                PacketListView.BackColor = Color.WhiteSmoke;
-                PacketListView.HeaderFormatStyle = LightHeaders;
-                PacketListView.HotItemStyle = LightHot;
-                PacketListView.ForeColor = Color.FromArgb(54, 54, 54);
-                PacketListView.SelectedBackColor = Color.FromArgb(214, 214, 214);
-                PacketListView.SelectedForeColor = Color.FromArgb(51, 51, 51);
-                PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
-                PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
-                ListOverlay.BorderColor = Color.Teal;
-            }
+            //}
+            //else if (Properties.Settings.Default.Color == "Dark")
+            //{
+            //    ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
+            //    ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
+            //    ListOverlay.BorderColor = Color.Teal;
+            //}
+            //else
+            //{
+            //    PacketBox.BackColor = Color.WhiteSmoke;
+            //    StatusBox.BackColor = Color.WhiteSmoke;
+            //    PacketBox.ForeColor = Color.Black;
+            //    StatusBox.ForeColor = Color.Black;
+            //    ListOverlay.BackColor = Color.FromArgb(204, 204, 204);
+            //    ListOverlay.TextColor = Color.FromArgb(71, 71, 71);
+            //    PacketListView.BackColor = Color.WhiteSmoke;
+            //    PacketListView.HeaderFormatStyle = LightHeaders;
+            //    PacketListView.HotItemStyle = LightHot;
+            //    PacketListView.ForeColor = Color.FromArgb(54, 54, 54);
+            //    PacketListView.SelectedBackColor = Color.FromArgb(214, 214, 214);
+            //    PacketListView.SelectedForeColor = Color.FromArgb(51, 51, 51);
+            //    PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(71, 71, 71);
+            //    PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(204, 204, 204);
+            //    ListOverlay.BorderColor = Color.Teal;
+            //}
 
             ListOverlay.Font = new Font("Century Gothic", 25);
 
