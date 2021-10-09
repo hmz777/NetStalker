@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle1 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle2 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle3 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle4 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle7 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle8 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle9 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle10 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle11 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle12 = new BrightIdeasSoftware.HeaderStateStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sniffer));
             this.DarkHeaders = new BrightIdeasSoftware.HeaderFormatStyle();
             this.DarkHot = new BrightIdeasSoftware.HotItemStyle();
@@ -73,23 +73,23 @@
             // 
             // DarkHeaders
             // 
-            headerStateStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            headerStateStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Hot = headerStateStyle1;
-            headerStateStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            headerStateStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Normal = headerStateStyle2;
-            headerStateStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            headerStateStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.DarkHeaders.Pressed = headerStateStyle3;
+            headerStateStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
+            headerStateStyle7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Hot = headerStateStyle7;
+            headerStateStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            headerStateStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Normal = headerStateStyle8;
+            headerStateStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            headerStateStyle9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.DarkHeaders.Pressed = headerStateStyle9;
             // 
             // DarkHot
             // 
             this.DarkHot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            this.DarkHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DarkHot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DarkHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             // 
             // olvColumn5
@@ -103,22 +103,22 @@
             // LightHot
             // 
             this.LightHot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.LightHot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LightHot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LightHot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             // 
             // LightHeaders
             // 
-            headerStateStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            headerStateStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.LightHeaders.Hot = headerStateStyle4;
-            headerStateStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            headerStateStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerStateStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.LightHeaders.Normal = headerStateStyle5;
-            headerStateStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            headerStateStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LightHeaders.Pressed = headerStateStyle6;
+            headerStateStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            headerStateStyle10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.LightHeaders.Hot = headerStateStyle10;
+            headerStateStyle11.BackColor = System.Drawing.Color.WhiteSmoke;
+            headerStateStyle11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStateStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.LightHeaders.Normal = headerStateStyle11;
+            headerStateStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            headerStateStyle12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LightHeaders.Pressed = headerStateStyle12;
             // 
             // ButtonIcons
             // 
@@ -146,8 +146,8 @@
             this.ButtonIcons.Images.SetKeyName(19, "icons8-speed-96.png");
             this.ButtonIcons.Images.SetKeyName(20, "icons8-target-100.png");
             this.ButtonIcons.Images.SetKeyName(21, "icons8-gps-signal-96.png");
-            this.ButtonIcons.Images.SetKeyName(22, "response");
-            this.ButtonIcons.Images.SetKeyName(23, "request");
+            this.ButtonIcons.Images.SetKeyName(22, "request");
+            this.ButtonIcons.Images.SetKeyName(23, "response");
             this.ButtonIcons.Images.SetKeyName(24, "icons8-enlarge-100.png");
             this.ButtonIcons.Images.SetKeyName(25, "icons8-increase-font-100.png");
             this.ButtonIcons.Images.SetKeyName(26, "icons8-save-100.png");
@@ -273,6 +273,7 @@
             this.PacketBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PacketBox.Size = new System.Drawing.Size(796, 199);
             this.PacketBox.TabIndex = 4;
+            this.PacketBox.DoubleClick += new System.EventHandler(this.PacketBox_DoubleClick);
             // 
             // ButtonsPanel
             // 
@@ -437,11 +438,10 @@
             this.olvColumn8});
             this.PacketListView.Cursor = System.Windows.Forms.Cursors.Default;
             this.PacketListView.EmptyListMsg = "Packet list is empty";
-            this.PacketListView.EmptyListMsgFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PacketListView.EmptyListMsgFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PacketListView.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PacketListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.PacketListView.FullRowSelect = true;
-            this.PacketListView.HeaderFormatStyle = this.DarkHeaders;
             this.PacketListView.HideSelection = false;
             this.PacketListView.HotItemStyle = this.DarkHot;
             this.PacketListView.Location = new System.Drawing.Point(3, 3);
@@ -472,7 +472,6 @@
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "Source";
-            this.olvColumn1.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn1.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.olvColumn1.IsEditable = false;
             this.olvColumn1.MaximumWidth = 220;
@@ -483,7 +482,6 @@
             // olvColumn2
             // 
             this.olvColumn2.AspectName = "Destination";
-            this.olvColumn2.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn2.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn2.IsEditable = false;
             this.olvColumn2.MaximumWidth = 220;
@@ -495,44 +493,40 @@
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "Host";
-            this.olvColumn3.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn3.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.olvColumn3.IsEditable = false;
-            this.olvColumn3.MaximumWidth = 300;
-            this.olvColumn3.MinimumWidth = 300;
+            this.olvColumn3.MaximumWidth = 301;
+            this.olvColumn3.MinimumWidth = 301;
             this.olvColumn3.Text = "Host";
-            this.olvColumn3.Width = 320;
+            this.olvColumn3.Width = 301;
             // 
             // olvColumn7
             // 
             this.olvColumn7.AspectName = "Resolve";
             this.olvColumn7.ButtonSizing = BrightIdeasSoftware.OLVColumn.ButtonSizingMode.CellBounds;
-            this.olvColumn7.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn7.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn7.IsButton = true;
             this.olvColumn7.IsEditable = false;
-            this.olvColumn7.MaximumWidth = 95;
-            this.olvColumn7.MinimumWidth = 95;
+            this.olvColumn7.MaximumWidth = 100;
+            this.olvColumn7.MinimumWidth = 100;
             this.olvColumn7.Text = "Resolve";
             this.olvColumn7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn7.Width = 95;
+            this.olvColumn7.Width = 100;
             // 
             // olvColumn4
             // 
             this.olvColumn4.AspectName = "Type";
-            this.olvColumn4.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn4.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn4.IsEditable = false;
-            this.olvColumn4.MaximumWidth = 95;
-            this.olvColumn4.MinimumWidth = 95;
+            this.olvColumn4.MaximumWidth = 105;
+            this.olvColumn4.MinimumWidth = 105;
             this.olvColumn4.Text = "Type";
             this.olvColumn4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn4.Width = 95;
+            this.olvColumn4.Width = 105;
             // 
             // olvColumn6
             // 
             this.olvColumn6.AspectName = "ID";
-            this.olvColumn6.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn6.IsEditable = false;
             this.olvColumn6.MaximumWidth = 0;
             this.olvColumn6.MinimumWidth = 0;
@@ -542,14 +536,13 @@
             // olvColumn8
             // 
             this.olvColumn8.AspectName = "Protocol";
-            this.olvColumn8.HeaderFont = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.olvColumn8.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumn8.IsEditable = false;
-            this.olvColumn8.MaximumWidth = 95;
-            this.olvColumn8.MinimumWidth = 95;
+            this.olvColumn8.MaximumWidth = 110;
+            this.olvColumn8.MinimumWidth = 110;
             this.olvColumn8.Text = "Protocol";
             this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvColumn8.Width = 95;
+            this.olvColumn8.Width = 110;
             // 
             // MainFlowPanel
             // 

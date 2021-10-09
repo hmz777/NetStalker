@@ -37,10 +37,6 @@ namespace NetStalker
         /// </summary>
         private bool ViewerExtended;
         /// <summary>
-        /// Indication that a list resize has been done. This is used to adjust the visuals of the list when a scroll bar is shown.
-        /// </summary>
-        private bool ResizeDone;
-        /// <summary>
         /// Indication that the capture device is configured.
         /// </summary>
         private bool CaptureDeviceConfigured;
@@ -299,15 +295,6 @@ namespace NetStalker
                             PacketListView.BeginInvoke(new Action(() =>
                             {
                                 PacketListView.AddObject(acPacket);
-
-                                if (PacketListView.Items.Count > 15 && !ResizeDone)
-                                {
-                                    olvColumn8.MaximumWidth = 65;
-                                    olvColumn8.MinimumWidth = 65;
-                                    olvColumn8.Width = 65;
-                                    ResizeDone = true;
-                                }
-
                             }));
                         }
                     }
@@ -324,14 +311,6 @@ namespace NetStalker
                                     PacketListView.BeginInvoke(new Action(() =>
                                     {
                                         PacketListView.AddObject(acPacket);
-
-                                        if (PacketListView.Items.Count > 15 && !ResizeDone)
-                                        {
-                                            olvColumn8.MaximumWidth = 65;
-                                            olvColumn8.MinimumWidth = 65;
-                                            olvColumn8.Width = 65;
-                                            ResizeDone = true;
-                                        }
                                     }));
                                 }
                             }
@@ -357,15 +336,36 @@ namespace NetStalker
             {
                 this.BackColor = Color.FromArgb(51, 51, 51);
                 this.ForeColor = Color.White;
+                ListOverlay.BackColor = Color.FromArgb(71, 71, 71);
+                ListOverlay.TextColor = Color.FromArgb(204, 204, 204);
+                PacketListView.BackColor = Color.FromArgb(51, 51, 51);
+                PacketListView.HeaderFormatStyle = DarkHeaders;
+                PacketListView.HotItemStyle = DarkHot;
+                PacketListView.ForeColor = Color.FromArgb(204, 204, 204);
+                PacketListView.SelectedBackColor = Color.FromArgb(88, 88, 88);
+                PacketListView.SelectedForeColor = Color.FromArgb(204, 204, 204);
+                PacketListView.UnfocusedSelectedBackColor = Color.FromArgb(204, 204, 204);
+                PacketListView.UnfocusedSelectedForeColor = Color.FromArgb(88, 88, 88);
 
                 foreach (Control control in Controls)
                 {
-                    if (control.GetType() == typeof(Panel))
+                    if (control.GetType() == typeof(Panel) || control.GetType() == typeof(FlowLayoutPanel))
                     {
                         foreach (Control innerControl in control.Controls)
                         {
-                            innerControl.BackColor = Color.FromArgb(51, 51, 51);
-                            innerControl.ForeColor = Color.White;
+                            if (innerControl.GetType() == typeof(Panel) || innerControl.GetType() == typeof(FlowLayoutPanel))
+                            {
+                                foreach (Control inner2Control in innerControl.Controls)
+                                {
+                                    inner2Control.BackColor = Color.FromArgb(51, 51, 51);
+                                    inner2Control.ForeColor = Color.White;
+                                }
+                            }
+                            else
+                            {
+                                innerControl.BackColor = Color.FromArgb(51, 51, 51);
+                                innerControl.ForeColor = Color.White;
+                            }
                         }
                     }
                     else
@@ -512,11 +512,6 @@ namespace NetStalker
             if (PacketListView.GetItemCount() > 0)
             {
                 PacketListView.ClearObjects();
-                olvColumn8.MaximumWidth = 82;
-                olvColumn8.MinimumWidth = 82;
-                olvColumn8.Width = 82;
-                ResizeDone = false;
-
             }
 
             PacketListView.EmptyListMsg = "Packet list is empty";
@@ -692,6 +687,11 @@ namespace NetStalker
             var snifferOptions = new SnifferOptions();
             snifferOptions.ShowDialog();
             snifferOptions.Dispose();
+        }
+
+        private void PacketBox_DoubleClick(object sender, EventArgs e)
+        {
+            ExtendBtn.PerformClick();
         }
 
         #endregion
