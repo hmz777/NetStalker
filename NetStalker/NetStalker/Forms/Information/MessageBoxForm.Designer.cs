@@ -53,7 +53,7 @@ namespace NetStalker.Forms.Information
             this.MessageControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MessageControl.AutoSize = true;
             this.MessageControl.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageControl.Location = new System.Drawing.Point(115, 45);
+            this.MessageControl.Location = new System.Drawing.Point(112, 45);
             this.MessageControl.MaximumSize = new System.Drawing.Size(562, 0);
             this.MessageControl.Name = "MessageControl";
             this.MessageControl.Size = new System.Drawing.Size(71, 21);
@@ -69,7 +69,7 @@ namespace NetStalker.Forms.Information
             this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKBtn.ImageIndex = 4;
             this.OKBtn.ImageList = this.MessageIcons;
-            this.OKBtn.Location = new System.Drawing.Point(598, 126);
+            this.OKBtn.Location = new System.Drawing.Point(598, 149);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(92, 48);
             this.OKBtn.TabIndex = 2;
@@ -96,7 +96,7 @@ namespace NetStalker.Forms.Information
             this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelBtn.ImageIndex = 0;
             this.CancelBtn.ImageList = this.MessageIcons;
-            this.CancelBtn.Location = new System.Drawing.Point(453, 126);
+            this.CancelBtn.Location = new System.Drawing.Point(453, 149);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(108, 48);
             this.CancelBtn.TabIndex = 3;
@@ -114,7 +114,7 @@ namespace NetStalker.Forms.Information
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(702, 186);
+            this.ClientSize = new System.Drawing.Size(702, 209);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OKBtn);
             this.Controls.Add(this.MessageControl);
