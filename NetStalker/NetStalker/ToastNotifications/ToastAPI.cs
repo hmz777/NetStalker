@@ -58,6 +58,11 @@ namespace NetStalker.ToastNotifications
 
                         break;
                     }
+                case NotificationPurpose.Message:
+                    {
+                        //Other stuff may go here.
+                        break;
+                    }
                 default:
                     {
                         Toast = null;

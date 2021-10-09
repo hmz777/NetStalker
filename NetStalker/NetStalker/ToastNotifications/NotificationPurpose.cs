@@ -10,5 +10,6 @@ namespace NetStalker.ToastNotifications
     {
         TargetDiscovery,
         NotificationsSuppression,
+        Message
     }
 }
