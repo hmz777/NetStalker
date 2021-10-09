@@ -207,9 +207,9 @@
             this.label9.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(28, 380);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 21);
+            this.label9.Size = new System.Drawing.Size(81, 21);
             this.label9.TabIndex = 69;
-            this.label9.Text = "WEB SITE:";
+            this.label9.Text = "WEBSITE:";
             // 
             // label10
             // 

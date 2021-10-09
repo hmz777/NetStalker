@@ -21,15 +21,6 @@ namespace NetStalker
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.Color == "Dark")
-            {
-                groupBox1.ForeColor = Color.White;
-            }
-            else
-            {
-                groupBox1.ForeColor = Color.Black;
-            }
-
             VerLabel.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             BuildLabel.Text = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
         }
