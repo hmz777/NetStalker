@@ -133,6 +133,10 @@ In case you decided to use this software, I recommend taking some of your time t
   <data name="AppQuit" xml:space="preserve">
     <value>Quit the application ?</value>
   </data>
+  <data name="AppWillQuit" xml:space="preserve">
+    <value>The application needs to restart in order to apply the new changes, continue?
+If you chose not to quit, the changes might not be fully applied until the next run.</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="color_cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color_cancel.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

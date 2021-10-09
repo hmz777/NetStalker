@@ -85,6 +85,16 @@ namespace NetStalker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application needs to restart in order to apply the new changes, continue?
+        ///If you chose not to quit, the changes might not be fully applied until the next run..
+        /// </summary>
+        internal static string AppWillQuit {
+            get {
+                return ResourceManager.GetString("AppWillQuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap color_cancel {
