@@ -34,8 +34,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>
@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Forms\Information\MessageBoxForm.Designer.cs">
       <DependentUpon>MessageBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\SetNameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\SetNameDialog.Designer.cs">
+      <DependentUpon>SetNameDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MainLogic\AcceptedPacket.cs" />
     <Compile Include="MainLogic\Controller.cs" />
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\NicSelection.resx">
       <DependentUpon>NicSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\SetNameDialog.resx">
+      <DependentUpon>SetNameDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Options\Options.resx">
       <DependentUpon>Options.cs</DependentUpon>
