@@ -84,7 +84,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 - When releasing a device from redirection, it takes a couple of seconds for this device to regain internet access (Rediscovering the original gateway).
 
 # To Do
-- Add the ability to set friendly names for discovered devices.
+- <strike>Add the ability to set friendly names for discovered devices.</strike>
 - Redirect IPV6 traffic.
 
 # Pictures
