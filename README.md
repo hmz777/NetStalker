@@ -27,6 +27,13 @@ A network tool to control the bandwidth over your local network, it can block in
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
+### v4.1-beta
+- Fully working dark mode + taking advantage of the immersive dark mode toggle in Windows 10.
+- Add Block All/Redirect All toggles (both of them will also apply to all future detections).
+- Add the ability to set friendly names for discovered devices, in order to better identify them.
+- Code refactorings.
+- Minor visual improvements.
+- Packaged setup included.
 
 ### v4.0
 - Drop all the UI dependencies and re-create the whole UI from the original controls, in order for the app to be scaled properly by Windows on high DPI screens.
