@@ -95,7 +95,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 - <strike>Add the ability to set friendly names for discovered devices.</strike>
 - Redirect IPV6 traffic.
 
-# Pictures
+# Pictures (Might be different depending on your version)
 
 ### Main Dark Mode
 ![Main Dark Mode](https://user-images.githubusercontent.com/38891601/136677615-fb391a51-48c0-4f07-ada9-db284304bd7f.png)
