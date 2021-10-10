@@ -97,23 +97,23 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 
 # Pictures
 
-### Dark Mode
-![MainDark](https://i.imgur.com/CpnUqdC.jpg)
+### Main Dark Mode
+![Main Dark Mode](https://user-images.githubusercontent.com/38891601/136677615-fb391a51-48c0-4f07-ada9-db284304bd7f.png)
 
-### Light Mode
-![MainLight](https://i.imgur.com/HOQl1kI.jpg)
+### Main Light Mode
+![Main Light Mode](https://user-images.githubusercontent.com/38891601/136677624-c7ad3033-8f56-4292-beb5-a68025744635.png)
 
-### Packet Sniffer Dark
-![SnifferDark](https://i.imgur.com/6C5qkRu.jpg)
+### Network Card Selection
+![Network Card Selection](https://user-images.githubusercontent.com/38891601/136677683-eea14309-8663-46c6-9e3d-02d1f45cc1b1.png)
 
-### Packet Sniffer Light
-![SnifferLight](https://i.imgur.com/RtwLAst.jpg)
+### Packet Sniffer
+![Packet Sniffer Dark](https://user-images.githubusercontent.com/38891601/136677636-8c7189a7-5e2d-40df-959f-5e025e7c654d.png)
 
 ### Speed Limiter
-![SpeedLimiter](https://i.imgur.com/bJdjiMX.jpg)
+![Speed Limiter Dark](https://user-images.githubusercontent.com/38891601/136677648-a7fcd9de-56f7-4e48-9005-e0d5ac3d6d1d.png)
 
-### Expanded Packet Viewer
-![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
+## Options
+![Options](https://user-images.githubusercontent.com/38891601/136677697-38bbfdc7-3856-48aa-b290-db45286de751.png)
 
 # Development Notes
 - ~~The project references a modified version of the Windows API Code Pack (see [here](https://stackoverflow.com/questions/54390709/toastactivatorclsid-missing-from-appusermodel)) in order to register the app for the Windows Notifications API.~~
