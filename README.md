@@ -80,6 +80,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 # Binaries
 ***Make sure you have the latest Npcap driver before installing NetStalker.***
 - [Npcap](https://nmap.org/download.html).
+- - The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4/NetStalker_Installer.exe). ***(Currently v4.1 beta)***
 - The latest packaged version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4.1-beta/NetStalkerInstaller.exe). ***(Currently v4.1 beta)***
 
 # Notes
