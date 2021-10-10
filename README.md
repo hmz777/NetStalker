@@ -112,7 +112,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 ### Speed Limiter
 ![Speed Limiter Dark](https://user-images.githubusercontent.com/38891601/136677648-a7fcd9de-56f7-4e48-9005-e0d5ac3d6d1d.png)
 
-## Options
+### Options
 ![Options](https://user-images.githubusercontent.com/38891601/136677697-38bbfdc7-3856-48aa-b290-db45286de751.png)
 
 # Development Notes
