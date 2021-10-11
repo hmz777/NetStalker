@@ -27,6 +27,13 @@ A network tool to control the bandwidth over your local network, it can block in
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
+### v4.1-beta
+- Fully working dark mode + taking advantage of the immersive dark mode toggle in Windows 10.
+- Add Block All/Redirect All toggles (both of them will also apply to all future detections).
+- Add the ability to set friendly names for discovered devices, in order to better identify them (Saved as JSON in the app directory).
+- Code refactorings.
+- Minor visual improvements.
+- Packaged setup included.
 
 ### v4.0
 - Drop all the UI dependencies and re-create the whole UI from the original controls, in order for the app to be scaled properly by Windows on high DPI screens.
@@ -73,7 +80,8 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 # Binaries
 ***Make sure you have the latest Npcap driver before installing NetStalker.***
 - [Npcap](https://nmap.org/download.html).
-- The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/3.0.1/NetStalkerInstaller.exe). ***(Currently v3.0.1)***
+- The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4/NetStalker_Installer.exe). ***(v4.0)***
+- The latest packaged version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4.1-beta/NetStalkerInstaller.exe). ***(v4.1 beta)***
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
@@ -87,25 +95,25 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 - <strike>Add the ability to set friendly names for discovered devices.</strike>
 - Redirect IPV6 traffic.
 
-# Pictures
+# Pictures (Might be different depending on your version)
 
-### Dark Mode
-![MainDark](https://i.imgur.com/CpnUqdC.jpg)
+### Main Dark Mode
+![Main Dark Mode](https://user-images.githubusercontent.com/38891601/136677615-fb391a51-48c0-4f07-ada9-db284304bd7f.png)
 
-### Light Mode
-![MainLight](https://i.imgur.com/HOQl1kI.jpg)
+### Main Light Mode
+![Main Light Mode](https://user-images.githubusercontent.com/38891601/136677624-c7ad3033-8f56-4292-beb5-a68025744635.png)
 
-### Packet Sniffer Dark
-![SnifferDark](https://i.imgur.com/6C5qkRu.jpg)
+### Network Card Selection
+![Network Card Selection](https://user-images.githubusercontent.com/38891601/136677683-eea14309-8663-46c6-9e3d-02d1f45cc1b1.png)
 
-### Packet Sniffer Light
-![SnifferLight](https://i.imgur.com/RtwLAst.jpg)
+### Packet Sniffer
+![Packet Sniffer Dark](https://user-images.githubusercontent.com/38891601/136677636-8c7189a7-5e2d-40df-959f-5e025e7c654d.png)
 
 ### Speed Limiter
-![SpeedLimiter](https://i.imgur.com/bJdjiMX.jpg)
+![Speed Limiter Dark](https://user-images.githubusercontent.com/38891601/136677648-a7fcd9de-56f7-4e48-9005-e0d5ac3d6d1d.png)
 
-### Expanded Packet Viewer
-![ExpandedPacketViewer](https://i.imgur.com/dzFAQjV.jpg)
+### Options
+![Options](https://user-images.githubusercontent.com/38891601/136677697-38bbfdc7-3856-48aa-b290-db45286de751.png)
 
 # Development Notes
 - ~~The project references a modified version of the Windows API Code Pack (see [here](https://stackoverflow.com/questions/54390709/toastactivatorclsid-missing-from-appusermodel)) in order to register the app for the Windows Notifications API.~~
