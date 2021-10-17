@@ -57,6 +57,10 @@ namespace NetStalker
         /// </summary>
         private readonly Timer AliveTimer;
         /// <summary>
+        /// This timer is responsible for resetting the packet count for download and upload at a specific interval.
+        /// </summary>
+        private readonly Timer PacketCountTimer;
+        /// <summary>
         /// A flag to indicate if a list resize should be done. (This is used when the list is cleared or a scroll bar is shown).
         /// </summary>
         private bool ResizeDone;
@@ -165,6 +169,12 @@ namespace NetStalker
             };
             AliveTimer.Tick += AliveTimerOnTick;
 
+            //Packet Count Timer
+            PacketCountTimer = new Timer
+            {
+                Interval = 5000
+            };
+            PacketCountTimer.Tick += PacketCountTimerOnTick;
             #endregion
         }
 
@@ -267,7 +277,10 @@ namespace NetStalker
                     DeviceList.UpdateObject(Device.Value);
                 }
             }
+        }
 
+        private void PacketCountTimerOnTick(object sender, EventArgs e)
+        {
             ResetPacketCount();
         }
 
@@ -512,13 +525,22 @@ namespace NetStalker
 
             if (nic == null)
             {
-                if (AliveTimer.Enabled && ValuesTimer.Enabled)
+                if (AliveTimer != null)
                 {
                     AliveTimer.Enabled = false;
                     AliveTimer.Dispose();
+                }
 
+                if (ValuesTimer != null)
+                {
                     ValuesTimer.Enabled = false;
                     ValuesTimer.Dispose();
+                }
+
+                if (PacketCountTimer != null)
+                {
+                    PacketCountTimer.Enabled = false;
+                    PacketCountTimer.Dispose();
                 }
 
                 if (e.CloseReason == CloseReason.UserClosing && !TrayExitFlag)
@@ -896,6 +918,11 @@ namespace NetStalker
                     {
                         ValuesTimer.Enabled = true;
                     }
+
+                    if (!PacketCountTimer.Enabled)
+                    {
+                        PacketCountTimer.Enabled = true;
+                    }
                 }
                 else if (NewValue == CheckState.Unchecked && ColumnIndex == 6 && device.Blocked && !device.Redirected)
                 {
@@ -951,6 +978,8 @@ namespace NetStalker
                         Blocker_Redirector.BRMainSwitch = false;
                         ValuesTimer.Enabled = false;
                         ValuesTimer.Stop();
+                        PacketCountTimer.Enabled = false;
+                        PacketCountTimer.Stop();
                     }
                 }
                 else
