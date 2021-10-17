@@ -48,15 +48,15 @@ namespace NetStalker.MainLogic
             if (BRDevice.Opened && !BRDevice.Started)
             {
                 BRDevice.StartCapture();
-            }
 
-            BRTask = Task.Run(() =>
-            {
-                while (BRMainSwitch)
+                BRTask = Task.Run(() =>
                 {
-                    SpoofClients();
-                }
-            });
+                    while (BRMainSwitch)
+                    {
+                        SpoofClients();
+                    }
+                });
+            }
         }
 
         public static void OnPacketArrival(object sender, PacketCapture packetCapture)
