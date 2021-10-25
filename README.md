@@ -28,7 +28,7 @@ A network tool to control the bandwidth over your local network, it can block in
 
 # Changelog
 ### v4.1-beta
-- Fully working dark mode + taking advantage of the immersive dark mode toggle in Windows 10.
+- Fully working dark mode + taking advantage of the immersive dark mode toggle in Windows 10 (See updated images below).
 - Add Block All/Redirect All toggles (both of them will also apply to all future detections).
 - Add the ability to set friendly names for discovered devices, in order to better identify them (Saved as JSON in the app directory).
 - Code refactorings.
