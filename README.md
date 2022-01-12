@@ -81,7 +81,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 ***Make sure you have the latest Npcap driver before installing NetStalker.***
 - [Npcap](https://nmap.org/download.html).
 - The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4/NetStalker_Installer.exe). ***(v4.0)***
-- The latest packaged version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4.1-beta/NetStalkerInstaller.exe). ***(v4.1 beta)***
+- The latest packaged version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4.1-beta/NetStalkerInstaller.exe). ***(v4.1 beta)*** (Beta, as in there are some features that i might change later but has the same stability as the non-beta one)
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
