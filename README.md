@@ -94,6 +94,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 # To Do
 - <strike>Add the ability to set friendly names for discovered devices.</strike>
 - Redirect IPV6 traffic.
+- Make a Linux version. Maybe? 🤔
 
 # Pictures (Might be different depending on your version)
 
