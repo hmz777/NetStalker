@@ -8,6 +8,8 @@
 ![GitHub](https://img.shields.io/github/license/hmz777/NetStalker?color=blue&style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hmz777/NetStalker?color=black&style=flat-square)
 
+### There is a new version in the works with new features, written with Avalonia, MVVM and Reactive UI.
+
 # NetStalker
 A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built in packet sniffer.
 
