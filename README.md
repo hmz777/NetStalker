@@ -1,4 +1,4 @@
-<p align="center">
+<p>
   <img align="center" src="https://i.imgur.com/4NdcRHF.png" alt="NetStalker">
 </p>
 
@@ -8,16 +8,17 @@
 ![GitHub](https://img.shields.io/github/license/hmz777/NetStalker?color=blue&style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hmz777/NetStalker?color=black&style=flat-square)
 
+# This version is no longer maintained
 ### There is a new version in the works with new features, written with Avalonia, MVVM, and Reactive UI.
 ### [NetStalker Avalonia](https://github.com/hmz777/NetStalker.Avalonia)
 
 # NetStalker
-A network tool to control the bandwidth over your local network, it can block internet access from any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built-in packet sniffer.
+A network tool to control the bandwidth over your local network, block internet access from any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built-in packet sniffer.
 
 # Features
 - Background Scanning for newly connected devices.
 - Bandwidth limitation for better distribution of internet speed across devices, both upload and download speeds can be controlled for each device separately.
-- A Packet Sniffer that is intended to log addresses that each device on the network visits with the ability to decode Http headers for HTTP packets and resolve domains for HTTPS packets, also the packet direction can be chosen in order to capture requests only or requests and responses.
+- A Packet Sniffer that is intended to log addresses that each device on the network visits with the ability to decode HTTP headers for HTTP packets and resolve domains for HTTPS packets, also the packet direction can be chosen in order to capture requests only or requests and responses.
 - A packet viewer to view the properties of a selected packet in the Packet Sniffer with the ability to expand the viewer for better visibility.
 - Export the captured packets as a log file with the resolved domains included along with the timestamp for each packet.
 - Spoof protection in order not to get spoofed by the same tool or any other spoofing software.
