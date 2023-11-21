@@ -8,11 +8,11 @@
 ![GitHub](https://img.shields.io/github/license/hmz777/NetStalker?color=blue&style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hmz777/NetStalker?color=black&style=flat-square)
 
-### There is a new version in the works with new features, written with Avalonia, MVVM and Reactive UI.
+### There is a new version in the works with new features, written with Avalonia, MVVM, and Reactive UI.
 ### [NetStalker Avalonia](https://github.com/hmz777/NetStalker.Avalonia)
 
 # NetStalker
-A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built in packet sniffer.
+A network tool to control the bandwidth over your local network, it can block internet access from any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built-in packet sniffer.
 
 # Features
 - Background Scanning for newly connected devices.
@@ -25,8 +25,8 @@ A network tool to control the bandwidth over your local network, it can block in
 - Get network card vendor for every device using MacVendors API for better device identification.
 - Can be locked with a password.
 - Can be minimized to tray if the option is chosen.
-- Integration with windows 10 notification system (works from build 17763).
-- When minimized it notifies the user of newly discovered devices using Windows 10 notification system with the ability to choose from multiple options on what actions to take.
+- Integration with Windows 10 notification system (works from build 17763).
+- When minimized it notifies the user of newly discovered devices using the Windows 10 notification system with the ability to choose from multiple options on what actions to take.
 - Track disconnected devices with a timeout for each device. 
 
 # Changelog
@@ -52,7 +52,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 - Add the ability to change the MAC Vendors API token to your own in order to avoid getting a 429 while fetching the device's manufacturer.
 
 ### v3.0.1
-- Fix a KeyNotFoundException when the notification arguments didn't have a Choice key.
+- Fix a KeyNotFoundException when the notification arguments don't have a Choice key.
 
 ### v3.0
 - Major performance improvements from upgrading to the new SharpPcap v6.0 that uses the new libpcap driver,
@@ -84,7 +84,7 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 ***Make sure you have the latest Npcap driver before installing NetStalker.***
 - [Npcap](https://nmap.org/download.html).
 - The latest stable version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4/NetStalker_Installer.exe). ***(v4.0)***
-- The latest packaged version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4.1-beta/NetStalkerInstaller.exe). ***(v4.1 beta)*** (Beta, as in there are some features that i might change later but has the same stability as the non-beta one)
+- The latest packaged version of NetStalker: [Download Setup Package](https://github.com/hmz777/NetStalker/releases/download/v4.1-beta/NetStalkerInstaller.exe). ***(v4.1 beta)*** (Beta, as in there are some features that I might change later but has the same stability as the non-beta one)
 
 # Notes
 - The app uses the [Mac Vendors API](https://macvendors.com/) to retrieve the device's manufacturer, but it only uses the OUI (Organizational Unique Identifier) aka, the first 6 digits of the MAC address.
@@ -124,13 +124,13 @@ Note: Dark mode isn't fully working yet, due to the UI change.
 No longer needed since v3.0 (Uses the new toast notifications API).
 
 # Contributions
-- Before submitting a pull request, please take sometime to understand how NetStalker and the SharpPcap library work. 
+- Before submitting a pull request, please take some time to understand how NetStalker and the SharpPcap library work. 
 
 # Issues
-- Before creating a new issue please make sure you have the latest release version or the latest compiled version if you're compiling the app your self.
+- Before creating a new issue please make sure you have the latest release version or the latest compiled version if you're compiling the app yourself.
 - Include the app version.
-- Include the full stacktrace.
-- I do not issue setup installers for every release, so if you're having a problem with a previous version try compiling the app your self first.
+- Include the full stack trace.
+- I do not issue setup installers for every release, so if you're having a problem with a previous version try compiling the app yourself first.
 - Follow the issue template.
 
 # Disclaimer
