@@ -144,4 +144,4 @@ If you notice any errors or have a suggestion, you're free to email me or submit
 # Author
 **Hamzi Alsheikh**
 
-**Website: [https://www.hamzialsheikh.tk](https://www.hamzialsheikh.tk)**
+**Website: [https://www.hamzialsheikh.com](https://www.hamzialsheikh.com)**
